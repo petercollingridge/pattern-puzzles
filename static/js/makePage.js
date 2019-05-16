@@ -1,18 +1,19 @@
 function addColourPalette(parent, nColours) {
+    var r = 16;
+
     var paletteAttributes = {
         id: 'colour-palette',
-        height: '100%',
-        width: '100px'
-        // viewBox: '0 0 ' + (2 * nColours + 1) + ' 4'
-    }
+        height: '50px',
+        width: (nColours * r * 4) + 'px'
+    };
 
-    var svg = addHTMLElement('svg', parent, paletteAttributes);
+    var svg = addSVGElement('svg', parent, paletteAttributes);
 
     for (var i = 0; i < nColours; i++) {
         addCircle(svg, {
-            cx: 1 + i * 2,
-            cy: 2,
-            r: 10,
+            cx: (2 + i * 4) * r,
+            cy: 25,
+            r: r,
             'class': "toolbar-selection colour-" + (i + 1)
         });
     }
