@@ -5,14 +5,14 @@
 }
 
 .puzzle-background {
-    fill: #e8e8e8;
+    fill: white;
 }
 
 #puzzle .empty-region {
     stroke-width: 1;
     stroke: #aaa;
     fill: white;
-    transition: fill 300ms ease-out, stroke 300ms ease-out;
+    transition: fill 200ms ease-out, stroke 200ms ease-out;
 }
 
 #puzzle .empty-region:hover {
