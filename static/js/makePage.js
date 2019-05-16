@@ -2,7 +2,8 @@ function addColourPalette(parent, nColours) {
     var paletteAttributes = {
         id: 'colour-palette',
         height: '100%',
-        viewBox: '0 0 ' + (2 * nColours + 1) + ' 4'
+        width: '100px'
+        // viewBox: '0 0 ' + (2 * nColours + 1) + ' 4'
     }
 
     var svg = addHTMLElement('svg', parent, paletteAttributes);
@@ -11,8 +12,8 @@ function addColourPalette(parent, nColours) {
         addCircle(svg, {
             cx: 1 + i * 2,
             cy: 2,
-            r: 1,
-            class: "toolbar-selection colour-" + (i + 1)
+            r: 10,
+            'class': "toolbar-selection colour-" + (i + 1)
         });
     }
 
