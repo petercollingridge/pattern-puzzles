@@ -10,10 +10,12 @@ main {
 }
 
 .colour-1 {
+    color: rgb(20, 146, 196);
     fill: rgb(20, 146, 196);
 }
 
 .colour-2 {
+    color: rgb(196, 20, 96);
     fill: rgb(196, 20, 96);
 }
 
@@ -23,6 +25,10 @@ main {
     background-color: #f8f8fa;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
     margin-bottom: 5px;
+}
+
+#toolbar circle {
+    cursor: pointer;
 }
 
 #colour-palette {
