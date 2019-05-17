@@ -1,0 +1,10 @@
+<svg height="140" width="140">
+  <defs>
+    <filter id="f1" x="0" y="0" width="120%" height="120%">
+      <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2"/>
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter>
+  </defs>
+  <circle cx="70" cy="70" r="80" fill="none" stroke="rgb(66, 56, 56)" stroke-width="40" filter="url(#f1)" />
+</svg>
