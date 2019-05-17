@@ -6,12 +6,17 @@
 
 #puzzle .empty-region {
     stroke-width: 1;
-    stroke: #aaa;
-    fill: white;
+    stroke: #fff;
+    fill: #aaa;
     transition: fill 200ms ease-out, stroke 200ms ease-out;
 }
 
-#puzzle .empty-region:hover {
+/* #puzzle .empty-region:hover {
     fill: currentColor;
     stroke: currentColor;
+} */
+
+#puzzle .graph-edges {
+    stroke-width: 3;
+    stroke: #aaa;
 }

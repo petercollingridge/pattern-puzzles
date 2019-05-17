@@ -9,8 +9,7 @@ var Puzzle = (function() {
 
     var Puzzle = {
         selectedColour: false,
-        element: puzzleElement,
-        nodeRadius: 5
+        element: puzzleElement
     };
 
     function getColourPickerFunction(i) {
