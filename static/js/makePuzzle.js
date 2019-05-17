@@ -11,18 +11,12 @@ var Puzzle = (function() {
         selectedColour: false,
         element: puzzleElement,
         nodeRadius: 5
-    }
+    };
 
     function getColourPickerFunction(i) {
         return function() {
             Puzzle.selectedColour = i + 1;
         };
-    }
-
-    function addColour() {
-        if (Puzzle.selectedColour) {
-            this.setAttribute('class', "colour-" + Puzzle.selectedColour);
-        }
     }
     
     Puzzle.createColourPalette = function(nColours) {
@@ -51,20 +45,9 @@ var Puzzle = (function() {
     
     };
 
-    Puzzle.addColourable = function(type, attributes) {
-        attributes = attributes || {};
-        attributes.r = Puzzle.nodeRadius;
-        attributes.class = 'empty-region';
-
-        var el = addSVGElement(type, puzzleElement, attributes);
-        el.addEventListener('click', addColour);
-        return el;
-    };
-
     return Puzzle;
 })();
 
 
 
 Puzzle.createColourPalette(2);
-Puzzle.addColourable('circle');
