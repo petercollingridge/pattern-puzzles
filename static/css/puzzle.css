@@ -1,10 +1,7 @@
 #puzzle {
     width: 100%;
     height: 100%;
-}
-
-.puzzle-background {
-    fill: white;
+    color: white;
 }
 
 #puzzle .empty-region {
