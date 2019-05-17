@@ -4,9 +4,12 @@
     color: white;
 }
 
-#puzzle .empty-region {
+#puzzle .graph-nodes {
     stroke-width: 1;
     stroke: #fff;
+}
+
+#puzzle .empty-region {
     fill: #aaa;
     transition: fill 200ms ease-out, stroke 200ms ease-out;
 }
