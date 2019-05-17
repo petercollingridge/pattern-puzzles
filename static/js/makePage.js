@@ -20,7 +20,9 @@ var Puzzle = (function() {
     }
 
     function addColour() {
-        this.setAttribute('class', "colour-" + Puzzle.selectedColour);
+        if (Puzzle.selectedColour) {
+            this.setAttribute('class', "colour-" + Puzzle.selectedColour);
+        }
     }
     
     Puzzle.createColourPalette = function(nColours) {
