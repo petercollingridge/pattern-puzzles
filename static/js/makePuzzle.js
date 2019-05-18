@@ -7,6 +7,7 @@ var COLOURS = [
 
 var Puzzle = (function() {
     var puzzleElement = document.getElementById('puzzle');
+    var selectedColourElement = false;
     var toolbar = document.getElementById('toolbar');
 
     var Puzzle = {
@@ -16,8 +17,14 @@ var Puzzle = (function() {
     };
 
     function selectColour(i) {
-        return function() {
+        return function(evt) {
+            if (selectedColourElement) {
+                selectedColourElement.classList.remove('selected');
+            }
+            selectedColourElement = evt.target;
+            selectedColourElement.classList.add('selected');
             Puzzle.selectedColour = i + 1;
+            puzzleElement.setAttribute('color', COLOURS[i]);
         };
     }
     
