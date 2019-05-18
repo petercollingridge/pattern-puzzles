@@ -1,6 +1,8 @@
 var COLOURS = [
     'rgb(20, 146, 196)',
     'rgb(196, 20, 96)',
+    'rgb(147, 20, 198)',
+    'rgb(20, 198, 96)',
 ];
 
 var Puzzle = (function() {
@@ -13,7 +15,7 @@ var Puzzle = (function() {
         element: puzzleElement
     };
 
-    function getColourPickerFunction(i) {
+    function selectColour(i) {
         return function() {
             Puzzle.selectedColour = i + 1;
         };
@@ -51,8 +53,7 @@ var Puzzle = (function() {
             };
     
             var colourPicker = addCircle(toolbar, attr);
-            var clickFunction = getColourPickerFunction(i);
-            colourPicker.addEventListener('click', clickFunction);
+            colourPicker.addEventListener('click', selectColour(i));
 
             toolbarAngle += dAngle;
         }
@@ -70,4 +71,4 @@ var Puzzle = (function() {
 
 
 
-Puzzle.setColourPalette(2);
+Puzzle.setColourPalette(4);

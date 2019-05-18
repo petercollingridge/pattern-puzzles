@@ -20,36 +20,35 @@ main {
 }
 
 .colour-3 {
-    color: rgb(147, 21, 198);
-    fill: rgb(147, 21, 198);
+    color: rgb(147, 20, 198);
+    fill: rgb(147, 20, 198);
 }
 
-.colour-3 {
-    color: rgb(21, 198, 95);
-    fill: rgb(21, 198, 95);
+.colour-4 {
+    color: rgb(20, 198, 95);
+    fill: rgb(20, 198, 95);
 }
-
 
 #puzzle-chamber {
     width: 100%;
     height: 100%;
 }
 
-#toolbar {
-    width: 100%;
-    height: 50px;
-    background-color: #f8f8fa;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
-    margin-bottom: 5px;
+#chamber-window {
+    fill: none;
+    stroke: rgb(30, 20, 20);
+    stroke-width: 72;
+    filter: url(#shadow-filter);
 }
 
 .toolbar-selection {
     cursor: pointer;
     stroke-width: 0;
+    fill: currentColor;
+    stroke: currentColor;
     transition: stroke-width 100ms ease-out
 }
 
-.toolbar-selection:hover {
-    stroke: currentColor;
+.toolbar-selection:hover, .toolbar-selection.selected {
     stroke-width: 3;
 }
