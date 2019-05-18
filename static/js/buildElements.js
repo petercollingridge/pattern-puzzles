@@ -32,12 +32,19 @@ function addEdge(parent, node1, node2, attributes) {
     return addSVGElement('line', parent, attributes);
 }
 
-function makeElementColourable(el, puzzle) {
-    el.setAttribute('class', 'empty-region');
-    el.addEventListener('click', function() {
+function makeElementColourable(element, object, puzzle) {
+    // Element starts off empty
+    element.setAttribute('class', 'empty-region');
+
+    // Clicking on the element changes its class
+    // and updates its object
+    element.addEventListener('click', function() {
         if (puzzle.selectedColour) {
             this.setAttribute('class', "colour-" + puzzle.selectedColour);
+            object.colour = puzzle.selectedColour;
+            puzzle.evaluate();
         }
     });
-    return el;
+
+    return element;
 }

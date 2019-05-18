@@ -13,13 +13,14 @@ function addGraph(puzzle, graph) {
             cy: node[1],
             r: graph.nodeRadius
         });
-        makeElementColourable(nodeElement, puzzle);
-        nodes.push({
+        var nodeObject = {
             x: node[0],
             y: node[1],
             r: graph.nodeRadius,
             element: nodeElement
-        });
+        };
+        makeElementColourable(nodeElement, nodeObject, puzzle);
+        nodes.push(nodeObject);
     }
 
     // Add edges
@@ -43,6 +44,27 @@ function addGraph(puzzle, graph) {
     };
 }
 
+function testGraphAllNodesColoured(graph) {
+    for (var i = 0; i < graph.nodes.length; i++) {
+        if (graph.nodes[i].colour === undefined) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function testGraphAllEdgeNodesDifferent(graph) {
+    for (var i = 0; i < graph.edges.length; i++) {
+        var edge = graph.edges[i];
+        if (edge.node1.colour === edge.node2.colour) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+// Build graph
 var graph = {
     nodeRadius: 6,
     nodes: [[-16, -16], [16, -16], [16, 16], [-16, 16]],
@@ -50,4 +72,8 @@ var graph = {
 };
 
 Puzzle.nodeRadius = 8;
-addGraph(Puzzle, graph);
+Puzzle.graph = addGraph(Puzzle, graph);
+Puzzle.evalutationFunction = function (Puzzle) {
+    return testGraphAllNodesColoured(Puzzle.graph) &&
+        testGraphAllEdgeNodesDifferent(Puzzle.graph);
+}

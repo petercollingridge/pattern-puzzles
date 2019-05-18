@@ -11,9 +11,20 @@ var Puzzle = (function() {
     var toolbar = document.getElementById('toolbar');
 
     var Puzzle = {
-        selectedColour: false,
         nColours: 0,
+        selectedColour: false,
         element: puzzleElement
+    };
+
+    function completed() {
+        alert("Passed");
+    };
+
+    Puzzle.evaluate = function() {
+        if (Puzzle.evalutationFunction &&
+            Puzzle.evalutationFunction(Puzzle)) {
+            completed();
+        }
     };
 
     function selectColour(i) {
