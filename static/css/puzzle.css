@@ -1,9 +1,3 @@
-#puzzle {
-    width: 100%;
-    height: 100%;
-    color: white;
-}
-
 #puzzle .graph-nodes {
     stroke-width: 1;
     stroke: #fff;

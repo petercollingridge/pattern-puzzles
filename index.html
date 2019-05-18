@@ -13,8 +13,20 @@
 
     <body>
         <main>
-            <section id="toolbar"></section>
-            <svg id="puzzle" viewBox="-100 -100 200 200"></svg>
+            <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <filter id="f1" x="0" y="0" width="120%" height="120%">
+                        <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2"/>
+                        <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+                        <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                    </filter>
+                </defs>
+
+                <circle r="144" fill="none" stroke="rgb(30, 20, 20)" stroke-width="72" filter="url(#f1)" />
+
+                <g id="toolbar"></g>
+                <g id="puzzle"></g>
+            </svg>
         </main>
 
         <script src="static/js/buildElements.js"></script>

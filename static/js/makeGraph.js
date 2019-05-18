@@ -33,9 +33,9 @@ function addGraph(puzzle, graph) {
 }
 
 var graph = {
-    nodeRadius: 8,
-    nodes: [[-16, 0], [16, 0]],
-    edges: [[0, 1]]
+    nodeRadius: 6,
+    nodes: [[-16, -16], [16, -16], [16, 16], [-16, 16]],
+    edges: [[0, 1], [1, 2], [2, 3], [3, 0]]
 };
 
 Puzzle.nodeRadius = 8;
