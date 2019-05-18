@@ -23,6 +23,7 @@ var Puzzle = (function() {
             }
             selectedColourElement = evt.target;
             selectedColourElement.classList.add('selected');
+            puzzleElement.classList.add('colour-selected');
             Puzzle.selectedColour = i + 1;
             puzzleElement.setAttribute('color', COLOURS[i]);
         };
