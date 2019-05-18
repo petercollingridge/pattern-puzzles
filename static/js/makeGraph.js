@@ -14,15 +14,26 @@ function addGraph(puzzle, graph) {
             r: graph.nodeRadius
         });
         makeElementColourable(nodeElement, puzzle);
-        nodes.push(nodeElement);
+        nodes.push({
+            x: node[0],
+            y: node[1],
+            r: graph.nodeRadius,
+            element: nodeElement
+        });
     }
 
     // Add edges
     var edges = [];
     for (i = 0; i < graph.edges.length; i++) {
         var edge = graph.edges[i];
-        var edgeElement = addEdge(edgeGroup, nodes[edge[0]], nodes[edge[1]]);
-        edges.push(edgeElement);
+        var node1 = nodes[edge[0]];
+        var node2 = nodes[edge[1]];
+        var edgeElement = addEdge(edgeGroup, node1, node2);
+        edges.push({
+            node1: node1,
+            node2: node2,
+            element: edgeElement,
+        });
     }
 
     // Return an object with the graph elements
