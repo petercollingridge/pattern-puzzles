@@ -6,8 +6,9 @@ var COLOURS = [
 ];
 
 var Puzzle = (function() {
-    var puzzleElement = document.getElementById('puzzle');
     var selectedColourElement = false;
+    
+    var puzzleElement = document.getElementById('puzzle');
     var toolbar = document.getElementById('toolbar');
 
     var Puzzle = {
@@ -15,6 +16,21 @@ var Puzzle = (function() {
         selectedColour: false,
         element: puzzleElement
     };
+
+    Puzzle.init = function(data, loader, evalutationFunction) {
+        this.data = data;
+        this.loader = loader;
+        this.evalutationFunction = evalutationFunction;
+        this.loadPuzzle(0);
+    }
+
+    Puzzle.loadPuzzle = function(i) {
+        if (i < this.data.length) {
+            this.loader(Puzzle.data[i]);
+        } else {
+            // Puzzle set complete
+        }
+    }
 
     function completed() {
         alert("Passed");
@@ -87,7 +103,3 @@ var Puzzle = (function() {
 
     return Puzzle;
 })();
-
-
-
-Puzzle.setColourPalette(4);
