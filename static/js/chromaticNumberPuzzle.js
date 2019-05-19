@@ -2,30 +2,43 @@
 var puzzles = [
     {
         colours: 1,
-        nodeRadius: 8,
         nodes: [[0, 0]],
     }, {
         colours: 2,
-        nodeRadius: 6,
         nodes: [[-1, 0], [1, 0]],
         edges: [[0, 1]],
     }, {
         colours: 2,
-        nodeRadius: 6,
         nodes: [[-2, 0], [0, 0], [2, 0]],
         edges: [[0, 1], [1, 2]],
     }, {
         colours: 3,
-        nodeRadius: 6,
         nodes: getNodesOnCircle(3),
         edges: [[0, 1], [1, 2], [2, 0]],
+    }, {
+        colours: 2,
+        nodes: getNodesOnCircle(4),
+        edges: [[0, 1], [1, 2], [2, 3], [3, 0]],
+    }, {
+        colours: 3,
+        nodes: getNodesOnCircle(4),
+        edges: [[0, 1], [1, 2], [2, 3], [3, 0], [1, 3]],
+    }, {
+        colours: 4,
+        nodes: getNodesOnCircle(4),
+        edges: [[0, 1], [1, 2], [2, 3], [3, 0], [0, 2], [1, 3]],
+    }, {
+        colours: 3,
+        nodes: [[0, 0]].concat(getNodesOnCircle(4)),
+        edges: [[1, 2], [1, 2], [2, 3], [3, 4], [4, 1], [0, 1], [0, 2], [0, 3], [0, 4]],
     }
 ];
 
 // Function for loading puzzle data into Puzzle object
 var loader = function(data) {
     this.toolbar.createColourPalette(data.colours);
-    data.scale = 16;
+    data.nodeRadius = data.nodeRadius || 8;
+    data.scale = data.scale || 32;
     this.graph = addGraph(this, data);
 };
 
