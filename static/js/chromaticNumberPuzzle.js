@@ -51,6 +51,16 @@ var puzzles = [
         scale: 24,
         nodes: [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]],
         edges: getLoopOfEdges(6).concat([[0, 4], [1, 4], [1, 3]]),
+    }, {
+        colours: 3,
+        scale: 24,
+        nodes: getNodesOnCircle(3),
+        edges: getLoopOfEdges(3),
+    }, {
+        colours: 3,
+        scale: 24,
+        nodes: getNodesOnCircle(3).concat(getNodesOnCircle(3, 2, Math.PI / 3)),
+        edges: getLoopOfEdges(3).concat([[0, 3], [1, 3], [1, 4], [2, 4], [0, 5], [2, 5]]),
     }
 ];
 
