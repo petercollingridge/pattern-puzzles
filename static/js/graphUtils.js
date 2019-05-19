@@ -48,6 +48,19 @@ function addGraph(puzzle, graph) {
     };
 }
 
+function getNodesOnCircle(n) {
+    var nodes = [];
+    var angle = 2 * Math.PI / n;
+
+    for (var i = 0; i < n; i++) {
+        nodes.push([
+            Math.sin(angle * (i - 0.5)),
+            Math.cos(angle * (i - 0.5))
+        ]);
+    }
+    return nodes;
+}
+
 function testGraphAllNodesColoured(graph) {
     for (var i = 0; i < graph.nodes.length; i++) {
         if (graph.nodes[i].colour === undefined) {

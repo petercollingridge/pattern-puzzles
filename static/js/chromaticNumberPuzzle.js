@@ -9,6 +9,16 @@ var puzzles = [
         nodeRadius: 6,
         nodes: [[-1, 0], [1, 0]],
         edges: [[0, 1]],
+    }, {
+        colours: 2,
+        nodeRadius: 6,
+        nodes: [[-2, 0], [0, 0], [2, 0]],
+        edges: [[0, 1], [1, 2]],
+    }, {
+        colours: 3,
+        nodeRadius: 6,
+        nodes: getNodesOnCircle(3),
+        edges: [[0, 1], [1, 2], [2, 0]],
     }
 ];
 
