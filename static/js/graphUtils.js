@@ -61,6 +61,20 @@ function getNodesOnCircle(n) {
     return nodes;
 }
 
+function getLoopOfEdges(start, stop) {
+    if (stop === undefined) {
+        stop = start - 1;
+        start = 0;
+    }
+
+    var edges = [];
+    for (var i = start; i < stop; i++) {
+        edges.push([i, i + 1]);
+    }
+    edges.push([start, stop]);
+    return edges;
+}
+
 function testGraphAllNodesColoured(graph) {
     for (var i = 0; i < graph.nodes.length; i++) {
         if (graph.nodes[i].colour === undefined) {
