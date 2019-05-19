@@ -15,6 +15,7 @@ var puzzles = [
 // Function for loading puzzle data into Puzzle object
 var loader = function(data) {
     this.toolbar.createColourPalette(data.colours);
+    data.scale = 16;
     this.graph = addGraph(this, data);
 };
 

@@ -52,3 +52,8 @@ main {
 .colour-palette:hover, .colour-palette.selected {
     stroke-width: 3;
 }
+
+.next-puzzle-button {
+    fill: #fffff8;
+    cursor: pointer;
+}

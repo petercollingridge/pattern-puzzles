@@ -1,6 +1,7 @@
 
 function addGraph(puzzle, graph) {
     var r = graph.nodeRadius || 5;
+    var scale = graph.scale || 1;
 
     // Create groups for the different graph elements
     var graphElement = addSVGElement('g', puzzle.element);
@@ -13,8 +14,8 @@ function addGraph(puzzle, graph) {
         for (var i = 0; i < graph.nodes.length; i++) {
             var node = graph.nodes[i];
             var nodeObject = {
-                cx: node[0],
-                cy: node[1],
+                cx: node[0] * scale,
+                cy: node[1] * scale,
                 r: r
             };
             var nodeElement = addCircle(nodeGroup, nodeObject);

@@ -8,26 +8,33 @@ var COLOURS = [
 var getToolbar = function(puzzle) {
     // Distance to start of toolbar
     var TOOLBAR_R = 112;
-    var element = document.getElementById('toolbar');
+    var toolbarElement = document.getElementById('toolbar');
     var selectedColourElement = false
 
     var Toolbar = {
         items: {},
-        element: element
+        element: toolbarElement
+    }
+
+    Toolbar.remove = function(name) {
+        if (this.items[name]) {
+            toolbarElement.removeChild(this.items[name]);
+            this.items[name] = undefined;
+        }
     }
 
     function alignToolbar() {
         // Rotate toolbar based on aspect ratio of screen
         var width = window.innerWidth;
         var height = window.innerHeight;
-        var angle = 225;
+        var angle = 45;
 
         if (width > height) {
             angle -= Math.min(0.5, width / height - 1) * 90;
         } else {
             angle += Math.min(0.5, height / width - 1) * 90;
         }
-        element.setAttribute('transform', 'rotate(' + angle + ')');
+        toolbarElement.setAttribute('transform', 'rotate(' + angle + ')');
     }
 
     // Get initial angle for rotation and add handler to update on resize
@@ -54,16 +61,14 @@ var getToolbar = function(puzzle) {
 
     Toolbar.createColourPalette = function(nColours) {
         // Remove existing element if there is one
-        if (this.items.colourPalette) {
-            element.removeChild(this.items.colourPalette);
-        }
+        this.remove('colourPalette');
 
-        var colourPalleteElement = addSVGElement('g', element, { 'class': 'colour-palette' });
+        var colourPalleteElement = addSVGElement('g', toolbarElement, { 'class': 'colour-palette' });
         this.items.colourPalette = colourPalleteElement;
 
         var r = 6;
         var dAngle = Math.PI / 16;
-        var angle = dAngle * (nColours - 1) / 2;
+        var angle = Math.PI + dAngle * (nColours - 1) / 2;
 
         for (var i = 0; i < nColours; i++) {
             var cx = (TOOLBAR_R + r) * Math.cos(angle);
@@ -82,6 +87,25 @@ var getToolbar = function(puzzle) {
         }
     };
 
+    Toolbar.addNextPuzzleButton = function() {
+        if (!this.items.nextPuzzleButton) {
+            var r = 6;
+
+            var attr = {
+                'class': 'next-puzzle-button',
+                cx: TOOLBAR_R + r,
+                cy: 0,
+                r: r
+            };
+
+            this.items.nextPuzzleButton = addCircle(toolbarElement, attr);
+            this.items.nextPuzzleButton.addEventListener('click', function() {
+                puzzle.nextPuzzle();
+                Toolbar.remove('nextPuzzleButton');
+            });
+        }
+    }
+
     return Toolbar;
 };
 
@@ -98,25 +122,36 @@ var Puzzle = (function() {
         this.data = data;
         this.loader = loader;
         this.evalutationFunction = evalutationFunction;
-        this.loadPuzzle(0);
+        this.puzzleCount = 0;
+        this.loadPuzzle();
     }
 
-    Puzzle.loadPuzzle = function(i) {
-        if (i < this.data.length) {
-            this.loader(Puzzle.data[i]);
+    Puzzle.clear = function() {
+        if (this.element.firstChild) {
+            this.element.removeChild(this.element.firstChild);
+        }
+    }
+
+    Puzzle.loadPuzzle = function() {
+        if (this.puzzleCount < this.data.length) {
+            this.clear();
+            this.loader(Puzzle.data[this.puzzleCount]);
         } else {
             // Puzzle set complete
         }
     }
 
-    function completed() {
-        alert("Passed");
-    };
+    Puzzle.nextPuzzle = function() {
+        this.puzzleCount++;
+        this.loadPuzzle();
+    }
 
     Puzzle.evaluate = function() {
+        // Test whether we have passed the evaluation function
+        // If so, add a button to move to the next puzzle
         if (Puzzle.evalutationFunction &&
             Puzzle.evalutationFunction(Puzzle)) {
-            completed();
+            Puzzle.toolbar.addNextPuzzleButton();
         }
     };
 
