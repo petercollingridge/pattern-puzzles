@@ -9,6 +9,7 @@ function addGraph(puzzle, graph) {
     var nodeGroup = addSVGElement('g', graphElement, {'class': 'graph-nodes'});
 
     // Add nodes
+    centerGraph(graph.nodes);
     var nodes = [];
     if (graph.nodes) {
         for (var i = 0; i < graph.nodes.length; i++) {
@@ -76,6 +77,37 @@ function getLoopOfEdges(start, stop) {
     }
     edges.push([start, stop]);
     return edges;
+}
+
+function centerGraph(nodes) {
+    // Move the center of the graph bounding box to (0, 0)
+    var n = nodes.length;
+
+    var minX = nodes[0][0];
+    var maxX = nodes[0][0];
+    var minY = nodes[0][1];
+    var maxY = nodes[0][1];
+
+    for (var i = 1; i < n; i++) {
+        var x = nodes[i][0];
+        var y = nodes[i][1];
+
+        if (x < minX) { minX = x; }
+        else if (x > maxX) { maxX = x; }
+
+        if (y < minY) { minY = y; }
+        else if (y > maxY) { maxY = y; }
+    }
+
+    var dx = (minX + maxX) / 2;
+    var dy = (minY + maxY) / 2;
+
+    for (i = 0; i < n; i++) {
+        nodes[i] = [
+            nodes[i][0] - dx,
+            nodes[i][1] - dy
+        ];
+    }
 }
 
 function testGraphAllNodesColoured(graph) {
