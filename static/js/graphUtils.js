@@ -48,15 +48,18 @@ function addGraph(puzzle, graph) {
     };
 }
 
-function getNodesOnCircle(n) {
+function getNodesOnCircle(n, r, offset) {
     var nodes = [];
-    var angle = 2 * Math.PI / n;
+    var dAngle = 2 * Math.PI / n;
+    var angle = (offset || 0) - 0.5 * dAngle;
+    r = r || 1
 
     for (var i = 0; i < n; i++) {
         nodes.push([
-            Math.sin(angle * (i - 0.5)),
-            Math.cos(angle * (i - 0.5))
+            r * Math.sin(angle),
+            r * Math.cos(angle)
         ]);
+        angle += dAngle;
     }
     return nodes;
 }
