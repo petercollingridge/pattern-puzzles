@@ -92,7 +92,7 @@ var Puzzle = (function() {
         selectedColour: false,
     };
 
-    Puzzle.toolbar = getToolbar(this);
+    Puzzle.toolbar = getToolbar(Puzzle);
 
     Puzzle.init = function(data, loader, evalutationFunction) {
         this.data = data;
