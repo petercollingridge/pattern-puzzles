@@ -41,7 +41,7 @@ main {
     filter: url(#shadow-filter);
 }
 
-.toolbar-selection {
+.colour-palette {
     cursor: pointer;
     stroke-width: 0;
     fill: currentColor;
@@ -49,6 +49,6 @@ main {
     transition: stroke-width 100ms ease-out
 }
 
-.toolbar-selection:hover, .toolbar-selection.selected {
+.colour-palette:hover, .colour-palette.selected {
     stroke-width: 3;
 }

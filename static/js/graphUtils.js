@@ -1,9 +1,11 @@
 
 function addGraph(puzzle, graph) {
+    var r = graph.nodeRadius || 5;
+
+    // Create groups for the different graph elements
     var graphElement = addSVGElement('g', puzzle.element);
     var edgeGroup = addSVGElement('g', graphElement, {'class': 'graph-edges'});
     var nodeGroup = addSVGElement('g', graphElement, {'class': 'graph-nodes'});
-    var r = graph.nodeRadius || 5;
 
     // Add nodes
     var nodes = [];

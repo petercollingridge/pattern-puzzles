@@ -5,17 +5,94 @@ var COLOURS = [
     'rgb(20, 198, 96)',
 ];
 
-var Puzzle = (function() {
-    var selectedColourElement = false;
-    
-    var puzzleElement = document.getElementById('puzzle');
-    var toolbar = document.getElementById('toolbar');
+var getToolbar = function(puzzle) {
+    // Distance to start of toolbar
+    var TOOLBAR_R = 112;
+    var element = document.getElementById('toolbar');
+    var selectedColourElement = false
 
+    var Toolbar = {
+        items: {},
+        element: element
+    }
+
+    function alignToolbar() {
+        // Rotate toolbar based on aspect ratio of screen
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var angle = 225;
+
+        if (width > height) {
+            angle -= Math.min(0.5, width / height - 1) * 90;
+        } else {
+            angle += Math.min(0.5, height / width - 1) * 90;
+        }
+        element.setAttribute('transform', 'rotate(' + angle + ')');
+    }
+
+    // Get initial angle for rotation and add handler to update on resize
+    alignToolbar();
+    window.addEventListener('resize', alignToolbar);
+
+    function selectColour(i) {
+        return function(evt) {
+            // Deselect the currently selected element
+            if (selectedColourElement) {
+                selectedColourElement.classList.remove('selected');
+            }
+
+            // Select the new element
+            selectedColourElement = evt.target;
+            selectedColourElement.classList.add('selected');
+
+            // Tell the puzzle what colour is selected
+            puzzle.selectedColour = i + 1;
+            puzzle.element.classList.add('colour-selected');
+            puzzle.element.setAttribute('color', COLOURS[i]);
+        };
+    }
+
+    Toolbar.createColourPalette = function(nColours) {
+        // Remove existing element if there is one
+        if (this.items.colourPalette) {
+            element.removeChild(this.items.colourPalette);
+        }
+
+        var colourPalleteElement = addSVGElement('g', element, { 'class': 'colour-palette' });
+        this.items.colourPalette = colourPalleteElement;
+
+        var r = 6;
+        var dAngle = Math.PI / 16;
+        var angle = dAngle * (nColours - 1) / 2;
+
+        for (var i = 0; i < nColours; i++) {
+            var cx = (TOOLBAR_R + r) * Math.cos(angle);
+            var cy = (TOOLBAR_R + r) * Math.sin(angle);
+            var attr = {
+                cx: cx,
+                cy: cy,
+                r: r,
+                'class': "colour-palette colour-" + (i + 1)
+            };
+    
+            var colourPicker = addCircle(colourPalleteElement, attr);
+            colourPicker.addEventListener('click', selectColour(i));
+
+            angle += dAngle;
+        }
+    };
+
+    return Toolbar;
+};
+
+var Puzzle = (function() {    
     var Puzzle = {
         nColours: 0,
+        element: document.getElementById('puzzle'),
         selectedColour: false,
-        element: puzzleElement
     };
+
+    Puzzle.toolbar = getToolbar(this);
 
     Puzzle.init = function(data, loader, evalutationFunction) {
         this.data = data;
@@ -42,64 +119,6 @@ var Puzzle = (function() {
             completed();
         }
     };
-
-    function selectColour(i) {
-        return function(evt) {
-            if (selectedColourElement) {
-                selectedColourElement.classList.remove('selected');
-            }
-            selectedColourElement = evt.target;
-            selectedColourElement.classList.add('selected');
-            puzzleElement.classList.add('colour-selected');
-            Puzzle.selectedColour = i + 1;
-            puzzleElement.setAttribute('color', COLOURS[i]);
-        };
-    }
-    
-    createColourPalette = function() {
-        // Empty existing toolbar
-        while (toolbar.firstChild) {
-            toolbar.removeChild(toolbar.firstChild);
-        }
-
-        var aspectRatio = window.innerWidth / window.innerHeight;
-
-        var toolbarAngle;
-        if (aspectRatio < 1) {
-            toolbarAngle = Math.PI * 1.5;
-        } else {
-            toolbarAngle = Math.PI;
-        }
-
-        var r = 6;
-        var toolbarR = 118;
-        var dAngle = Math.PI / 16;
-        var nColours = Puzzle.nColours;
-        toolbarAngle -= dAngle * (nColours - 1) / 2;
-
-        for (var i = 0; i < nColours; i++) {
-            var cx = toolbarR * Math.cos(toolbarAngle);
-            var cy = toolbarR * Math.sin(toolbarAngle);
-            var attr = {
-                cx: cx,
-                cy: cy,
-                r: r,
-                'class': "toolbar-selection colour-" + (i + 1)
-            };
-    
-            var colourPicker = addCircle(toolbar, attr);
-            colourPicker.addEventListener('click', selectColour(i));
-
-            toolbarAngle += dAngle;
-        }
-    };
-
-    Puzzle.setColourPalette = function(n) {
-        Puzzle.nColours = n;
-        createColourPalette();
-    };
-
-    window.addEventListener('resize', createColourPalette);
 
     return Puzzle;
 })();
