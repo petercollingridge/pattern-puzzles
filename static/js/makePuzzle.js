@@ -68,7 +68,7 @@ var getToolbar = function(puzzle) {
 
         var r = 6;
         var dAngle = Math.PI / 16;
-        var angle = Math.PI + dAngle * (nColours - 1) / 2;
+        var angle = Math.PI - dAngle * (nColours - 1) / 2;
 
         for (var i = 0; i < nColours; i++) {
             var cx = (TOOLBAR_R + r) * Math.cos(angle);
