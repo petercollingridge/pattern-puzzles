@@ -24,10 +24,10 @@ function addCircle(parent, attributes) {
 
 function addEdge(parent, node1, node2, attributes) {
     attributes = attributes || {};
-    attributes.x1 = node1.x;
-    attributes.y1 = node1.y;
-    attributes.x2 = node2.x;
-    attributes.y2 = node2.y;
+    attributes.x1 = node1.cx;
+    attributes.y1 = node1.cy;
+    attributes.x2 = node2.cx;
+    attributes.y2 = node2.cy;
 
     return addSVGElement('line', parent, attributes);
 }
