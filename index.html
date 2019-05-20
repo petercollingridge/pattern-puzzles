@@ -13,24 +13,7 @@
 
     <body>
         <main>
-            <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <filter id="shadow-filter" x="0" y="0" width="120%" height="120%">
-                        <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2"/>
-                        <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
-                        <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-                    </filter>
-                </defs>
-
-                <g id="puzzle"></g>
-                <circle id="chamber-window" r="144" />
-                <g id="toolbar"></g>
-            </svg>
+            <a href="colourGraphs.html">Colour graphs</a>
         </main>
-
-        <script src="static/js/buildElements.js"></script>
-        <script src="static/js/makePuzzle.js"></script>
-        <script src="static/js/graphUtils.js"></script>
-        <script src="static/js/chromaticNumberPuzzle.js"></script>
     </body>
 </html>
