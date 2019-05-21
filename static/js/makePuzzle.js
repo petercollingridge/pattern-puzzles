@@ -88,22 +88,22 @@ var getToolbar = function(puzzle) {
     };
 
     Toolbar.addNextPuzzleButton = function() {
-        if (!this.items.nextPuzzleButton) {
-            var r = 6;
+        // No need to add button if we already have one
+        if (!this.items.nextPuzzleButton) { return; }
+        
+        var r = 6;
+        var attr = {
+            'class': 'next-puzzle-button',
+            cx: TOOLBAR_R + r,
+            cy: 0,
+            r: r
+        };
 
-            var attr = {
-                'class': 'next-puzzle-button',
-                cx: TOOLBAR_R + r,
-                cy: 0,
-                r: r
-            };
-
-            this.items.nextPuzzleButton = addCircle(toolbarElement, attr);
-            this.items.nextPuzzleButton.addEventListener('click', function() {
-                puzzle.nextPuzzle();
-                Toolbar.remove('nextPuzzleButton');
-            });
-        }
+        this.items.nextPuzzleButton = addCircle(toolbarElement, attr);
+        this.items.nextPuzzleButton.addEventListener('click', function() {
+            puzzle.nextPuzzle();
+            Toolbar.remove('nextPuzzleButton');
+        });
     }
 
     return Toolbar;
@@ -137,7 +137,8 @@ var Puzzle = (function() {
             this.clear();
             this.loader(Puzzle.data[this.puzzleCount]);
         } else {
-            // Puzzle set complete
+            // Redirect back home
+            window.location = "/";
         }
     }
 
