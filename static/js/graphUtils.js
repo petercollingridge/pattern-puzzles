@@ -109,22 +109,3 @@ function centerGraph(nodes) {
         ];
     }
 }
-
-function testGraphAllNodesColoured(graph) {
-    for (var i = 0; i < graph.nodes.length; i++) {
-        if (graph.nodes[i].colour === undefined) {
-            return false;
-        }
-    }
-    return true;
-}
-
-function testGraphAllEdgeNodesDifferent(graph) {
-    for (var i = 0; i < graph.edges.length; i++) {
-        var edge = graph.edges[i];
-        if (edge.node1.colour === edge.node2.colour) {
-            return false;
-        }
-    }
-    return true;
-}
