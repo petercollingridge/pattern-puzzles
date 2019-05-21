@@ -14,10 +14,9 @@ var repeatingPatternloader = function(data) {
         return { colour: item };
     });
 
-    var scale = data.scale || 32;
-    var r = data.nodeRadius || 8;
     var n = data.pattern.length + data.answer.length;
-    var x = -((n - 1) * scale) / 2;
+    var r = Math.min(12, 200 / (3 * n));
+    var x = -((n - 1) * r  * 3) / 2;
 
     this.answerNodes = [];
     for (var i = 0; i < n; i++) {
@@ -36,6 +35,6 @@ var repeatingPatternloader = function(data) {
             this.answerNodes.push(nodeObject);
         }
 
-        x += scale
+        x += r * 3;
     }
 };
