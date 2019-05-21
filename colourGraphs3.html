@@ -31,7 +31,8 @@
         <script src="static/js/buildElements.js"></script>
         <script src="static/js/makePuzzle.js"></script>
         <script src="static/js/graphUtils.js"></script>
-        <script src="static/js/chromaticNumberPuzzle.js"></script>
+        <script src="static/js/puzzleLoaders.js"></script>
+        <script src="static/js/evaluationFunctions.js"></script>
         <script>
             // JSON for chromatic number puzzle definitions
             // Give more colours than required
@@ -39,7 +40,7 @@ var puzzles = [
     {
         colours: 2,
         nodes: getNodesOnCircle(6),
-        edges: getLoopOfEdges(6).concat([[0, 2], [1, 3], [2, 4], [3, 5], [4, 0], [5, 1]]),
+        edges: getLoopOfEdges(6),
     }, {
         colours: 2,
         nodes: getNodesOnCircle(6),
@@ -72,7 +73,7 @@ var puzzles = [
 ];
 
 // Set up puzzles
-Puzzle.init(puzzles, loader, evaluationFunction);
+Puzzle.init(puzzles, chromaticGraphLoader, evaluateChromaticGraph);
         </script>
     </body>
 </html>

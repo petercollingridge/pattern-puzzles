@@ -31,7 +31,8 @@
         <script src="static/js/buildElements.js"></script>
         <script src="static/js/makePuzzle.js"></script>
         <script src="static/js/graphUtils.js"></script>
-        <script src="static/js/chromaticNumberPuzzle.js"></script>
+        <script src="static/js/puzzleLoaders.js"></script>
+        <script src="static/js/evaluationFunctions.js"></script>
         <script>
             // JSON for chromatic number puzzle definitions
 var puzzles = [
@@ -86,7 +87,7 @@ var puzzles = [
 ];
 
 // Set up puzzles
-Puzzle.init(puzzles, loader, evaluationFunction);
+Puzzle.init(puzzles, chromaticGraphLoader, evaluateChromaticGraph);
         </script>
     </body>
 </html>
