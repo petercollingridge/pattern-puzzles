@@ -89,8 +89,8 @@ var getToolbar = function(puzzle) {
 
     Toolbar.addNextPuzzleButton = function() {
         // No need to add button if we already have one
-        if (!this.items.nextPuzzleButton) { return; }
-        
+        if (this.items.nextPuzzleButton) { return; }
+
         var r = 6;
         var attr = {
             'class': 'next-puzzle-button',
@@ -127,7 +127,7 @@ var Puzzle = (function() {
     }
 
     Puzzle.clear = function() {
-        if (this.element.firstChild) {
+        while (this.element.firstChild) {
             this.element.removeChild(this.element.firstChild);
         }
     }
@@ -138,7 +138,7 @@ var Puzzle = (function() {
             this.loader(Puzzle.data[this.puzzleCount]);
         } else {
             // Redirect back home
-            window.location = "/";
+            // window.location = "/";
         }
     }
 
