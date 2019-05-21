@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="static/css/base.css">
         <link rel="stylesheet" href="static/css/puzzle.css">
+        <link rel="stylesheet" href="static/css/puzzleIcons.css">
         
         <title>Pattern Puzzles</title>
     </head>
@@ -14,9 +15,43 @@
     <body>
         <main class="front-page">
             <div class="puzzle-map">
-                <a href="colourGraphs.html">Colour graphs</a>
-                <a href="colourGraphs2.html">Rectangle graphs</a>
-                <a href="colourGraphs3.html">Hexagonal graphs</a>
+                <a href="colourGraphs.html" class="map-link">
+                    <svg viewBox="-50 -50 100 100">
+                        <circle class="spotlight" cx="0" cy="0" r="49" />
+                        <g class="graph-edges">
+                            <rect x="-20" y="-20" width="40" height="40" fill="none" />
+                            <line x1="-20" y1="-20" x2="20" y2="20" />
+                            <line x1="-20" y1="20" x2="20" y2="-20" />
+                        </g>
+                        <g class="graph-nodes">
+                            <circle color="rgb(20, 146, 196)" cx="-20" cy="-20" r="8" />
+                            <circle color="rgb(196, 20, 96)" cx="-20" cy="20" r="8" />
+                            <circle color="rgb(20, 146, 196)" cx="20" cy="20" r="8" />
+                            <circle color="rgb(196, 20, 96)" cx="20" cy="-20" r="8" />
+                            <circle color="rgb(147, 20, 198)" cx="0" cy="0" r="8" />
+                        </g>
+                    </svg>
+                </a>
+                <a href="colourGraphs2.html" class="map-link">
+                    <svg viewBox="-50 -50 100 100">
+                        <circle class="spotlight" cx="0" cy="0" r="49" />
+                        <g class="graph-edges">
+                            <rect x="-32" y="-16" width="64" height="32" fill="none" />
+                            <line x1="0" y1="-16" x2="0" y2="16" />
+                            <line x1="-32" y1="-16" x2="0" y2="16" />
+                            <line x1="32" y1="-16" x2="0" y2="16" />
+                        </g>
+                        <g class="graph-nodes">
+                            <circle color="rgb(20, 146, 196)" cx="-32" cy="-16" r="8" />
+                            <circle color="rgb(196, 20, 96)" cx="0" cy="-16" r="8" />
+                            <circle color="rgb(20, 146, 196)" cx="32" cy="-16" r="8" />
+                            <circle color="rgb(196, 20, 96)" cx="32" cy="16" r="8" />
+                            <circle color="rgb(147, 20, 198)" cx="0" cy="16" r="8" />
+                            <circle color="rgb(196, 20, 96)" cx="-32" cy="16" r="8" />
+                        </g>
+                    </svg>
+                </a>
+                <a href="colourGraphs3.html" class="map-link">Hexagonal graphs</a>
             </div>
         </main>
     </body>

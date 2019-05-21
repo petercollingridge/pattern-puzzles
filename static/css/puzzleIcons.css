@@ -1,0 +1,20 @@
+.puzzle-map .map-link {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.map-link .spotlight {
+    fill: white;
+    stroke: none;
+}
+
+.map-link .graph-nodes circle {
+    stroke: white;
+    stroke-width: 1;
+    fill: #aaa;
+    transition: fill 200ms ease-out
+}
+
+.map-link:hover .graph-nodes circle {
+    fill: currentColor;
+}

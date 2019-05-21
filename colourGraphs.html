@@ -37,7 +37,8 @@
 var puzzles = [
     {
         colours: 1,
-        nodes: [[0, 0]],
+        nodes: [[0, 0]].concat(getNodesOnCircle(4)),
+        edges: getLoopOfEdges(1, 4).concat([[0, 1], [0, 2], [0, 3], [0, 4]]),
     }, {
         colours: 2,
         nodes: [[-1, 0], [1, 0]],
