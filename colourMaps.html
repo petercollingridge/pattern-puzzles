@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Peter Collingridge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="static/css/base.css">
+        <link rel="stylesheet" href="static/css/puzzle.css">
+        
+        <title>Colouring Maps</title>
+    </head>
+
+    <body>
+        <main>
+            <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <filter id="shadow-filter" x="0" y="0" width="120%" height="120%">
+                        <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2"/>
+                        <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+                        <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                    </filter>
+                </defs>
+
+                <g id="puzzle"></g>
+                <circle id="chamber-window" r="144" />
+                <g id="toolbar"></g>
+            </svg>
+        </main>
+
+        <script src="static/js/buildElements.js"></script>
+        <script src="static/js/makePuzzle.js"></script>
+        <script src="static/js/graphUtils.js"></script>
+        <script src="static/js/puzzleLoaders.js"></script>
+        <script src="static/js/evaluationFunctions.js"></script>
+
+<script>
+    var puzzles = [
+        {
+            colours: 1,
+            regions: [[0, 0, 32, 32]]
+        }, {
+            colours: 2,
+            regions: [[-16, 0, 32, 32], [16, 0, 32, 32]],
+            connections: [[0, 1]]
+        }
+    ];
+
+    // Set up puzzles
+    Puzzle.init(puzzles, mapColouringLoader, evaluateChromaticGraph);
+</script>
+    </body>
+</html>

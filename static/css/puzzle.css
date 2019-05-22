@@ -3,6 +3,11 @@
     stroke: #fff;
 }
 
+#puzzle .map-regions {
+    stroke-width: 0.25;
+    stroke: #fff;
+}
+
 #puzzle .empty-region {
     fill: #aaa;
     transition: fill 200ms ease-out, stroke 200ms ease-out;
