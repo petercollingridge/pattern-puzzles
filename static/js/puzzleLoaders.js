@@ -50,7 +50,7 @@ var repeatingPatternloader = function(data) {
     });
 
     var n = data.pattern.length + data.answer.length;
-    var size = Math.min(24, 200);
+    var size = Math.min(24, 160 / n);
     var x = -((n - 1) * size) / 2;
 
     this.answerNodes = [];
