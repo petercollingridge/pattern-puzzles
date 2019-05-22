@@ -15,26 +15,22 @@ var repeatingPatternloader = function(data) {
     });
 
     var n = data.pattern.length + data.answer.length;
-    var r = Math.min(12, 200 / (3 * n));
-    var x = -((n - 1) * r  * 3) / 2;
+    var size = Math.min(24, 200);
+    var x = -((n - 1) * size) / 2;
 
     this.answerNodes = [];
     for (var i = 0; i < n; i++) {
-        var nodeObject = {
-            cx: x,
-            cy: 0,
-            r: r
-        };
+        var nodeObject = { x: x, width: size - 1 };
 
         if (i < data.pattern.length) {
             nodeObject.class = 'colour-' + data.pattern[i];
-            addCircle(this.element, nodeObject);
+            addBlock(this.element, nodeObject);
         } else {
-            var nodeElement = addCircle(this.element, nodeObject);
+            var nodeElement = addBlock(this.element, nodeObject);
             makeElementColourable(nodeElement, nodeObject, this);
             this.answerNodes.push(nodeObject);
         }
 
-        x += r * 3;
+        x += size;
     }
 };
