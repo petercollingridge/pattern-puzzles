@@ -22,6 +22,16 @@ function addCircle(parent, attributes) {
     return addSVGElement('circle', parent, attributes);
 }
 
+function addBlock(parent, attributes) {
+    attributes.width = attributes.width || 8;
+    attributes.height = attributes.height || attributes.width;
+    attributes.x = (attributes.x || 0) - attributes.width / 2;
+    attributes.y = (attributes.y || 0) - attributes.height / 2;
+    attributes.rx = attributes.rx === undefined ? attributes.width * 0.1 : attributes.rx;
+    attributes.ry = attributes.ry === undefined ? attributes.height * 0.1  : attributes.ry;
+    return addSVGElement('rect', parent, attributes);
+}
+
 function addEdge(parent, node1, node2, attributes) {
     attributes = attributes || {};
     attributes.x1 = node1.cx;
