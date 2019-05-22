@@ -27,8 +27,8 @@ function addBlock(parent, attributes) {
     attributes.height = attributes.height || attributes.width;
     attributes.x = (attributes.x || 0) - attributes.width / 2;
     attributes.y = (attributes.y || 0) - attributes.height / 2;
-    attributes.rx = attributes.rx === undefined ? attributes.width * 0.1 : attributes.rx;
-    attributes.ry = attributes.ry === undefined ? attributes.height * 0.1  : attributes.ry;
+    attributes.rx = attributes.rx === undefined ? 3 : attributes.rx;
+    attributes.ry = attributes.ry === undefined ? 3  : attributes.ry;
     return addSVGElement('rect', parent, attributes);
 }
 
