@@ -22,3 +22,8 @@
     stroke-width: 3;
     stroke: #666;
 }
+
+.symmetry-line {
+    stroke: #222;
+    stroke-dasharray: 2 2;
+}
