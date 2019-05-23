@@ -14,15 +14,15 @@ var mapColouringLoader = function(data) {
     var regions = [];
     for (var i = 0; i < data.regions.length; i++) {
         var region = data.regions[i];
-        var attr = {
+        var object = {
             x: region[0],
             y: region[1],
             width: region[2],
             height: region[3],
         }
-        var nodeElement = addBlock(nodeGroup, attr);
-        makeElementColourable(nodeElement, attr, this);
-        regions.push(attr);
+        object.element = addBlock(nodeGroup, object);
+        makeElementColourable(object, this);
+        regions.push(object);
     }
 
     var connections = [];
@@ -61,11 +61,22 @@ var repeatingPatternloader = function(data) {
             nodeObject.class = 'colour-' + data.pattern[i];
             addBlock(this.element, nodeObject);
         } else {
-            var nodeElement = addBlock(this.element, nodeObject);
-            makeElementColourable(nodeElement, nodeObject, this);
+            nodeObject.element = addBlock(this.element, nodeObject);
+            makeElementColourable(nodeObject, this);
             this.answerNodes.push(nodeObject);
         }
 
         x += size;
     }
 };
+
+var symmetryLoader = function(data) {
+    this.toolbar.createColourPalette(data.colours);
+
+    // Add line of symmetry
+    addSVGElement('path', this.element, { d: 'M0 -200v400', 'class': 'symmetry-line'})
+
+    var targetGroup = addSVGElement('g', this.element, {'transform': 'translate(-50)'});
+
+    var targetGraph = addGraph(targetGroup, data);
+}
