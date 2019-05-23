@@ -42,13 +42,13 @@ function addEdge(parent, node1, node2, attributes) {
     return addSVGElement('line', parent, attributes);
 }
 
-function makeElementColourable(object, puzzle) {
+function makeElementColourable(object, puzzle, element) {
     // Element starts off empty
-    object.element.setAttribute('class', 'empty-region');
+    element.setAttribute('class', 'empty-region');
 
     // Clicking on the element changes its class
     // and updates its object
-    object.element.addEventListener('click', function() {
+    element.addEventListener('click', function() {
         if (puzzle.selectedColour) {
             this.setAttribute('class', "colour-" + puzzle.selectedColour);
             object.colour = puzzle.selectedColour;

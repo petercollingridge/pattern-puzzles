@@ -21,7 +21,7 @@ function addGraph(puzzle, graph) {
             };
             var nodeElement = addCircle(nodeGroup, nodeObject);
             nodeObject.element = nodeElement;
-            makeElementColourable(nodeObject, puzzle);
+            makeElementColourable(nodeObject, puzzle), puzzle.element;
             nodes.push(nodeObject);
         }
     }

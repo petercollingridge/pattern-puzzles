@@ -21,7 +21,7 @@ var mapColouringLoader = function(data) {
             height: region[3],
         }
         object.element = addBlock(nodeGroup, object);
-        makeElementColourable(object, this);
+        makeElementColourable(object, this, this.element);
         regions.push(object);
     }
 
