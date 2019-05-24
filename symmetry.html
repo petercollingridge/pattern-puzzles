@@ -29,7 +29,7 @@
         </main>
 
         <script src="static/js/buildElements.js"></script>
-        <script src="static/js/makePuzzle.js"></script>
+        <script src="static/js/Puzzle.js"></script>
         <script src="static/js/graphUtils.js"></script>
         <script src="static/js/puzzleLoaders.js"></script>
         <script src="static/js/evaluationFunctions.js"></script>
@@ -37,13 +37,17 @@
 <script>
     var puzzles = [
         {
+            colours: 2,
+            nodes: getNodesOnCircle(3, 1, Math.PI / 6),
+            edges: getLoopOfEdges(3),
+        }, {
             colours: 1,
             nodes: [[0, 0, 1]],
         }
     ];
 
     // Set up puzzles
-    Puzzle.init(puzzles, symmetryLoader, evaluateChromaticGraph);
+    Puzzle.init(puzzles, symmetryLoader, evaluateSymmetry);
 </script>
     </body>
 </html>
