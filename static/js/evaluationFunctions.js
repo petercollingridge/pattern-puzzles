@@ -34,8 +34,12 @@ var evaluateChromaticGraph = function () {
         areAllEdgeNodesDifferent(this.graph.edges);
 }
 
-// Function for determining where the puzzle has been solved
 var evaluateRepeatingPattern = function () {
     return areAllItemsColoured(this.answerNodes) &&
         doNodeColoursMatch(this.answer, this.answerNodes);
+}
+
+// Function for determining where the puzzle has been solved
+var evaluateSymmetry = function () {
+    return true;
 }
