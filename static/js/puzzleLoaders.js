@@ -1,14 +1,12 @@
 // Functions for loading puzzle data into Puzzle object
 
 var chromaticGraphLoader = function(data) {
-    this.toolbar.createColourPalette(data.colours);
     data.nodeRadius = data.nodeRadius || 8;
     data.scale = data.scale || 32;
     this.graph = addGraph(this, data);
 };
 
 var mapColouringLoader = function(data) {
-    this.toolbar.createColourPalette(data.colours);
     var nodeGroup = addSVGElement('g', this.element, {'class': 'map-regions'});
     
     var regions = [];
@@ -44,7 +42,6 @@ var mapColouringLoader = function(data) {
 
 // Function for loading puzzle data into Puzzle object
 var repeatingPatternloader = function(data) {
-    this.toolbar.createColourPalette(data.colours);
     this.answer = data.answer.map(function(item) {
         return { colour: item };
     });
@@ -71,11 +68,8 @@ var repeatingPatternloader = function(data) {
 };
 
 var symmetryLoader = function(data) {
-    this.toolbar.createColourPalette(data.colours);
     data.nodeRadius = data.nodeRadius || 6;
     data.scale = data.scale || 24;
-
-    console.log(data);
 
     // Add line of symmetry
     addSVGElement('path', this.element, { d: 'M0 -200v400', 'class': 'symmetry-line'})

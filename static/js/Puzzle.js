@@ -124,28 +124,32 @@ var Puzzle = (function() {
         this.evalutationFunction = evalutationFunction;
         this.puzzleCount = 0;
         this.loadPuzzle();
-    }
+    };
 
     Puzzle.clear = function() {
         while (this.element.firstChild) {
             this.element.removeChild(this.element.firstChild);
         }
-    }
+    };
 
     Puzzle.loadPuzzle = function() {
         if (this.puzzleCount < this.data.length) {
             this.clear();
-            this.loader(Puzzle.data[this.puzzleCount]);
+            var puzzleData = Puzzle.data[this.puzzleCount];
+            if (puzzleData.colourPalette) {
+                this.toolbar.createColourPalette(puzzleData.colourPalette);
+            }
+            this.loader(puzzleData);
         } else {
             // Redirect back home
             // window.location = "/";
         }
-    }
+    };
 
     Puzzle.nextPuzzle = function() {
         this.puzzleCount++;
         this.loadPuzzle();
-    }
+    };
 
     Puzzle.evaluate = function() {
         // Test whether we have passed the evaluation function
@@ -172,7 +176,7 @@ var Puzzle = (function() {
         });
 
         return node;
-    }
+    };
 
     return Puzzle;
 })();
