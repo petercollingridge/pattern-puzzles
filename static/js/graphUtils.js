@@ -1,8 +1,29 @@
 
-function addGraph(puzzle, graph, element) {
-    var r = graph.nodeRadius || 5;
-    var scale = graph.scale || 1;
-    
+function addNodes(element, nodeData, puzzle) {
+    if (!nodeData.nodes) { return []; }
+
+    var r = nodeData.nodeRadius || 5;
+    var scale = nodeData.scale || 1;
+
+    var nodes = [];
+    for (var i = 0; i < nodeData.nodes.length; i++) {
+        var node = nodeData.nodes[i];
+        var nodeObject = {
+            cx: node[0] * scale,
+            cy: node[1] * scale,
+            r: r
+        };
+        var nodeElement = addCircle(element, nodeObject);
+        nodeObject.element = nodeElement;
+        if (!node[2]) {
+            makeElementColourable(nodeObject, puzzle);
+        }
+        nodes.push(nodeObject);
+    }
+    return nodes;
+}
+
+function addGraph(puzzle, graph, element) {    
     // Create groups for the different graph elements
     element = element || puzzle.element;
     var graphElement = addSVGElement('g', element);
@@ -11,21 +32,7 @@ function addGraph(puzzle, graph, element) {
 
     // Add nodes
     centerGraph(graph.nodes);
-    var nodes = [];
-    if (graph.nodes) {
-        for (var i = 0; i < graph.nodes.length; i++) {
-            var node = graph.nodes[i];
-            var nodeObject = {
-                cx: node[0] * scale,
-                cy: node[1] * scale,
-                r: r
-            };
-            var nodeElement = addCircle(nodeGroup, nodeObject);
-            nodeObject.element = nodeElement;
-            makeElementColourable(nodeObject, puzzle);
-            nodes.push(nodeObject);
-        }
-    }
+    var nodes = addNodes(nodeGroup, graph, puzzle)
 
     // Add edges
     var edges = [];

@@ -72,6 +72,8 @@ var repeatingPatternloader = function(data) {
 
 var symmetryLoader = function(data) {
     this.toolbar.createColourPalette(data.colours);
+    data.nodeRadius = data.nodeRadius || 6;
+    data.scale = data.scale || 24;
 
     // Add line of symmetry
     addSVGElement('path', this.element, { d: 'M0 -200v400', 'class': 'symmetry-line'})
