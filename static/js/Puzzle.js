@@ -14,7 +14,7 @@ var getToolbar = function(puzzle) {
     var Toolbar = {
         items: {},
         element: toolbarElement
-    }
+    };
 
     Toolbar.remove = function(name) {
         if (this.items[name]) {
@@ -56,6 +56,7 @@ var getToolbar = function(puzzle) {
             puzzle.selectedColour = i + 1;
             puzzle.element.classList.add('colour-selected');
             puzzle.element.setAttribute('color', COLOURS[i]);
+            toolbarElement.setAttribute('color', COLOURS[i]);
         };
     }
 

@@ -68,6 +68,12 @@ main {
     stroke-width: 3;
 }
 
+#selected-colour {
+    fill: none;
+    stroke-width: 1;
+    stroke: currentColor;
+}
+
 .next-puzzle-button {
     fill: #fffff8;
     cursor: pointer;

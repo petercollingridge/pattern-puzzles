@@ -35,14 +35,11 @@
         <script src="static/js/evaluationFunctions.js"></script>
 
 <script>
-    var nodes = getNodesOnCircle([1, 1, 1], 1, Math.PI / 6);
-    console.log(nodes)
-
-
     var puzzles = [
         {
             colourPalette: 2,
-            nodes: nodes.slice(0),
+            nodes: getNodesOnCircle(3, 1, Math.PI / 6),
+            colours: [1, 1, 1],
             edges: getLoopOfEdges(3),
         }, {
             colourPalette: 1,
@@ -51,8 +48,6 @@
     ];
 
     // Set up puzzles
-    console.log('s')
-    console.log(nodes)
     Puzzle.init(puzzles, symmetryLoader, evaluateSymmetry);
 </script>
     </body>

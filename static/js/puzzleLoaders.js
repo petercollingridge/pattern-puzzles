@@ -72,7 +72,7 @@ var symmetryLoader = function(data) {
     data.scale = data.scale || 24;
 
     // Add line of symmetry
-    addSVGElement('path', this.element, { d: 'M0 -200v400', 'class': 'symmetry-line'})
+    addSVGElement('path', this.element, { d: 'M0 -200v400', 'class': 'symmetry-line'});
 
     var targetGroup = addSVGElement('g', this.element, {'transform': 'translate(-50)'});
 
