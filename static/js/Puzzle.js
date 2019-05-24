@@ -9,7 +9,7 @@ var getToolbar = function(puzzle) {
     // Distance to start of toolbar
     var TOOLBAR_R = 112;
     var toolbarElement = document.getElementById('toolbar');
-    var selectedColourElement = false
+    var selectedColourElement = false;
 
     var Toolbar = {
         items: {},
@@ -21,7 +21,7 @@ var getToolbar = function(puzzle) {
             toolbarElement.removeChild(this.items[name]);
             this.items[name] = undefined;
         }
-    }
+    };
 
     function alignToolbar() {
         // Rotate toolbar based on aspect ratio of screen

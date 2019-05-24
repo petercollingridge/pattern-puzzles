@@ -75,6 +75,8 @@ var symmetryLoader = function(data) {
     data.nodeRadius = data.nodeRadius || 6;
     data.scale = data.scale || 24;
 
+    console.log(data);
+
     // Add line of symmetry
     addSVGElement('path', this.element, { d: 'M0 -200v400', 'class': 'symmetry-line'})
 

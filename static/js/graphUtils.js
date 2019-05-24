@@ -13,11 +13,16 @@ function addNodes(element, nodeData, puzzle) {
             cy: node[1] * scale,
             r: r
         };
-        var nodeElement = addCircle(element, nodeObject);
-        nodeObject.element = nodeElement;
-        if (!node[2]) {
+
+        nodeObject.element = addCircle(element, nodeObject);
+
+        if (node[2]) {
+            nodeObject.color = node[2];
+            nodeObject.element.setAttribute('fill', COLOURS[node[2] - 1]);
+        } else {
             puzzle.makeColourable(nodeObject);
         }
+
         nodes.push(nodeObject);
     }
     return nodes;
@@ -32,7 +37,7 @@ function addGraph(puzzle, graph, element) {
 
     // Add nodes
     centerGraph(graph.nodes);
-    var nodes = addNodes(nodeGroup, graph, puzzle)
+    var nodes = addNodes(nodeGroup, graph, puzzle);
 
     // Add edges
     var edges = [];
@@ -57,7 +62,15 @@ function addGraph(puzzle, graph, element) {
     };
 }
 
-function getNodesOnCircle(n, r, offset) {
+function getNodesOnCircle(colours, r, offset) {
+    var n;
+    if (Array.isArray(colours)) {
+        n = colours.length;
+    } else {
+        n = colours;
+        colours = new Array(n);
+    }
+
     var nodes = [];
     var dAngle = 2 * Math.PI / n;
     var angle = (offset || 0) - 0.5 * dAngle;
@@ -66,10 +79,12 @@ function getNodesOnCircle(n, r, offset) {
     for (var i = 0; i < n; i++) {
         nodes.push([
             r * Math.sin(angle),
-            r * Math.cos(angle)
+            r * Math.cos(angle),
+            colours[i]
         ]);
         angle += dAngle;
     }
+
     return nodes;
 }
 
@@ -111,9 +126,7 @@ function centerGraph(nodes) {
     var dy = (minY + maxY) / 2;
 
     for (i = 0; i < n; i++) {
-        nodes[i] = [
-            nodes[i][0] - dx,
-            nodes[i][1] - dy
-        ];
+        nodes[i][0] -= dx;
+        nodes[i][1] -= dy;
     }
 }
