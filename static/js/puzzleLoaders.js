@@ -21,7 +21,7 @@ var mapColouringLoader = function(data) {
             height: region[3],
         }
         object.element = addBlock(nodeGroup, object);
-        makeElementColourable(object, this);
+        this.makeColourable(object);
         regions.push(object);
     }
 
@@ -62,7 +62,7 @@ var repeatingPatternloader = function(data) {
             addBlock(this.element, nodeObject);
         } else {
             nodeObject.element = addBlock(this.element, nodeObject);
-            makeElementColourable(nodeObject, this);
+            this.makeColourable(nodeObject);
             this.answerNodes.push(nodeObject);
         }
 
