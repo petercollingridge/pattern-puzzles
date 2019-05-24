@@ -80,5 +80,5 @@ var symmetryLoader = function(data) {
 
     var targetGroup = addSVGElement('g', this.element, {'transform': 'translate(-50)'});
 
-    var targetGraph = addGraph(targetGroup, data, targetGroup);
+    var targetGraph = addGraph(this, data, targetGroup);
 }

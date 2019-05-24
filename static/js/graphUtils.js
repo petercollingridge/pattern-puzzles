@@ -16,7 +16,7 @@ function addNodes(element, nodeData, puzzle) {
         var nodeElement = addCircle(element, nodeObject);
         nodeObject.element = nodeElement;
         if (!node[2]) {
-            makeElementColourable(nodeObject, puzzle);
+            puzzle.makeColourable(nodeObject);
         }
         nodes.push(nodeObject);
     }
