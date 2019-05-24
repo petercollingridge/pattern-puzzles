@@ -1,10 +1,11 @@
 
-function addGraph(puzzle, graph) {
+function addGraph(puzzle, graph, element) {
     var r = graph.nodeRadius || 5;
     var scale = graph.scale || 1;
-
+    
     // Create groups for the different graph elements
-    var graphElement = addSVGElement('g', puzzle.element);
+    element = element || puzzle.element;
+    var graphElement = addSVGElement('g', element);
     var edgeGroup = addSVGElement('g', graphElement, {'class': 'graph-edges'});
     var nodeGroup = addSVGElement('g', graphElement, {'class': 'graph-nodes'});
 
@@ -21,7 +22,7 @@ function addGraph(puzzle, graph) {
             };
             var nodeElement = addCircle(nodeGroup, nodeObject);
             nodeObject.element = nodeElement;
-            makeElementColourable(nodeObject, puzzle), puzzle.element;
+            makeElementColourable(nodeObject, puzzle);
             nodes.push(nodeObject);
         }
     }

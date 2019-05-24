@@ -21,7 +21,7 @@ var mapColouringLoader = function(data) {
             height: region[3],
         }
         object.element = addBlock(nodeGroup, object);
-        makeElementColourable(object, this, this.element);
+        makeElementColourable(object, this);
         regions.push(object);
     }
 
@@ -78,5 +78,5 @@ var symmetryLoader = function(data) {
 
     var targetGroup = addSVGElement('g', this.element, {'transform': 'translate(-50)'});
 
-    var targetGraph = addGraph(targetGroup, data);
+    var targetGraph = addGraph(targetGroup, data, targetGroup);
 }
