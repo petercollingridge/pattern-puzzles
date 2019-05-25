@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/pattern-puzzles/static/css/main.2cce8147.chunk.css",
+    "main.js": "/pattern-puzzles/static/js/main.a42ff446.chunk.js",
+    "main.js.map": "/pattern-puzzles/static/js/main.a42ff446.chunk.js.map",
+    "runtime~main.js": "/pattern-puzzles/static/js/runtime~main.a3a9515e.js",
+    "runtime~main.js.map": "/pattern-puzzles/static/js/runtime~main.a3a9515e.js.map",
+    "static/js/2.b41502e9.chunk.js": "/pattern-puzzles/static/js/2.b41502e9.chunk.js",
+    "static/js/2.b41502e9.chunk.js.map": "/pattern-puzzles/static/js/2.b41502e9.chunk.js.map",
+    "index.html": "/pattern-puzzles/index.html",
+    "precache-manifest.c216a6be225cd4d7bcd95c09b8750dde.js": "/pattern-puzzles/precache-manifest.c216a6be225cd4d7bcd95c09b8750dde.js",
+    "service-worker.js": "/pattern-puzzles/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/pattern-puzzles/static/css/main.2cce8147.chunk.css.map",
+    "static/media/logo.svg": "/pattern-puzzles/static/media/logo.5d5d9eef.svg"
+  }
+}
