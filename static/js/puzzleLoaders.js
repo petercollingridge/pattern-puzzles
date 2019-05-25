@@ -75,6 +75,7 @@ var symmetryLoader = function(data) {
     addSVGElement('path', this.element, { d: 'M0 -200v400', 'class': 'symmetry-line'});
 
     var targetGroup = addSVGElement('g', this.element, {'transform': 'translate(-50)'});
+    var answerGroup = addSVGElement('g', this.element, {'transform': 'translate(50)'});
 
     var targetGraph = addGraph(this, data, targetGroup);
 }
