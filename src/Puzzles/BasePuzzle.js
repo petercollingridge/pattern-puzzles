@@ -15,7 +15,7 @@ export default class Puzzle extends React.Component {
 
     render() {
         const colourPalette = this.props.colourPalette;
-        
+
         return <main>
             <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
                 <defs>
@@ -29,7 +29,11 @@ export default class Puzzle extends React.Component {
                 <g id="puzzle"></g>
 
                 <circle id="chamber-window" r="144" />
-                <Toolbar nColours={colourPalette} puzzle={this} />
+                <Toolbar 
+                    puzzle={this}
+                    nColours={colourPalette}
+                    selectedColour={this.state.selectedColour}
+                />
             </svg>
         </main>
     }

@@ -11,22 +11,22 @@ main {
 
 .colour-1 {
   color: rgb(20, 146, 196);
-  fill: rgb(20, 146, 196);
+  /* fill: rgb(20, 146, 196); */
 }
 
 .colour-2 {
   color: rgb(196, 20, 96);
-  fill: rgb(196, 20, 96);
+  /* fill: rgb(196, 20, 96); */
 }
 
 .colour-3 {
   color: rgb(147, 20, 198);
-  fill: rgb(147, 20, 198);
+  /* fill: rgb(147, 20, 198); */
 }
 
 .colour-4 {
   color: rgb(20, 198, 95);
-  fill: rgb(20, 198, 95);
+  /* fill: rgb(20, 198, 95); */
 }
 
 .front-page {
@@ -68,7 +68,7 @@ main {
   stroke-width: 3;
 }
 
-#selected-colour {
+.selected-colour-indicator {
   fill: none;
   stroke-width: 1;
   stroke: currentColor;
