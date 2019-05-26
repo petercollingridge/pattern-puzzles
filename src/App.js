@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-function App() {
+import ColourGraphIcon from './Icons/ColourGraphs';
+
+import ColourGraph from './Puzzles/ColourGraphs';
+
+import './base.css';
+import './puzzle.css';
+import './Icons/icons.css';
+
+
+function Index() {
+  return <nav className="puzzle-map">
+    <ul>
+      <li>
+        <Link to="/colour-graphs" className="map-link"><ColourGraphIcon/></Link>
+      </li>
+      <li>
+        <Link to="/users/">Users</Link>
+      </li>
+    </ul>
+  </nav>;
+}
+
+function AppRouter() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="front-page">
+        <Router>
+          <Route path="/" exact component={Index} />
+          <Route path="/colour-graphs" component={ColourGraph} />
+      </Router>
+    </main>
   );
 }
 
-export default App;
+export default AppRouter;
