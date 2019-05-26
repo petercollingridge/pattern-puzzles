@@ -5,6 +5,14 @@ import Toolbar from '../Toolbars/Toolbar';
 import './puzzle.css';
 
 
+const COLOURS = [
+    'rgb(30, 20, 20)',
+    'rgb(20, 146, 196)',
+    'rgb(196, 20, 96)',
+    'rgb(147, 20, 198)',
+    'rgb(20, 198, 96)',
+];
+
 export default class Puzzle extends React.Component {
     constructor(props) {
         super(props);
@@ -22,6 +30,9 @@ export default class Puzzle extends React.Component {
             React.cloneElement(child, { selectedColour: this.state.selectedColour })
         );
 
+        const style = this.state.selectedColour ? { color: COLOURS[this.state.selectedColour] } : {};
+        const className = this.state.selectedColour ? "colour-selected" : "";
+
         return <main>
             <Link to="/" className="menu-button">
                 <svg viewBox="-10 -10 20 20">
@@ -38,7 +49,7 @@ export default class Puzzle extends React.Component {
                     </filter>
                 </defs>
 
-                <g id="puzzle">{ children }</g>
+                <g id="puzzle" className={className} style={style}>{ children }</g>
 
                 <circle id="chamber-window" r="145" />
                 <Toolbar 

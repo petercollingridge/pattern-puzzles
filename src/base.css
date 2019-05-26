@@ -11,22 +11,34 @@ main {
 
 .colour-1 {
   color: rgb(20, 146, 196);
-  /* fill: rgb(20, 146, 196); */
+}
+
+.colourable-1:hover {
+  fill: rgb(20, 146, 196);
 }
 
 .colour-2 {
   color: rgb(196, 20, 96);
-  /* fill: rgb(196, 20, 96); */
+}
+
+.colourable-2:hover {
+  fill: rgb(196, 20, 96);
 }
 
 .colour-3 {
   color: rgb(147, 20, 198);
-  /* fill: rgb(147, 20, 198); */
+}
+
+.colourable-3:hover {
+  fill: rgb(147, 20, 198);
 }
 
 .colour-4 {
   color: rgb(20, 198, 95);
-  /* fill: rgb(20, 198, 95); */
+}
+
+.colourable-4:hover {
+  fill: rgb(20, 198, 95);
 }
 
 .menu-button {
