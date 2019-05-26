@@ -10,7 +10,7 @@ import './puzzle.css';
 import './Icons/icons.css';
 
 
-function Index() {
+function PuzzleMap() {
   return <main className="front-page">
       <nav className="puzzle-map">
       <ul>
@@ -25,13 +25,8 @@ function Index() {
   </main>;
 }
 
-function AppRouter() {
-    return (
-      <Router>
-          <Route path="/" exact component={Index} />
-          <Route path="/colour-graphs" component={ColourGraph} />
-      </Router>
-    );
-}
-
-export default AppRouter;
+export default () =>
+    <Router>
+        <Route path="/" exact component={PuzzleMap} />
+        <Route path="/colour-graphs" component={ColourGraph} />
+    </Router>

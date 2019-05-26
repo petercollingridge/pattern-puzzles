@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Toolbar from '../Toolbars/Toolbar';
 
 import './puzzle.css';
@@ -17,6 +18,12 @@ export default class Puzzle extends React.Component {
         const colourPalette = this.props.colourPalette;
 
         return <main>
+            <Link to="/" className="menu-button">
+                <svg viewBox="-10 -10 20 20">
+                    <circle r="9" />
+                </svg>
+            </Link>
+
             <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
                 <defs>
                     <filter id="shadow-filter" x="0" y="0" width="120%" height="120%">
@@ -28,7 +35,7 @@ export default class Puzzle extends React.Component {
 
                 <g id="puzzle"></g>
 
-                <circle id="chamber-window" r="144" />
+                <circle id="chamber-window" r="145" />
                 <Toolbar 
                     puzzle={this}
                     nColours={colourPalette}
