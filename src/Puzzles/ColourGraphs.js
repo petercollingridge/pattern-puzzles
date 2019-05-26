@@ -5,10 +5,10 @@ import Puzzle from './BasePuzzle';
 
 
 const puzzles = [
-	{
-		colourPalette: 1,
-		nodes: [[0, 0]]
-	}, {
+	/*{
+		// colourPalette: 1,
+		// nodes: [[0, 0]]
+	},*/{
 		colourPalette: 2,
 		nodes: [[-1, 0], [1, 0]],
 		edges: [[0, 1]],
@@ -49,8 +49,8 @@ class ColourGraphPuzzle extends React.Component {
 	}
 
 	render() {
-		// const toolbar = 
-		return <Puzzle />
+		const puzzleData = puzzles[this.state.index];
+		return <Puzzle colourPalette={puzzleData.colourPalette} />
 	}
 }
 

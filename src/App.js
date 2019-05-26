@@ -11,27 +11,27 @@ import './Icons/icons.css';
 
 
 function Index() {
-  return <nav className="puzzle-map">
-    <ul>
-      <li>
-        <Link to="/colour-graphs" className="map-link"><ColourGraphIcon/></Link>
-      </li>
-      <li>
-        <Link to="/users/">Users</Link>
-      </li>
-    </ul>
-  </nav>;
+  return <main className="front-page">
+      <nav className="puzzle-map">
+      <ul>
+        <li>
+          <Link to="/colour-graphs" className="map-link"><ColourGraphIcon/></Link>
+        </li>
+        <li>
+          <Link to="/users/">Users</Link>
+        </li>
+      </ul>
+    </nav>
+  </main>;
 }
 
 function AppRouter() {
-  return (
-    <main className="front-page">
-        <Router>
+    return (
+      <Router>
           <Route path="/" exact component={Index} />
           <Route path="/colour-graphs" component={ColourGraph} />
       </Router>
-    </main>
-  );
+    );
 }
 
 export default AppRouter;
