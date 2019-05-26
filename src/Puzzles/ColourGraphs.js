@@ -1,5 +1,5 @@
 import React from 'react';
-import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
+import { getNodesOnCircle, getLoopOfEdges, getGraphObject } from '../utils/graphUtils';
 
 import Puzzle from './BasePuzzle';
 import Graph from './PuzzleComponents/Graph';
@@ -51,9 +51,10 @@ class ColourGraphPuzzle extends React.Component {
 
 	render() {
 		const puzzle = puzzles[this.state.index];
+		const graph = getGraphObject(puzzle.nodes, puzzle.edges, 32);
 
 		return <Puzzle colourPalette={puzzle.colourPalette}>
-			<Graph nodes={puzzle.nodes} edges={puzzle.edges} />
+			<Graph {...graph} />
 		</Puzzle>
 	}
 }

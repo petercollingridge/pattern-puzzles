@@ -19,25 +19,17 @@ export default class Graph extends React.Component {
     }
 
     render() {
-        const {
-            nodes,
-            edges,
-            nodeRadius=8,
-            scale=32,
-            selectedColour
-        } = this.props;
-
-        console.log(selectedColour)
+        const { nodes, edges, selectedColour } = this.props;
 
         return <g className="graph">
             <g className="graph-edges">
-                { edges.map(([node1, node2], i) =>
+                { edges.map((edge, i) =>
                     <line
                         key={i}
-                        x1={nodes[node1][0] * scale}
-                        y1={nodes[node1][1] * scale}
-                        x2={nodes[node2][0] * scale}
-                        y2={nodes[node2][1] * scale}
+                        x1={edge.x1}
+                        y1={edge.y1}
+                        x2={edge.x2}
+                        y2={edge.y2}
                     />
                 )}
             </g>
@@ -47,9 +39,9 @@ export default class Graph extends React.Component {
                     <circle
                         key={i}
                         className="empty-region"
-                        r={nodeRadius}
-                        cx={node[0] * scale}
-                        cy={node[1] * scale}
+                        cx={node.x}
+                        cy={node.y}
+                        r={node.r}
                         onClick={(evt) => this.clickNode(evt, i)}
                     />
                 )}
