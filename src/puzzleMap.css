@@ -1,0 +1,9 @@
+.puzzle-map {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around
+}
+  
+.puzzle-map .map-link {
+    margin: 1rem;
+}
