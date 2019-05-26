@@ -40,16 +40,23 @@ export default class Graph extends React.Component {
             </g>
 
             <g className="graph-nodes">
-                { nodes.map((node, i) =>
-                    <circle
+                { nodes.map((node, i) => {
+                    let className = "colourable ";
+                    if (this.state.nodeColours[i]) {
+                        className += `fill-${this.state.nodeColours[i]}`;
+                    } else {
+                        className += "empty-region";
+                    }
+
+                    return <circle
                         key={i}
-                        className={this.state.nodeColours[i] ? `fill-${this.state.nodeColours[i]}` : " empty-region"}
+                        className={className}
                         cx={node.x}
                         cy={node.y}
                         r={node.r}
                         onClick={() => this.clickNode(i, selectedColour)}
                     />
-                )}
+                })}
             </g>
         </g>
     }

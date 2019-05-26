@@ -43,7 +43,7 @@
     transition: fill 200ms ease-out, stroke 200ms ease-out;
 }
 
-#puzzle.colour-selected .empty-region:hover {
+#puzzle.colour-selected .colourable:hover {
     cursor: pointer;
     fill: currentColor;
 }
