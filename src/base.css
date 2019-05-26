@@ -13,7 +13,7 @@ main {
   color: rgb(20, 146, 196);
 }
 
-.colourable-1:hover {
+.fill-1 {
   fill: rgb(20, 146, 196);
 }
 
@@ -21,7 +21,7 @@ main {
   color: rgb(196, 20, 96);
 }
 
-.colourable-2:hover {
+.fill-2 {
   fill: rgb(196, 20, 96);
 }
 
@@ -29,7 +29,7 @@ main {
   color: rgb(147, 20, 198);
 }
 
-.colourable-3:hover {
+.fill-3 {
   fill: rgb(147, 20, 198);
 }
 
@@ -37,7 +37,7 @@ main {
   color: rgb(20, 198, 95);
 }
 
-.colourable-4:hover {
+.fill-4 {
   fill: rgb(20, 198, 95);
 }
 

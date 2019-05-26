@@ -8,14 +8,19 @@ export default class Graph extends React.Component {
         super(props);
 
         this.state = {
-            nodeColours: []
+            nodeColours: props.nodes.map(node => node.colour)
         };
 
         this.clickNode = this.clickNode.bind(this);
     }
 
-    clickNode(evt, i) {
+    clickNode(i, colour) {
+        const newNodeColours = this.state.nodeColours.slice();
+        newNodeColours[i] = colour;
 
+        this.setState({
+            nodeColours: newNodeColours
+        });
     }
 
     render() {
@@ -38,11 +43,11 @@ export default class Graph extends React.Component {
                 { nodes.map((node, i) =>
                     <circle
                         key={i}
-                        className="empty-region"
+                        className={this.state.nodeColours[i] ? `fill-${this.state.nodeColours[i]}` : " empty-region"}
                         cx={node.x}
                         cy={node.y}
                         r={node.r}
-                        onClick={(evt) => this.clickNode(evt, i)}
+                        onClick={() => this.clickNode(i, selectedColour)}
                     />
                 )}
             </g>
