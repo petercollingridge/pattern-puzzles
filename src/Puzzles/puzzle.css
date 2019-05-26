@@ -19,7 +19,7 @@
 }
 
 .colour-palette:hover, .colour-palette.selected {
-stroke-width    : 3;
+    stroke-width: 3;
 }
 
 .selected-colour-indicator {
@@ -31,11 +31,6 @@ stroke-width    : 3;
 .next-puzzle-button {
     fill: #fffff8;
     cursor: pointer;
-}
-
-#puzzle .graph-nodes {
-    stroke-width: 1;
-    stroke: #fff;
 }
 
 #puzzle .map-regions {
@@ -51,11 +46,6 @@ stroke-width    : 3;
 #puzzle.colour-selected .empty-region:hover {
     cursor: pointer;
     fill: currentColor;
-}
-
-.graph-edges {
-    stroke-width: 3;
-    stroke: #666;
 }
 
 .symmetry-line {

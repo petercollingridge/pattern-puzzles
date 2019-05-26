@@ -17,6 +17,11 @@ export default class Puzzle extends React.Component {
     render() {
         const colourPalette = this.props.colourPalette;
 
+        //  Pass selected colour to children
+        const children = React.Children.map(this.props.children, child =>
+            React.cloneElement(child, { selectedColour: this.state.selectedColour })
+        );
+
         return <main>
             <Link to="/" className="menu-button">
                 <svg viewBox="-10 -10 20 20">
@@ -33,7 +38,7 @@ export default class Puzzle extends React.Component {
                     </filter>
                 </defs>
 
-                <g id="puzzle"></g>
+                <g id="puzzle">{ children }</g>
 
                 <circle id="chamber-window" r="145" />
                 <Toolbar 

@@ -2,6 +2,7 @@ import React from 'react';
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 
 import Puzzle from './BasePuzzle';
+import Graph from './PuzzleComponents/Graph';
 
 
 const puzzles = [
@@ -49,8 +50,11 @@ class ColourGraphPuzzle extends React.Component {
 	}
 
 	render() {
-		const puzzleData = puzzles[this.state.index];
-		return <Puzzle colourPalette={puzzleData.colourPalette} />
+		const puzzle = puzzles[this.state.index];
+
+		return <Puzzle colourPalette={puzzle.colourPalette}>
+			<Graph nodes={puzzle.nodes} edges={puzzle.edges} />
+		</Puzzle>
 	}
 }
 

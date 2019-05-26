@@ -12,10 +12,14 @@ export default function ({ puzzle, nColours, selectedColour }) {
     for (let i = 1; i <= nColours; i++) {
         const cx = (TOOLBAR_R + r) * Math.cos(angle);
         const cy = (TOOLBAR_R + r) * Math.sin(angle);
+        let className = `colour-palette colour-${i}`;
+        if (selectedColour === i) {
+            className += ' selected';
+        }
 
         colours.push(
             <circle
-                className={`colour-palette colour-${i}`}
+                className={className}
                 key={i}
                 cx={cx}
                 cy={cy}

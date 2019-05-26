@@ -1,0 +1,9 @@
+.graph-edges {
+    stroke-width: 3;
+    stroke: #666;
+}
+
+.graph-nodes {
+    stroke-width: 1;
+    stroke: #fff;
+}
