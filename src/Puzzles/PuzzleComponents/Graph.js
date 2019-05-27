@@ -29,13 +29,23 @@ export default class Graph extends React.Component {
         return <g className="graph">
             <g className="graph-edges">
                 { edges.map((edge, i) =>
-                    <line
-                        key={i}
-                        x1={edge.x1}
-                        y1={edge.y1}
-                        x2={edge.x2}
-                        y2={edge.y2}
-                    />
+                    <g>
+                        <line
+                            className="edge-outline"
+                            key={i}
+                            x1={edge.x1}
+                            y1={edge.y1}
+                            x2={edge.x2}
+                            y2={edge.y2}
+                        />
+                        <line
+                            key={i}
+                            x1={edge.x1}
+                            y1={edge.y1}
+                            x2={edge.x2}
+                            y2={edge.y2}
+                        />
+                    </g>
                 )}
             </g>
 
