@@ -1,5 +1,5 @@
 import React from 'react';
-import { getNodesOnCircle, getLoopOfEdges, getGraphObject } from '../utils/graphUtils';
+import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 
 import Puzzle from './BasePuzzle';
 import Graph from './PuzzleComponents/Graph';
@@ -26,10 +26,10 @@ const puzzles = [
 	// 	nodes: getNodesOnCircle(4),
 	// 	edges: getLoopOfEdges(4),
 	// }, {
-	// 	colourPalette: 3,
-	// 	nodes: getNodesOnCircle(4),
-	// 	edges: getLoopOfEdges(4).concat([[1, 3]]),
-	// }, {
+		colourPalette: 3,
+		nodes: getNodesOnCircle(4),
+		edges: getLoopOfEdges(4).concat([[1, 3]]),
+	}, {
 		colourPalette: 4,
 		nodes: getNodesOnCircle(4),
 		edges: getLoopOfEdges(4).concat([[1, 3], [0, 2]]),
@@ -49,29 +49,25 @@ class ColourGraphPuzzle extends React.Component {
 			graph: null
 		};
 
-		this.getGraphObject = this.getGraphObject.bind(this);
+		this.colourNode = this.colourNode.bind(this);
 		this.evaluate = this.evaluate.bind(this);
 	}
 
-	componentDidMount() {
-		this.getGraphObject();
-	}
+	colourNode(node, colour) {
 
-	getGraphObject() {
-		const puzzle = puzzles[this.state.index];
-		const graph = getGraphObject(puzzle.nodes, puzzle.edges, 32);
-		this.setState({ graph });
 	}
 
 	evaluate(nodeColours) {
-		console.log(nodeColours);
+		// Check all nodes coloured
+		if (nodeColours.every(node => node > 0)) {
+		}
 	}
 
 	render() {
 		const puzzle = puzzles[this.state.index];
 
 		return <Puzzle colourPalette={puzzle.colourPalette}>
-			<Graph puzzle={this} {...this.state.graph} />
+			<Graph puzzle={this} size={32} {...puzzle} />
 		</Puzzle>
 	}
 }

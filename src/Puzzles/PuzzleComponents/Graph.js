@@ -1,4 +1,5 @@
 import React from 'react';
+import { getGraphObject } from '../../utils/graphUtils';
 
 import './graph.css';
 
@@ -7,32 +8,33 @@ export default class Graph extends React.Component {
     constructor(props) {
         super(props);
 
-        const nodes = props.nodes || [];
+        const graph = getGraphObject(props.nodes, props.edges, props.size);
 
         this.state = {
-            nodeColours: nodes.map(node => node.colour)
+            nodes: graph.nodes,
+            edges: graph.edges
         };
 
-        this.clickNode = this.clickNode.bind(this);
+        this.colourNode = this.colourNode.bind(this);
     }
 
-    clickNode(i) {
+    colourNode(i) {
         // Add colour to array of node colours
-        const newNodeColours = this.state.nodeColours.slice();
-        newNodeColours[i] = this.props.selectedColour;
+        const newNodes = this.state.nodes.slice();
+        newNodes[i].colour = this.props.selectedColour;
 
         this.setState({
-            nodeColours: newNodeColours
+            nodes: newNodes
         });
 
-        this.props.puzzle.evaluate(newNodeColours);
+        // this.props.puzzle.evaluate(newNodeColours);
     }
 
     render() {
         const {
             nodes = [],
             edges = []
-        } = this.props;
+        } = this.state;
 
         return <g className="graph">
             <g className="graph-edges">
@@ -58,8 +60,8 @@ export default class Graph extends React.Component {
             <g className="graph-nodes">
                 { nodes.map((node, i) => {
                     let className = "colourable ";
-                    if (this.state.nodeColours[i]) {
-                        className += `fill-${this.state.nodeColours[i]}`;
+                    if (node.colour) {
+                        className += `fill-${node.colour}`;
                     } else {
                         className += "empty-region";
                     }
@@ -70,7 +72,7 @@ export default class Graph extends React.Component {
                         cx={node.x}
                         cy={node.y}
                         r={node.r}
-                        onClick={() => this.clickNode(i)}
+                        onClick={() => this.colourNode(i)}
                     />
                 })}
             </g>
