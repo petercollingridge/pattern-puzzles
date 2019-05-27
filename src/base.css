@@ -43,10 +43,9 @@ main {
 
 .menu-button {
   position: fixed;
-  left: 8px;
-  top: 8px;
-  width: 5vw;
-  height: 5vw;
+  cursor: pointer;
+  width: 4vw;
+  height: 4vw;
 }
 
 @media (max-aspect-ratio: 1/1) {
@@ -62,4 +61,14 @@ main {
 
 .menu-button circle:hover {
   fill: #fff;
+}
+
+.back-button {
+  left: 8px;
+  top: 8px;
+}
+
+.next-puzzle-button {
+  right: 8px;
+  top: 8px;
 }

@@ -27,7 +27,7 @@ export default class Graph extends React.Component {
             nodes: newNodes
         });
 
-        // this.props.puzzle.evaluate(newNodeColours);
+        this.props.puzzle.evaluate(this.state);
     }
 
     render() {

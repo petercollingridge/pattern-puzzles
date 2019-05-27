@@ -63,3 +63,11 @@ export function getLoopOfEdges(start, stop) {
     edges.push([start, stop]);
     return edges;
 }
+
+export function allNodesColoured(nodes) {
+    return nodes.every(node => node.colour > 0);
+}
+
+export function allEdgeNodesDifferent(edges) {
+    return edges.every(edge => edge.node1.colour !== edge.node2.colour);
+}

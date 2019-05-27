@@ -28,11 +28,6 @@
     stroke: currentColor;
 }
 
-.next-puzzle-button {
-    fill: #fffff8;
-    cursor: pointer;
-}
-
 #puzzle .map-regions {
     stroke-width: 0.25;
     stroke: #fff;

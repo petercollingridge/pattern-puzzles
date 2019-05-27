@@ -1,5 +1,10 @@
 import React from 'react';
-import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
+import {
+	getNodesOnCircle,
+	getLoopOfEdges,
+	allNodesColoured,
+	allEdgeNodesDifferent
+} from '../utils/graphUtils';
 
 import Puzzle from './BasePuzzle';
 import Graph from './PuzzleComponents/Graph';
@@ -46,27 +51,22 @@ class ColourGraphPuzzle extends React.Component {
 
 		this.state = {
 			index: props.match.params.n || 0,
-			graph: null
+			solved: false,
 		};
 
-		this.colourNode = this.colourNode.bind(this);
 		this.evaluate = this.evaluate.bind(this);
 	}
 
-	colourNode(node, colour) {
-
-	}
-
-	evaluate(nodeColours) {
-		// Check all nodes coloured
-		if (nodeColours.every(node => node > 0)) {
+	evaluate({ nodes, edges }) {
+		if (allNodesColoured(nodes) &&
+			allEdgeNodesDifferent(edges)) {
 		}
 	}
 
 	render() {
 		const puzzle = puzzles[this.state.index];
 
-		return <Puzzle colourPalette={puzzle.colourPalette}>
+		return <Puzzle colourPalette={puzzle.colourPalette} solved={this.state.solved}>
 			<Graph puzzle={this} size={32} {...puzzle} />
 		</Puzzle>
 	}

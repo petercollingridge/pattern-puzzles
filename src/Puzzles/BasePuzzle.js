@@ -34,7 +34,13 @@ export default class Puzzle extends React.Component {
         const className = this.state.selectedColour ? "colour-selected" : "";
 
         return <main>
-            <Link to="/" className="menu-button">
+            <Link to="/" className="menu-button back-button">
+                <svg viewBox="-10 -10 20 20">
+                    <circle r="9" />
+                </svg>
+            </Link>
+
+            <Link to="/" className="menu-button next-puzzle-button">
                 <svg viewBox="-10 -10 20 20">
                     <circle r="9" />
                 </svg>
@@ -49,7 +55,9 @@ export default class Puzzle extends React.Component {
                     </filter>
                 </defs>
 
-                <g id="puzzle" className={className} style={style}>{ children }</g>
+                <g id="puzzle" className={className} style={style}>
+                    { children }
+                </g>
 
                 <circle id="chamber-window" r="145" />
                 <Toolbar 
