@@ -27,10 +27,11 @@ export default class Graph extends React.Component {
     }
 
     render() {
-        let { nodes, edges, selectedColour } = this.props;
-
-        nodes = nodes || [];
-        edges = edges || [];
+        const {
+            nodes = [],
+            edges = [],
+            selectedColour
+        } = this.props;
 
         return <g className="graph">
             <g className="graph-edges">
