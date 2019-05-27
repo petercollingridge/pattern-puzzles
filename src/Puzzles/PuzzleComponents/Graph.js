@@ -16,21 +16,22 @@ export default class Graph extends React.Component {
         this.clickNode = this.clickNode.bind(this);
     }
 
-    clickNode(i, colour) {
+    clickNode(i) {
         // Add colour to array of node colours
         const newNodeColours = this.state.nodeColours.slice();
-        newNodeColours[i] = colour;
+        newNodeColours[i] = this.props.selectedColour;
 
         this.setState({
             nodeColours: newNodeColours
         });
+
+        this.props.puzzle.evaluate(newNodeColours);
     }
 
     render() {
         const {
             nodes = [],
-            edges = [],
-            selectedColour
+            edges = []
         } = this.props;
 
         return <g className="graph">
@@ -69,7 +70,7 @@ export default class Graph extends React.Component {
                         cx={node.x}
                         cy={node.y}
                         r={node.r}
-                        onClick={() => this.clickNode(i, selectedColour)}
+                        onClick={() => this.clickNode(i)}
                     />
                 })}
             </g>

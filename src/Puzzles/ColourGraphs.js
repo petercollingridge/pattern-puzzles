@@ -50,6 +50,7 @@ class ColourGraphPuzzle extends React.Component {
 		};
 
 		this.getGraphObject = this.getGraphObject.bind(this);
+		this.evaluate = this.evaluate.bind(this);
 	}
 
 	componentDidMount() {
@@ -62,11 +63,15 @@ class ColourGraphPuzzle extends React.Component {
 		this.setState({ graph });
 	}
 
+	evaluate(nodeColours) {
+		console.log(nodeColours);
+	}
+
 	render() {
 		const puzzle = puzzles[this.state.index];
 
 		return <Puzzle colourPalette={puzzle.colourPalette}>
-			<Graph {...this.state.graph} />
+			<Graph puzzle={this} {...this.state.graph} />
 		</Puzzle>
 	}
 }
