@@ -7,14 +7,17 @@ export default class Graph extends React.Component {
     constructor(props) {
         super(props);
 
+        const nodes = props.nodes || [];
+
         this.state = {
-            nodeColours: props.nodes.map(node => node.colour)
+            nodeColours: nodes.map(node => node.colour)
         };
 
         this.clickNode = this.clickNode.bind(this);
     }
 
     clickNode(i, colour) {
+        // Add colour to array of node colours
         const newNodeColours = this.state.nodeColours.slice();
         newNodeColours[i] = colour;
 
@@ -24,22 +27,23 @@ export default class Graph extends React.Component {
     }
 
     render() {
-        const { nodes, edges, selectedColour } = this.props;
+        let { nodes, edges, selectedColour } = this.props;
+
+        nodes = nodes || [];
+        edges = edges || [];
 
         return <g className="graph">
             <g className="graph-edges">
                 { edges.map((edge, i) =>
-                    <g>
+                    <g key={i}>
                         <line
                             className="edge-outline"
-                            key={i}
                             x1={edge.x1}
                             y1={edge.y1}
                             x2={edge.x2}
                             y2={edge.y2}
                         />
                         <line
-                            key={i}
                             x1={edge.x1}
                             y1={edge.y1}
                             x2={edge.x2}
