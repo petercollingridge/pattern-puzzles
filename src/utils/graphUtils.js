@@ -1,4 +1,4 @@
-export function getGraphObject(nodes, edges, scale=32, radius=8) {
+export function getGraphObject(nodes=[], edges=[], scale=32, radius=8) {
     const nodeObjects = nodes.map(([x, y]) => ({
         x: x * scale,
         y: y * scale,

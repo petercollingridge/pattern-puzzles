@@ -18,7 +18,7 @@ export default class Puzzle extends React.Component {
         super(props);
 
         this.state = {
-            selectedColour: null
+            selectedColour: null,
         }
     }
 
@@ -27,9 +27,12 @@ export default class Puzzle extends React.Component {
 
         //  Pass selected colour to children
         const children = React.Children.map(this.props.children, child =>
-            React.cloneElement(child, { selectedColour: this.state.selectedColour })
+            React.cloneElement(child, {
+                selectedColour: this.state.selectedColour
+            })
         );
 
+        // Determine what the selected colour is if we have selected one
         const style = this.state.selectedColour ? { color: COLOURS[this.state.selectedColour] } : {};
         const className = this.state.selectedColour ? "colour-selected" : "";
 
@@ -40,11 +43,13 @@ export default class Puzzle extends React.Component {
                 </svg>
             </Link>
 
-            <Link to="/" className="menu-button next-puzzle-button">
-                <svg viewBox="-10 -10 20 20">
-                    <circle r="9" />
-                </svg>
-            </Link>
+            { this.props.solved &&
+                <div className="menu-button next-puzzle-button">
+                    <svg viewBox="-10 -10 20 20">
+                        <circle r="9" onClick={this.props.nextPuzzle}/>
+                    </svg>
+                </div>
+            }
 
             <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
                 <defs>

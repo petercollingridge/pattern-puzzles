@@ -11,26 +11,26 @@ import Graph from './PuzzleComponents/Graph';
 
 
 const puzzles = [
-	/*{
-		// colourPalette: 1,
-		// nodes: [[0, 0]]
-	},*/{
-	// 	colourPalette: 2,
-	// 	nodes: [[-1, 0], [1, 0]],
-	// 	edges: [[0, 1]],
-	// }, {
-	// 	colourPalette: 2,
-	// 	nodes: [[-2, 0], [0, 0], [2, 0]],
-	// 	edges: [[0, 1], [1, 2]],
-	// }, {
-	// 	colourPalette: 3,
-	// 	nodes: getNodesOnCircle(3),
-	// 	edges: getLoopOfEdges(3),
-	// }, {
-	// 	colourPalette: 2,
-	// 	nodes: getNodesOnCircle(4),
-	// 	edges: getLoopOfEdges(4),
-	// }, {
+	{
+		colourPalette: 1,
+		nodes: [[0, 0]]
+	}, {
+		colourPalette: 2,
+		nodes: [[-1, 0], [1, 0]],
+		edges: [[0, 1]],
+	}, {
+		colourPalette: 2,
+		nodes: [[-2, 0], [0, 0], [2, 0]],
+		edges: [[0, 1], [1, 2]],
+	}, {
+		colourPalette: 3,
+		nodes: getNodesOnCircle(3),
+		edges: getLoopOfEdges(3),
+	}, {
+		colourPalette: 2,
+		nodes: getNodesOnCircle(4),
+		edges: getLoopOfEdges(4),
+	}, {
 		colourPalette: 3,
 		nodes: getNodesOnCircle(4),
 		edges: getLoopOfEdges(4).concat([[1, 3]]),
@@ -45,7 +45,7 @@ const puzzles = [
 	}
 ];
 
-class ColourGraphPuzzle extends React.Component {
+export default class ColourGraphPuzzle extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -55,21 +55,39 @@ class ColourGraphPuzzle extends React.Component {
 		};
 
 		this.evaluate = this.evaluate.bind(this);
+		this.nextPuzzle = this.nextPuzzle.bind(this);
 	}
 
 	evaluate({ nodes, edges }) {
 		if (allNodesColoured(nodes) &&
 			allEdgeNodesDifferent(edges)) {
+				this.setState({
+					solved: true
+				});
+		}
+	}
+
+	//  TODO: move to general puzzle wrapper
+	nextPuzzle() {
+		if (this.state.index < puzzles.length - 1) {
+			this.setState({
+				index: this.state.index + 1
+			});
+		} else {
+
 		}
 	}
 
 	render() {
 		const puzzle = puzzles[this.state.index];
 
-		return <Puzzle colourPalette={puzzle.colourPalette} solved={this.state.solved}>
-			<Graph puzzle={this} size={32} {...puzzle} />
+		return <Puzzle
+			key={this.state.index}
+			colourPalette={puzzle.colourPalette}
+			solved={this.state.solved}
+			nextPuzzle={this.nextPuzzle}
+		>
+			<Graph key={this.state.index} puzzle={this} size={32} {...puzzle} />
 		</Puzzle>
 	}
-}
-
-export default ColourGraphPuzzle;
+};
