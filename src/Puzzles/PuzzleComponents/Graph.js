@@ -20,14 +20,15 @@ export default class Graph extends React.Component {
 
     colourNode(i) {
         // Add colour to array of node colours
+        const puzzle = this.props.puzzle;
         const newNodes = this.state.nodes.slice();
-        newNodes[i].colour = this.props.selectedColour;
+        newNodes[i].colour = puzzle.state.selectedColour;
 
         this.setState({
             nodes: newNodes
         });
 
-        this.props.puzzle.evaluate(this.state);
+        puzzle.update(this.state);
     }
 
     render() {

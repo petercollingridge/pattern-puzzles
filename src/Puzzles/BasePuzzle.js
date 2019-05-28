@@ -18,23 +18,44 @@ export default class Puzzle extends React.Component {
         super(props);
 
         this.state = {
+            index: 0,
+			solved: false,
             selectedColour: null,
+        }
+
+        this.update = this.update.bind(this);
+        this.nextPuzzle = this.nextPuzzle.bind(this);
+    }
+
+    update(childState) {
+        this.setState({
+            solved: this.props.evaluate(childState)
+        });
+    }
+
+    nextPuzzle() {
+        if (this.state.index < this.props.puzzles.length - 1) {
+            const index = this.state.index + 1;
+            this.setState({
+                index,
+                solved: false,
+                selectedColour: null
+            });
+        } else {
+
         }
     }
 
     render() {
-        const colourPalette = this.props.colourPalette;
+        const { puzzles, getPuzzle } = this.props;
+        const { index, selectedColour, solved } = this.state;
 
-        //  Pass selected colour to children
-        const children = React.Children.map(this.props.children, child =>
-            React.cloneElement(child, {
-                selectedColour: this.state.selectedColour
-            })
-        );
+        const colourPalette = puzzles[index].colourPalette;
+        const puzzleElement = getPuzzle(this, index);
 
         // Determine what the selected colour is if we have selected one
-        const style = this.state.selectedColour ? { color: COLOURS[this.state.selectedColour] } : {};
-        const className = this.state.selectedColour ? "colour-selected" : "";
+        const style = selectedColour ? { color: COLOURS[selectedColour] } : {};
+        const className = selectedColour ? "colour-selected" : "";
 
         return <main>
             <Link to="/" className="menu-button back-button">
@@ -43,10 +64,10 @@ export default class Puzzle extends React.Component {
                 </svg>
             </Link>
 
-            { this.props.solved &&
+            { solved &&
                 <div className="menu-button next-puzzle-button">
                     <svg viewBox="-10 -10 20 20">
-                        <circle r="9" onClick={this.props.nextPuzzle}/>
+                        <circle r="9" onClick={this.nextPuzzle}/>
                     </svg>
                 </div>
             }
@@ -60,15 +81,15 @@ export default class Puzzle extends React.Component {
                     </filter>
                 </defs>
 
-                <g id="puzzle" className={className} style={style}>
-                    { children }
+                <g id="puzzle" key={index} className={className} style={style}>
+                    { puzzleElement }
                 </g>
 
                 <circle id="chamber-window" r="145" />
                 <Toolbar 
                     puzzle={this}
                     nColours={colourPalette}
-                    selectedColour={this.state.selectedColour}
+                    selectedColour={selectedColour}
                 />
             </svg>
         </main>
