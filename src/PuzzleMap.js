@@ -1,15 +1,20 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import ColourGraphIcon from './Icons/ColourGraphs';
-import ColourGraphIcon2 from './Icons/ColourGraphs2';
+import {
+    ColourGraphIcon1,
+    ColourGraphIcon2,
+    ColourGraphIcon3
+ } from './Icons/ColourGraphs';
+
 import './puzzleMap.css';
 
 
 export default () =>
     <main className="front-page">
         <nav className="puzzle-map">
-            <Link className="map-link" to="/colour-graphs-1"><ColourGraphIcon/></Link>
+            <Link className="map-link" to="/colour-graphs-1"><ColourGraphIcon1/></Link>
             <Link className="map-link" to="/colour-graphs-2"><ColourGraphIcon2/></Link>
+            <Link className="map-link" to="/colour-graphs-3"><ColourGraphIcon3/></Link>
         </nav>
     </main>

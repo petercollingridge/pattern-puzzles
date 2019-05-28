@@ -8,6 +8,10 @@
     stroke: none;
 }
 
+.map-link .graph-edges {
+    fill: none;
+}
+
 .map-link .graph-nodes * {
     stroke: white;
     stroke-width: 1;
