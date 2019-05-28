@@ -34,7 +34,8 @@ export default class ColourGraphPuzzle extends React.Component {
 	nextPuzzle() {
 		if (this.state.index < this.props.puzzles.length - 1) {
 			this.setState({
-				index: this.state.index + 1
+				index: this.state.index + 1,
+				solved: false
 			});
 		} else {
 
