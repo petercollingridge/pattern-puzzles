@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const TOOLBAR_R = 112;
-const DELTA_ANGLE = Math.PI / 16;
+const DELTA_ANGLE = Math.PI / 20;
 
 export default function ({ puzzle, nColours, selectedColour }) {
     const r = 6;

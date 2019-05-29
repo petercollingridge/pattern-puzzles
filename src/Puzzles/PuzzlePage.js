@@ -33,22 +33,35 @@ export default class PuzzlePage extends React.Component {
         });
     }
 
-    nextPuzzle() {
-        if (this.state.index < this.props.puzzles.length - 1) {
-            const index = this.state.index + 1;
-            this.setState({
-                index,
-                solved: false,
-                selectedColour: null
-            });
-        } else {
+    getNextPuzzleButton() {
+        if (!this.state.solved) { return null; }
 
+        if (this.state.index < this.props.puzzles.length - 1) {
+            return <div className="menu-button next-puzzle-button">
+                <svg viewBox="-10 -10 20 20">
+                    <circle r="9" onClick={this.nextPuzzle}/>
+                </svg>
+            </div>
+        } else {
+            return <Link to="/" className="menu-button next-puzzle-button">
+                <svg viewBox="-10 -10 20 20">
+                    <circle r="9" />
+                </svg>
+            </Link>
         }
+    }
+
+    nextPuzzle() {
+        this.setState({
+            index: this.state.index + 1,
+            solved: false,
+            selectedColour: null
+        });
     }
 
     render() {
         const { puzzles, getPuzzleObject, displayPuzzle } = this.props;
-        const { index, selectedColour, solved } = this.state;
+        const { index, selectedColour } = this.state;
 
         const colourPalette = puzzles[index].colourPalette;
         const puzzleObject = getPuzzleObject(puzzles[index]);
@@ -65,13 +78,7 @@ export default class PuzzlePage extends React.Component {
                 </svg>
             </Link>
 
-            { solved &&
-                <div className="menu-button next-puzzle-button">
-                    <svg viewBox="-10 -10 20 20">
-                        <circle r="9" onClick={this.nextPuzzle}/>
-                    </svg>
-                </div>
-            }
+            { this.getNextPuzzleButton() }
 
             <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
                 <defs>
