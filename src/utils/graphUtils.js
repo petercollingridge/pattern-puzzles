@@ -1,26 +1,3 @@
-// Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
-export function getGraphObject(nodes=[], edges=[]) {
-    const nodeObjects = nodes.map(([x, y]) => ({ x, y }));
-
-    const edgeObjects = edges.map(([n1, n2]) => {
-        const node1 = nodeObjects[n1];
-        const node2 = nodeObjects[n2];
-        return {
-            node1,
-            node2,
-            x1: node1.x,
-            y1: node1.y,
-            x2: node2.x,
-            y2: node2.y
-        };
-    });
-
-    return {
-        nodes: nodeObjects,
-        edges: edgeObjects
-    };
-}
-
 export function getNodesOnCircle(colours, r, offset) {
     var n;
     if (Array.isArray(colours)) {
@@ -61,10 +38,10 @@ export function getLoopOfEdges(start, stop) {
     return edges;
 }
 
-export function allNodesColoured(nodes) {
-    return nodes.every(node => node.colour > 0);
+export function allItemsColoured(items) {
+    return items.every(item => item.colour > 0);
 }
 
-export function allEdgeNodesDifferent(edges) {
-    return edges.every(edge => edge.node1.colour !== edge.node2.colour);
+export function allConnectedItemsHaveDifferentColours(cxns) {
+    return cxns.every(cxn => cxn.node1.colour !== cxn.node2.colour);
 }

@@ -3,16 +3,16 @@
  */
 
 import React from 'react';
-import {
-    getNodesOnCircle,
-    getLoopOfEdges,
-	allNodesColoured,
-    allEdgeNodesDifferent,
-} from '../utils/graphUtils';
 
 import PuzzlePage from './PuzzlePage';
 import Graph from './PuzzleComponents/Graph';
-import { getGraphObject } from '../utils/graphUtils';
+import { getGraphObject } from '../utils/getPuzzleObjects';
+import {
+    getNodesOnCircle,
+    getLoopOfEdges,
+	allItemsColoured,
+    allConnectedItemsHaveDifferentColours,
+} from '../utils/graphUtils';
 
 
 const puzzles1 = [
@@ -140,7 +140,7 @@ const puzzles3 = [
 
 const ColourGraph = ({ puzzles }) => {
 	const evaluate = ({ nodes, edges }) => 
-		allNodesColoured(nodes) && allEdgeNodesDifferent(edges);
+	allItemsColoured(nodes) && allConnectedItemsHaveDifferentColours(edges);
 	
 	const getGraph = puzzle => getGraphObject(puzzle.nodes, puzzle.edges);
 

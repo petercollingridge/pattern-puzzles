@@ -33,25 +33,22 @@ export default class Graph extends React.Component {
             edges = []
         } = this.state;
 
-        const size = this.props.size;
-        const r = this.props.nodeRadius;
-
         return <g className="graph">
             <g className="graph-edges">
                 { edges.map((edge, i) =>
                     <g key={i}>
                         <line
                             className="edge-outline"
-                            x1={edge.x1 * size}
-                            y1={edge.y1 * size}
-                            x2={edge.x2 * size}
-                            y2={edge.y2 * size}
+                            x1={edge.x1}
+                            y1={edge.y1}
+                            x2={edge.x2}
+                            y2={edge.y2}
                         />
                         <line
-                            x1={edge.x1 * size}
-                            y1={edge.y1 * size}
-                            x2={edge.x2 * size}
-                            y2={edge.y2 * size}
+                            x1={edge.x1}
+                            y1={edge.y1}
+                            x2={edge.x2}
+                            y2={edge.y2}
                         />
                     </g>
                 )}
@@ -69,9 +66,9 @@ export default class Graph extends React.Component {
                     return <circle
                         key={i}
                         className={className}
-                        cx={node.x * size}
-                        cy={node.y * size}
-                        r={r}
+                        cx={node.x}
+                        cy={node.y}
+                        r={node.r}
                         onClick={() => this.colourNode(i)}
                     />
                 })}
