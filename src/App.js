@@ -2,9 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import PuzzleMap from './PuzzleMap';
-import ColourGraph1 from './Puzzles/ColourGraphs1';
-import ColourGraph2 from './Puzzles/ColourGraphs2';
-import ColourGraph3 from './Puzzles/ColourGraphs3';
+import {
+    ColourGraph1,
+    ColourGraph2,
+    ColourGraph3
+ } from './Puzzles/ColourGraphs';
 
 import './base.css';
 import './puzzle.css';
