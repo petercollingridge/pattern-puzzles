@@ -1,29 +1,3 @@
-// export function getGraphObject(nodes=[], edges=[], scale=32, radius=8) {
-//     const nodeObjects = nodes.map(([x, y]) => ({
-//         x: x * scale,
-//         y: y * scale,
-//         r: radius
-//     }));
-
-//     const edgeObjects = edges.map(([n1, n2]) => {
-//         const node1 = nodeObjects[n1];
-//         const node2 = nodeObjects[n2];
-//         return {
-//             node1,
-//             node2,
-//             x1: node1.x,
-//             y1: node1.y,
-//             x2: node2.x,
-//             y2: node2.y
-//         };
-//     });
-
-//     return {
-//         nodes: nodeObjects,
-//         edges: edgeObjects
-//     }
-// }
-
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject(nodes=[], edges=[]) {
     const nodeObjects = nodes.map(([x, y]) => ({ x, y }));
