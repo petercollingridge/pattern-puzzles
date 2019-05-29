@@ -10,8 +10,9 @@ import {
     allEdgeNodesDifferent,
 } from '../utils/graphUtils';
 
-import BasePuzzle from './BasePuzzle';
+import PuzzlePage from './PuzzlePage';
 import Graph from './PuzzleComponents/Graph';
+import { getGraphObject } from '../utils/graphUtils';
 
 
 const puzzles1 = [
@@ -141,9 +142,15 @@ const ColourGraph = ({ puzzles }) => {
 	const evaluate = ({ nodes, edges }) => 
 		allNodesColoured(nodes) && allEdgeNodesDifferent(edges);
 	
-	const getPuzzle = (puzzle, index) => <Graph size={32} puzzle={puzzle} {...puzzles[index]} />
+	const getGraph = puzzle => getGraphObject(puzzle.nodes, puzzle.edges);
 
-	return <BasePuzzle evaluate={evaluate} getPuzzle={getPuzzle} puzzles={puzzles} />
+	const displayGraph = (page, graphObject) => <Graph page={page} {...graphObject} size={32} nodeRadius={8} />
+
+	return <PuzzlePage
+		puzzles={puzzles}
+		evaluate={evaluate}
+		getPuzzleObject={getGraph}
+		displayPuzzle={displayGraph} />;
 };
 
 export const ColourGraph1 = (props) => <ColourGraph puzzles={puzzles1} {...props} />

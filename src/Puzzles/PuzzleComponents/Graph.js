@@ -1,6 +1,4 @@
 import React from 'react';
-import { getGraphObject } from '../../utils/graphUtils';
-
 import './graph.css';
 
 
@@ -8,11 +6,9 @@ export default class Graph extends React.Component {
     constructor(props) {
         super(props);
 
-        const graph = getGraphObject(props.nodes, props.edges, props.size);
-
         this.state = {
-            nodes: graph.nodes,
-            edges: graph.edges
+            nodes: props.nodes,
+            edges: props.edges
         };
 
         this.colourNode = this.colourNode.bind(this);
@@ -20,15 +16,15 @@ export default class Graph extends React.Component {
 
     colourNode(i) {
         // Add colour to array of node colours
-        const puzzle = this.props.puzzle;
+        const puzzlePage = this.props.page;
         const newNodes = this.state.nodes.slice();
-        newNodes[i].colour = puzzle.state.selectedColour;
+        newNodes[i].colour = puzzlePage.state.selectedColour;
 
         this.setState({
             nodes: newNodes
         });
 
-        puzzle.update(this.state);
+        puzzlePage.update(this.state);
     }
 
     render() {
@@ -37,22 +33,25 @@ export default class Graph extends React.Component {
             edges = []
         } = this.state;
 
+        const size = this.props.size;
+        const r = this.props.nodeRadius;
+
         return <g className="graph">
             <g className="graph-edges">
                 { edges.map((edge, i) =>
                     <g key={i}>
                         <line
                             className="edge-outline"
-                            x1={edge.x1}
-                            y1={edge.y1}
-                            x2={edge.x2}
-                            y2={edge.y2}
+                            x1={edge.x1 * size}
+                            y1={edge.y1 * size}
+                            x2={edge.x2 * size}
+                            y2={edge.y2 * size}
                         />
                         <line
-                            x1={edge.x1}
-                            y1={edge.y1}
-                            x2={edge.x2}
-                            y2={edge.y2}
+                            x1={edge.x1 * size}
+                            y1={edge.y1 * size}
+                            x2={edge.x2 * size}
+                            y2={edge.y2 * size}
                         />
                     </g>
                 )}
@@ -70,9 +69,9 @@ export default class Graph extends React.Component {
                     return <circle
                         key={i}
                         className={className}
-                        cx={node.x}
-                        cy={node.y}
-                        r={node.r}
+                        cx={node.x * size}
+                        cy={node.y * size}
+                        r={r}
                         onClick={() => this.colourNode(i)}
                     />
                 })}

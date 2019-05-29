@@ -13,7 +13,7 @@ const COLOURS = [
     'rgb(20, 198, 96)',
 ];
 
-export default class Puzzle extends React.Component {
+export default class PuzzlePage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -47,11 +47,12 @@ export default class Puzzle extends React.Component {
     }
 
     render() {
-        const { puzzles, getPuzzle } = this.props;
+        const { puzzles, getPuzzleObject, displayPuzzle } = this.props;
         const { index, selectedColour, solved } = this.state;
 
         const colourPalette = puzzles[index].colourPalette;
-        const puzzleElement = getPuzzle(this, index);
+        const puzzleObject = getPuzzleObject(puzzles[index]);
+        const puzzleElement = displayPuzzle(this, puzzleObject);
 
         // Determine what the selected colour is if we have selected one
         const style = selectedColour ? { color: COLOURS[selectedColour] } : {};
