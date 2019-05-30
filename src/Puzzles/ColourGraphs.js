@@ -140,7 +140,7 @@ const puzzles3 = [
 
 const ColourGraph = ({ puzzles }) => {
 	const evaluate = ({ nodes, edges }) => 
-	allItemsColoured(nodes) && allConnectedItemsHaveDifferentColours(edges);
+	    allItemsColoured(nodes) && allConnectedItemsHaveDifferentColours(edges);
 
 	const displayGraph = (page, graphObject) => <Graph page={page} {...graphObject} size={32} nodeRadius={8} />
 

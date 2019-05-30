@@ -50,7 +50,7 @@ var puzzles1 = [
 
 const ColourMap = ({ puzzles }) => {
 	const evaluate = ({ regions, connections }) => 
-	allItemsColoured(regions) && allConnectedItemsHaveDifferentColours(connections);
+	    allItemsColoured(regions) && allConnectedItemsHaveDifferentColours(connections);
 
 	const displayMap = (page, mapObject) => <Map page={page} {...mapObject} />
 
