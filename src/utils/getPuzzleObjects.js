@@ -44,3 +44,12 @@ export function getMapObject({ regions=[], connections=[], size=1 }) {
         connections: connectionObjects
     };
 }
+
+export function getSequenceObject({ pattern, answer }) {
+    return {
+        // Get a sequence with 0s for user to fill in
+        sequence: pattern.concat(new Array(answer.length).fill(0)),
+        // Target sequence is the existing sequence plus the answer fragment
+        target: pattern.concat(answer)
+    };
+}
