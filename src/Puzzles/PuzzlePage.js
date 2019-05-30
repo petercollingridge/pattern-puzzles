@@ -37,13 +37,13 @@ export default class PuzzlePage extends React.Component {
         if (!this.state.solved) { return null; }
 
         if (this.state.index < this.props.puzzles.length - 1) {
-            return <div className="menu-button next-puzzle-button" ariaLabel="Next puzzle">
+            return <div className="menu-button next-puzzle-button" aria-label="Next puzzle">
                 <svg viewBox="-10 -10 20 20">
                     <circle r="9" onClick={this.nextPuzzle}/>
                 </svg>
             </div>
         } else {
-            return <Link to="/" className="menu-button next-puzzle-button" ariaLabel="Puzzle completed">
+            return <Link to="/" className="menu-button next-puzzle-button" aria-label="Puzzle completed">
                 <svg viewBox="-10 -10 20 20">
                     <circle r="9" />
                 </svg>
@@ -73,7 +73,7 @@ export default class PuzzlePage extends React.Component {
 
         return <main>
             <nav>
-                <Link to="/" className="menu-button back-button" ariaLabel="Back to menu">
+                <Link to="/" className="menu-button back-button" aria-label="Back to menu">
                     <svg viewBox="-10 -10 20 20">
                         <circle r="9" />
                     </svg>

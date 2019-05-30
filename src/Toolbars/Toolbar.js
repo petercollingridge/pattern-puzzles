@@ -29,8 +29,8 @@ export default function ({ puzzle, nColours, selectedColour }) {
         colours.push(
             <circle
                 className={className}
-                ariaRole="button"
-                ariaSelected={selectedColour === i}
+                role="radio"
+                aria-checked={selectedColour === i}
                 tabIndex="0"
                 key={i}
                 cx={cx}
@@ -51,7 +51,7 @@ export default function ({ puzzle, nColours, selectedColour }) {
 
     return <g className="toolbar">
         <circle className={selectColourIndicator} r="109" />
-        <g className="colour-palette">
+        <g className="colour-palette" role="radiogroup">
             { colours }
         </g>
     </g>;
