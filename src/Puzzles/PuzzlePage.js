@@ -37,13 +37,13 @@ export default class PuzzlePage extends React.Component {
         if (!this.state.solved) { return null; }
 
         if (this.state.index < this.props.puzzles.length - 1) {
-            return <div className="menu-button next-puzzle-button">
+            return <div className="menu-button next-puzzle-button" ariaLabel="Next puzzle">
                 <svg viewBox="-10 -10 20 20">
                     <circle r="9" onClick={this.nextPuzzle}/>
                 </svg>
             </div>
         } else {
-            return <Link to="/" className="menu-button next-puzzle-button">
+            return <Link to="/" className="menu-button next-puzzle-button" ariaLabel="Puzzle completed">
                 <svg viewBox="-10 -10 20 20">
                     <circle r="9" />
                 </svg>
@@ -72,13 +72,15 @@ export default class PuzzlePage extends React.Component {
         const className = selectedColour ? "colour-selected" : "";
 
         return <main>
-            <Link to="/" className="menu-button back-button">
-                <svg viewBox="-10 -10 20 20">
-                    <circle r="9" />
-                </svg>
-            </Link>
+            <nav>
+                <Link to="/" className="menu-button back-button" ariaLabel="Back to menu">
+                    <svg viewBox="-10 -10 20 20">
+                        <circle r="9" />
+                    </svg>
+                </Link>
 
-            { this.getNextPuzzleButton() }
+                { this.getNextPuzzleButton() }
+            </nav>
 
             <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
                 <defs>
