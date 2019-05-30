@@ -61,4 +61,4 @@ const ColourMap = ({ puzzles }) => {
 		displayPuzzle={displayMap} />;
 };
 
-export const ColourMap1 = (props) => <ColourMap puzzles={puzzles1} {...props} />
+export const ColourMap1 = () => <ColourMap puzzles={puzzles1} />

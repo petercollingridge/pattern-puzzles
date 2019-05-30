@@ -151,8 +151,8 @@ const ColourGraph = ({ puzzles }) => {
 		displayPuzzle={displayGraph} />;
 };
 
-export const ColourGraph1 = (props) => <ColourGraph puzzles={puzzles1} {...props} />
+export const ColourGraph1 = () => <ColourGraph puzzles={puzzles1} />
 
-export const ColourGraph2 = (props) => <ColourGraph puzzles={puzzles2} {...props} />
+export const ColourGraph2 = () => <ColourGraph puzzles={puzzles2} />
 
-export const ColourGraph3 = (props) => <ColourGraph puzzles={puzzles3} {...props} />
+export const ColourGraph3 = () => <ColourGraph puzzles={puzzles3} />
