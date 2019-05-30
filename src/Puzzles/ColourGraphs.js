@@ -141,15 +141,13 @@ const puzzles3 = [
 const ColourGraph = ({ puzzles }) => {
 	const evaluate = ({ nodes, edges }) => 
 	allItemsColoured(nodes) && allConnectedItemsHaveDifferentColours(edges);
-	
-	const getGraph = puzzle => getGraphObject(puzzle.nodes, puzzle.edges);
 
 	const displayGraph = (page, graphObject) => <Graph page={page} {...graphObject} size={32} nodeRadius={8} />
 
 	return <PuzzlePage
 		puzzles={puzzles}
 		evaluate={evaluate}
-		getPuzzleObject={getGraph}
+		getPuzzleObject={getGraphObject}
 		displayPuzzle={displayGraph} />;
 };
 

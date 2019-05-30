@@ -1,5 +1,5 @@
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
-export function getGraphObject(nodes=[], edges=[], size=32, r=8) {
+export function getGraphObject({ nodes=[], edges=[], size=32, r=8 }) {
     const nodeObjects = nodes.map(([x, y]) => ({
         x: x * size,
         y: y * size,
@@ -25,7 +25,7 @@ export function getGraphObject(nodes=[], edges=[], size=32, r=8) {
     };
 }
 
-export function getMapObject(regions=[], connections=[], size=1) {
+export function getMapObject({ regions=[], connections=[], size=1 }) {
     const regionObjects = regions.map(([x, y, width, height]) => ({
         x: (x - width / 2) * size,
         y: (y - height / 2) * size,
