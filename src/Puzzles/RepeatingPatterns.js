@@ -5,12 +5,12 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import Map from './PuzzleComponents/Map';
+import Sequence from './PuzzleComponents/Sequence';
 import { getSequenceObject } from '../utils/getPuzzleObjects';
 import { allItemsFilled, sequencesMatch } from '../utils/graphUtils';
 
 
-var puzzles1 = [
+const puzzles1 = [
     {
         colourPalette: 1,
         pattern: [1, 1, 1, 1],
@@ -46,17 +46,17 @@ var puzzles1 = [
     }
 ];
 
-const ColourMap = ({ puzzles }) => {
+const RepeatingPatterns = ({ puzzles }) => {
 	const evaluate = ({ sequence, target }) => 
         allItemsFilled(sequence) && sequencesMatch(sequence, target);
 
-	const displayMap = (page, mapObject) => <Map page={page} {...mapObject} />
+	const displaySequence = (page, sequence) => <Sequence page={page} {...sequence} />
 
 	return <PuzzlePage
 		puzzles={puzzles}
 		evaluate={evaluate}
 		getPuzzleObject={getSequenceObject}
-		displayPuzzle={displayMap} />;
+		displayPuzzle={displaySequence} />;
 };
 
-export const ColourMap1 = (props) => <ColourMap puzzles={puzzles1} {...props} />
+export const RepeatingPatterns1 = (props) => <RepeatingPatterns puzzles={puzzles1} {...props} />
