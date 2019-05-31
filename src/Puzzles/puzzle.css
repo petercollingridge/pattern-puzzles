@@ -22,6 +22,11 @@
     stroke-width: 3;
 }
 
+.colour-palette:focus {
+    outline: none;
+    stroke-width: 3;
+}
+
 .selected-colour-indicator {
     fill: none;
     stroke-width: 1;
@@ -35,7 +40,7 @@
 
 #puzzle .empty-region {
     fill: #aaa;
-    transition: fill 200ms ease-out, stroke 200ms ease-out;
+    transition: fill 100ms ease-out, stroke 100ms ease-out;
 }
 
 #puzzle.colour-selected .colourable:hover {
