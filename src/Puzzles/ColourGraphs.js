@@ -7,12 +7,8 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import Graph from './PuzzleComponents/Graph';
 import { getGraphObject } from '../utils/getPuzzleObjects';
-import {
-    getNodesOnCircle,
-    getLoopOfEdges,
-	allItemsColoured,
-    allConnectedItemsHaveDifferentColours,
-} from '../utils/graphUtils';
+import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
+import { allItemsColoured, allConnectedItemsHaveDifferentColours } from '../utils/evaluationUtils';
 
 
 const puzzles1 = [

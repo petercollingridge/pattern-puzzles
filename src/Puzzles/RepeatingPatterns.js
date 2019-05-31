@@ -7,7 +7,7 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import Sequence from './PuzzleComponents/Sequence';
 import { getSequenceObject } from '../utils/getPuzzleObjects';
-import { allItemsFilled, sequencesMatch } from '../utils/graphUtils';
+import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
 
 
 const puzzles1 = [
@@ -48,8 +48,7 @@ const puzzles1 = [
 
 const RepeatingPatterns = ({ puzzles }) => {
 	const evaluate = ({ sequence }, { target }) => {
-        console.log(sequence, target)
-        return allItemsFilled(sequence) && sequencesMatch(sequence, target);
+        return allItemsColoured(sequence) && sequencesMatch(sequence, target, 'colour');
     }
 
 	const displaySequence = (page, sequence) => <Sequence page={page} {...sequence} />

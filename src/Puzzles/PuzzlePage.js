@@ -58,12 +58,12 @@ export default class PuzzlePage extends React.Component {
 
     nextPuzzle() {
         const nextState = this.state.index + 1;
-        this.getPuzzle(nextState);
         this.setState({
             index: nextState,
             solved: false,
             selectedColour: null
         });
+        this.getPuzzle(nextState);
     }
 
     getPuzzle(index) {

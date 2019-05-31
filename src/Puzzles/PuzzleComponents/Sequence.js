@@ -16,7 +16,7 @@ export default class Map extends React.Component {
         // Add colour to array of node colours
         const puzzlePage = this.props.page;
         const newSequence = this.state.sequence.slice();
-        newSequence[i] = puzzlePage.state.selectedColour;
+        newSequence[i].colour = puzzlePage.state.selectedColour;
 
         // Update colour and then update parent page
         this.setState(
@@ -33,11 +33,19 @@ export default class Map extends React.Component {
 
         return <g className="sequence">
             { sequence.map((item, i) => {
-                let className = "colourable ";
-                if (item) {
-                    className += `fill-${item}`;
+                let className;
+                let onClick;
+
+                if (!item.fixed) {
+                    onClick = () => this.colourNode(i);
+                    className = "colourable ";
+                    if (item.colour) {
+                        className += `fill-${item.colour}`;
+                    } else {
+                        className += "empty-region";
+                    }
                 } else {
-                    className += "empty-region";
+                    className = `fill-${item.colour}`;
                 }
 
                 return <rect
@@ -49,7 +57,7 @@ export default class Map extends React.Component {
                     height={size - 1}
                     rx="3"
                     ry="3"
-                    onClick={() => this.colourNode(i)}
+                    onClick={onClick}
                 />
             })}
         </g>

@@ -37,23 +37,3 @@ export function getLoopOfEdges(start, stop) {
     edges.push([start, stop]);
     return edges;
 }
-
-export function allItemsColoured(items) {
-    return items.every(item => item.colour > 0);
-}
-
-export function allConnectedItemsHaveDifferentColours(cxns) {
-    return cxns.every(cxn => cxn.node1.colour !== cxn.node2.colour);
-}
-
-export const allItemsFilled = (items) => items.every(item => item > 0);
-
-export const sequencesMatch = (seq1, seq2) => {
-    if (seq1.length !== seq2.length) { return false; }
-    for (var i = 0; i < seq1.length; i++) {
-        if (seq1[i] !== seq2[i]) {
-            return false;
-        }
-    }
-    return true;
-};
