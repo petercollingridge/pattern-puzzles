@@ -4,7 +4,7 @@
   
 .puzzle-map {
     display: flex;
-    align-content: space-evenly
+    justify-content: space-evenly
 }
 
 .puzzle-section {
