@@ -6,10 +6,14 @@ import {
     ColourGraph1,
     ColourGraph2,
     ColourGraph3
- } from './Puzzles/ColourGraphs';
+} from './Puzzles/ColourGraphs';
 
- import { ColourMap1 } from './Puzzles/ColourMaps';
- import { RepeatingPatterns1 } from './Puzzles/RepeatingPatterns';
+import {
+    ColourMap1,
+    ColourMap2
+} from './Puzzles/ColourMaps';
+
+import { RepeatingPatterns1 } from './Puzzles/RepeatingPatterns';
 
 import './base.css';
 import './puzzle.css';
@@ -23,6 +27,7 @@ export default () =>
             <Route path="/colour-graphs-2" component={ColourGraph2} />
             <Route path="/colour-graphs-3" component={ColourGraph3} />
             <Route path="/colour-maps-1" component={ColourMap1} />
+            <Route path="/colour-maps-2" component={ColourMap2} />
             <Route path="/repeating-patterns-1" component={RepeatingPatterns1} />
             <Route path="/" component={PuzzleMap} />
         </Switch>

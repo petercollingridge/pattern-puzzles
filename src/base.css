@@ -57,6 +57,7 @@ main {
 
 .menu-button circle {
   fill: #ddd;
+  transition: fill 100ms ease-out, stroke 100ms ease-out;
 }
 
 .menu-button circle:hover {

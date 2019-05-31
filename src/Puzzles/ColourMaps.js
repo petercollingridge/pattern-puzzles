@@ -10,7 +10,7 @@ import { getMapObject } from '../utils/getPuzzleObjects';
 import { allItemsColoured, allConnectedItemsHaveDifferentColours } from '../utils/evaluationUtils';
 
 
-var puzzles1 = [
+const puzzles1 = [
     {
         colourPalette: 1,
         regions: [[0, 0, 32, 32]]
@@ -45,6 +45,41 @@ var puzzles1 = [
     }
 ];
 
+const puzzles2 = [
+    {
+        colourPalette: 2,
+        regions: [[0, 0, 96, 96], [0, 0, 32, 32]],
+        connections: [[0, 1]]
+    }, {
+        colourPalette: 3,
+        regions: [[-24, 0, 48, 96], [24, 0, 48, 96], [0, 0, 32, 32]],
+        connections: [[0, 1], [1, 2], [0, 2]]
+    }, {
+        colourPalette: 4,
+        regions: [[0, -32, 96, 32], [-24, 16, 48, 64], [24, 16, 48, 64], [0, 0, 32, 32]],
+        connections: [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
+    }, {
+        colourPalette: 3,
+        regions: [[-24, -24, 48, 48], [24, -24, 48, 48], [-24, 24, 48, 48], [24, 24, 48, 48], [0, 0, 32, 32]],
+        connections: [[0, 1], [2, 3], [0, 2], [1, 3], [0, 4], [1, 4], [2, 4], [3, 4]]
+    }, {
+        colourPalette: 3,
+        regions: [[-16, -32, 64, 32], [32, -16, 32, 64], [-32, 16, 32, 64], [16, 32, 64, 32], [0, 0, 32, 32]],
+        connections: [[0, 1], [2, 3], [0, 2], [1, 3], [0, 4], [1, 4], [2, 4], [3, 4]]
+    }, {
+        colourPalette: 2,
+        regions: [
+            [-32, -32, 32, 32], [0, -32, 32, 32], [32, -32, 32, 32],
+            [-32, 0, 32, 32], [0, 0, 32, 32], [32, 0, 32, 32],
+            [-32, 32, 32, 32], [0, 32, 32, 32], [32, 32, 32, 32]
+        ],
+        connections: [
+            [0, 1], [1, 2], [3, 4], [4, 5], [6, 7], [7, 8],
+            [0, 3], [1, 4], [2, 5], [3, 6], [4, 7], [5, 8]
+        ]
+    }
+];
+
 const ColourMap = ({ puzzles }) => {
 	const evaluate = ({ regions, connections }) => 
 	    allItemsColoured(regions) && allConnectedItemsHaveDifferentColours(connections);
@@ -59,3 +94,4 @@ const ColourMap = ({ puzzles }) => {
 };
 
 export const ColourMap1 = () => <ColourMap puzzles={puzzles1} />
+export const ColourMap2 = () => <ColourMap puzzles={puzzles2} />

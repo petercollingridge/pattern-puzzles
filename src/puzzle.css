@@ -8,11 +8,6 @@
     stroke: #fff;
 }
 
-#puzzle .empty-region {
-    fill: #aaa;
-    transition: fill 200ms ease-out, stroke 200ms ease-out;
-}
-
 #puzzle.colour-selected .empty-region:hover {
     cursor: pointer;
     fill: currentColor;
