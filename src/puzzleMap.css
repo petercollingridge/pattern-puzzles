@@ -1,0 +1,13 @@
+.front-page {
+    background-color: rgb(30, 20, 20);
+}
+  
+.puzzle-map {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around
+}
+  
+.puzzle-map .map-link {
+    margin: 1rem;
+}

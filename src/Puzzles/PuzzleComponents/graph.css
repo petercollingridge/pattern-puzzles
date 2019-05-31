@@ -1,0 +1,14 @@
+.graph-edges {
+    stroke-width: 3;
+    stroke: #666;
+}
+
+.edge-outline {
+    stroke-width: 4;
+    stroke: #fff;
+}
+
+.graph-nodes {
+    stroke-width: 1;
+    stroke: #fff;
+}

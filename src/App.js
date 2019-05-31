@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import PuzzleMap from './PuzzleMap';
+import {
+    ColourGraph1,
+    ColourGraph2,
+    ColourGraph3
+ } from './Puzzles/ColourGraphs';
 
-export default App;
+ import { ColourMap1 } from './Puzzles/ColourMaps';
+ import { RepeatingPatterns1 } from './Puzzles/RepeatingPatterns';
+
+import './base.css';
+import './puzzle.css';
+import './Icons/icons.css';
+
+
+export default () =>
+    <Router>
+        <Switch>
+            <Route path="/colour-graphs-1" component={ColourGraph1} />
+            <Route path="/colour-graphs-2" component={ColourGraph2} />
+            <Route path="/colour-graphs-3" component={ColourGraph3} />
+            <Route path="/colour-maps-1" component={ColourMap1} />
+            <Route path="/repeating-patterns-1" component={RepeatingPatterns1} />
+            <Route path="/" component={PuzzleMap} />
+        </Switch>
+    </Router>

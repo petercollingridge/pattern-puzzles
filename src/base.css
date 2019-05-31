@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+}
+
+main {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.colour-1 {
+  color: rgb(20, 146, 196);
+}
+
+.fill-1 {
+  fill: rgb(20, 146, 196);
+}
+
+.colour-2 {
+  color: rgb(196, 20, 96);
+}
+
+.fill-2 {
+  fill: rgb(196, 20, 96);
+}
+
+.colour-3 {
+  color: rgb(147, 20, 198);
+}
+
+.fill-3 {
+  fill: rgb(147, 20, 198);
+}
+
+.colour-4 {
+  color: rgb(20, 198, 95);
+}
+
+.fill-4 {
+  fill: rgb(20, 198, 95);
+}
+
+.menu-button {
+  position: fixed;
+  cursor: pointer;
+  width: 4vw;
+  height: 4vw;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .menu-button {
+    width: 4vh;
+    height: 4vh;
+  }
+}
+
+.menu-button circle {
+  fill: #ddd;
+}
+
+.menu-button circle:hover {
+  fill: #fff;
+}
+
+.back-button {
+  left: 8px;
+  top: 8px;
+}
+
+.next-puzzle-button {
+  right: 8px;
+  top: 8px;
+}

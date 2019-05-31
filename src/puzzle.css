@@ -1,0 +1,29 @@
+#puzzle .graph-nodes {
+    stroke-width: 1;
+    stroke: #fff;
+}
+
+#puzzle .map-regions {
+    stroke-width: 0.25;
+    stroke: #fff;
+}
+
+#puzzle .empty-region {
+    fill: #aaa;
+    transition: fill 200ms ease-out, stroke 200ms ease-out;
+}
+
+#puzzle.colour-selected .empty-region:hover {
+    cursor: pointer;
+    fill: currentColor;
+}
+
+.graph-edges {
+    stroke-width: 3;
+    stroke: #666;
+}
+
+.symmetry-line {
+    stroke: #222;
+    stroke-dasharray: 2 2;
+}
