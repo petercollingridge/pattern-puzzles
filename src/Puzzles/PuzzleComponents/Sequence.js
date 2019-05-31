@@ -18,11 +18,11 @@ export default class Map extends React.Component {
         const newSequence = this.state.sequence.slice();
         newSequence[i] = puzzlePage.state.selectedColour;
 
-        this.setState({
-            sequence: newSequence
-        });
-
-        puzzlePage.update(this.state);
+        // Update colour and then update parent page
+        this.setState(
+            { sequence: newSequence },
+            () => puzzlePage.update(this.state)
+        );
     }
 
     render() {

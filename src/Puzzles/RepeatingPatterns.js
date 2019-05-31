@@ -47,8 +47,10 @@ const puzzles1 = [
 ];
 
 const RepeatingPatterns = ({ puzzles }) => {
-	const evaluate = ({ sequence, target }) => 
-        allItemsFilled(sequence) && sequencesMatch(sequence, target);
+	const evaluate = ({ sequence }, { target }) => {
+        console.log(sequence, target)
+        return allItemsFilled(sequence) && sequencesMatch(sequence, target);
+    }
 
 	const displaySequence = (page, sequence) => <Sequence page={page} {...sequence} />
 

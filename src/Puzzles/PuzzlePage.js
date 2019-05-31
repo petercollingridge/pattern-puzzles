@@ -24,12 +24,17 @@ export default class PuzzlePage extends React.Component {
         }
 
         this.update = this.update.bind(this);
+        this.getPuzzle = this.getPuzzle.bind(this);
         this.nextPuzzle = this.nextPuzzle.bind(this);
+    }
+
+    componentDidMount() {
+        this.getPuzzle(0);
     }
 
     update(childState) {
         this.setState({
-            solved: this.props.evaluate(childState)
+            solved: this.props.evaluate(childState, this.state.puzzle)
         });
     }
 
@@ -52,20 +57,29 @@ export default class PuzzlePage extends React.Component {
     }
 
     nextPuzzle() {
+        const nextState = this.state.index + 1;
+        this.getPuzzle(nextState);
         this.setState({
-            index: this.state.index + 1,
+            index: nextState,
             solved: false,
             selectedColour: null
         });
     }
 
+    getPuzzle(index) {
+        const { getPuzzleObject, puzzles } = this.props;
+        this.setState({
+            puzzle: getPuzzleObject(puzzles[index])
+        });
+    }
+
     render() {
-        const { puzzles, getPuzzleObject, displayPuzzle } = this.props;
-        const { index, selectedColour } = this.state;
+        const { puzzles, displayPuzzle } = this.props;
+        const { index, selectedColour, puzzle } = this.state;
+        if (!puzzle) { return null; }
 
         const colourPalette = puzzles[index].colourPalette;
-        const puzzleObject = getPuzzleObject(puzzles[index]);
-        const puzzleElement = displayPuzzle(this, puzzleObject);
+        const puzzleElement = displayPuzzle(this, puzzle);
 
         // Determine what the selected colour is if we have selected one
         const style = selectedColour ? { color: COLOURS[selectedColour] } : {};
