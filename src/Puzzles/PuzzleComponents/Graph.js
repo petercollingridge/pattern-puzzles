@@ -1,4 +1,6 @@
 import React from 'react';
+import { getItemColourType } from './utils';
+
 import './graph.css';
 
 
@@ -56,12 +58,8 @@ export default class Graph extends React.Component {
 
             <g className="graph-nodes">
                 { nodes.map((node, i) => {
-                    let className = "colourable ";
-                    if (node.colour) {
-                        className += `fill-${node.colour}`;
-                    } else {
-                        className += "empty-region";
-                    }
+                    const colourNode = () => this.colourNode(i);
+                    const {className, onClick } = getItemColourType(node, colourNode);
 
                     return <circle
                         key={i}
@@ -69,7 +67,7 @@ export default class Graph extends React.Component {
                         cx={node.x}
                         cy={node.y}
                         r={node.r}
-                        onClick={() => this.colourNode(i)}
+                        onClick={onClick}
                     />
                 })}
             </g>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { getItemColourType } from './utils';
 
 
 export default class Map extends React.Component {
@@ -27,26 +28,13 @@ export default class Map extends React.Component {
 
     render() {
         const sequence = this.state.sequence;
-
         const size = Math.min(24, 160 / sequence.length);
         const startX = -(sequence.length * size) / 2;
 
         return <g className="sequence">
             { sequence.map((item, i) => {
-                let className;
-                let onClick;
-
-                if (!item.fixed) {
-                    onClick = () => this.colourNode(i);
-                    className = "colourable ";
-                    if (item.colour) {
-                        className += `fill-${item.colour}`;
-                    } else {
-                        className += "empty-region";
-                    }
-                } else {
-                    className = `fill-${item.colour}`;
-                }
+                const colourNode = () => this.colourNode(i);
+                const {className, onClick } = getItemColourType(item, colourNode);
 
                 return <rect
                     key={i}
