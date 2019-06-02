@@ -6,7 +6,7 @@ import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
 import Graph from './PuzzleComponents/Graph';
-import { getGraphObject } from '../utils/getPuzzleObjects';
+import { getGraphObject } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 import { allItemsColoured, allConnectedItemsHaveDifferentColours } from '../utils/evaluationUtils';
 
@@ -138,7 +138,7 @@ const ColourGraph = ({ puzzles }) => {
 	const evaluate = ({ nodes, edges }) => 
 	    allItemsColoured(nodes) && allConnectedItemsHaveDifferentColours(edges);
 
-	const displayGraph = (page, graphObject) => <Graph page={page} {...graphObject} size={32} nodeRadius={8} />
+	const displayGraph = (page, graphObject) => <Graph page={page} {...graphObject} />
 
 	return <PuzzlePage
 		puzzles={puzzles}

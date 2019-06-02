@@ -6,7 +6,7 @@ import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
 import Sequence from './PuzzleComponents/Sequence';
-import { getSequenceObject } from '../utils/getPuzzleObjects';
+import { getSequenceObject } from './puzzleLoaders';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
 
 

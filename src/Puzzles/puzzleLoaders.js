@@ -1,9 +1,11 @@
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8 }) {
-    const nodeObjects = nodes.map(([x, y]) => ({
+    const nodeObjects = nodes.map(([x, y, colour]) => ({
+        r,
         x: x * size,
         y: y * size,
-        r
+        colour,
+        fixed: Boolean(colour)
     }));
 
     const edgeObjects = edges.map(([n1, n2]) => {
@@ -23,6 +25,18 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=8 }) {
         nodes: nodeObjects,
         edges: edgeObjects
     };
+}
+
+// Given arrays of node coordinates and edge coordinates, return two objects of nodes and edges,
+// one includes the node colours and one is empty
+export function getTwoGraphObjects({ nodes=[], edges=[], size=32, r=8 }) {
+    const target = getGraphObject(nodes, edges, size, r);
+
+    // Remove the colours from the nodes
+    const blankNodes = nodes.map(([x, y]) => [x, y]);
+    const blankGraph = getGraphObject(blankNodes, edges, size, r);
+
+    return { target, blank: blankGraph };
 }
 
 export function getMapObject({ regions=[], connections=[], size=1 }) {

@@ -6,7 +6,7 @@ import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
 import Map from './PuzzleComponents/Map';
-import { getMapObject } from '../utils/getPuzzleObjects';
+import { getMapObject } from './puzzleLoaders';
 import { allItemsColoured, allConnectedItemsHaveDifferentColours } from '../utils/evaluationUtils';
 
 
