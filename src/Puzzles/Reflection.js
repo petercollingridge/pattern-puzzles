@@ -7,25 +7,36 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import Graph from './PuzzleComponents/Graph';
 import { getTwoGraphObjects } from './puzzleLoaders';
-import { allItemsColoured, allConnectedItemsHaveDifferentColours } from '../utils/evaluationUtils';
+import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
 
 
 const puzzles1 = [
 	{
+        size: 24,
 		colourPalette: 1,
-		nodes: [[0, 0, 1]]
+        nodes: [[0, 0, 1]],
+	}, {
+        size: 24,
+		colourPalette: 2,
+        nodes: [[0, -1, 1], [0, 1, 2]],
+        edges: [[0, 1]]
+	}, {
+        size: 24,
+		colourPalette: 2,
+        nodes: [[-1, 1, 1], [1, 1, 1], [-1, -1, 2]],
+        edges: [[0, 1]]
 	}
 ];
 
 const Reflection = ({ puzzles }) => {
-	const evaluate = ({ nodes, edges }) => 
-	    allItemsColoured(nodes) && allConnectedItemsHaveDifferentColours(edges);
+	const evaluate = (blank, { target }) => 
+	    allItemsColoured(blank.nodes) && sequencesMatch(blank.nodes, target.nodes);
 
 	const displayGraph = (page, {target, blank}) => <g>
         <g transform="translate(-50)">
             <Graph page={page} {...target} />
         </g>
-        <g transform="translate(50)">
+        <g transform="translate(50) scale(-1, 1)">
             <Graph page={page} {...blank} />
         </g>
     </g>
