@@ -46,15 +46,51 @@ const puzzles1 = [
 	}
 ];
 
-const Reflection = ({ puzzles }) => {
-	const evaluate = (blank, { target }) => 
-	    allItemsColoured(blank.nodes) && sequencesMatch(blank.nodes, target.nodes);
+const puzzles2 = [
+	{
+		colourPalette: 1,
+        nodes: [[0, 0, 1]],
+	}, {
+		colourPalette: 2,
+        nodes: [[0, 0.75, 1], [0, -0.75, 2]],
+        edges: [[0, 1]]
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 2, 1], 1, 30),
+        edges: getLoopOfEdges(3)
+	}, {
+		colourPalette: 3,
+        nodes: getNodesOnCircle([1, 2, 3]),
+        edges: getLoopOfEdges(3)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 1, 1, 2]),
+        edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 1, 2, 2]),
+        edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 2, 1, 2]),
+        edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 4,
+        nodes: getNodesOnCircle([1, 2, 3, 4]),
+        edges: getLoopOfEdges(4)
+	}
+];
+
+const Transformation = ({ puzzles, transform }) => {
+	const evaluate = (blank, { target }) => {
+		return allItemsColoured(blank.nodes) && sequencesMatch(blank.nodes, target.nodes, 'colour');
+	}
 
 	const displayGraph = (page, {target, blank}) => <g>
         <g transform="translate(-50)">
             <Graph page={page} {...target} />
         </g>
-        <g transform="translate(50) scale(-1, 1)">
+        <g transform={"translate(50) " + transform }>
             <Graph page={page} {...blank} />
         </g>
 
@@ -68,4 +104,6 @@ const Reflection = ({ puzzles }) => {
 		displayPuzzle={displayGraph} />;
 };
 
-export const Reflection1 = () => <Reflection puzzles={puzzles1} />
+export const Reflection1 = () => <Transformation puzzles={puzzles1} transform="scale(-1 1)"/>
+
+export const Rotation1 = () => <Transformation puzzles={puzzles2} transform="rotate(180)"/>

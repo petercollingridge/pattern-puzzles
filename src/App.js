@@ -13,8 +13,12 @@ import {
     ColourMap2
 } from './Puzzles/ColourMaps';
 
+import {
+    Reflection1,
+    Rotation1,
+} from './Puzzles/Transformations';
+
 import { RepeatingPatterns1 } from './Puzzles/RepeatingPatterns';
-import { Reflection1 } from './Puzzles/Reflection';
 
 import './base.css';
 import './puzzle.css';
@@ -31,6 +35,7 @@ export default () =>
             <Route path="/colour-maps-2" component={ColourMap2} />
             <Route path="/repeating-patterns-1" component={RepeatingPatterns1} />
             <Route path="/reflection-1" component={Reflection1} />
+            <Route path="/rotation-1" component={Rotation1} />
             <Route path="/" component={PuzzleMap} />
         </Switch>
     </Router>
