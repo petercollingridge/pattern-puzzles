@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TOOLBAR_R = 112;
+const TOOLBAR_R = 113;
 const DELTA_ANGLE = Math.PI / 20;
 
 const handleKeyDown = (evt, callback) => {

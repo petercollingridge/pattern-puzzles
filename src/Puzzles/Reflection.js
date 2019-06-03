@@ -7,24 +7,42 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import Graph from './PuzzleComponents/Graph';
 import { getTwoGraphObjects } from './puzzleLoaders';
+import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
 
 
 const puzzles1 = [
 	{
-        size: 24,
 		colourPalette: 1,
         nodes: [[0, 0, 1]],
 	}, {
-        size: 24,
 		colourPalette: 2,
-        nodes: [[0, -1, 1], [0, 1, 2]],
+        nodes: [[0, 0.75, 1], [0, -0.75, 2]],
         edges: [[0, 1]]
 	}, {
-        size: 24,
 		colourPalette: 2,
-        nodes: [[-1, 1, 1], [1, 1, 1], [-1, -1, 2]],
-        edges: [[0, 1]]
+        nodes: getNodesOnCircle([1, 2, 1], 1, 30),
+        edges: getLoopOfEdges(3)
+	}, {
+		colourPalette: 3,
+        nodes: getNodesOnCircle([1, 2, 3]),
+        edges: getLoopOfEdges(3)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 1, 1, 2]),
+        edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 1, 2, 2]),
+        edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 2, 1, 2]),
+        edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 4,
+        nodes: getNodesOnCircle([1, 2, 3, 4]),
+        edges: getLoopOfEdges(4)
 	}
 ];
 
@@ -39,6 +57,8 @@ const Reflection = ({ puzzles }) => {
         <g transform="translate(50) scale(-1, 1)">
             <Graph page={page} {...blank} />
         </g>
+
+        <line className="reflection-line" y1="-200" y2="200" />
     </g>
 
 	return <PuzzlePage
