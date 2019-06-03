@@ -10,6 +10,12 @@
     filter: url(#shadow-filter);
 }
 
+@media (max-aspect-ratio: 1/1) {
+    .toolbar {
+        transform: rotate(90deg);
+    }
+}
+
 .colour-palette {
     cursor: pointer;
     stroke-width: 0;
@@ -25,6 +31,7 @@
 .colour-palette:focus {
     outline: none;
     stroke-width: 3;
+    filter: url(#glow-filter);
 }
 
 .selected-colour-indicator {
@@ -48,7 +55,8 @@
     fill: currentColor;
 }
 
-.symmetry-line {
+.reflection-line {
+    stroke-width: 0.5;
     stroke: #222;
     stroke-dasharray: 2 2;
 }
