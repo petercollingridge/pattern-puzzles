@@ -9,7 +9,7 @@ export function getNodesOnCircle(colours, r, offset) {
 
     var nodes = [];
     var dAngle = 2 * Math.PI / n;
-    var angle = (offset || 0) - 0.5 * dAngle;
+    var angle = (offset * Math.PI / 180 || 0) - 0.5 * dAngle;
     r = r || 1
 
     for (var i = 0; i < n; i++) {
