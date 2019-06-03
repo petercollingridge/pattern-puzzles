@@ -22,8 +22,13 @@ const Reflection = ({ puzzles }) => {
 	    allItemsColoured(nodes) && allConnectedItemsHaveDifferentColours(edges);
 
 	const displayGraph = (page, {target, blank}) => <g>
+        <g transform="translate(-50)">
             <Graph page={page} {...target} />
         </g>
+        <g transform="translate(50)">
+            <Graph page={page} {...blank} />
+        </g>
+    </g>
 
 	return <PuzzlePage
 		puzzles={puzzles}
