@@ -13,6 +13,29 @@ import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
 
 const puzzles1 = [
 	{
+		colourPalette: 1,
+        nodes: [[0, 0, 1]]
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 2]),
+        edges: getLoopOfEdges(2)
+	}, {
+		colourPalette: 2,
+        nodes: [[-1, 0, 1], [0, 0, 2], [1, 0, 1]],
+        edges: [[0, 1], [1, 2]]
+	}, {
+		colourPalette: 3,
+        nodes: getNodesOnCircle([1, 2, 3], {offsetAngle: 30}),
+        edges: getLoopOfEdges(3)
+	}, {
+		colourPalette: 4,
+        nodes: getNodesOnCircle([1, 2, 3, 4]),
+        edges: getLoopOfEdges(4)
+	}
+];
+
+const puzzles2 = [
+	{
 		colourPalette: 2,
         nodes: getNodesOnCircle([1, 2, 1], {offsetAngle: 30}),
         edges: getLoopOfEdges(3)
@@ -51,7 +74,7 @@ const puzzles1 = [
 	}
 ];
 
-const puzzles2 = [
+const puzzles3 = [
 	{
 		colourPalette: 2,
         nodes: getNodesOnCircle([1, 1, 2], { dy: 0.25 }),
@@ -114,6 +137,8 @@ const Transformation = ({ puzzles, transform }) => {
 		displayPuzzle={displayGraph} />;
 };
 
-export const Reflection1 = () => <Transformation puzzles={puzzles1} transform="scale(-1 1)"/>
+export const Identity1 = () => <Transformation puzzles={puzzles1} transform=""/>
 
-export const Rotation1 = () => <Transformation puzzles={puzzles2} transform="rotate(180)"/>
+export const Reflection1 = () => <Transformation puzzles={puzzles2} transform="scale(-1 1)"/>
+
+export const Rotation1 = () => <Transformation puzzles={puzzles3} transform="rotate(180)"/>
