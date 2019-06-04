@@ -24,17 +24,19 @@ import './base.css';
 import './Icons/icons.css';
 
 
+const BASE_URL = '/pattern-puzzles';
+
 export default () =>
     <Router>
         <Switch>
-            <Route path="/colour-graphs-1" component={ColourGraph1} />
-            <Route path="/colour-graphs-2" component={ColourGraph2} />
-            <Route path="/colour-graphs-3" component={ColourGraph3} />
-            <Route path="/colour-maps-1" component={ColourMap1} />
-            <Route path="/colour-maps-2" component={ColourMap2} />
-            <Route path="/repeating-patterns-1" component={RepeatingPatterns1} />
-            <Route path="/reflection-1" component={Reflection1} />
-            <Route path="/rotation-1" component={Rotation1} />
-            <Route path="/" component={PuzzleMap} />
+            <Route path={`${BASE_URL}/colour-graphs-1`} component={ColourGraph1} />
+            <Route path={`${BASE_URL}/colour-graphs-2`} component={ColourGraph2} />
+            <Route path={`${BASE_URL}/colour-graphs-3`} component={ColourGraph3} />
+            <Route path={`${BASE_URL}/colour-maps-1`} component={ColourMap1} />
+            <Route path={`${BASE_URL}/colour-maps-2`} component={ColourMap2} />
+            <Route path={`${BASE_URL}/repeating-patterns-1`} component={RepeatingPatterns1} />
+            <Route path={`${BASE_URL}/reflection-1`} component={Reflection1} />
+            <Route path={`${BASE_URL}/rotation-1`} component={Rotation1} />
+            <Route path={`${BASE_URL}/`} component={PuzzleMap} />
         </Switch>
     </Router>

@@ -48,7 +48,7 @@ export default class PuzzlePage extends React.Component {
                 </svg>
             </div>
         } else {
-            return <Link to="/" className="menu-button next-puzzle-button" aria-label="Puzzle completed">
+            return <Link to="/pattern-puzzles/" className="menu-button next-puzzle-button" aria-label="Puzzle completed">
                 <svg viewBox="-10 -10 20 20">
                     <circle r="9" />
                 </svg>
@@ -87,7 +87,7 @@ export default class PuzzlePage extends React.Component {
 
         return <main>
             <nav>
-                <Link to="/" className="menu-button back-button" aria-label="Back to menu">
+                <Link to="/pattern-puzzles/" className="menu-button back-button" aria-label="Back to menu">
                     <svg viewBox="-10 -10 20 20">
                         <circle r="9" />
                     </svg>

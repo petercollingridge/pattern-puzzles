@@ -12,7 +12,7 @@ export default () =>
                 puzzles.map((section, i) =>
                     <div className="puzzle-section" key={i}>{
                         section.map(
-                            ({ slug, icon }) => <Link className="map-link" key={slug} to={'/' + slug}>
+                            ({ slug, icon }) => <Link className="map-link" key={slug} to={'/pattern-puzzles/' + slug}>
                                 { icon }
                             </Link>
                         )
