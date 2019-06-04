@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Reflection1 = () => <svg viewBox="-50 -50 100 100">
+export const ReflectionIcon1 = () => <svg viewBox="-50 -50 100 100">
     <defs>
         <g id="reflection-1-puzzle">
             <g className="graph-edges">
@@ -23,7 +23,7 @@ export const Reflection1 = () => <svg viewBox="-50 -50 100 100">
     <use href="#reflection-1-puzzle" transform="translate(20) scale(-1, 1)"/>
 </svg>
 
-export const Rotation1 = () => <svg viewBox="-50 -50 100 100">
+export const RotationIcon1 = () => <svg viewBox="-50 -50 100 100">
     <defs>
         <g id="rotation-1-puzzle">
             <g className="graph-edges">
