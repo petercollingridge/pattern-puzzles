@@ -85,12 +85,12 @@ const puzzles2 = [
     }, {
         colourPalette: 3,
         scale: 24,
-        nodes: getNodesOnCircle(3).concat(getNodesOnCircle(3, 2, 60)),
+        nodes: getNodesOnCircle(3).concat(getNodesOnCircle(3, { r: 2, offsetAngle: 60 })),
         edges: getLoopOfEdges(3).concat([[0, 3], [1, 3], [1, 4], [2, 4], [0, 5], [2, 5]]),
     }, {
         colourPalette: 3,
         scale: 16,
-        nodes: getNodesOnCircle(3).concat(getNodesOnCircle(3, 4, 60)),
+        nodes: getNodesOnCircle(3).concat(getNodesOnCircle(3, { r: 4, offsetAngle: 60 })),
         edges: getLoopOfEdges(3)
             .concat(getLoopOfEdges(3, 5))
             .concat([[0, 3], [1, 3], [1, 4], [2, 4], [0, 5], [2, 5]]),

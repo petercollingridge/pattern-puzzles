@@ -1,4 +1,4 @@
-export function getNodesOnCircle(colours, r, offset) {
+export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
     var n;
     if (Array.isArray(colours)) {
         n = colours.length;
@@ -9,13 +9,12 @@ export function getNodesOnCircle(colours, r, offset) {
 
     var nodes = [];
     var dAngle = 2 * Math.PI / n;
-    var angle = (offset * Math.PI / 180 || 0) - 0.5 * dAngle;
-    r = r || 1
+    var angle = (offsetAngle * Math.PI / 180 || 0) - 0.5 * dAngle;
 
     for (var i = 0; i < n; i++) {
         nodes.push([
-            r * Math.sin(angle),
-            r * Math.cos(angle),
+            dx + r * Math.sin(angle),
+            dy + r * Math.cos(angle),
             colours[i]
         ]);
         angle += dAngle;

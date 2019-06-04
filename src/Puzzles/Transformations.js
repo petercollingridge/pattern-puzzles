@@ -14,15 +14,15 @@ import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
 const puzzles1 = [
 	{
 		colourPalette: 2,
-        nodes: getNodesOnCircle([1, 2, 1], 1, 30),
+        nodes: getNodesOnCircle([1, 2, 1], {offsetAngle: 30}),
         edges: getLoopOfEdges(3)
 	}, {
 		colourPalette: 2,
-        nodes: getNodesOnCircle([1, 2, 2], 1, 30),
+        nodes: getNodesOnCircle([1, 2, 2], {offsetAngle: 30}),
         edges: getLoopOfEdges(3)
 	}, {
 		colourPalette: 3,
-        nodes: getNodesOnCircle([1, 2, 3], 1, 30),
+        nodes: getNodesOnCircle([1, 2, 3], {offsetAngle: 30}),
         edges: getLoopOfEdges(3)
 	}, {
 		colourPalette: 3,
@@ -53,15 +53,8 @@ const puzzles1 = [
 
 const puzzles2 = [
 	{
-		colourPalette: 1,
-        nodes: [[0, 0, 1]],
-	}, {
 		colourPalette: 2,
-        nodes: [[0, 0.75, 1], [0, -0.75, 2]],
-        edges: [[0, 1]]
-	}, {
-		colourPalette: 2,
-        nodes: getNodesOnCircle([1, 2, 1], 1, 30),
+        nodes: getNodesOnCircle([1, 1, 2], {dy: 0.25}),
         edges: getLoopOfEdges(3)
 	}, {
 		colourPalette: 3,
