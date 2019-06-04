@@ -54,24 +54,36 @@ const puzzles1 = [
 const puzzles2 = [
 	{
 		colourPalette: 2,
-        nodes: getNodesOnCircle([1, 1, 2], {dy: 0.25}),
-        edges: getLoopOfEdges(3)
-	}, {
-		colourPalette: 3,
-        nodes: getNodesOnCircle([1, 2, 3]),
-        edges: getLoopOfEdges(3)
+        nodes: getNodesOnCircle([1, 1, 2], { dy: 0.25 }),
+		edges: getLoopOfEdges(3)
 	}, {
 		colourPalette: 2,
-        nodes: getNodesOnCircle([1, 1, 1, 2]),
-        edges: getLoopOfEdges(4)
+        nodes: getNodesOnCircle([1, 2], { offsetAngle: 90 }),
+		edges: getLoopOfEdges(2)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 2]),
+		edges: getLoopOfEdges(2)
 	}, {
 		colourPalette: 2,
         nodes: getNodesOnCircle([1, 1, 2, 2]),
-        edges: getLoopOfEdges(4)
+		edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 1, 1, 2]),
+		edges: getLoopOfEdges(4)
 	}, {
 		colourPalette: 2,
         nodes: getNodesOnCircle([1, 2, 1, 2]),
         edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 2, 2], { dy: 0.25 }),
+        edges: getLoopOfEdges(3)
+	}, {
+		colourPalette: 3,
+        nodes: getNodesOnCircle([1, 2, 3], { dy: 0.25 }),
+		edges: getLoopOfEdges(3)
 	}, {
 		colourPalette: 4,
         nodes: getNodesOnCircle([1, 2, 3, 4]),
