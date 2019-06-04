@@ -9,8 +9,8 @@ const COLOURS = [
     'rgb(30, 20, 20)',
     'rgb(20, 146, 196)',
     'rgb(196, 20, 96)',
-    'rgb(147, 20, 198)',
     'rgb(20, 198, 96)',
+    'rgb(147, 20, 198)',
 ];
 
 export default class PuzzlePage extends React.Component {
