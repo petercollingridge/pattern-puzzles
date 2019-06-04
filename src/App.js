@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import PuzzleMap from './PuzzleMap';
+import PuzzleMap from './PuzzleMap/PuzzleMap';
 import {
     ColourGraph1,
     ColourGraph2,
@@ -21,7 +21,6 @@ import {
 import { RepeatingPatterns1 } from './Puzzles/RepeatingPatterns';
 
 import './base.css';
-import './puzzle.css';
 import './Icons/icons.css';
 
 

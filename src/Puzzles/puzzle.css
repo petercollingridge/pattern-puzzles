@@ -55,6 +55,16 @@
     fill: currentColor;
 }
 
+#puzzle.colour-selected .empty-region:hover {
+    cursor: pointer;
+    fill: currentColor;
+}
+
+#puzzle .graph-nodes {
+    stroke-width: 1;
+    stroke: #fff;
+}
+
 .reflection-line {
     stroke-width: 0.5;
     stroke: #222;
