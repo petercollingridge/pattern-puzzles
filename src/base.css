@@ -26,19 +26,19 @@ main {
 }
 
 .colour-3 {
-  color: rgb(147, 20, 198);
+  color: rgb(20, 196, 96);
 }
 
 .fill-3 {
-  fill: rgb(147, 20, 198);
+  fill: rgb(20, 196, 96);
 }
 
 .colour-4 {
-  color: rgb(20, 198, 95);
+    color: rgb(147, 20, 198);
 }
-
+  
 .fill-4 {
-  fill: rgb(20, 198, 95);
+    fill: rgb(147, 20, 198);
 }
 
 .menu-button {
@@ -72,4 +72,14 @@ main {
 .next-puzzle-button {
   right: 8px;
   top: 8px;
+}
+
+.graph-edges {
+    stroke-width: 3;
+    stroke: #666;
+}
+
+.symmetry-line {
+    stroke: #222;
+    stroke-dasharray: 2 2;
 }

@@ -12,13 +12,3 @@
     cursor: pointer;
     fill: currentColor;
 }
-
-.graph-edges {
-    stroke-width: 3;
-    stroke: #666;
-}
-
-.symmetry-line {
-    stroke: #222;
-    stroke-dasharray: 2 2;
-}

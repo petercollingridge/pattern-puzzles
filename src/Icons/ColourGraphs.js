@@ -8,11 +8,11 @@ export const ColourGraphIcon1 = () => <svg viewBox="-50 -50 100 100">
         <line x1="-20" y1="20" x2="20" y2="-20" />
     </g>
     <g className="graph-nodes">
-        <circle color="rgb(20, 146, 196)" cx="-20" cy="-20" r="8" />
-        <circle color="rgb(196, 20, 96)" cx="-20" cy="20" r="8" />
-        <circle color="rgb(20, 146, 196)" cx="20" cy="20" r="8" />
-        <circle color="rgb(196, 20, 96)" cx="20" cy="-20" r="8" />
-        <circle color="rgb(147, 20, 198)" cx="0" cy="0" r="8" />
+        <circle className="colour-1" cx="-20" cy="-20" r="8" />
+        <circle className="colour-2" cx="-20" cy="20" r="8" />
+        <circle className="colour-1" cx="20" cy="20" r="8" />
+        <circle className="colour-2" cx="20" cy="-20" r="8" />
+        <circle className="colour-3" cx="0" cy="0" r="8" />
     </g>
 </svg>
 
@@ -25,12 +25,12 @@ export const ColourGraphIcon2 = () => <svg viewBox="-50 -50 100 100">
         <line x1="32" y1="-16" x2="0" y2="16" />
     </g>
     <g className="graph-nodes">
-        <circle color="rgb(20, 146, 196)" cx="-32" cy="-16" r="8" />
-        <circle color="rgb(196, 20, 96)" cx="0" cy="-16" r="8" />
-        <circle color="rgb(20, 146, 196)" cx="32" cy="-16" r="8" />
-        <circle color="rgb(196, 20, 96)" cx="32" cy="16" r="8" />
-        <circle color="rgb(147, 20, 198)" cx="0" cy="16" r="8" />
-        <circle color="rgb(196, 20, 96)" cx="-32" cy="16" r="8" />
+        <circle className="colour-1" cx="-32" cy="-16" r="8" />
+        <circle className="colour-2" cx="0" cy="-16" r="8" />
+        <circle className="colour-1" cx="32" cy="-16" r="8" />
+        <circle className="colour-2" cx="32" cy="16" r="8" />
+        <circle className="colour-3" cx="0" cy="16" r="8" />
+        <circle className="colour-2" cx="-32" cy="16" r="8" />
     </g>
 </svg>
 
@@ -44,11 +44,11 @@ export const ColourGraphIcon3 = () => <svg viewBox="-50 -50 100 100">
         <line x1="-32" y1="0" x2="32" y2="0" />
     </g>
     <g className="graph-nodes">
-        <circle color="rgb(20, 146, 196)" cx="32" cy="0" r="8" />
-        <circle color="rgb(147, 20, 198)" cx="16" cy="27.71" r="8" />
-        <circle color="rgb(196, 20, 96)" cx="-16" cy="27.71" r="8" />
-        <circle color="rgb(147, 20, 198)" cx="-32" cy="0" r="8" />
-        <circle color="rgb(20, 146, 196)" cx="-16" cy="-27.71" r="8" />
-        <circle color="rgb(196, 20, 96)" cx="16" cy="-27.71" r="8" />
+        <circle className="colour-1" cx="32" cy="0" r="8" />
+        <circle className="colour-2" cx="16" cy="27.71" r="8" />
+        <circle className="colour-3" cx="-16" cy="27.71" r="8" />
+        <circle className="colour-2" cx="-32" cy="0" r="8" />
+        <circle className="colour-1" cx="-16" cy="-27.71" r="8" />
+        <circle className="colour-3" cx="16" cy="-27.71" r="8" />
     </g>
 </svg>

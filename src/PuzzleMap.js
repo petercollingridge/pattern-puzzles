@@ -11,8 +11,11 @@ import {
     ColourMapIcon1,
     ColourMapIcon2,
 } from './Icons/ColourMaps';
+import {
+    Reflection1,
+    Rotation1
+} from './Icons/Transformations';
 import { RepeatingPatternsIcon1 } from './Icons/RepeatingPatterns';
-import { Reflection1 } from './Icons/Transformations';
 
 import './puzzleMap.css';
 
@@ -26,7 +29,8 @@ const puzzles = [
         ['colour-maps-1', <ColourMapIcon1/>],
         ['colour-maps-2', <ColourMapIcon2/>],
     ], [
-        ['reflection-1', <Reflection1/>]
+        ['reflection-1', <Reflection1/>],
+        ['rotation-1', <Rotation1/>],
     ], [
         ['repeating-patterns-1', <RepeatingPatternsIcon1/>]
     ],
