@@ -1,5 +1,30 @@
 import React from 'react';
 
+export const IdentityIcon1 = () => <svg viewBox="-50 -50 100 100">
+    <defs>
+        <g id="identity-1-puzzle">
+            <g className="graph-edges">
+                <line x1="-15" y1="13" x2="0" y2="-13" />
+                <line x1="-15" y1="13" x2="15" y2="13" />
+                <line x1="0" y1="-13" x2="15" y2="13" />
+            </g>
+            <g className="graph-nodes">
+                <circle className="colour-1" cx="-15" cy="13" r="5" />
+                <circle className="colour-2" cx="0" cy="-13" r="5" />
+                <circle className="colour-3" cx="15" cy="13" r="5" />
+            </g>
+        </g>
+    </defs>
+
+    <circle className="spotlight" cx="0" cy="0" r="49" />
+    <line className="reflection-line" y1="-50" y2="50" />
+
+    <use href="#identity-1-puzzle" transform="translate(-24, -4)"/>
+    <use href="#identity-1-puzzle" transform="translate(24, -4)"/>
+</svg>
+
+
+
 export const ReflectionIcon1 = () => <svg viewBox="-50 -50 100 100">
     <defs>
         <g id="reflection-1-puzzle">

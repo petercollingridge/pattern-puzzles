@@ -11,7 +11,7 @@ import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
 
 
-const puzzles1 = [
+const identity1 = [
 	{
 		colourPalette: 1,
         nodes: [[0, 0, 1]]
@@ -28,13 +28,27 @@ const puzzles1 = [
         nodes: getNodesOnCircle([1, 2, 3], {offsetAngle: 30}),
         edges: getLoopOfEdges(3)
 	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([1, 2, 1, 2]),
+        edges: getLoopOfEdges(4)
+	}, {
 		colourPalette: 4,
         nodes: getNodesOnCircle([1, 2, 3, 4]),
         edges: getLoopOfEdges(4)
-	}
+	}, {
+        size: 24,
+        colourPalette: 3,
+        nodes: [[-1, -1, 1], [1, -1, 1], [-0.5, 0, 2], [0.5, 0, 3], [-1, 1, 3], [1, 1, 2]],
+        edges: [[0, 2], [2, 3], [3, 1], [2, 4], [3, 5]]
+    }, {
+        size: 24,
+        colourPalette: 3,
+        nodes: [[-1.5, -1, 1], [-0.5, -1, 2], [0.5, -1, 1], [-0.5, 0, 1], [0.5, 0, 3], [-0.5, 1, 3], [0.5, 1, 4], [1.5, 1, 3]],
+        edges: [[0, 1], [1, 2], [1, 3], [3, 4], [4, 6], [5, 6], [6, 7]]
+    }
 ];
 
-const puzzles2 = [
+const reflection1 = [
 	{
 		colourPalette: 2,
         nodes: getNodesOnCircle([1, 2, 1], {offsetAngle: 30}),
@@ -74,7 +88,7 @@ const puzzles2 = [
 	}
 ];
 
-const puzzles3 = [
+const rotation1 = [
 	{
 		colourPalette: 2,
         nodes: getNodesOnCircle([1, 1, 2], { dy: 0.25 }),
@@ -137,8 +151,8 @@ const Transformation = ({ puzzles, transform }) => {
 		displayPuzzle={displayGraph} />;
 };
 
-export const Identity1 = () => <Transformation puzzles={puzzles1} transform=""/>
+export const Identity1 = () => <Transformation puzzles={identity1} transform=""/>
 
-export const Reflection1 = () => <Transformation puzzles={puzzles2} transform="scale(-1 1)"/>
+export const Reflection1 = () => <Transformation puzzles={reflection1} transform="scale(-1 1)"/>
 
-export const Rotation1 = () => <Transformation puzzles={puzzles3} transform="rotate(180)"/>
+export const Rotation1 = () => <Transformation puzzles={rotation1} transform="rotate(180)"/>
