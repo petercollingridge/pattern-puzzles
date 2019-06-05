@@ -1,3 +1,8 @@
+/***
+ * These functions take the raw puzzle data and return an object that can used to
+ * display the puzzle and determine when the correct answer is found
+***/
+
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8 }) {
     const nodeObjects = nodes.map(([x, y, colour]) => ({
@@ -75,4 +80,20 @@ export function getSequenceObject({ pattern, answer }) {
     ));
 
     return { sequence, target };
+}
+
+// Return an array of category object which have a colour, and an object to display
+export function getCategoryObjects({ categories }) {
+    const categoryObjects = [];
+    
+    categories.forEach((items, i) => {
+        items.forEach(item => {
+            categoryObjects.push({
+                category: i + 1,
+                item: getGraphObject(item)
+            });
+        });
+    });
+
+    return categoryObjects;
 }

@@ -131,7 +131,7 @@ const rotation1 = [
 const Transformation = ({ puzzles, transform }) => {
 	const evaluate = (blank, { target }) => {
 		return allItemsColoured(blank.nodes) && sequencesMatch(blank.nodes, target.nodes, 'colour');
-	}
+	};
 
 	const displayGraph = (page, {target, blank}) => <g>
         <g transform="translate(-50)">

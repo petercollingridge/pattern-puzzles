@@ -1,17 +1,14 @@
 export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
-    var n;
-    if (Array.isArray(colours)) {
-        n = colours.length;
-    } else {
-        n = colours;
-        colours = new Array(n);
+    if (!Array.isArray(colours)) {
+        colours = new Array(colours);
     }
 
-    var nodes = [];
-    var dAngle = 2 * Math.PI / n;
-    var angle = (offsetAngle * Math.PI / 180 || 0) - 0.5 * dAngle;
+    const n = colours.length;
+    const nodes = [];
+    const dAngle = 2 * Math.PI / n;
+    let angle = (offsetAngle * Math.PI / 180 || 0) - 0.5 * dAngle;
 
-    for (var i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         nodes.push([
             dx + r * Math.sin(angle),
             dy + r * Math.cos(angle),
@@ -35,4 +32,21 @@ export function getLoopOfEdges(start, stop) {
     }
     edges.push([start, stop]);
     return edges;
+}
+
+export function getLinearGraph(colours, scale=1) {
+    if (!Array.isArray(colours)) {
+        colours = new Array(colours);
+    }
+
+    const n = colours.length;
+    const startX = - (n - 1) * scale / 2;
+    const nodes = colours.map((colour, i) => [startX + i * scale, 0, colour])
+    const edges = [];
+
+    for (let i = 1; i < n; i++) {
+        edges.push([i - 1, i]);
+    }
+
+    return { nodes, edges };
 }
