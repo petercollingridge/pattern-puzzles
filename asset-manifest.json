@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pattern-puzzles/static/css/main.bc3bf8ea.chunk.css",
-    "main.js": "/pattern-puzzles/static/js/main.ed780c2d.chunk.js",
-    "main.js.map": "/pattern-puzzles/static/js/main.ed780c2d.chunk.js.map",
+    "main.js": "/pattern-puzzles/static/js/main.ec01b8dd.chunk.js",
+    "main.js.map": "/pattern-puzzles/static/js/main.ec01b8dd.chunk.js.map",
     "runtime~main.js": "/pattern-puzzles/static/js/runtime~main.a3a9515e.js",
     "runtime~main.js.map": "/pattern-puzzles/static/js/runtime~main.a3a9515e.js.map",
     "static/js/2.d6a4cfa4.chunk.js": "/pattern-puzzles/static/js/2.d6a4cfa4.chunk.js",
     "static/js/2.d6a4cfa4.chunk.js.map": "/pattern-puzzles/static/js/2.d6a4cfa4.chunk.js.map",
     "index.html": "/pattern-puzzles/index.html",
-    "precache-manifest.21bf1bd6f4a17d54500d2d6e84c154f1.js": "/pattern-puzzles/precache-manifest.21bf1bd6f4a17d54500d2d6e84c154f1.js",
+    "precache-manifest.f7118655b641db0d4bba0094532e33f2.js": "/pattern-puzzles/precache-manifest.f7118655b641db0d4bba0094532e33f2.js",
     "service-worker.js": "/pattern-puzzles/service-worker.js",
     "static/css/main.bc3bf8ea.chunk.css.map": "/pattern-puzzles/static/css/main.bc3bf8ea.chunk.css.map"
   }

@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "318e28fbe439459a90219f554215fcaf",
+    "revision": "93bde4faf3e2a14259d15dafb89b59ef",
     "url": "/pattern-puzzles/index.html"
   },
   {
-    "revision": "33824648776cd9649626",
+    "revision": "0d744dfaed302f99a56e",
     "url": "/pattern-puzzles/static/css/main.bc3bf8ea.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pattern-puzzles/static/js/2.d6a4cfa4.chunk.js"
   },
   {
-    "revision": "33824648776cd9649626",
-    "url": "/pattern-puzzles/static/js/main.ed780c2d.chunk.js"
+    "revision": "0d744dfaed302f99a56e",
+    "url": "/pattern-puzzles/static/js/main.ec01b8dd.chunk.js"
   },
   {
     "revision": "e30b49739cd196546000",
