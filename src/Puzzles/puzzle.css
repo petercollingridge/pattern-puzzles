@@ -60,8 +60,18 @@
     fill: currentColor;
 }
 
-#puzzle .graph-nodes {
+.graph .graph-nodes {
     stroke-width: 1;
+    stroke: #fff;
+}
+
+.graph .graph-edges {
+    stroke-width: 3;
+    stroke: #666;
+}
+
+.graph .edge-outline {
+    stroke-width: 4;
     stroke: #fff;
 }
 
