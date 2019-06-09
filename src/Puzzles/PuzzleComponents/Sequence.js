@@ -1,5 +1,5 @@
 import React from 'react';
-import { getItemColourType } from './utils';
+import { getColourClassName } from './utils';
 
 
 export default class Map extends React.Component {
@@ -33,8 +33,9 @@ export default class Map extends React.Component {
 
         return <g className="sequence">
             { sequence.map((item, i) => {
+                // TODO: Update this
                 const colourNode = () => this.colourNode(i);
-                const {className, onClick } = getItemColourType(item, colourNode);
+                const {className, onClick } = getColourClassName(item, colourNode);
 
                 return <rect
                     key={i}

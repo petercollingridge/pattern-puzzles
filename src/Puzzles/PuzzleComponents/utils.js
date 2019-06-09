@@ -1,9 +1,7 @@
-export function getItemColourType(item, colourItem) {
+export function getColourClassName(item) {
     let className;
-    let onClick;
 
     if (!item.fixed) {
-        onClick = colourItem;
         className = "colourable ";
         if (item.colour) {
             className += `fill-${item.colour}`;
@@ -14,5 +12,5 @@ export function getItemColourType(item, colourItem) {
         className = `fill-${item.colour}`;
     }
 
-    return { className, onClick };
+    return className;
 }
