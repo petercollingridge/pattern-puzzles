@@ -7,7 +7,7 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import Sequence from './PuzzleComponents/Sequence';
 import { getSequenceObject } from './puzzleLoaders';
-import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
+import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
 
 
 const puzzles1 = [

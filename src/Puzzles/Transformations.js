@@ -5,10 +5,10 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import Graph from './PuzzleComponents/Graph';
+import { Graph } from './PuzzleComponents/Graph';
 import { getTwoGraphObjects } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
-import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
+import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
 
 
 const identity1 = [
