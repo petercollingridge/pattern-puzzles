@@ -5,8 +5,8 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import { Graph } from './PuzzleComponents/Graph';
-import { getTwoGraphObjects } from './puzzleLoaders';
+import { Graph, colourableGraph } from './PuzzleComponents/Graph';
+import { getGraphAndUncolouredCopy } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
 
@@ -128,17 +128,19 @@ const rotation1 = [
 	}
 ];
 
-const Transformation = ({ puzzles, transform }) => {
-	const evaluate = (blank, { target }) => {
-		return allItemsColoured(blank.nodes) && sequencesMatch(blank.nodes, target.nodes, 'colour');
-	};
+// Check the blank graph looks like the target
+const evaluate = ({ blank, target }) => {
+	return allItemsColoured(blank.nodes) &&
+		sequencesMatch(blank.nodes, target.nodes, 'colour');
+};
 
-	const displayGraph = (page, {target, blank}) => <g>
+const Transformation = ({ puzzles, transform }) => {
+	const displayGraphs = (page, {target, blank}) => <g>
         <g transform="translate(-50)">
             <Graph page={page} {...target} />
         </g>
         <g transform={"translate(50) " + transform }>
-            <Graph page={page} {...blank} />
+            <colourableGraph page={page} {...blank} />
         </g>
 
         <line className="reflection-line" y1="-200" y2="200" />
@@ -147,8 +149,8 @@ const Transformation = ({ puzzles, transform }) => {
 	return <PuzzlePage
 		puzzles={puzzles}
 		evaluate={evaluate}
-		getPuzzleObject={getTwoGraphObjects}
-		displayPuzzle={displayGraph} />;
+		getPuzzleObject={getGraphAndUncolouredCopy}
+		displayPuzzle={displayGraphs} />
 };
 
 export const Identity1 = () => <Transformation puzzles={identity1} transform=""/>

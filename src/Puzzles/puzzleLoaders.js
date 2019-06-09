@@ -34,7 +34,7 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=8 }) {
 
 // Given arrays of node coordinates and edge coordinates, return two objects of nodes and edges,
 // one includes the node colours and one is empty
-export function getTwoGraphObjects({ nodes=[], edges=[], size=32, r=8 }) {
+export function getGraphAndUncolouredCopy({ nodes=[], edges=[], size=32, r=8 }) {
     const target = getGraphObject({ nodes, edges, size, r });
 
     // Remove the colours from the nodes

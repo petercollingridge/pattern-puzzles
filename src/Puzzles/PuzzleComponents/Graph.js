@@ -1,9 +1,9 @@
 import React from 'react';
 import { Line } from './Primitives';
-import { getItemColourType } from './utils';
+import { getColourClassName } from './utils';
 
 
-export const Graph = ({ edges, nodes, clickToColour }) =>
+export const Graph = ({ edges, nodes, colourNode }) =>
     <g className="graph">
         <g className="graph-edges">
             { edges.map((edge, i) =>
@@ -16,12 +16,13 @@ export const Graph = ({ edges, nodes, clickToColour }) =>
 
         <g className="graph-nodes">
             { nodes.map((node, i) => {
-                const colourNode = () => clickToColour(i);
-                const { className, onClick } = getItemColourType(node, colourNode);
+                const onClick = colourNode && !node.fixed ?
+                    () => colourNode(i):
+                    null;
 
                 return <circle
                     key={i}
-                    className={className}
+                    className={getColourClassName(node)}
                     cx={node.x}
                     cy={node.y}
                     r={node.r}
@@ -31,16 +32,13 @@ export const Graph = ({ edges, nodes, clickToColour }) =>
         </g>
     </g>
 
-
-export const colourableGraph = (page) => {
-    // Click nodes colours them with the page's selectedColour
-    const clickToColour = (nodeIndex) => {
-        const { puzzle, selectedColour } = page.state;
-        if (selectedColour) {
-            puzzle.nodes[nodeIndex].colour = selectedColour;
-            page.update(puzzle);
+// Get a graph with nodes that can be clicked to colour them with the page's selected colour
+export const getColourableGraph = getNode => 
+    ({puzzle, selectedColour}, update) => {
+        const colourNode = nodeIndex => {
+            getNode(puzzle, nodeIndex).colour = selectedColour;
+            update(puzzle);
         }
-    };
-    
-    return <Graph clickToColour={clickToColour} {...page.state.puzzle}/>
-};
+
+        return <Graph {...puzzle} colourNode={colourNode}/>
+    }
