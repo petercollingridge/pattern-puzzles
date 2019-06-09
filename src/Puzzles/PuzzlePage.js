@@ -29,31 +29,16 @@ export default class PuzzlePage extends React.Component {
     }
 
     componentDidMount() {
+        // Load the first puzzle
         this.getPuzzle(0);
     }
 
-    update(childState) {
+    getPuzzle(index) {
+        const { getPuzzleObject, puzzles } = this.props;
         this.setState({
-            solved: this.props.evaluate(childState, this.state.puzzle)
+            puzzle: getPuzzleObject(puzzles[index]),
+            colourPalette: puzzles[index].colourPalette
         });
-    }
-
-    getNextPuzzleButton() {
-        if (!this.state.solved) { return null; }
-
-        if (this.state.index < this.props.puzzles.length - 1) {
-            return <div className="menu-button next-puzzle-button" aria-label="Next puzzle">
-                <svg viewBox="-10 -10 20 20">
-                    <circle r="9" onClick={this.nextPuzzle}/>
-                </svg>
-            </div>
-        } else {
-            return <Link to="/pattern-puzzles/" className="menu-button next-puzzle-button" aria-label="Puzzle completed">
-                <svg viewBox="-10 -10 20 20">
-                    <circle r="9" />
-                </svg>
-            </Link>
-        }
     }
 
     nextPuzzle() {
@@ -66,20 +51,36 @@ export default class PuzzlePage extends React.Component {
         this.getPuzzle(nextState);
     }
 
-    getPuzzle(index) {
-        const { getPuzzleObject, puzzles } = this.props;
-        this.setState({
-            puzzle: getPuzzleObject(puzzles[index])
-        });
+    // Child element has updated so evaluate to see if puzzle has been solved
+    update(puzzle) {
+        const solved = this.props.evaluate(puzzle)
+        this.setState({ puzzle, solved });
+    }
+
+    getNextPuzzleButton() {
+        // Only show button if the puzzle has been solved
+        if (!this.state.solved) { return null; }
+
+        if (this.state.index < this.props.puzzles.length - 1) {
+            // Button to go to the next puzzle
+            return <div className="menu-button next-puzzle-button" aria-label="Next puzzle">
+                <svg viewBox="-10 -10 20 20">
+                    <circle r="9" onClick={this.nextPuzzle}/>
+                </svg>
+            </div>
+        } else {
+            // Button to go back to the home page
+            return <Link to="/pattern-puzzles/" className="menu-button next-puzzle-button" aria-label="Puzzle completed">
+                <svg viewBox="-10 -10 20 20">
+                    <circle r="9" />
+                </svg>
+            </Link>
+        }
     }
 
     render() {
-        const { puzzles, displayPuzzle } = this.props;
-        const { index, selectedColour, puzzle } = this.state;
+        const { index, puzzle, selectedColour, colourPalette } = this.state;
         if (!puzzle) { return null; }
-
-        const colourPalette = puzzles[index].colourPalette;
-        const puzzleElement = displayPuzzle(this, puzzle);
 
         // Determine what the selected colour is if we have selected one
         const style = selectedColour ? { color: COLOURS[selectedColour] } : {};
@@ -113,7 +114,7 @@ export default class PuzzlePage extends React.Component {
                 </defs>
 
                 <g id="puzzle" key={index} className={className} style={style}>
-                    { puzzleElement }
+                    { this.props.displayPuzzle(this) }
                 </g>
 
                 <circle id="chamber-window" r="145" />

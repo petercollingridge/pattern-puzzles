@@ -5,10 +5,10 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import Graph from './PuzzleComponents/Graph';
+import { colourableGraph } from './PuzzleComponents/Graph';
 import { getGraphObject } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
-import { allItemsColoured, allConnectedItemsHaveDifferentColours } from '../utils/evaluationUtils';
+import { graphIsChromatic } from '../utils/evaluation';
 
 
 const puzzles1 = [
@@ -134,18 +134,13 @@ const puzzles3 = [
     }
 ];
 
-const ColourGraph = ({ puzzles }) => {
-	const evaluate = ({ nodes, edges }) => 
-	    allItemsColoured(nodes) && allConnectedItemsHaveDifferentColours(edges);
-
-	const displayGraph = (page, graphObject) => <Graph page={page} {...graphObject} />
-
-	return <PuzzlePage
+const ColourGraph = ({ puzzles }) => 
+    <PuzzlePage
 		puzzles={puzzles}
-		evaluate={evaluate}
+		evaluate={graphIsChromatic}
 		getPuzzleObject={getGraphObject}
-		displayPuzzle={displayGraph} />;
-};
+		displayPuzzle={colourableGraph}
+    />
 
 export const ColourGraph1 = () => <ColourGraph puzzles={puzzles1} />
 
