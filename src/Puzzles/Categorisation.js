@@ -1,10 +1,10 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import Graph from './PuzzleComponents/Graph';
+import { Graph } from './PuzzleComponents/Graph';
 import { getCategoryObjects } from './puzzleLoaders';
 import { getLinearGraph } from '../utils/graphUtils';
-import { allItemsColoured, sequencesMatch } from '../utils/evaluationUtils';
+import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
 
 
 const puzzle1 = [
