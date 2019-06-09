@@ -14,3 +14,9 @@ export function getColourClassName(item) {
 
     return className;
 }
+
+export function getClickToColour(colourItem, item, i) {
+    if (colourItem && !item.fixed) {
+        return () => colourItem(i);
+    }
+}

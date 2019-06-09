@@ -5,7 +5,7 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import Map from './PuzzleComponents/Map';
+import { Map } from './PuzzleComponents/Map';
 import { getMapObject } from './puzzleLoaders';
 import { allItemsColoured, allConnectedItemsHaveDifferentColours } from '../utils/evaluation';
 
@@ -80,17 +80,25 @@ const puzzles2 = [
     }
 ];
 
+const ColourableMap = (puzzle, selectedColour, update) => {
+    const colourItem = index => {
+        puzzle.regions[index].colour = selectedColour;
+        update(puzzle);
+    }
+
+    return <Map {...puzzle} colourItem={colourItem}/>
+};
+
+const evaluate = ({ regions, connections }) => 
+    allItemsColoured(regions) &&
+    allConnectedItemsHaveDifferentColours(connections);
+
 const ColourMap = ({ puzzles }) => {
-	const evaluate = ({ regions, connections }) => 
-	    allItemsColoured(regions) && allConnectedItemsHaveDifferentColours(connections);
-
-	const displayMap = (page, mapObject) => <Map page={page} {...mapObject} />
-
 	return <PuzzlePage
 		puzzles={puzzles}
 		evaluate={evaluate}
 		getPuzzleObject={getMapObject}
-		displayPuzzle={displayMap} />;
+		displayPuzzle={ColourableMap} />;
 };
 
 export const ColourMap1 = () => <ColourMap puzzles={puzzles1} />

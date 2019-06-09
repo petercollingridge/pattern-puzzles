@@ -1,6 +1,6 @@
 import React from 'react';
 import { Line } from './Primitives';
-import { getColourClassName } from './utils';
+import { getColourClassName, getClickToColour } from './utils';
 
 
 export const Graph = ({ edges=[], nodes=[], colourNode }) =>
@@ -15,20 +15,15 @@ export const Graph = ({ edges=[], nodes=[], colourNode }) =>
         </g>
 
         <g className="graph-nodes">
-            { nodes.map((node, i) => {
-                const onClick = colourNode && !node.fixed ?
-                    () => colourNode(i):
-                    null;
-
-                return <circle
+            { nodes.map((node, i) => 
+                <circle
                     key={i}
-                    className={getColourClassName(node)}
+                    r={node.r}
                     cx={node.x}
                     cy={node.y}
-                    r={node.r}
-                    onClick={onClick}
+                    className={getColourClassName(node)}
+                    onClick={getClickToColour(colourNode, node, i)}
                 />
-            })}
+            )}
         </g>
     </g>
-
