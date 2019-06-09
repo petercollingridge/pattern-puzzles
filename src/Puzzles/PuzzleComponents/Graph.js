@@ -3,7 +3,7 @@ import { Line } from './Primitives';
 import { getColourClassName } from './utils';
 
 
-export const Graph = ({ edges, nodes, colourNode }) =>
+export const Graph = ({ edges=[], nodes=[], colourNode }) =>
     <g className="graph">
         <g className="graph-edges">
             { edges.map((edge, i) =>
@@ -32,13 +32,3 @@ export const Graph = ({ edges, nodes, colourNode }) =>
         </g>
     </g>
 
-// Get a graph with nodes that can be clicked to colour them with the page's selected colour
-export const getColourableGraph = getNode => 
-    ({puzzle, selectedColour}, update) => {
-        const colourNode = nodeIndex => {
-            getNode(puzzle, nodeIndex).colour = selectedColour;
-            update(puzzle);
-        }
-
-        return <Graph {...puzzle} colourNode={colourNode}/>
-    }

@@ -5,7 +5,7 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import { getColourableGraph } from './PuzzleComponents/Graph';
+import { Graph } from './PuzzleComponents/Graph';
 import { getGraphObject } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 import { graphIsChromatic } from '../utils/evaluation';
@@ -134,14 +134,21 @@ const puzzles3 = [
     }
 ];
 
-const getNode = (puzzle, nodeIndex) => puzzle.nodes[nodeIndex];
+const ColourableGraph = (puzzle, selectedColour, update) => {
+    const colourNode = nodeIndex => {
+        puzzle.nodes[nodeIndex].colour = selectedColour;
+        update(puzzle);
+    }
+
+    return <Graph {...puzzle} colourNode={colourNode}/>
+};
 
 const ColourGraph = ({ puzzles }) => 
     <PuzzlePage
 		puzzles={puzzles}
 		evaluate={graphIsChromatic}
 		getPuzzleObject={getGraphObject}
-		displayPuzzle={getColourableGraph(getNode)}
+		displayPuzzle={ColourableGraph}
     />
 
 export const ColourGraph1 = () => <ColourGraph puzzles={puzzles1} />

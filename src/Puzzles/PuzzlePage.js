@@ -114,7 +114,7 @@ export default class PuzzlePage extends React.Component {
                 </defs>
 
                 <g id="puzzle" key={index} className={className} style={style}>
-                    { this.props.displayPuzzle(this.state, this.update) }
+                    { this.props.displayPuzzle(puzzle, selectedColour, this.update) }
                 </g>
 
                 <circle id="chamber-window" r="145" />

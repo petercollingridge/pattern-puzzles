@@ -5,7 +5,7 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import { Graph, colourableGraph } from './PuzzleComponents/Graph';
+import { Graph } from './PuzzleComponents/Graph';
 import { getGraphAndUncolouredCopy } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
@@ -134,13 +134,22 @@ const evaluate = ({ blank, target }) => {
 		sequencesMatch(blank.nodes, target.nodes, 'colour');
 };
 
+const ColourableGraph = (puzzle, selectedColour, update) => {
+    const colourNode = nodeIndex => {
+        puzzle.blank.nodes[nodeIndex].colour = selectedColour;
+        update(puzzle);
+    }
+
+    return <Graph {...puzzle.blank} colourNode={colourNode}/>
+};
+
 const Transformation = ({ puzzles, transform }) => {
-	const displayGraphs = (page, {target, blank}) => <g>
+	const displayGraphs = (puzzle, selectedColour, update) => <g>
         <g transform="translate(-50)">
-            <Graph page={page} {...target} />
+            <Graph {...puzzle.target} />
         </g>
-        <g transform={"translate(50) " + transform }>
-            <colourableGraph page={page} {...blank} />
+        <g transform={ "translate(50) " + transform }>
+            { ColourableGraph(puzzle, selectedColour, update) }
         </g>
 
         <line className="reflection-line" y1="-200" y2="200" />
