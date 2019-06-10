@@ -93,13 +93,12 @@ const evaluate = ({ regions, connections }) =>
     allItemsColoured(regions) &&
     allConnectedItemsHaveDifferentColours(connections);
 
-const ColourMap = ({ puzzles }) => {
-	return <PuzzlePage
+const ColourMap = ({ puzzles }) =>
+	<PuzzlePage
 		puzzles={puzzles}
 		evaluate={evaluate}
 		getPuzzleObject={getMapObject}
-		displayPuzzle={ColourableMap} />;
-};
+		displayPuzzle={ColourableMap} />
 
 export const ColourMap1 = () => <ColourMap puzzles={puzzles1} />
 export const ColourMap2 = () => <ColourMap puzzles={puzzles2} />
