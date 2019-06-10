@@ -3,7 +3,8 @@ export function allItemsColoured(items=[]) {
 }
 
 export function allConnectedItemsHaveDifferentColours(cxns=[]) {
-    return cxns.every(cxn => cxn.node1.colour !== cxn.node2.colour);
+    const failingCxns = cxns.filter(cxn => cxn.node1.colour === cxn.node2.colour);
+    return failingCxns.length === 0;
 }
 
 export const graphIsChromatic = ({ nodes, edges }) => 

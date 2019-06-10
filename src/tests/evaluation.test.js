@@ -1,8 +1,12 @@
 import {
     sequencesMatch,
     allItemsColoured,
+    graphIsChromatic,
     allConnectedItemsHaveDifferentColours
 } from '../utils/evaluation';
+
+import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
+import { getGraphObject } from '../Puzzles/puzzleLoaders';
 
 
 describe('sequencesMatch', () => {
@@ -74,6 +78,38 @@ describe('allItemsColoured', () => {
     it('returns false when given an array with an item with an undefined colour', () => {
         const items = [{ colour: 1 }, { property: 2 }, { colour: 0 }];
         expect(allItemsColoured(items)).toBe(false);
+    });
+});
+
+describe('graphIsChromatic', () => {
+    it('returns true when given an empty object', () => {
+        expect(graphIsChromatic({})).toBe(true);
+    });
+
+    it('returns true when given a single node', () => {
+        const graph = { nodes: [{ colour: 1 }] };
+        expect(graphIsChromatic(graph)).toBe(true);
+    });
+
+    it('returns false when a node has no colour', () => {
+        const graph = { nodes: [{ colour: 1 }, { x: 0, y: 0 }] };
+        expect(graphIsChromatic(graph)).toBe(false);
+    });
+
+    it('returns true when a given a graph with nodes of the same colour not connected', () => {
+        const graph = getGraphObject({
+            nodes: getNodesOnCircle([1, 2, 1, 2]),
+            edges: getLoopOfEdges(4)
+        });
+        expect(graphIsChromatic(graph)).toBe(true);
+    });
+
+    it('returns false when a given a graph with nodes of the same colour connected', () => {
+        const graph = getGraphObject({
+            nodes: getNodesOnCircle([1, 2, 1, 2]),
+            edges: getLoopOfEdges(4).concat([[0, 2]])
+        });
+        expect(graphIsChromatic(graph)).toBe(false);
     });
 });
 
