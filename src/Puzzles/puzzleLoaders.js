@@ -90,7 +90,7 @@ export function getCategoryObjects({ categories }) {
         items.forEach(item => {
             categoryObjects.push({
                 category: i + 1,
-                item: getGraphObject(item)
+                item: item
             });
         });
     });
