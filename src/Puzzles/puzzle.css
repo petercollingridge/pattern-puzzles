@@ -47,7 +47,7 @@
 
 #puzzle .empty-region {
     fill: #aaa;
-    transition: fill 100ms ease-out, stroke 100ms ease-out;
+    transition: fill 100ms ease-out;
 }
 
 #puzzle.colour-selected .colourable:hover {
@@ -79,4 +79,10 @@
     stroke-width: 0.5;
     stroke: #222;
     stroke-dasharray: 2 2;
+}
+
+#puzzle .category {
+    opacity: 0.15;
+    fill: white;
+    transition: fill 150ms ease-out;
 }
