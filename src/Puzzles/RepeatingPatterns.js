@@ -5,7 +5,7 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import Sequence from './PuzzleComponents/Sequence';
+import { Sequence } from './PuzzleComponents/Sequence';
 import { getSequenceObject } from './puzzleLoaders';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
 
@@ -46,18 +46,24 @@ const puzzles1 = [
     }
 ];
 
-const RepeatingPatterns = ({ puzzles }) => {
-	const evaluate = ({ sequence }, { target }) => {
-        return allItemsColoured(sequence) && sequencesMatch(sequence, target, 'colour');
+const evaluate = ({ sequence, target }) =>
+    allItemsColoured(sequence) &&
+    sequencesMatch(sequence, target, 'colour');
+
+const ColourableSequence = (puzzle, selectedColour, update) => {
+    const colourItem = index => {
+        puzzle.sequence[index].colour = selectedColour;
+        update(puzzle);
     }
 
-	const displaySequence = (page, sequence) => <Sequence page={page} {...sequence} />
+    return <Sequence {...puzzle} colourItem={colourItem}/>
+};
 
-	return <PuzzlePage
+const RepeatingPatterns = ({ puzzles }) =>
+    <PuzzlePage
 		puzzles={puzzles}
 		evaluate={evaluate}
 		getPuzzleObject={getSequenceObject}
-		displayPuzzle={displaySequence} />;
-};
+		displayPuzzle={ColourableSequence} />
 
 export const RepeatingPatterns1 = (props) => <RepeatingPatterns puzzles={puzzles1} {...props} />
