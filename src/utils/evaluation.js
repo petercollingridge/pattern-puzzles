@@ -1,8 +1,8 @@
-export function allItemsColoured(items) {
+export function allItemsColoured(items=[]) {
     return items.every(item => item.colour > 0);
 }
 
-export function allConnectedItemsHaveDifferentColours(cxns) {
+export function allConnectedItemsHaveDifferentColours(cxns=[]) {
     return cxns.every(cxn => cxn.node1.colour !== cxn.node2.colour);
 }
 
