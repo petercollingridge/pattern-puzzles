@@ -138,7 +138,7 @@ const ColourableGraph = (puzzle, selectedColour, update) => {
     const colourNode = nodeIndex => {
         puzzle.nodes[nodeIndex].colour = selectedColour;
         update(puzzle);
-    }
+    };
 
     return <Graph {...puzzle} colourNode={colourNode}/>
 };
