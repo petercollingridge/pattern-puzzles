@@ -15,23 +15,17 @@ export function getPointsOnACircle(n, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
 }
 
 export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
+    // If colours is a number rather than an array, create an empty array of that size
+    // i.e. none of the nodes will have a colour
     if (!Array.isArray(colours)) {
         colours = new Array(colours);
     }
 
     const n = colours.length;
-    const nodes = [];
-    const dAngle = 2 * Math.PI / n;
-    let angle = (offsetAngle * Math.PI / 180 || 0) - 0.5 * dAngle;
+    const points = getPointsOnACircle(n, { r, offsetAngle, dx, dy });
 
-    for (let i = 0; i < n; i++) {
-        nodes.push([
-            dx + r * Math.sin(angle),
-            dy + r * Math.cos(angle),
-            colours[i]
-        ]);
-        angle += dAngle;
-    }
+    // Combine coordinates with colours
+    const nodes = points.map(([x, y], i) => [x, y, colours[i]]);
 
     return nodes;
 }
