@@ -22,7 +22,7 @@ const displayCategories = (puzzle, selectedColour, update) => {
     const items = puzzle.map(item => <Graph {...item.item} />)
 
     const colourCategory = nodeIndex => {
-        puzzle.categories[nodeIndex].colour = selectedColour;
+        puzzle[nodeIndex].colour = selectedColour;
         update(puzzle);
     };
 
