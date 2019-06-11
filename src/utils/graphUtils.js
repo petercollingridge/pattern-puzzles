@@ -1,3 +1,19 @@
+export function getPointsOnACircle(n, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
+    const points = [];
+    const dAngle = 2 * Math.PI / n;
+    let angle = (offsetAngle * Math.PI / 180 || 0) - 0.5 * dAngle;
+
+    for (let i = 0; i < n; i++) {
+        points.push([
+            dx + r * Math.sin(angle),
+            dy + r * Math.cos(angle),
+        ]);
+        angle += dAngle;
+    }
+
+    return points;
+}
+
 export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
     if (!Array.isArray(colours)) {
         colours = new Array(colours);

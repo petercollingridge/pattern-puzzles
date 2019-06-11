@@ -3,7 +3,7 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import { Graph } from './PuzzleComponents/Graph';
 import { getCategoryObjects, getGraphObject } from './puzzleLoaders';
-import { getLinearGraph } from '../utils/graphUtils';
+import { getLinearGraph, getPointsOnACircle } from '../utils/graphUtils';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
 
 
@@ -20,32 +20,25 @@ const puzzle1 = [
 ];
 
 const getCirclePackedInCircle = (R, n) => {
-    const dAngle = Math.PI * 2 / n;
     const phi = Math.PI * (0.5 - 1 / n);
     const cPhi = Math.cos(phi);
-    const d = R / (1 + cPhi);
-    const r = d * cPhi;
+    const r = R / (1 + cPhi);
+    const points = getPointsOnACircle(n, { r });
 
-    const circles = [];
-    for (let i = 0; i < n; i++) {
-        circles.push([
-            d * Math.sin((i - 0.5) * dAngle),
-            d * Math.cos((i - 0.5) * dAngle),
-            r
-        ]);
-    }
-
-    return circles;
+    return {
+        categoryPositions: points,
+        categorySize: r * cPhi
+    };
 }
 
 const displayCategories = (puzzle, selectedColour, update) => {
     const outerR = 100;
-    const categories = getCirclePackedInCircle(outerR, puzzle.length);
+    const { categoryPositions, categorySize } = getCirclePackedInCircle(outerR, puzzle.length);
 
     return <g>
-        { categories.map((category, i) =>
+        { categoryPositions.map((category, i) =>
         <g key={i} transform={`translate(${ category[0] } ${ category[1] })`}>
-                <circle className="colourable category" r={category[2]} />
+                <circle className="colourable category" r={categorySize} />
                 <Graph {...puzzle[i].item} />
             </g>)
         }
