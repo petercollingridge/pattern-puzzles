@@ -3,6 +3,8 @@
  * display the puzzle and determine when the correct answer is found
 ***/
 
+import { shuffle } from '../utils/common';
+
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8 }) {
     const nodeObjects = nodes.map(([x, y, colour]) => ({
@@ -89,9 +91,12 @@ export function getCategoryObjects({ categories }) {
     categories.forEach(category => {
         categoryObjects.push({
             category: category.type,
-            object: category.item
+            object: category.item,
         });
     });
+
+    shuffle(categoryObjects);
+    console.log(categoryObjects)
 
     return categoryObjects;
 }
