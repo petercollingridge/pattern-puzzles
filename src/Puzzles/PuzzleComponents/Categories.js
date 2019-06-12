@@ -20,7 +20,6 @@ export const Categories = ({ size, categories, colourCategory }) => {
 
     return <g>
         { categories.map((category, i) => {
-            console.log(category.component);
             return <g key={i} transform={`translate(${ categoryPositions[i][0] } ${ categoryPositions[i][1] })`}>
                 <circle
                     className={'category ' + getColourClassName(category)}

@@ -81,8 +81,11 @@
     stroke-dasharray: 2 2;
 }
 
-#puzzle .category {
+.category {
     opacity: 0.15;
-    fill: white;
     transition: fill 150ms ease-out;
+}
+
+#puzzle .category.empty-region {
+    fill: white;
 }
