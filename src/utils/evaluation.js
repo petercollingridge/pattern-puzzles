@@ -21,4 +21,17 @@ export const sequencesMatch = (seq1, seq2, attr) => {
     return true;
 };
 
-
+// Test whether there is a consistent mapping between two attributes for all items in an array
+export const attributesHaveMapping = (arr, attr1, attr2) => {
+    const mapping = new Map();
+    for (let i = 0; i < arr.length; i++) {
+        const item = arr[i];
+        const value = mapping.get(item[attr1]);
+        if (value === undefined) {
+            mapping.set(item[attr1], item[attr2]);
+        } else if (value !== item[attr2]) {
+            return false;
+        }
+    }
+    return true;
+};
