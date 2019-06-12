@@ -44,7 +44,7 @@ export function getLoopOfEdges(start, stop) {
     return edges;
 }
 
-export function getLinearGraph(colours, scale=1) {
+export function linearGraph(colours, scale=1) {
     if (!Array.isArray(colours)) {
         colours = new Array(colours);
     }
