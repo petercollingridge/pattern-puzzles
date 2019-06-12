@@ -86,10 +86,10 @@ export function getSequenceObject({ pattern, answer }) {
 export function getCategoryObjects({ categories }) {
     const categoryObjects = [];
     
-    categories.forEach(item => {
+    categories.forEach(category => {
         categoryObjects.push({
-            category: item.type,
-            item: item.item
+            category: category.type,
+            item: category.item
         });
     });
 

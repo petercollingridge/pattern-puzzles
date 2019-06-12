@@ -15,19 +15,20 @@ const getCirclePackedInCircle = (R, n) => {
     };
 };
 
-export const Categories = ({ size, items, colourCategory }) => {
-    const { categoryPositions, categorySize } = getCirclePackedInCircle(size, items.length);
+export const Categories = ({ size, categories, colourCategory }) => {
+    const { categoryPositions, categorySize } = getCirclePackedInCircle(size, categories.length);
 
     return <g>
-        { items.map((item, i) =>
-            <g key={i} transform={`translate(${ categoryPositions[i][0] } ${ categoryPositions[i][1] })`}>
+        { categories.map((category, i) => {
+            console.log(category.component);
+            return <g key={i} transform={`translate(${ categoryPositions[i][0] } ${ categoryPositions[i][1] })`}>
                 <circle
-                    className={'category ' + getColourClassName(item)}
-                    onClick={getClickToColour(colourCategory, item, i)}
+                    className={'category ' + getColourClassName(category)}
+                    onClick={getClickToColour(colourCategory, category, i)}
                     r={categorySize * 0.9}
                     />
-                { item }
-            </g>)
-        }
+                { category.component }
+            </g>
+        })}
     </g>
 }

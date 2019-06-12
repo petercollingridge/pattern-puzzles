@@ -4,7 +4,7 @@ import PuzzlePage from './PuzzlePage';
 import { Graph } from './PuzzleComponents/Graph';
 import { Categories } from './PuzzleComponents/Categories';
 import { getCategoryObjects, getGraphObject } from './puzzleLoaders';
-import { createLogicalAnd } from 'typescript';
+import { allItemsColoured, attributesHaveMapping } from '../utils/evaluation';
 
 
 const puzzle1 = [
@@ -18,20 +18,22 @@ const puzzle1 = [
     }
 ];
 
-const displayCategories = (puzzle, selectedColour, update) => {
-    const items = puzzle.map(item => <Graph {...item.item} />)
+const displayCategories = (categories, selectedColour, update) => {
+    categories.forEach(item => {
+        item.component = <Graph {...item} />
+    });
 
-    const colourCategory = nodeIndex => {
-        puzzle[nodeIndex].colour = selectedColour;
-        update(puzzle);
+    const colourCategory = index => {
+        categories[index].colour = selectedColour;
+        update(categories);
     };
 
-    return <Categories size="100" items={items} colourCategory={colourCategory} />
+    return <Categories size="100" categories={categories} colourCategory={colourCategory} />
 };
 
-const evaluate = (blank, target) => {
-    return true;
-};
+const evaluate = puzzle =>
+    allItemsColoured(puzzle) &&
+    attributesHaveMapping(puzzle, 'category', 'colour');
 
 const Categorisation = ({ puzzles }) =>
     <PuzzlePage
