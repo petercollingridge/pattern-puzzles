@@ -12,6 +12,13 @@ const puzzle1 = [
 	{
 		colourPalette: 2,
         categories: [
+            { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
+            { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
+            { type: 2, item: getGraphObject(linearGraph([2, 1, 2])) },
+        ]
+    }, {
+		colourPalette: 2,
+        categories: [
             { type: 1, item: getGraphObject(linearGraph([1, 1])) },
             { type: 1, item: getGraphObject(linearGraph([1, 1])) },
             { type: 2, item: getGraphObject(linearGraph([1, 2])) },
