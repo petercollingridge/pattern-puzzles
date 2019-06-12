@@ -92,11 +92,9 @@ export function getCategoryObjects({ categories }) {
         categoryObjects.push({
             category: category.type,
             object: category.item,
+            rotate: Math.floor(Math.random() * 12) * 30
         });
     });
 
-    shuffle(categoryObjects);
-    console.log(categoryObjects)
-
-    return categoryObjects;
+    return shuffle(categoryObjects);
 }

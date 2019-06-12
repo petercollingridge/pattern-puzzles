@@ -20,13 +20,20 @@ export const Categories = ({ size, categories, colourCategory }) => {
 
     return <g>
         { categories.map((category, i) => {
-            return <g key={i} transform={`translate(${ categoryPositions[i][0] } ${ categoryPositions[i][1] })`}>
+            let transform = `translate(${ categoryPositions[i][0] } ${ categoryPositions[i][1] })`;
+            if (category.rotate) {
+                transform += ` rotate(${ category.rotate })`;
+            }
+
+            return <g key={i} transform={transform}>
                 <circle
                     className={'category ' + getColourClassName(category)}
                     onClick={getClickToColour(colourCategory, category, i)}
                     r={categorySize * 0.9}
                     />
-                { category.component }
+                <g className="no-pointer">
+                    { category.component }
+                </g>
             </g>
         })}
     </g>
