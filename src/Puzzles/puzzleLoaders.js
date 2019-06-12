@@ -89,7 +89,7 @@ export function getCategoryObjects({ categories }) {
     categories.forEach(category => {
         categoryObjects.push({
             category: category.type,
-            item: category.item
+            object: category.item
         });
     });
 

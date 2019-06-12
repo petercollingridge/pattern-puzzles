@@ -20,7 +20,7 @@ const puzzle1 = [
 
 const displayCategories = (categories, selectedColour, update) => {
     categories.forEach(item => {
-        item.component = <Graph {...item} />
+        item.component = <Graph {...item.object} />
     });
 
     const colourCategory = index => {
