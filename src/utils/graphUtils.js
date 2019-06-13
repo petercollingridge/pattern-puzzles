@@ -60,3 +60,14 @@ export function linearGraph(colours, scale=1) {
 
     return { nodes, edges };
 }
+
+export function loopGraph(colours, scale=1) {
+    if (!Array.isArray(colours)) {
+        colours = new Array(colours);
+    }
+
+    const nodes = getNodesOnCircle(colours, { r: scale });
+    const edges = getLoopOfEdges(colours.length);
+
+    return { nodes, edges };
+}
