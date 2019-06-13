@@ -4,6 +4,7 @@ import { ColourGraphIcon1, ColourGraphIcon2, ColourGraphIcon3 } from '../Icons/C
 import { ColourMapIcon1, ColourMapIcon2 } from '../Icons/ColourMaps';
 import { IdentityIcon1, ReflectionIcon1, RotationIcon1 } from '../Icons/Transformations';
 import { RepeatingPatternsIcon1 } from '../Icons/RepeatingPatterns';
+import { Categorisation1 } from '../Icons/Categorisation';
 
 const puzzles = [
     [
@@ -19,6 +20,8 @@ const puzzles = [
         { slug: 'rotation-1', icon: <RotationIcon1/> },
     ], [
         { slug: 'repeating-patterns-1', icon: <RepeatingPatternsIcon1/> },
+    ], [
+        { slug: 'categorisation-1', icon: <Categorisation1/> },
     ],
 ];
 

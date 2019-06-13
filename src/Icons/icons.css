@@ -22,3 +22,13 @@
 .map-link:hover .graph-nodes * {
     fill: currentColor;
 }
+
+.map-link .categories * {
+    fill: white;
+    opacity: 0.15;
+    transition: fill 200ms ease-out
+}
+
+.map-link:hover .categories * {
+    fill: currentColor;
+}
