@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TOOLBAR_R = 113;
+const TOOLBAR_R = 136;
 const DELTA_ANGLE = Math.PI / 20;
 
 const handleKeyDown = (evt, callback) => {
@@ -50,7 +50,7 @@ export default function ({ puzzle, nColours, selectedColour }) {
     }
 
     return <g className="toolbar">
-        <circle className={selectColourIndicator} r="109" />
+        <circle className={selectColourIndicator} r="132" />
         <g className="colour-palette" role="radiogroup">
             { colours }
         </g>

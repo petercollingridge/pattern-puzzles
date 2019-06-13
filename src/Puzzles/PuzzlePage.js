@@ -97,7 +97,7 @@ export default class PuzzlePage extends React.Component {
                 { this.getNextPuzzleButton() }
             </nav>
 
-            <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
+            <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid fit">
                 <defs>
                     <filter id="shadow-filter">
                         <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2"/>
@@ -117,7 +117,7 @@ export default class PuzzlePage extends React.Component {
                     { this.props.displayPuzzle(puzzle, selectedColour, this.update) }
                 </g>
 
-                <circle id="chamber-window" r="145" />
+                <circle id="chamber-window" r="212" />
                 <Toolbar 
                     puzzle={this}
                     nColours={colourPalette}

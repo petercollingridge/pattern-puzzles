@@ -6,7 +6,7 @@
 #chamber-window {
     fill: none;
     stroke: rgb(30, 20, 20);
-    stroke-width: 72;
+    stroke-width: 160;
     filter: url(#shadow-filter);
 }
 
