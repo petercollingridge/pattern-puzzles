@@ -10,11 +10,13 @@ import { allItemsColoured, attributesHaveMapping } from '../utils/evaluation';
 
 const puzzle1 = [
 	{
-		colourPalette: 2,
+        colourPalette: 3,
+        randomRotate: true,
         categories: [
-            { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
-            { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
-            { type: 2, item: getGraphObject(linearGraph([2, 1, 2])) },
+            { type: 1, item: getGraphObject(linearGraph([1, 1, 1])) },
+            { type: 2, item: getGraphObject(linearGraph([1, 2, 1])) },
+            { type: 2, item: getGraphObject(linearGraph([1, 2, 1])) },
+            { type: 3, item: getGraphObject(linearGraph([2, 2, 2])) },
         ]
     }, {
 		colourPalette: 2,
@@ -42,7 +44,7 @@ const displayCategories = (categories, selectedColour, update) => {
         update(categories);
     };
 
-    return <Categories size="100" categories={categories} colourCategory={colourCategory} />
+    return <Categories size="132" categories={categories} colourCategory={colourCategory} />
 };
 
 const evaluate = puzzle =>

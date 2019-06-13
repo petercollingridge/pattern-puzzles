@@ -85,14 +85,14 @@ export function getSequenceObject({ pattern, answer }) {
 }
 
 // Return an array of category object which have a colour, and an object to display
-export function getCategoryObjects({ categories }) {
+export function getCategoryObjects({ categories, randomRotate }) {
     const categoryObjects = [];
     
     categories.forEach(category => {
         categoryObjects.push({
             category: category.type,
             object: category.item,
-            rotate: Math.floor(Math.random() * 12) * 30
+            rotate: randomRotate ? Math.floor(Math.random() * 12) * 30 : 0
         });
     });
 
