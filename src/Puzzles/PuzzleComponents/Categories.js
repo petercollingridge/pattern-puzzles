@@ -29,7 +29,7 @@ export const Categories = ({ size, categories, colourCategory }) => {
                 <circle
                     className={'category ' + getColourClassName(category)}
                     onClick={getClickToColour(colourCategory, category, i)}
-                    r={categorySize * 0.9}
+                    r={categorySize * 0.95}
                     />
                 <g className="no-pointer">
                     { category.component }
