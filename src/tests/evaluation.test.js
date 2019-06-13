@@ -2,6 +2,7 @@ import {
     sequencesMatch,
     allItemsColoured,
     graphIsChromatic,
+    attributesHaveMapping,
     allConnectedItemsHaveDifferentColours
 } from '../utils/evaluation';
 
@@ -150,5 +151,36 @@ describe('allConnectedItemsHaveDifferentColours', () => {
             { node1: nodes[2], node2: nodes[1] }
         ];
         expect(allConnectedItemsHaveDifferentColours(items)).toBe(false);
+    });
+});
+
+describe('attributesHaveMapping', () => {
+    it('returns true when given an empty array', () => {
+        expect(attributesHaveMapping([])).toBe(true);
+    });
+
+    it('returns true when given an empty object', () => {
+        const arr = [{}];
+        expect(attributesHaveMapping(arr, 'attr1', 'attr2')).toBe(true);
+    });
+
+    it('returns true when given one object', () => {
+        const arr = [{ attr1: 1, attr2: 2 }];
+        expect(attributesHaveMapping(arr, 'attr1', 'attr2')).toBe(true);
+    });
+
+    it('returns true when objects have exact mapping', () => {
+        const arr = [{ attr1: 1, attr2: 1 }, { attr1: 2, attr2: 2 }, { attr1: 3, attr2: 3 }];
+        expect(attributesHaveMapping(arr, 'attr1', 'attr2')).toBe(true);
+    });
+
+    it('returns true when objects have not exact but consistent mapping', () => {
+        const arr = [{ attr1: 1, attr2: 2 }, { attr1: 2, attr2: 4 }, { attr1: 3, attr2: 7  }, { attr1: 2, attr2: 4 }];
+        expect(attributesHaveMapping(arr, 'attr1', 'attr2')).toBe(true);
+    });
+
+    it('returns false when objects do not have consistent mapping', () => {
+        const arr = [{ attr1: 1, attr2: 2 }, { attr1: 2, attr2: 4 }, { attr1: 3, attr2: 7  }, { attr1: 2, attr2: 2 }];
+        expect(attributesHaveMapping(arr, 'attr1', 'attr2')).toBe(false);
     });
 });
