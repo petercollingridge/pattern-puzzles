@@ -93,3 +93,7 @@
 #puzzle .category.empty-region {
     fill: white;
 }
+
+.no-pointer {
+    pointer-events: none;
+}
