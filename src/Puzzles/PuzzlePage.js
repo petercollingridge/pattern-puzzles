@@ -97,7 +97,7 @@ export default class PuzzlePage extends React.Component {
                 { this.getNextPuzzleButton() }
             </nav>
 
-            <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid fit">
+            <svg id="puzzle-chamber" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid meet">
                 <defs>
                     <filter id="shadow-filter">
                         <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2"/>
