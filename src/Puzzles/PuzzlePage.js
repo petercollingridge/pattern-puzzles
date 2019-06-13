@@ -113,6 +113,8 @@ export default class PuzzlePage extends React.Component {
                     </filter>
                 </defs>
 
+                <rect className="background" x="-200" y="-200" width="400" height="400" />
+
                 <g id="puzzle" key={index} className={className} style={style}>
                     { this.props.displayPuzzle(puzzle, selectedColour, this.update) }
                 </g>

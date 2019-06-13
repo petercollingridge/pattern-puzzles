@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const TOOLBAR_R = 136;
-const DELTA_ANGLE = Math.PI / 20;
+const DELTA_ANGLE = Math.PI / 18;
 
 const handleKeyDown = (evt, callback) => {
     if (evt.key === 'Enter' || evt.keyCode === 32) {
@@ -11,7 +11,7 @@ const handleKeyDown = (evt, callback) => {
 };
 
 export default function ({ puzzle, nColours, selectedColour }) {
-    const r = 6;
+    const r = 8;
     let angle = Math.PI - DELTA_ANGLE * (nColours - 1) / 2;
 
     const colours = [];

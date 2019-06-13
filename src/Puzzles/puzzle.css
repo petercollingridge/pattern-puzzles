@@ -3,6 +3,10 @@
     height: 100%;
 }
 
+#puzzle-chamber .background {
+    fill: white;
+}
+
 #chamber-window {
     fill: none;
     stroke: rgb(30, 20, 20);
