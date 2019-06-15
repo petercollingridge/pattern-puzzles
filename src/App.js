@@ -6,7 +6,7 @@ import { ColourGraph1, ColourGraph2, ColourGraph3 } from './Puzzles/ColourGraphs
 import { ColourMap1, ColourMap2 } from './Puzzles/ColourMaps';
 import { Identity1, Reflection1, Rotation1 } from './Puzzles/Transformations';
 import { RepeatingPatterns1 } from './Puzzles/RepeatingPatterns';
-import { Categorisation1 } from './Puzzles/Categorisation';
+import { Categorisation1, Categorisation2 } from './Puzzles/Categorisation';
 
 import './base.css';
 import './Icons/icons.css';
@@ -27,6 +27,7 @@ export default () =>
             <Route path={`${BASE_URL}/reflection-1`} component={Reflection1} />
             <Route path={`${BASE_URL}/rotation-1`} component={Rotation1} />
             <Route path={`${BASE_URL}/categorisation-1`} component={Categorisation1} />
+            <Route path={`${BASE_URL}/categorisation-2`} component={Categorisation2} />
             <Route path={`${BASE_URL}/`} component={PuzzleMap} />
         </Switch>
     </Router>

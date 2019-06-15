@@ -22,33 +22,74 @@ const puzzle1 = [
             { type: 1, item: getGraphObject(linearGraph([1, 1])) },
             { type: 1, item: getGraphObject(linearGraph([1, 1])) },
             { type: 2, item: getGraphObject(linearGraph([2, 2])) },
+            { type: 2, item: getGraphObject(linearGraph([2, 2])) },
         ]
     }, {
 		colourPalette: 3,
         categories: [
             { type: 1, item: getGraphObject(linearGraph([1, 1])) },
             { type: 2, item: getGraphObject(linearGraph([1, 2])) },
+            { type: 2, item: getGraphObject(linearGraph([1, 2])) },
             { type: 3, item: getGraphObject(linearGraph([2, 2])) },
-            { type: 3, item: getGraphObject(linearGraph([2, 2])) },
-        ]
-    }, {
-        colourPalette: 3,
-        randomRotate: true,
-        categories: [
-            { type: 1, item: getGraphObject(linearGraph([1, 1, 1])) },
-            { type: 2, item: getGraphObject(linearGraph([1, 2, 1])) },
-            { type: 2, item: getGraphObject(linearGraph([1, 2, 1])) },
-            { type: 3, item: getGraphObject(linearGraph([2, 2, 2])) },
         ]
     }, {
         colourPalette: 2,
-        randomRotate: true,
+        categories: [
+            { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
+            { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
+            { type: 2, item: getGraphObject(linearGraph([2, 1, 2])) },
+            { type: 2, item: getGraphObject(linearGraph([2, 1, 2])) },
+        ]
+    }, {
+        colourPalette: 3,
+        categories: [
+            { type: 1, item: getGraphObject(linearGraph([1, 1, 2])) },
+            { type: 1, item: getGraphObject(linearGraph([1, 1, 2])) },
+            { type: 2, item: getGraphObject(linearGraph([1, 2, 1])) },
+            { type: 3, item: getGraphObject(linearGraph([2, 1, 1])) },
+            { type: 3, item: getGraphObject(linearGraph([2, 1, 1])) },
+        ]
+    }, {
+        colourPalette: 3,
         categories: [
             { type: 1, item: getGraphObject(loopGraph([1, 1, 2], 0.75)) },
             { type: 1, item: getGraphObject(loopGraph([1, 1, 2], 0.75)) },
-            { type: 1, item: getGraphObject(loopGraph([1, 1, 2], 0.75)) },
-            { type: 2, item: getGraphObject(loopGraph([1, 2, 2], 0.75)) },
-            { type: 2, item: getGraphObject(loopGraph([1, 2, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 2, 1], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 2, 1], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([2, 1, 1], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([2, 1, 1], 0.75)) },
+        ]
+    }, {
+        colourPalette: 3,
+        categories: [
+            { type: 1, item: getGraphObject(loopGraph([1, 1, 2, 2], 0.75)) },
+            { type: 1, item: getGraphObject(loopGraph([1, 1, 2, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 2, 1, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 2, 1, 2], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([2, 1, 2, 1], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([2, 1, 2, 1], 0.75)) },
+        ]
+    }, {
+        colourPalette: 4,
+        categories: [
+            { type: 1, item: getGraphObject(loopGraph([1, 2, 3, 1, 2, 3], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([3, 2, 1, 3, 2, 1], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([3, 2, 1, 3, 2, 1], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([1, 2, 3, 2, 3, 1], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([1, 2, 3, 2, 3, 1], 0.75)) },
+            { type: 4, item: getGraphObject(loopGraph([3, 2, 1, 2, 3, 1], 0.75)) },
+        ]
+    }
+];
+
+const puzzle2 = [
+    {
+        colourPalette: 3,
+        categories: [
+            { type: 1, item: getGraphObject(linearGraph([1, 1])) },
+            { type: 2, item: getGraphObject(linearGraph([1, 2])) },
+            { type: 2, item: getGraphObject(linearGraph([2, 1])) },
+            { type: 3, item: getGraphObject(linearGraph([2, 2])) },
         ]
     }, {
         colourPalette: 2,
@@ -56,20 +97,32 @@ const puzzle1 = [
         categories: [
             { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
             { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
+            { type: 1, item: getGraphObject(linearGraph([1, 2, 1])) },
             { type: 2, item: getGraphObject(linearGraph([2, 1, 2])) },
             { type: 2, item: getGraphObject(linearGraph([2, 1, 2])) },
             { type: 2, item: getGraphObject(linearGraph([2, 1, 2])) },
         ]
     }, {
-        colourPalette: 3,
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: getGraphObject(loopGraph([1, 2, 2], 0.75)) },
+            { type: 1, item: getGraphObject(loopGraph([1, 2, 2], 0.75)) },
+            { type: 1, item: getGraphObject(loopGraph([1, 2, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 1, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 1, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 1, 2], 0.75)) },
+        ]
+    }, {
+        colourPalette: 2,
         randomRotate: true,
         categories: [
             { type: 1, item: getGraphObject(loopGraph([1, 1, 2, 2], 0.75)) },
             { type: 1, item: getGraphObject(loopGraph([1, 1, 2, 2], 0.75)) },
+            { type: 1, item: getGraphObject(loopGraph([1, 1, 2, 2], 0.75)) },
             { type: 2, item: getGraphObject(loopGraph([1, 2, 1, 2], 0.75)) },
             { type: 2, item: getGraphObject(loopGraph([1, 2, 1, 2], 0.75)) },
-            { type: 3, item: getGraphObject(loopGraph([1, 1, 1, 2], 0.75)) },
-            { type: 3, item: getGraphObject(loopGraph([1, 1, 1, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 2, 1, 2], 0.75)) },
         ]
     }, {
         colourPalette: 2,
@@ -79,7 +132,28 @@ const puzzle1 = [
             { type: 1, item: getGraphObject(loopGraph([1, 2, 3], 0.75)) },
             { type: 2, item: getGraphObject(loopGraph([1, 3, 2], 0.75)) },
             { type: 2, item: getGraphObject(loopGraph([1, 3, 2], 0.75)) },
-            { type: 2, item: getGraphObject(loopGraph([1, 3, 2], 0.75)) },
+        ]
+    }, {
+        colourPalette: 3,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: getGraphObject(loopGraph([1, 1, 2, 3], 0.75)) },
+            { type: 1, item: getGraphObject(loopGraph([1, 1, 2, 3], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 1, 3, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 1, 3, 2], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([1, 2, 1, 3], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([1, 2, 1, 3], 0.75)) },
+        ]
+    }, {
+        colourPalette: 4,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: getGraphObject(loopGraph([1, 2, 3, 1, 2, 3], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 3, 2, 1, 3, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 3, 2, 1, 3, 2], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([1, 2, 3, 2, 3, 1], 0.75)) },
+            { type: 4, item: getGraphObject(loopGraph([1, 2, 1, 3, 2, 3], 0.75)) },
+            { type: 4, item: getGraphObject(loopGraph([1, 2, 1, 3, 2, 3], 0.75)) },
         ]
     }
 ];
@@ -110,3 +184,5 @@ const Categorisation = ({ puzzles }) =>
         displayPuzzle={displayCategories} />
 
 export const Categorisation1 = () => <Categorisation puzzles={puzzle1} />
+
+export const Categorisation2 = () => <Categorisation puzzles={puzzle2} />
