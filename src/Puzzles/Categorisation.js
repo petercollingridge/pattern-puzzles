@@ -148,6 +148,17 @@ const puzzle2 = [
         colourPalette: 4,
         randomRotate: true,
         categories: [
+            { type: 1, item: getGraphObject(loopGraph([1, 2, 3, 4], 0.75)) },
+            { type: 1, item: getGraphObject(loopGraph([1, 2, 3, 4], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 4, 3, 2], 0.75)) },
+            { type: 2, item: getGraphObject(loopGraph([1, 4, 3, 2], 0.75)) },
+            { type: 3, item: getGraphObject(loopGraph([1, 3, 2, 4], 0.75)) },
+            { type: 4, item: getGraphObject(loopGraph([1, 2, 4, 3], 0.75)) },
+        ]
+    }, {
+        colourPalette: 4,
+        randomRotate: true,
+        categories: [
             { type: 1, item: getGraphObject(loopGraph([1, 2, 3, 1, 2, 3], 0.75)) },
             { type: 2, item: getGraphObject(loopGraph([1, 3, 2, 1, 3, 2], 0.75)) },
             { type: 2, item: getGraphObject(loopGraph([1, 3, 2, 1, 3, 2], 0.75)) },
