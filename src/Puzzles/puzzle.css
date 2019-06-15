@@ -44,6 +44,20 @@
     stroke: currentColor;
 }
 
+.colour-palette .flashing {
+    filter: url(#glow-filter);
+    animation-duration: 600ms;
+    animation-name: growStroke;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes growStroke {
+    from { stroke-width: 0; }
+    to { stroke-width: 3; }
+}
+
 #puzzle .map-regions {
     stroke-width: 0.25;
     stroke: #fff;

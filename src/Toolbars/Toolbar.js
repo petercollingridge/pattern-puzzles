@@ -22,6 +22,8 @@ export default function ({ puzzle, nColours, selectedColour }) {
         let className = `colour-palette colour-${i}`;
         if (selectedColour === i) {
             className += ' selected';
+        } else if (i === 1 && !selectedColour) {
+            className += ' flashing';
         }
 
         const setColour = () => puzzle.setState({ selectedColour: i });

@@ -105,7 +105,7 @@ export default class PuzzlePage extends React.Component {
                         <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
                     </filter>
                     <filter id="glow-filter" x="-200%" y="-200%" width="400%" height="400%">
-                        <feGaussianBlur stdDeviation="1" result="colouredBlur" />
+                        <feGaussianBlur stdDeviation="1.5" result="colouredBlur" />
                         <feMerge>
                             <feMergeNode in="coloredBlur"/>
                             <feMergeNode in="SourceGraphic"/>
