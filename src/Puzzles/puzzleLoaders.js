@@ -6,12 +6,12 @@
 import { shuffle } from '../utils/common';
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
-export function getGraphObject({ nodes=[], edges=[], size=32, r=8 }) {
-    const nodeObjects = nodes.map(([x, y, colour]) => ({
+export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
+    const nodeObjects = nodes.map(([x, y, nodeColour]) => ({
         r,
         x: x * size,
         y: y * size,
-        colour,
+        colour: nodeColour || colour,
         fixed: Boolean(colour)
     }));
 
@@ -89,11 +89,15 @@ export function getCategoryObjects({ categories, randomRotate }) {
     const categoryObjects = [];
     
     categories.forEach(category => {
-        categoryObjects.push({
-            category: category.type,
-            object: category.item,
-            rotate: randomRotate ? Math.floor(Math.random() * 12) * 30 : 0
-        });
+        const copies = category.copies || 1;
+
+        for (let i = 0; i < copies; i++) {
+            categoryObjects.push({
+                category: category.type,
+                object: category.item,
+                rotate: randomRotate ? Math.floor(Math.random() * 12) * 30 : 0
+            });
+        }
     });
 
     return shuffle(categoryObjects);
