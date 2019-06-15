@@ -58,11 +58,14 @@ main {
 
 .menu-button circle {
   fill: #ddd;
+  stroke: #ddd;
+  stroke-width: 0;
   transition: fill 100ms ease-out, stroke 100ms ease-out;
 }
 
 .menu-button circle:hover {
   fill: #fff;
+  stroke: #fff;
 }
 
 .back-button {
@@ -73,6 +76,20 @@ main {
 .next-puzzle-button {
   right: 8px;
   top: 8px;
+}
+
+.flashing {
+  filter: url(#glow-filter);
+  animation-duration: 600ms;
+  animation-name: growStroke;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@keyframes growStroke {
+  from { stroke-width: 0; }
+  to { stroke-width: 3; }
 }
 
 .graph-edges {

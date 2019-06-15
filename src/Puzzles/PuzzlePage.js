@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import Toolbar from '../Toolbars/Toolbar';
+import Button from '../Toolbars/Button';
 
 import './puzzle.css';
 
@@ -64,16 +65,12 @@ export default class PuzzlePage extends React.Component {
         if (this.state.index < this.props.puzzles.length - 1) {
             // Button to go to the next puzzle
             return <div className="menu-button next-puzzle-button" aria-label="Next puzzle">
-                <svg viewBox="-10 -10 20 20">
-                    <circle r="9" onClick={this.nextPuzzle}/>
-                </svg>
+                <Button onClick={this.nextPuzzle} flashing/>
             </div>
         } else {
             // Button to go back to the home page
             return <Link to="/pattern-puzzles/" className="menu-button next-puzzle-button" aria-label="Puzzle completed">
-                <svg viewBox="-10 -10 20 20">
-                    <circle r="9" />
-                </svg>
+                <Button flashing/>
             </Link>
         }
     }
@@ -89,9 +86,7 @@ export default class PuzzlePage extends React.Component {
         return <main>
             <nav>
                 <Link to="/pattern-puzzles/" className="menu-button back-button" aria-label="Back to menu">
-                    <svg viewBox="-10 -10 20 20">
-                        <circle r="9" />
-                    </svg>
+                    <Button />
                 </Link>
 
                 { this.getNextPuzzleButton() }
