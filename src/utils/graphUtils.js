@@ -30,7 +30,7 @@ export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
     return nodes;
 }
 
-export function getLoopOfEdges(start, stop) {
+export function getLineOfEdges(start, stop) {
     if (stop === undefined) {
         stop = start - 1;
         start = 0;
@@ -40,6 +40,17 @@ export function getLoopOfEdges(start, stop) {
     for (var i = start; i < stop; i++) {
         edges.push([i, i + 1]);
     }
+
+    return edges;
+}
+
+export function getLoopOfEdges(start, stop) {
+    if (stop === undefined) {
+        stop = start - 1;
+        start = 0;
+    }
+
+    const edges = getLineOfEdges(start, stop);
     edges.push([start, stop]);
     return edges;
 }
@@ -52,11 +63,7 @@ export function linearGraph(colours, scale=1) {
     const n = colours.length;
     const startX = - (n - 1) * scale / 2;
     const nodes = colours.map((colour, i) => [startX + i * scale, 0, colour])
-    const edges = [];
-
-    for (let i = 1; i < n; i++) {
-        edges.push([i - 1, i]);
-    }
+    const edges = getLineOfEdges(n);
 
     return { nodes, edges };
 }
