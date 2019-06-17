@@ -29,14 +29,14 @@ const puzzle1 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, copies: 2, item: { nodes: [[0, 0, 1]] }},
-            { type: 2, copies: 2, item: linearGraph([1, 1]) },
+            { type: 1, item: { nodes: [[0, 0, 1]] }},
+            { type: 2, item: linearGraph([1, 1]) },
         ]
     }, {
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, copies: 2, item: lineOfThree },
+            { type: 1, copies: 3, item: lineOfThree },
             { type: 2, copies: 2, item: triangle }
         ]
     }, {

@@ -6,9 +6,13 @@ export const Categorisation1 = () => <svg viewBox="-50 -50 100 100">
         <circle className="colour-1" cx="-24" cy="0" r="23" />
         <circle className="colour-2" cx="24" cy="0" r="23" />
     </g>
+    <g className="graph-edges">
+        <line x1="30" y1="0" x2="18" y2="0" />
+    </g>
     <g className="graph-nodes">
-        <circle className="colour-1" cx="-24" cy="0" r="8" />
-        <circle className="colour-2" cx="24" cy="0" r="8" />
+        <circle className="colour-1" cx="-24" cy="0" r="4" />
+        <circle className="colour-1" cx="32" cy="0" r="4" />
+        <circle className="colour-1" cx="16" cy="0" r="4" />
     </g>
 </svg>
 
