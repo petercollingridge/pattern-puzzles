@@ -382,7 +382,7 @@ const evaluate = puzzle =>
     attributesHaveMapping(puzzle, 'category', 'colour') &&
     attributesHaveMapping(puzzle, 'colour', 'category', 'colour');
 
-export const Categorisation = ({ n }) =>
+export const Categorisation = (n) =>
     <PuzzlePage
         puzzles={puzzles[n]}
         evaluate={evaluate}
