@@ -11,7 +11,7 @@ import {
     getLineOfEdges,
     getLoopOfEdges
 } from '../utils/graphUtils';
-import { allItemsColoured, attributesHaveMapping } from '../utils/evaluation';
+import { allItemsColoured, sequencesAreEquivalent } from '../utils/evaluation';
 
 
 // Graphs
@@ -379,8 +379,7 @@ const displayCategories = (categories, selectedColour, update) => {
 
 const evaluate = puzzle =>
     allItemsColoured(puzzle) &&
-    attributesHaveMapping(puzzle, 'category', 'colour') &&
-    attributesHaveMapping(puzzle, 'colour', 'category', 'colour');
+    sequencesAreEquivalent(puzzle.map(item => item.category), puzzle.map(item => item.colour));
 
 export const Categorisation = (n) =>
     <PuzzlePage

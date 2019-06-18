@@ -21,17 +21,41 @@ export const sequencesMatch = (seq1, seq2, attr) => {
     return true;
 };
 
-// Test whether there is a consistent mapping between two attributes for all items in an array
-export const attributesHaveMapping = (arr, attr1, attr2) => {
-    const mapping = new Map();
-    for (let i = 0; i < arr.length; i++) {
-        const item = arr[i];
-        const value = mapping.get(item[attr1]);
-        if (value === undefined) {
-            mapping.set(item[attr1], item[attr2]);
-        } else if (value !== item[attr2]) {
+// Test whether there is a consistent mapping between the values in one array to the value the other
+export const sequencesAreEquivalent = (seq1, seq2) => {
+    const mapping1 = new Map();
+    const mapping2 = new Map();
+
+    for (let i = 0; i < seq1.length; i++) {
+        const value1 = mapping1.get(seq1[i]);
+        const value2 = mapping2.get(seq2[i]);
+
+        if (value1 === undefined) {
+            mapping1.set(seq1[i], seq2[i]);
+        } else if (value1 !== seq2[i]) {
             return false;
         }
+
+        if (value2 === undefined) {
+            mapping2.set(seq2[i], seq1[i]);
+        } else if (value2 !== seq1[i]) {
+            return false;
+        }
+        
     }
+
     return true;
+};
+
+// Test whether the nodes of two graphs are the same colour
+export const graphNodesAreSameColour = ({ blank, target }) => {
+	return allItemsColoured(blank.nodes) &&
+		sequencesMatch(blank.nodes, target.nodes, 'colour');
+};
+
+// Test whether the nodes of two graphs have the same pattern,
+// i.e. there is a consistent mapping from the colours in one graph to the colour in the target
+export const graphNodesHaveSamePattern = ({ blank, target }) => {
+	return allItemsColoured(blank.nodes) &&
+        sequencesAreEquivalent(blank.nodes, target.nodes);
 };
