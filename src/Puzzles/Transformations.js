@@ -7,8 +7,8 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import { Graph } from './PuzzleComponents/Graph';
 import { getGraphAndUncolouredCopy } from './puzzleLoaders';
-import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
-import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
+import { getNodesOnCircle, getLoopOfEdges, getLineOfEdges } from '../utils/graphUtils';
+import { graphNodesAreSameColour, graphNodesHaveSamePattern } from '../utils/evaluation';
 
 
 const identity1 = [
@@ -18,7 +18,7 @@ const identity1 = [
 	}, {
 		colourPalette: 2,
         nodes: getNodesOnCircle([1, 2]),
-        edges: getLoopOfEdges(2)
+        edges: getLineOfEdges(2)
 	}, {
 		colourPalette: 2,
         nodes: [[-1, 0, 1], [0, 0, 2], [1, 0, 1]],
@@ -128,11 +128,20 @@ const rotation1 = [
 	}
 ];
 
-// Check the blank graph looks like the target
-const evaluate = ({ blank, target }) => {
-	return allItemsColoured(blank.nodes) &&
-		sequencesMatch(blank.nodes, target.nodes, 'colour');
-};
+const colour1 = [
+	{
+		colourPalette: 1,
+        nodes: [[0, 0, 2]]
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([3, 4]),
+        edges: getLineOfEdges(2)
+	}, {
+		colourPalette: 2,
+        nodes: [[-1, 0, 3], [0, 0, 4], [1, 0, 3]],
+        edges: getLineOfEdges(3)
+	}
+];
 
 const ColourableGraph = (puzzle, selectedColour, update) => {
     const colourNode = nodeIndex => {
@@ -143,12 +152,12 @@ const ColourableGraph = (puzzle, selectedColour, update) => {
     return <Graph {...puzzle.blank} colourNode={colourNode}/>
 };
 
-const Transformation = ({ puzzles, transform }) => {
+const Transformation = ({ puzzles, transform, evaluate }) => {
 	const displayGraphs = (puzzle, selectedColour, update) => <g>
-        <g transform="translate(-50)">
+        <g transform="translate(-60)">
             <Graph {...puzzle.target} />
         </g>
-        <g transform={ "translate(50) " + transform }>
+        <g transform={ "translate(60) " + transform }>
             { ColourableGraph(puzzle, selectedColour, update) }
         </g>
 
@@ -162,8 +171,14 @@ const Transformation = ({ puzzles, transform }) => {
 		displayPuzzle={displayGraphs} />
 };
 
-export const Identity1 = () => <Transformation puzzles={identity1} transform=""/>
+export const Identity1 = () =>
+	<Transformation puzzles={identity1} transform="" evaluate={graphNodesAreSameColour} />
 
-export const Reflection1 = () => <Transformation puzzles={reflection1} transform="scale(-1 1)"/>
+export const TransformColour1 = () =>
+	<Transformation puzzles={colour1} transform="" evaluate={graphNodesHaveSamePattern} />
 
-export const Rotation1 = () => <Transformation puzzles={rotation1} transform="rotate(180)"/>
+export const Reflection1 = () =>
+	<Transformation puzzles={reflection1} transform="scale(-1 1)" evaluate={graphNodesAreSameColour}/>
+
+export const Rotation1 = () =>
+	<Transformation puzzles={rotation1} transform="rotate(180)" evaluate={graphNodesAreSameColour} />

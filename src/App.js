@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PuzzleMap from './PuzzleMap/PuzzleMap';
 import { ColourGraph1, ColourGraph2, ColourGraph3 } from './Puzzles/ColourGraphs';
 import { ColourMap1, ColourMap2 } from './Puzzles/ColourMaps';
-import { Identity1, Reflection1, Rotation1 } from './Puzzles/Transformations';
+import { Identity1, TransformColour1, Reflection1, Rotation1 } from './Puzzles/Transformations';
 import { RepeatingPatterns1 } from './Puzzles/RepeatingPatterns';
 import { Categorisation } from './Puzzles/Categorisation';
 
@@ -26,6 +26,7 @@ export default () =>
             <Route path={`${BASE_URL}/identity-1`} component={Identity1} />
             <Route path={`${BASE_URL}/reflection-1`} component={Reflection1} />
             <Route path={`${BASE_URL}/rotation-1`} component={Rotation1} />
+            <Route path={`${BASE_URL}/transform-colour-1`} component={TransformColour1} />
             <Route path={`${BASE_URL}/categorisation-1`} component={() => Categorisation(0)} />
             <Route path={`${BASE_URL}/categorisation-2`} component={() => Categorisation(1)} />
             <Route path={`${BASE_URL}/categorisation-3`} component={() => Categorisation(2)} />
