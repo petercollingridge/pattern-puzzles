@@ -23,8 +23,6 @@ export const IdentityIcon1 = () => <svg viewBox="-50 -50 100 100">
     <use href="#identity-1-puzzle" transform="translate(24, -4)"/>
 </svg>
 
-
-
 export const ReflectionIcon1 = () => <svg viewBox="-50 -50 100 100">
     <defs>
         <g id="reflection-1-puzzle">
@@ -69,4 +67,31 @@ export const RotationIcon1 = () => <svg viewBox="-50 -50 100 100">
 
     <use href="#rotation-1-puzzle" transform="translate(-20)"/>
     <use href="#rotation-1-puzzle" transform="translate(20) rotate(180)"/>
+</svg>
+
+export const TransformColourIcon1 = () => <svg viewBox="-50 -50 100 100">
+    <circle className="spotlight" cx="0" cy="0" r="49" />
+    <line className="reflection-line" y1="-50" y2="50" />
+
+    <g transform="translate(-20)">
+        <g className="graph-edges">
+            <line x1="0" y1="16" x2="0" y2="-16" />
+        </g>
+        <g className="graph-nodes">
+            <circle className="colour-1" cx="0" cy="-16" r="5" />
+            <circle className="colour-2" cx="0" cy="0" r="5" />
+            <circle className="colour-1" cx="0" cy="16" r="5" />
+        </g>
+    </g>
+
+    <g transform="translate(20)">
+        <g className="graph-edges">
+            <line x1="0" y1="16" x2="0" y2="-16" />
+        </g>
+        <g className="graph-nodes">
+            <circle className="colour-2" cx="0" cy="-16" r="5" />
+            <circle className="colour-1" cx="0" cy="0" r="5" />
+            <circle className="colour-2" cx="0" cy="16" r="5" />
+        </g>
+    </g>
 </svg>

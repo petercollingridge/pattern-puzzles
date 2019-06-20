@@ -146,8 +146,20 @@ const colour1 = [
         edges: getLoopOfEdges(3)
 	}, {
 		colourPalette: 2,
-        nodes: getNodesOnCircle([3, 4, 3, 4]),
+        nodes: getNodesOnCircle([1, 2, 1, 2]),
         edges: getLoopOfEdges(4)
+	}, {
+		colourPalette: 3,
+        nodes: getNodesOnCircle([1, 2, 3, 2]).concat([[0, 0, 3]]),
+        edges: getLoopOfEdges(4).concat([[0, 4], [1, 4] ,[2, 4], [3, 4]])
+	}, {
+		colourPalette: 3,
+        nodes: getNodesOnCircle([1, 2, 3, 1, 2, 3]),
+        edges: getLoopOfEdges(6)
+	}, {
+		colourPalette: 3,
+        nodes: getNodesOnCircle([2, 3, 1, 3, 2, 1]),
+        edges: getLoopOfEdges(6)
 	}
 ];
 
