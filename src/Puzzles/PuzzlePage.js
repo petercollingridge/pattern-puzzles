@@ -11,7 +11,7 @@ const COLOURS = [
     'rgb(20, 146, 196)',
     'rgb(196, 20, 96)',
     'rgb(20, 198, 96)',
-    'rgb(196, 196, 20)',
+    'rgb(220, 220, 20)',
 ];
 
 export default class PuzzlePage extends React.Component {
@@ -54,7 +54,7 @@ export default class PuzzlePage extends React.Component {
 
     // Child element has updated so evaluate to see if puzzle has been solved
     update(puzzle) {
-        const solved = this.props.evaluate(puzzle)
+        const solved = this.props.evaluate(puzzle);
         this.setState({ puzzle, solved });
     }
 
