@@ -8,7 +8,7 @@ import PuzzlePage from './PuzzlePage';
 import { Graph } from './PuzzleComponents/Graph';
 import { getGraphAndUncolouredCopy } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges, getLineOfEdges } from '../utils/graphUtils';
-import { graphNodesAreSameColour, graphNodesHaveSamePattern } from '../utils/evaluation';
+import { graphNodesAreSameColour, samePatternButDifferent } from '../utils/evaluation';
 
 
 const identity1 = [
@@ -134,12 +134,20 @@ const colour1 = [
         nodes: [[0, 0, 2]]
 	}, {
 		colourPalette: 2,
-        nodes: getNodesOnCircle([3, 4]),
+        nodes: getNodesOnCircle([1, 2]),
         edges: getLineOfEdges(2)
 	}, {
 		colourPalette: 2,
-        nodes: [[-1, 0, 3], [0, 0, 4], [1, 0, 3]],
+        nodes: [[-1, 0, 1], [0, 0, 2], [1, 0, 1]],
         edges: getLineOfEdges(3)
+	}, {
+		colourPalette: 3,
+        nodes: getNodesOnCircle([1, 2, 3]),
+        edges: getLoopOfEdges(3)
+	}, {
+		colourPalette: 2,
+        nodes: getNodesOnCircle([3, 4, 3, 4]),
+        edges: getLoopOfEdges(4)
 	}
 ];
 
@@ -171,11 +179,17 @@ const Transformation = ({ puzzles, transform, evaluate }) => {
 		displayPuzzle={displayGraphs} />
 };
 
+const patternMatchGraphs = ({ blank, target }) => {
+	const seq1 = blank.nodes.map(node => node.colour);
+	const seq2 = target.nodes.map(node => node.colour);
+	return samePatternButDifferent(seq1, seq2);
+}
+
 export const Identity1 = () =>
 	<Transformation puzzles={identity1} transform="" evaluate={graphNodesAreSameColour} />
 
 export const TransformColour1 = () =>
-	<Transformation puzzles={colour1} transform="" evaluate={graphNodesHaveSamePattern} />
+	<Transformation puzzles={colour1} transform="" evaluate={patternMatchGraphs} />
 
 export const Reflection1 = () =>
 	<Transformation puzzles={reflection1} transform="scale(-1 1)" evaluate={graphNodesAreSameColour}/>
