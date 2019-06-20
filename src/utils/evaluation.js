@@ -14,12 +14,24 @@ export const graphIsChromatic = ({ nodes, edges }) =>
 export const sequencesMatch = (seq1, seq2, attr) => {
     if (seq1.length !== seq2.length) { return false; }
     for (let i = 0; i < seq1.length; i++) {
-        if (seq1[i][attr] !== seq2[i][attr]) {
+        const value1 = attr ? seq1[i][attr] : seq1[i];
+        const value2 = attr ? seq2[i][attr] : seq2[i];
+        if (value1 !== value2) {
             return false;
         }
     }
     return true;
 };
+
+export const sequenceHasNoMatches = (seq1, seq2) => {
+    if (seq1.length !== seq2.length) { return false; }
+    for (let i = 0; i < seq1.length; i++) {
+        if (seq1[i] === seq2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
 
 // Test whether there is a consistent mapping between the values in one array to the value the other
 export const sequencesAreEquivalent = (seq1, seq2) => {
@@ -59,3 +71,10 @@ export const graphNodesHaveSamePattern = ({ blank, target }) => {
 	return allItemsColoured(blank.nodes) &&
         sequencesAreEquivalent(blank.nodes, target.nodes);
 };
+
+export const samePatternButDifferent = (seq1, seq2) => {
+    return seq1.every(item => item > 0) &&
+        sequenceHasNoMatches(seq1, seq2) &&
+        sequencesAreEquivalent(seq1, seq2);
+};
+
