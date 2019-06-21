@@ -1,6 +1,12 @@
-export function allItemsColoured(items=[]) {
-    return items.every(item => item.colour > 0);
-}
+export const allItemsHaveValue = (items=[], attr) =>
+    attr ?
+        items.every(item => item[attr] > 0) :
+        items.every(item => item > 0);
+
+export const allItemsColoured = (items=[]) => allItemsHaveValue(items, 'colour');
+
+export const extractAttribute = (items=[], attr) =>
+    items.map(item => item[attr]);
 
 export function allConnectedItemsHaveDifferentColours(cxns=[]) {
     const failingCxns = cxns.filter(cxn => cxn.node1.colour === cxn.node2.colour);
@@ -8,7 +14,7 @@ export function allConnectedItemsHaveDifferentColours(cxns=[]) {
 }
 
 export const graphIsChromatic = ({ nodes, edges }) => 
-    allItemsColoured(nodes) &&
+    allItemsHaveValue(nodes, 'colour') &&
     allConnectedItemsHaveDifferentColours(edges);
 
 export const sequencesMatch = (seq1, seq2, attr) => {
@@ -65,21 +71,18 @@ export const sequencesAreEquivalent = (seq1, seq2) => {
 };
 
 // Test whether the nodes of two graphs are the same colour
-export const graphNodesAreSameColour = ({ blank, target }) => {
-	return allItemsColoured(blank.nodes) &&
-		sequencesMatch(blank.nodes, target.nodes, 'colour');
-};
+export const graphNodesAreSameColour = ({ blank, target }) => 
+    allItemsColoured(blank.nodes) &&
+    sequencesMatch(blank.nodes, target.nodes, 'colour');
 
 // Test whether the nodes of two graphs have the same pattern,
 // i.e. there is a consistent mapping from the colours in one graph to the colour in the target
-export const graphNodesHaveSamePattern = ({ blank, target }) => {
-	return allItemsColoured(blank.nodes) &&
-        sequencesAreEquivalent(blank.nodes, target.nodes);
-};
+export const graphNodesHaveSamePattern = ({ blank, target }) =>
+    allItemsColoured(blank.nodes) &&
+    sequencesAreEquivalent(blank.nodes, target.nodes);
 
-export const samePatternButDifferent = (seq1, seq2) => {
-    return seq1.every(item => item > 0) &&
-        sequenceHasNoMatches(seq1, seq2) &&
-        sequencesAreEquivalent(seq1, seq2);
-};
-
+export const samePatternButDifferent = (seq1, seq2) =>
+    allItemsHaveValue(seq1) &&
+    allItemsHaveValue(seq2) &&
+    sequenceHasNoMatches(seq1, seq2) &&
+    sequencesAreEquivalent(seq1, seq2);

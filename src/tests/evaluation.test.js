@@ -4,7 +4,8 @@ import {
     allItemsColoured,
     graphIsChromatic,
     sequencesAreEquivalent,
-    allConnectedItemsHaveDifferentColours
+    allConnectedItemsHaveDifferentColours,
+    samePatternButDifferent
 } from '../utils/evaluation';
 
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
@@ -204,5 +205,39 @@ describe('sequencesAreEquivalent', () => {
 
     it('returns false when objects have a consistent mapping in only one direction', () => {
         expect(sequencesAreEquivalent([1, 2, 3, 1], [2, 1, 2, 2])).toBe(false);
+    });
+});
+
+describe('samePatternButDifferent', () => {
+    it('returns true when given two empty arrays', () => {
+        expect(samePatternButDifferent([], [])).toBe(true);
+    });
+
+    it('returns true with symmetric mapping', () => {
+        expect(samePatternButDifferent([1, 2, 2, 3, 4, 4, 4], [2, 1, 1, 4, 3, 3, 3])).toBe(true);
+    });
+
+    it('returns true when non-symmetric mapping', () => {
+        expect(samePatternButDifferent([1, 2, 2, 3, 4, 4, 4], [2, 3, 3, 4, 1, 1, 1])).toBe(true);
+    });
+
+    it('returns false when two numbers map to the same one', () => {
+        expect(samePatternButDifferent([1, 2, 2, 3, 4, 4, 4], [2, 3, 3, 2, 1, 1, 1])).toBe(false);
+    });
+
+    it('returns false when one number maps to itself', () => {
+        expect(samePatternButDifferent([1, 2, 2, 3, 4, 4, 4], [2, 3, 3, 1, 4, 4, 4])).toBe(false);
+    });
+
+    it('returns false when one number maps to two different numbers', () => {
+        expect(samePatternButDifferent([1, 2, 1, 2], [2, 1, 2, 3])).toBe(false);
+    });
+
+    it('returns false with different size arrays', () => {
+        expect(samePatternButDifferent([1, 2, 1, 2], [2, 1])).toBe(false);
+    });
+
+    it('returns falsewhen some numbers are 0', () => {
+        expect(samePatternButDifferent([1, 2, 1, 2], [0, 1, 0, 1])).toBe(false);
     });
 });
