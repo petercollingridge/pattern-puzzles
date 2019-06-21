@@ -24,8 +24,9 @@ export const sequencesMatch = (seq1, seq2, attr) => {
 };
 
 export const sequenceHasNoMatches = (seq1, seq2) => {
-    if (seq1.length !== seq2.length) { return false; }
-    for (let i = 0; i < seq1.length; i++) {
+    const n = Math.min(seq1.length, seq2.length);
+
+    for (let i = 0; i < n; i++) {
         if (seq1[i] === seq2[i]) {
             return false;
         }
@@ -35,6 +36,10 @@ export const sequenceHasNoMatches = (seq1, seq2) => {
 
 // Test whether there is a consistent mapping between the values in one array to the value the other
 export const sequencesAreEquivalent = (seq1, seq2) => {
+    if (seq1.length !== seq2.length) { 
+        return false;
+    }
+
     const mapping1 = new Map();
     const mapping2 = new Map();
 
