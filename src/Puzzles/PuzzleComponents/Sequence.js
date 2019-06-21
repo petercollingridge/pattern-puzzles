@@ -3,7 +3,7 @@ import { getColourClassName, getClickToColour } from './utils';
 
 
 export const Sequence = ({ sequence=[], colourItem }) => {
-    const size = Math.min(24, 160 / sequence.length);
+    const size = Math.min(24, 200 / sequence.length);
     const startX = -(sequence.length * size) / 2;
 
     return <g className="sequence">
