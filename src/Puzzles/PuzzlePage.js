@@ -1,5 +1,8 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { parse } from 'query-string';
+
 import Toolbar from '../Toolbars/Toolbar';
 import Button from '../Toolbars/Button';
 
@@ -14,12 +17,15 @@ const COLOURS = [
     'rgb(220, 220, 20)',
 ];
 
-export default class PuzzlePage extends React.Component {
+class PuzzlePage extends React.Component {
     constructor(props) {
         super(props);
+   
+        const queryString = parse(props.location.search);
+        const index = parseInt(queryString.q) || 0;
 
         this.state = {
-            index: 0,
+            index,
 			solved: false,
             selectedColour: null,
         }
@@ -31,15 +37,18 @@ export default class PuzzlePage extends React.Component {
 
     componentDidMount() {
         // Load the first puzzle
-        this.getPuzzle(0);
+        this.getPuzzle(this.state.index);
     }
 
     getPuzzle(index) {
         const { getPuzzleObject, puzzles } = this.props;
-        this.setState({
-            puzzle: getPuzzleObject(puzzles[index]),
-            colourPalette: puzzles[index].colourPalette
-        });
+        const puzzle = puzzles[index];
+
+        if (puzzle) {
+            this.setState({
+                puzzle: getPuzzleObject(puzzle)
+            });
+        }
     }
 
     nextPuzzle() {
@@ -76,7 +85,7 @@ export default class PuzzlePage extends React.Component {
     }
 
     render() {
-        const { index, puzzle, selectedColour, colourPalette } = this.state;
+        const { index, puzzle, selectedColour } = this.state;
         if (!puzzle) { return null; }
 
         // Determine what the selected colour is if we have selected one
@@ -117,10 +126,12 @@ export default class PuzzlePage extends React.Component {
                 <circle id="chamber-window" r="212" />
                 <Toolbar 
                     puzzle={this}
-                    nColours={colourPalette}
+                    nColours={puzzle.colourPalette}
                     selectedColour={selectedColour}
                 />
             </svg>
         </main>
     }
 };
+
+export default withRouter(PuzzlePage);
