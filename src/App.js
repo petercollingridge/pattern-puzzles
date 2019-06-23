@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import puzzles from './puzzleRoutes';
+import { puzzleData } from './puzzleData';
 import PuzzleMap from './PuzzleMap/PuzzleMap';
 
 import './base.css';
@@ -13,7 +13,7 @@ export default () =>
     <Router>
         <Switch>
             {
-                puzzles.map(({ slug, component }) =>
+                Object.values(puzzleData).map(({ slug, component }) =>
                     <Route key={slug} path={`${ BASE_URL }/${ slug }`} component={component} />
                 )
             }

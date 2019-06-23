@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export const Categorisation1 = () => <g>
+const Categorisation1 = () => <g>
     <g className="categories">
         <circle className="colour-1" cx="-24" cy="0" r="23" />
         <circle className="colour-2" cx="24" cy="0" r="23" />
@@ -16,7 +16,7 @@ export const Categorisation1 = () => <g>
     </g>
 </g>
 
-export const Categorisation2 = () => <g>
+const Categorisation2 = () => <g>
     <g className="categories">
         <circle className="colour-1" cx="-24" cy="0" r="23" />
         <circle className="colour-2" cx="24" cy="0" r="23" />
@@ -27,7 +27,7 @@ export const Categorisation2 = () => <g>
     </g>
 </g>
 
-export const Categorisation3 = () => <g>
+const Categorisation3 = () => <g>
     <g className="categories">
         <circle className="colour-1" cx="-20" cy="-20" r="19" />
         <circle className="colour-2" cx="20" cy="-20" r="19" />
@@ -51,3 +51,5 @@ export const Categorisation3 = () => <g>
         <circle className="colour-2" cx="12" cy="20" r="4" />
     </g>
 </g>
+
+    export default [Categorisation1, Categorisation2, Categorisation3];

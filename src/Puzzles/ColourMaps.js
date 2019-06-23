@@ -80,6 +80,8 @@ const puzzles2 = [
     }
 ];
 
+const puzzles = [puzzles1, puzzles2];
+
 const ColourableMap = (puzzle, selectedColour, update) => {
     const colourItem = index => {
         puzzle.regions[index].colour = selectedColour;
@@ -93,12 +95,9 @@ const evaluate = ({ regions, connections }) =>
     allItemsColoured(regions) &&
     allConnectedItemsHaveDifferentColours(connections);
 
-const ColourMap = ({ puzzles }) =>
+export const ColourMap = (n) =>
 	<PuzzlePage
-		puzzles={puzzles}
+		puzzles={puzzles[n]}
 		evaluate={evaluate}
 		getPuzzleObject={getMapObject}
 		displayPuzzle={ColourableMap} />
-
-export const ColourMap1 = () => <ColourMap puzzles={puzzles1} />
-export const ColourMap2 = () => <ColourMap puzzles={puzzles2} />

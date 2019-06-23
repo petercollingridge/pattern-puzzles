@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export const IdentityIcon1 = () => <React.Fragment>
+const IdentityIcon1 = () => <React.Fragment>
     <defs>
         <g id="identity-1-puzzle">
             <g className="graph-edges">
@@ -22,7 +22,7 @@ export const IdentityIcon1 = () => <React.Fragment>
     <line className="reflection-line" y1="-50" y2="50" />
 </React.Fragment>
 
-export const ReflectionIcon1 = () => <React.Fragment>
+const ReflectionIcon1 = () => <React.Fragment>
     <defs>
         <g id="reflection-1-puzzle">
             <g className="graph-edges">
@@ -43,7 +43,7 @@ export const ReflectionIcon1 = () => <React.Fragment>
     <line className="reflection-line" y1="-50" y2="50" />
 </React.Fragment>
 
-export const RotationIcon1 = () => <React.Fragment>
+const RotationIcon1 = () => <React.Fragment>
     <defs>
         <g id="rotation-1-puzzle">
             <g className="graph-edges">
@@ -64,7 +64,7 @@ export const RotationIcon1 = () => <React.Fragment>
     <line className="reflection-line" y1="-50" y2="50" />
 </React.Fragment>
 
-export const TransformColourIcon1 = () => <React.Fragment>
+const TransformColourIcon1 = () => <React.Fragment>
     <line className="reflection-line" y1="-50" y2="50" />
 
     <g transform="translate(-20)">
@@ -89,3 +89,5 @@ export const TransformColourIcon1 = () => <React.Fragment>
         </g>
     </g>
 </React.Fragment>
+
+export default [IdentityIcon1, ReflectionIcon1, RotationIcon1, TransformColourIcon1];

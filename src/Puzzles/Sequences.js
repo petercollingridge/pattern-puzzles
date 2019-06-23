@@ -46,6 +46,8 @@ const puzzles1 = [
     }
 ];
 
+const puzzles = [puzzles1];
+
 const evaluate = ({ sequence, target }) =>
     allItemsColoured(sequence) &&
     sequencesMatch(sequence, target, 'colour');
@@ -59,11 +61,9 @@ const ColourableSequence = (puzzle, selectedColour, update) => {
     return <Sequence {...puzzle} colourItem={colourItem}/>
 };
 
-const Sequences = ({ puzzles }) =>
+export const Sequences = (n) =>
     <PuzzlePage
-		puzzles={puzzles}
+		puzzles={puzzles[n]}
 		evaluate={evaluate}
 		getPuzzleObject={getSequenceObject}
 		displayPuzzle={ColourableSequence} />
-
-export const Sequences1 = (props) => <Sequences puzzles={puzzles1} {...props} />
