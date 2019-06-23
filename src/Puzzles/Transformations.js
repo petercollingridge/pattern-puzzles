@@ -197,14 +197,11 @@ const patternMatchGraphs = ({ blank, target }) => {
 	return samePatternButDifferent(seq1, seq2);
 }
 
-export const Identity1 = () =>
-	<Transformation puzzles={identity1} transform="" evaluate={graphNodesAreSameColour} />
+const puzzles = [
+	<Transformation puzzles={identity1} transform="" evaluate={graphNodesAreSameColour} />,
+	<Transformation puzzles={reflection1} transform="scale(-1 1)" evaluate={graphNodesAreSameColour}/>,
+	<Transformation puzzles={rotation1} transform="rotate(180)" evaluate={graphNodesAreSameColour} />,
+	<Transformation puzzles={colour1} transform="" evaluate={patternMatchGraphs} />,
+];
 
-export const TransformColour1 = () =>
-	<Transformation puzzles={colour1} transform="" evaluate={patternMatchGraphs} />
-
-export const Reflection1 = () =>
-	<Transformation puzzles={reflection1} transform="scale(-1 1)" evaluate={graphNodesAreSameColour}/>
-
-export const Rotation1 = () =>
-	<Transformation puzzles={rotation1} transform="rotate(180)" evaluate={graphNodesAreSameColour} />
+export const Transformations = (n) => puzzles[n];

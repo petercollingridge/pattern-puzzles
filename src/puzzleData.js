@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ColourGraphIcons from './PuzzleMap/Icons/ColourGraphs';
 import { ColourGraph } from './Puzzles/ColourGraphs';
 
@@ -7,6 +5,7 @@ import ColourMapIcons from './PuzzleMap/Icons/ColourMaps';
 import { ColourMap } from './Puzzles/ColourMaps';
 
 import TransformationIcons from './PuzzleMap/Icons/Transformations';
+import { Transformations } from './Puzzles/Transformations';
 
 import SequencesIcons from './PuzzleMap/Icons/Sequences';
 import { Sequences } from './Puzzles/Sequences';
@@ -21,7 +20,7 @@ export const puzzleData = {};
 addData('colour-graphs', 'colour-graphs', ColourGraphIcons, ColourGraph, 3);
 addData('colour-maps', 'colour-maps', ColourMapIcons, ColourMap, 2);
 addData('categorisation', 'categorisation', CategorisationIcons, Categorisation, 3);
-addData('transformations', 'transformations', TransformationIcons, Categorisation, 4);
+addData('transformations', 'transformations', TransformationIcons, Transformations, 4);
 addData('sequences', 'sequences', SequencesIcons, Sequences, 1);
 
 function addData(name, slug, icons, components, n) {
