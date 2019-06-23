@@ -134,6 +134,8 @@ const puzzles3 = [
     }
 ];
 
+const puzzles = [puzzles1, puzzles2, puzzles3];
+
 const ColourableGraph = (puzzle, selectedColour, update) => {
     const colourNode = nodeIndex => {
         puzzle.nodes[nodeIndex].colour = selectedColour;
@@ -143,16 +145,10 @@ const ColourableGraph = (puzzle, selectedColour, update) => {
     return <Graph {...puzzle} colourNode={colourNode}/>
 };
 
-const ColourGraph = ({ puzzles }) => 
+export const ColourGraph = (n) =>
     <PuzzlePage
-		puzzles={puzzles}
-		evaluate={graphIsChromatic}
+        puzzles={puzzles[n]}
+        evaluate={graphIsChromatic}
 		getPuzzleObject={getGraphObject}
 		displayPuzzle={ColourableGraph}
     />
-
-export const ColourGraph1 = () => <ColourGraph puzzles={puzzles1} />
-
-export const ColourGraph2 = () => <ColourGraph puzzles={puzzles2} />
-
-export const ColourGraph3 = () => <ColourGraph puzzles={puzzles3} />
