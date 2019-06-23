@@ -13,35 +13,35 @@ import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
 const puzzles1 = [
     {
         colourPalette: 1,
-        pattern: [1, 1, 1, 1],
+        pattern: [1, 1, 1, 1, 0],
         answer: [1]
     }, {
         colourPalette: 2,
-        pattern: [1, 1, 1, 1],
+        pattern: [1, 1, 1, 1, 0, 0],
         answer: [1, 1]
     }, {
         colourPalette: 2,
-        pattern: [1, 2, 1, 2, 1, 2],
+        pattern: [1, 2, 1, 2, 1, 2, 0, 0],
         answer: [1, 2]
     }, {
         colourPalette: 3,
-        pattern: [1, 2, 3, 1, 2, 3],
+        pattern: [1, 2, 3, 1, 2, 3, 0, 0, 0],
         answer: [1, 2, 3]
     }, {
         colourPalette: 2,
-        pattern: [1, 1, 2, 2, 1, 1],
+        pattern: [1, 1, 2, 2, 1, 1, 0, 0],
         answer: [2, 2]
     }, {
         colourPalette: 2,
-        pattern: [1, 2, 2, 1, 2, 2],
+        pattern: [1, 2, 2, 1, 2, 2, 0, 0, 0],
         answer: [1, 2, 2]
     }, {
         colourPalette: 3,
-        pattern: [1, 2, 2, 3, 3, 3, 1, 2, 2],
-        answer: [3, 3, 3]
+        pattern: [1, 2, 3, 3, 1, 2, 3, 3, 0, 0, 0, 0],
+        answer: [1, 2, 3, 3]
     }, {
         colourPalette: 2,
-        pattern: [1, 2, 1, 1, 2, 1, 2, 1, 1, 2],
+        pattern: [1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 0, 0, 0, 0],
         answer: [1, 2, 1, 1]
     }
 ];

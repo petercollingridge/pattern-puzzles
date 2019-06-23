@@ -46,7 +46,8 @@ class PuzzlePage extends React.Component {
 
         if (puzzle) {
             this.setState({
-                puzzle: getPuzzleObject(puzzle)
+                puzzle: getPuzzleObject(puzzle),
+                colourPalette: puzzle.colourPalette
             });
         }
     }
@@ -85,7 +86,7 @@ class PuzzlePage extends React.Component {
     }
 
     render() {
-        const { index, puzzle, selectedColour } = this.state;
+        const { index, puzzle, colourPalette, selectedColour } = this.state;
         if (!puzzle) { return null; }
 
         // Determine what the selected colour is if we have selected one
@@ -126,7 +127,7 @@ class PuzzlePage extends React.Component {
                 <circle id="chamber-window" r="212" />
                 <Toolbar 
                     puzzle={this}
-                    nColours={puzzle.colourPalette}
+                    nColours={colourPalette}
                     selectedColour={selectedColour}
                 />
             </svg>

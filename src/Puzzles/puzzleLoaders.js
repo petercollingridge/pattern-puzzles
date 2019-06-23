@@ -67,19 +67,20 @@ export function getMapObject({ regions=[], connections=[], size=1 }) {
 }
 
 export function getSequenceObject({ pattern, answer }) {
-    const patternObjects = pattern.map(item => ({
-        colour: item,
-        fixed: true
+    const sequence = pattern.map(colour => ({
+        colour,
+        fixed: colour > 0
     }));
 
-    const sequence = patternObjects.concat(
-        answer.map(item => ({ colour: 0 })
-    ));
-    
-    // Target sequence is the existing sequence plus the answer fragment
-    const target = patternObjects.concat(
-        answer.map(item => ({ colour: item })
-    ));
+    // Target sequence is the starting sequence with any 0s replaced by the answer items
+    let n = 0;
+    const target = pattern.map(colour => {
+        if (colour > 0) {
+            return { colour };
+        } else {
+            return { colour: answer[n++] };
+        }
+    });
 
     return { sequence, target };
 }
