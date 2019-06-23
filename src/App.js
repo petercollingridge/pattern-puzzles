@@ -9,7 +9,6 @@ import { Sequences1 } from './Puzzles/Sequences';
 import { Categorisation } from './Puzzles/Categorisation';
 
 import './base.css';
-import './Icons/icons.css';
 
 
 const BASE_URL = '/pattern-puzzles';

@@ -19,16 +19,25 @@
     transition: fill 200ms ease-out
 }
 
-.map-link:hover .graph-nodes * {
-    fill: currentColor;
-}
-
 .map-link .categories * {
     fill: white;
     opacity: 0.15;
     transition: fill 200ms ease-out
 }
 
+/* Colour icon elements on hover or focus */
+.map-link:hover .graph-nodes * {
+    fill: currentColor;
+}
+
+.map-link:focus .graph-nodes * {
+    fill: currentColor;
+}
+
 .map-link:hover .categories * {
+    fill: currentColor;
+}
+
+.map-link:focus .categories * {
     fill: currentColor;
 }

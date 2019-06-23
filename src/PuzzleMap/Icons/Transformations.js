@@ -1,6 +1,7 @@
 import React from 'react';
 
-export const IdentityIcon1 = () => <svg viewBox="-50 -50 100 100">
+
+export const IdentityIcon1 = () => <React.Fragment>
     <defs>
         <g id="identity-1-puzzle">
             <g className="graph-edges">
@@ -16,14 +17,12 @@ export const IdentityIcon1 = () => <svg viewBox="-50 -50 100 100">
         </g>
     </defs>
 
-    <circle className="spotlight" cx="0" cy="0" r="49" />
-    <line className="reflection-line" y1="-50" y2="50" />
-
     <use href="#identity-1-puzzle" transform="translate(-24, -4)"/>
     <use href="#identity-1-puzzle" transform="translate(24, -4)"/>
-</svg>
+    <line className="reflection-line" y1="-50" y2="50" />
+</React.Fragment>
 
-export const ReflectionIcon1 = () => <svg viewBox="-50 -50 100 100">
+export const ReflectionIcon1 = () => <React.Fragment>
     <defs>
         <g id="reflection-1-puzzle">
             <g className="graph-edges">
@@ -39,14 +38,12 @@ export const ReflectionIcon1 = () => <svg viewBox="-50 -50 100 100">
         </g>
     </defs>
 
-    <circle className="spotlight" cx="0" cy="0" r="49" />
-    <line className="reflection-line" y1="-50" y2="50" />
-
     <use href="#reflection-1-puzzle" transform="translate(-20)"/>
     <use href="#reflection-1-puzzle" transform="translate(20) scale(-1, 1)"/>
-</svg>
+    <line className="reflection-line" y1="-50" y2="50" />
+</React.Fragment>
 
-export const RotationIcon1 = () => <svg viewBox="-50 -50 100 100">
+export const RotationIcon1 = () => <React.Fragment>
     <defs>
         <g id="rotation-1-puzzle">
             <g className="graph-edges">
@@ -62,15 +59,12 @@ export const RotationIcon1 = () => <svg viewBox="-50 -50 100 100">
         </g>
     </defs>
 
-    <circle className="spotlight" cx="0" cy="0" r="49" />
-    <line className="reflection-line" y1="-50" y2="50" />
-
     <use href="#rotation-1-puzzle" transform="translate(-20)"/>
     <use href="#rotation-1-puzzle" transform="translate(20) rotate(180)"/>
-</svg>
+    <line className="reflection-line" y1="-50" y2="50" />
+</React.Fragment>
 
-export const TransformColourIcon1 = () => <svg viewBox="-50 -50 100 100">
-    <circle className="spotlight" cx="0" cy="0" r="49" />
+export const TransformColourIcon1 = () => <React.Fragment>
     <line className="reflection-line" y1="-50" y2="50" />
 
     <g transform="translate(-20)">
@@ -94,4 +88,4 @@ export const TransformColourIcon1 = () => <svg viewBox="-50 -50 100 100">
             <circle className="colour-2" cx="0" cy="16" r="5" />
         </g>
     </g>
-</svg>
+</React.Fragment>

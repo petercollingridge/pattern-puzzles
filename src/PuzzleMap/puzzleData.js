@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { ColourGraphIcon1, ColourGraphIcon2, ColourGraphIcon3 } from '../Icons/ColourGraphs';
-import { ColourMapIcon1, ColourMapIcon2 } from '../Icons/ColourMaps';
-import { IdentityIcon1, ReflectionIcon1, RotationIcon1, TransformColourIcon1 } from '../Icons/Transformations';
-import { SequencesIcon1 } from '../Icons/Sequences';
-import { Categorisation1, Categorisation2, Categorisation3 } from '../Icons/Categorisation';
+import { ColourGraphIcon1, ColourGraphIcon2, ColourGraphIcon3 } from './Icons/ColourGraphs';
+import { ColourMapIcon1, ColourMapIcon2 } from './Icons/ColourMaps';
+import { IdentityIcon1, ReflectionIcon1, RotationIcon1, TransformColourIcon1 } from './Icons/Transformations';
+import { SequencesIcon1 } from './Icons/Sequences';
+import { Categorisation1, Categorisation2, Categorisation3 } from './Icons/Categorisation';
 
 const puzzles = [
     [
