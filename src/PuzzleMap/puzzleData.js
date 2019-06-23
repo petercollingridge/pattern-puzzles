@@ -3,7 +3,7 @@ import React from 'react';
 import { ColourGraphIcon1, ColourGraphIcon2, ColourGraphIcon3 } from '../Icons/ColourGraphs';
 import { ColourMapIcon1, ColourMapIcon2 } from '../Icons/ColourMaps';
 import { IdentityIcon1, ReflectionIcon1, RotationIcon1, TransformColourIcon1 } from '../Icons/Transformations';
-import { RepeatingPatternsIcon1 } from '../Icons/RepeatingPatterns';
+import { SequencesIcon1 } from '../Icons/Sequences';
 import { Categorisation1, Categorisation2, Categorisation3 } from '../Icons/Categorisation';
 
 const puzzles = [
@@ -20,7 +20,7 @@ const puzzles = [
         { slug: 'rotation-1', icon: <RotationIcon1/> },
         { slug: 'transform-colour-1', icon: <TransformColourIcon1/> },
     ], [
-        { slug: 'repeating-patterns-1', icon: <RepeatingPatternsIcon1/> },
+        { slug: 'sequences-1', icon: <SequencesIcon1/> },
     ], [
         { slug: 'categorisation-1', icon: <Categorisation1/> },
         { slug: 'categorisation-2', icon: <Categorisation2/> },

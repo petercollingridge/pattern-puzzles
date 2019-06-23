@@ -59,11 +59,11 @@ const ColourableSequence = (puzzle, selectedColour, update) => {
     return <Sequence {...puzzle} colourItem={colourItem}/>
 };
 
-const RepeatingPatterns = ({ puzzles }) =>
+const Sequences = ({ puzzles }) =>
     <PuzzlePage
 		puzzles={puzzles}
 		evaluate={evaluate}
 		getPuzzleObject={getSequenceObject}
 		displayPuzzle={ColourableSequence} />
 
-export const RepeatingPatterns1 = (props) => <RepeatingPatterns puzzles={puzzles1} {...props} />
+export const Sequences1 = (props) => <Sequences puzzles={puzzles1} {...props} />
