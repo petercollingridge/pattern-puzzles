@@ -6,6 +6,14 @@
 .map-link .spotlight {
     fill: white;
     stroke: none;
+    color: rgb(20, 146, 196);
+}
+
+.map-link .spotlight-outline {
+    fill: none;
+    stroke: none;
+    stroke-width: 3px;
+    color: rgb(20, 146, 196);
 }
 
 .map-link .graph-edges {
@@ -40,4 +48,13 @@
 
 .map-link:focus .categories * {
     fill: currentColor;
+}
+
+.map-link:focus {
+    outline: none;
+}
+
+.map-link:focus .spotlight-outline {
+    stroke: currentColor;
+    filter: url(#glow-spotlight);
 }
