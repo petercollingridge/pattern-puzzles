@@ -1,5 +1,7 @@
 import {
-    getPointsOnACircle
+    getPointsOnACircle,
+    getLineOfEdges,
+    getLoopOfEdges
 } from '../utils/graphUtils';
 
 
@@ -74,5 +76,37 @@ describe('getPointsOnACircle', () => {
         expect(p2[1]).toBeCloseTo(0, 5);
         expect(p3[0]).toBeCloseTo(-0.5, 5);
         expect(p3[1]).toBeCloseTo(-d, 5);
+    });
+});
+
+describe('getLineOfEdges', () => {
+    it('returns an empty array when given 0', () => {
+        expect(getLineOfEdges(0).length).toBe(0);
+    });
+
+    it('returns a set of connections when given a single number', () => {
+        const result = getLineOfEdges(4);
+        expect(result).toEqual([[0, 1], [1, 2], [2, 3]]);
+    });
+
+    it('returns a set of connections when given two numbers', () => {
+        const result = getLineOfEdges(2, 5);
+        expect(result).toEqual([[2, 3], [3, 4], [4, 5]]);
+    });
+});
+
+describe('getLoopOfEdges', () => {
+    it('returns an empty array when given 0', () => {
+        expect(getLoopOfEdges(0).length).toBe(0);
+    });
+
+    it('returns a set of connections when given a single number', () => {
+        const result = getLoopOfEdges(4);
+        expect(result).toEqual([[0, 1], [1, 2], [2, 3], [3, 0]]);
+    });
+
+    it('returns a set of connections when given two numbers', () => {
+        const result = getLoopOfEdges(2, 5);
+        expect(result).toEqual([[2, 3], [3, 4], [4, 5], [5, 2]]);
     });
 });

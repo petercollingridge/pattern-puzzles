@@ -46,12 +46,15 @@ export function getLineOfEdges(start, stop) {
 
 export function getLoopOfEdges(start, stop) {
     if (stop === undefined) {
-        stop = start - 1;
+        stop = Math.max(0, start - 1);
         start = 0;
     }
 
     const edges = getLineOfEdges(start, stop);
-    edges.push([start, stop]);
+    if (start !== stop) {
+        edges.push([stop, start]);
+    }
+
     return edges;
 }
 
