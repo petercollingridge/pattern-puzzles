@@ -12,7 +12,7 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
         x: x * size,
         y: y * size,
         colour: nodeColour || colour,
-        fixed: Boolean(colour)
+        fixed: Boolean(nodeColour || colour)
     }));
 
     const edgeObjects = edges.map(([n1, n2]) => {
