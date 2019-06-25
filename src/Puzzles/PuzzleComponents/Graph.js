@@ -28,7 +28,10 @@ export const Graph = ({ edges=[], nodes=[], colourNode }) =>
         </g>
     </g>
 
-
+// <puzzle> is an object representing the puzzle and what the update function uses to determine
+//  whether the puzzle has been solved
+// <selectedColour> is colour currently select by the user, so what a node will be coloured when clicked
+// <update> is the puzzle's update function which allows the puzzle's state to be updated and then evaluated
 export const ColourableGraph = (puzzle, selectedColour, update) => {
     // Function that takes a node index, to colour the node in a graph, and update it
     const colourNode = nodeIndex => {
