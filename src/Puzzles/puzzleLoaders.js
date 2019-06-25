@@ -106,6 +106,8 @@ export function getGraphSequence({ graphs, answer }) {
                 node.fixed = false;
                 node.colour = 0;
             });
+
+            sequence.push(blankGraph);
             target.push(answerGraph);
             n++;
         }

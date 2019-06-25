@@ -24,5 +24,6 @@ const SequencesIcon2 = () =>
 
 export default [
     SequencesIcon1,
-    SequencesIcon2
+    SequencesIcon2,
+    SequencesIcon2,
 ];

@@ -5,8 +5,8 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import { Sequence } from './PuzzleComponents/Sequence';
-import { getSequenceObject } from './puzzleLoaders';
+import { Sequence, GraphSequence } from './PuzzleComponents/Sequence';
+import { getSequenceObject, getGraphSequence } from './puzzleLoaders';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
 import { triangleGraph } from '../utils/graphUtils';
 
@@ -89,7 +89,7 @@ const puzzles2 = [
 const puzzles3 = [
     {
         colourPalette: 1,
-        pattern: [triangleGraph(1), triangleGraph(1), triangleGraph(1), null],
+        graphs: [triangleGraph(1), triangleGraph(1), triangleGraph(1), null],
         answer: [triangleGraph(1)]
     }
 ];
@@ -109,9 +109,27 @@ const ColourableSequence = (puzzle, selectedColour, update) => {
     return <Sequence {...puzzle} colourItem={colourItem}/>
 };
 
-export const Sequences = (n) =>
-    <PuzzlePage
-		puzzles={puzzles[n]}
-		evaluate={evaluate}
-		getPuzzleObject={getSequenceObject}
-		displayPuzzle={ColourableSequence} />
+const ColourableGraphSequence = (puzzle, selectedColour, update) => {
+    const colourItem = index => {
+        puzzle.sequence[index].colour = selectedColour;
+        update(puzzle);
+    }
+
+    return <GraphSequence {...puzzle} colourItem={colourItem}/>
+};
+
+export const Sequences = (n) => {
+    if (n < 2) {
+        return <PuzzlePage
+            puzzles={puzzles[n]}
+            evaluate={evaluate}
+            getPuzzleObject={getSequenceObject}
+            displayPuzzle={ColourableSequence} />
+    } else {
+        return <PuzzlePage
+            puzzles={puzzles[n]}
+            evaluate={evaluate}
+            getPuzzleObject={getGraphSequence}
+            displayPuzzle={ColourableGraphSequence} />
+    }
+}
