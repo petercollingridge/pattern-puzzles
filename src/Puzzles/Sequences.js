@@ -8,12 +8,14 @@ import PuzzlePage from './PuzzlePage';
 import { Sequence } from './PuzzleComponents/Sequence';
 import { getSequenceObject } from './puzzleLoaders';
 import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
+import { triangleGraph } from '../utils/graphUtils';
 
 
+// Sequence of coloured blocks with uncoloured blocks at the end
 const puzzles1 = [
     {
         colourPalette: 1,
-        pattern: [1, 1, 1, 1, 0],
+        pattern: [1, 1, 1, 0],
         answer: [1]
     }, {
         colourPalette: 2,
@@ -46,6 +48,7 @@ const puzzles1 = [
     }
 ];
 
+// Sequence of coloured blocks with uncoloured blocks in the middle of the sequence
 const puzzles2 = [
     {
         colourPalette: 1,
@@ -82,7 +85,16 @@ const puzzles2 = [
     }
 ];
 
-const puzzles = [puzzles1, puzzles2];
+// Sequence of coloured graphs with uncoloured one at the end
+const puzzles3 = [
+    {
+        colourPalette: 1,
+        pattern: [triangleGraph(1), triangleGraph(1), triangleGraph(1), null],
+        answer: [triangleGraph(1)]
+    }
+];
+
+const puzzles = [puzzles1, puzzles2, puzzles3];
 
 const evaluate = ({ sequence, target }) =>
     allItemsColoured(sequence) &&

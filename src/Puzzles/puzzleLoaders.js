@@ -67,6 +67,7 @@ export function getMapObject({ regions=[], connections=[], size=1 }) {
 }
 
 export function getSequenceObject({ pattern, answer }) {
+    //  Get a sequence of node objects
     const sequence = pattern.map(colour => ({
         colour,
         fixed: colour > 0
@@ -79,6 +80,34 @@ export function getSequenceObject({ pattern, answer }) {
             return { colour };
         } else {
             return { colour: answer[n++] };
+        }
+    });
+
+    return { sequence, target };
+}
+
+export function getGraphSequence({ graphs, answer }) {
+    const sequence = [];
+    const target = [];
+
+    let n = 0;
+    graphs.forEach(graph => {
+        if (graph) {
+            sequence.push(getGraphObject(graph));
+            target.push(getGraphObject(graph));
+        } else {
+            // Target sequence is the starting sequence with any nulls replaced by the answer graphs
+            const answerGraph = getGraphObject(answer[n]);
+            target.push(answerGraph);
+            
+            // Displayed sequence show answer as a blank graph
+            const blankGraph = getGraphObject(answer[n]);
+            blankGraph.nodes.forEach(node => {
+                node.fixed = false;
+                node.colour = 0;
+            });
+            target.push(answerGraph);
+            n++;
         }
     });
 
