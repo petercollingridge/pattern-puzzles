@@ -109,15 +109,6 @@ const ColourableSequence = (puzzle, selectedColour, update) => {
     return <Sequence {...puzzle} colourItem={colourItem}/>
 };
 
-const ColourableGraphSequence = (puzzle, selectedColour, update) => {
-    const colourItem = index => {
-        puzzle.sequence[index].colour = selectedColour;
-        update(puzzle);
-    }
-
-    return <GraphSequence {...puzzle} colourItem={colourItem}/>
-};
-
 export const Sequences = (n) => {
     if (n < 2) {
         return <PuzzlePage
@@ -130,6 +121,6 @@ export const Sequences = (n) => {
             puzzles={puzzles[n]}
             evaluate={evaluate}
             getPuzzleObject={getGraphSequence}
-            displayPuzzle={ColourableGraphSequence} />
+            displayPuzzle={GraphSequence} />
     }
 }

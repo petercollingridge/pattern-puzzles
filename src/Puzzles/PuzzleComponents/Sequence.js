@@ -1,6 +1,6 @@
 import React from 'react';
 import { getColourClassName, getClickToColour } from './utils';
-import { ColourableGraph } from './Graph';
+import { Graph } from './Graph';
 
 
 export const Sequence = ({ sequence=[], colourItem }) => {
@@ -24,7 +24,9 @@ export const Sequence = ({ sequence=[], colourItem }) => {
     </g>
 };
 
-export const GraphSequence = ({ sequence=[], colourItem }) => {
+export const GraphSequence = (puzzle, selectedColour, update) => {
+    const sequence = puzzle.sequence;
+
     let size = Math.min(120, 240 / sequence.length);
     const scale = Math.min(1, size / 90);
     size /= scale;
@@ -32,10 +34,13 @@ export const GraphSequence = ({ sequence=[], colourItem }) => {
 
     return <g className="sequence"  transform={`scale(${ scale })`}>
         { sequence.map((graph, i) => {
+            const colourNode = nodeIndex => {
+                graph.nodes[nodeIndex].colour = selectedColour;
+                update(puzzle);
+            };
+
             return <g key={i} transform={`translate(${ startX + i * size })`}>
-                <ColourableGraph {...graph}
-                    // colourNode={colourNode}
-                />
+                <Graph {...graph} colourNode={colourNode} />
             </g>
         })}
     </g>
