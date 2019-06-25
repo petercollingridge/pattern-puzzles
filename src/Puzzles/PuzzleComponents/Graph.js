@@ -27,3 +27,14 @@ export const Graph = ({ edges=[], nodes=[], colourNode }) =>
             )}
         </g>
     </g>
+
+
+export const ColourableGraph = (puzzle, selectedColour, update) => {
+    // Function that takes a node index, to colour the node in a graph, and update it
+    const colourNode = nodeIndex => {
+        puzzle.nodes[nodeIndex].colour = selectedColour;
+        update(puzzle);
+    };
+
+    return <Graph {...puzzle} colourNode={colourNode} />
+};
