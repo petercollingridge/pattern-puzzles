@@ -7,21 +7,13 @@ import { getCategoryObjects, getGraphObject } from './puzzleLoaders';
 import {
     linearGraph,
     loopGraph,
+    triangleGraph,
     getPointsOnACircle,
     getLineOfEdges,
     getLoopOfEdges
 } from '../utils/graphUtils';
 import { allItemsColoured, sequencesAreEquivalent } from '../utils/evaluation';
 
-
-// Graphs
-const lineOfThree = linearGraph([1, 1, 1]);
-const triangle = loopGraph([1, 1, 1], 0.8);
-const lShape = {
-    nodes: [[0.5, 0.5], [-0.5, 0.5], [0.5, -0.5]],
-    edges: [[0, 1], [0, 2]],
-    colour: 1
-};
 
 // Graphs are all the same colour and need to be match by shape
 const puzzle1 = [
@@ -36,16 +28,20 @@ const puzzle1 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, copies: 3, item: lineOfThree },
-            { type: 2, copies: 2, item: triangle }
+            { type: 1, copies: 3, item: linearGraph([1, 1, 1]) },
+            { type: 2, copies: 2, item: triangleGraph(1, 0.8) }
         ]
     }, {
         colourPalette: 3,
         randomRotate: true,
         categories: [
-            { type: 1, copies: 2, item: lineOfThree },
-            { type: 2, copies: 2, item: triangle },
-            { type: 3, copies: 2, item: lShape }
+            { type: 1, copies: 2, item: linearGraph([1, 1, 1]) },
+            { type: 2, copies: 2, item: triangleGraph(1, 0.8) },
+            { type: 3, copies: 2, item: {
+                nodes: [[0.5, 0.5], [-0.5, 0.5], [0.5, -0.5]],
+                edges: [[0, 1], [0, 2]],
+                colour: 1
+            }}
         ]
     }, {
         colourPalette: 3,
