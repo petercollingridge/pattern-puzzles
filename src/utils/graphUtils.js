@@ -81,3 +81,15 @@ export function loopGraph(colours, scale=1) {
 
     return { nodes, edges };
 }
+
+export function triangleGraph(colours, scale=1) {
+    if (!Array.isArray(colours)) {
+        // Can pass in a single colour to set all nodes to that colour
+        colours = [colours, colours, colours];
+    }
+
+    return {
+        nodes: getNodesOnCircle(colours, { r: scale }),
+        edges: getLoopOfEdges(3)
+    };
+}
