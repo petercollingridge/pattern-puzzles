@@ -21,7 +21,7 @@ addData('colour-graphs', 'colour-graphs', ColourGraphIcons, ColourGraph, 3);
 addData('colour-maps', 'colour-maps', ColourMapIcons, ColourMap, 2);
 addData('categorisation', 'categorisation', CategorisationIcons, Categorisation, 3);
 addData('transformations', 'transformations', TransformationIcons, Transformations, 4);
-addData('sequences', 'sequences', SequencesIcons, Sequences, 2);
+addData('sequences', 'sequences', SequencesIcons, Sequences, 3);
 
 function addData(name, slug, icons, components, n) {
     for (let i = 0; i < n; i++) {
@@ -45,5 +45,5 @@ export const puzzleLayout = [
     getData('colour-maps', 2),
     getData('categorisation', 3),
     getData('transformations', 4),
-    getData('sequences', 2),
+    getData('sequences', 3),
 ];
