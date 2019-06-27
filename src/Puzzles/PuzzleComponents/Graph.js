@@ -1,6 +1,6 @@
 import React from 'react';
 import { Line } from './Primitives';
-import { getColourClassName, getClickToColour } from './utils';
+import { isColourable } from './utils';
 
 
 export const Graph = ({ edges=[], nodes=[], colourNode }) =>
@@ -21,8 +21,7 @@ export const Graph = ({ edges=[], nodes=[], colourNode }) =>
                     r={node.r}
                     cx={node.x}
                     cy={node.y}
-                    className={getColourClassName(node)}
-                    onClick={getClickToColour(colourNode, node, i)}
+                    {...isColourable(node, i, colourNode)}
                 />
             )}
         </g>

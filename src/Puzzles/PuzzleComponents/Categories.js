@@ -1,6 +1,6 @@
 import React from 'react';
 import { getPointsOnACircle } from '../../utils/graphUtils';
-import { getColourClassName, getClickToColour } from './utils';
+import { isColourable } from './utils';
 
 
 const getCirclePackedInCircle = (R, n) => {
@@ -27,8 +27,7 @@ export const Categories = ({ size, categories, colourCategory }) => {
 
             return <g key={i} transform={transform}>
                 <circle
-                    className={'category ' + getColourClassName(category)}
-                    onClick={getClickToColour(colourCategory, category, i)}
+                    {...isColourable(category, i, colourCategory, 'category')}
                     r={categorySize * 0.95}
                     />
                 <g className="no-pointer">

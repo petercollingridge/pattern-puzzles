@@ -1,7 +1,6 @@
 import React from 'react';
-import { handleKeyDown } from '../../utils/common';
-import { getColourClassName, getClickToColour } from './utils';
 import { Graph } from './Graph';
+import { isColourable } from './utils';
 
 
 export const Sequence = ({ sequence=[], colourItem }) => {
@@ -18,10 +17,7 @@ export const Sequence = ({ sequence=[], colourItem }) => {
                 height={size - 1}
                 rx="3"
                 ry="3"
-                tabIndex={item.fixed ? null : 0}
-                className={getColourClassName(item)}
-                onClick={getClickToColour(colourItem, item, i)}
-                onKeyDown={(evt) => handleKeyDown(evt, () => getClickToColour(colourItem, item, i)()) }
+                {...isColourable(item, i, colourItem)}
             />
         })}
     </g>

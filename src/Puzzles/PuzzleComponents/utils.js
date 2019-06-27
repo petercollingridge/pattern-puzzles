@@ -1,22 +1,27 @@
-export function getColourClassName(item) {
-    let className;
+import { handleKeyDown } from '../../utils/common';
 
-    if (!item.fixed) {
-        className = "colourable ";
-        if (item.colour) {
-            className += `fill-${item.colour}`;
-        } else {
-            className += "empty-region";
-        }
+
+// Given a node, return props to make it colourable
+export function isColourable(item, i, colourItem, className="") {
+    if (item.fixed || !colourItem) {
+        return {
+            className: `fill-${item.colour} ${ className }`
+        };
+    }
+    
+    const colourThisItem = () => colourItem(i);
+
+    className += " colourable ";
+    if (item.colour) {
+        className += ` fill-${item.colour}`;
     } else {
-        className = `fill-${item.colour}`;
+        className += " empty-region";
     }
 
-    return className;
-}
-
-export function getClickToColour(colourItem, item, i) {
-    if (colourItem && !item.fixed) {
-        return () => colourItem(i);
-    }
+    return {
+        className,
+        tabIndex: 0,
+        onClick: colourThisItem,
+        onKeyDown: (evt) => handleKeyDown(evt, colourThisItem)
+    };
 }
