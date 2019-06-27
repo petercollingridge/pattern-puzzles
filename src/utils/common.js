@@ -7,3 +7,10 @@ export function shuffle(arr) {
     }
     return arr;
 }
+
+// Click enter or space triggers a given callback
+export const handleKeyDown = (evt, callback) => {
+    if (evt.key === 'Enter' || evt.keyCode === 32) {
+        callback();
+    }
+};

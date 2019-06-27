@@ -1,14 +1,9 @@
 import React from 'react';
+import { handleKeyDown } from '../utils/common';
 
 
 const TOOLBAR_R = 136;
 const DELTA_ANGLE = Math.PI / 18;
-
-const handleKeyDown = (evt, callback) => {
-    if (evt.key === 'Enter' || evt.keyCode === 32) {
-        callback();
-    }
-};
 
 export default function ({ puzzle, nColours, selectedColour }) {
     const r = 8;
