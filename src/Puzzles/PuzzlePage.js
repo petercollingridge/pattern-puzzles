@@ -10,7 +10,7 @@ import './puzzle.css';
 
 
 const COLOURS = [
-    'rgb(30, 20, 20)',
+    'rgb(170, 170, 170)',
     'rgb(20, 146, 196)',
     'rgb(196, 20, 96)',
     'rgb(20, 198, 96)',
@@ -90,7 +90,9 @@ class PuzzlePage extends React.Component {
         if (!puzzle) { return null; }
 
         // Determine what the selected colour is if we have selected one
-        const style = selectedColour ? { color: COLOURS[selectedColour] } : {};
+        const style = {
+            color: COLOURS[selectedColour || 0]
+        };
         const className = selectedColour ? "colour-selected" : "";
 
         return <main>
@@ -109,8 +111,9 @@ class PuzzlePage extends React.Component {
                         <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
                         <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
                     </filter>
-                    <filter id="glow-filter" x="-200%" y="-200%" width="400%" height="400%">
-                        <feGaussianBlur stdDeviation="1.5" result="colouredBlur" />
+                    <filter id="glow-filter" x="-250%" y="-250%" width="500%" height="500%">
+                        <feMorphology in="mask" result="dilated" operator="dilate" radius="1" />
+                        <feGaussianBlur stdDeviation="3" result="colouredBlur" />
                         <feMerge>
                             <feMergeNode in="coloredBlur"/>
                             <feMergeNode in="SourceGraphic"/>
