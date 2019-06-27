@@ -15,4 +15,4 @@ export default (props) => {
             onKeyDown={(evt) => handleKeyDown(evt, props.onClick)}
             role="button" />
     </svg>
-}
+};
