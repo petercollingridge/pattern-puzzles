@@ -1,7 +1,8 @@
 import {
     getPointsOnACircle,
     getLineOfEdges,
-    getLoopOfEdges
+    getLoopOfEdges,
+    linearGraph
 } from '../utils/graphUtils';
 
 
@@ -108,5 +109,35 @@ describe('getLoopOfEdges', () => {
     it('returns a set of connections when given two numbers', () => {
         const result = getLoopOfEdges(2, 5);
         expect(result).toEqual([[2, 3], [3, 4], [4, 5], [5, 2]]);
+    });
+});
+
+describe('linearGraph', () => {
+    it('returns an empty graph when given 0', () => {
+        const graph = linearGraph(0);
+        expect(graph.nodes.length).toBe(0);
+        expect(graph.edges.length).toBe(0);
+    });
+
+    it('returns an empty graph when given an empty array', () => {
+        const graph = linearGraph([]);
+        expect(graph.nodes.length).toBe(0);
+        expect(graph.edges.length).toBe(0);
+    });
+
+    it('returns a graph when given a number', () => {
+        const graph = linearGraph(3);
+        expect(graph.nodes.length).toBe(3);
+        expect(graph.edges.length).toBe(2);
+        expect(graph.nodes).toStrictEqual([[-1, 0, undefined], [0, 0, undefined], [1, 0, undefined]]);
+        expect(graph.edges).toEqual([[0, 1], [1, 2]]);
+    });
+
+    it('returns a graph when given an array of colours', () => {
+        const graph = linearGraph([1, 2, undefined, 3]);
+        expect(graph.nodes.length).toBe(4);
+        expect(graph.edges.length).toBe(3);
+        expect(graph.nodes).toStrictEqual([[-1.5, 0, 1], [-0.5, 0, 2], [0.5, 0, undefined], [1.5, 0, 3]]);
+        expect(graph.edges).toEqual([[0, 1], [1, 2], [2, 3]]);
     });
 });
