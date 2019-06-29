@@ -13,9 +13,9 @@ export function isColourable(item, i, colourItem, className="") {
 
     className += " colourable ";
     if (item.colour) {
-        className += ` fill-${item.colour}`;
+        className += `fill-${item.colour}`;
     } else {
-        className += " empty-region";
+        className += "no-fill";
     }
 
     return {
