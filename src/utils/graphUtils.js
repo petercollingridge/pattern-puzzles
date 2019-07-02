@@ -1,3 +1,11 @@
+// If arr is not an array return an empty array with the length
+function getArray(arr) {
+    if (Array.isArray(arr)) {
+        return arr;
+    }
+    return Array.from({ length: arr });
+}
+
 export function getPointsOnACircle(n, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
     const points = [];
     const dAngle = 2 * Math.PI / n;
@@ -15,12 +23,7 @@ export function getPointsOnACircle(n, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
 }
 
 export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
-    // If colours is a number rather than an array, create an empty array of that size
-    // i.e. none of the nodes will have a colour
-    if (!Array.isArray(colours)) {
-        colours = new Array(colours);
-    }
-
+    colours = getArray(colours);
     const n = colours.length;
     const points = getPointsOnACircle(n, { r, offsetAngle, dx, dy });
 
@@ -59,10 +62,7 @@ export function getLoopOfEdges(start, stop) {
 }
 
 export function linearGraph(colours, scale=1) {
-    if (!Array.isArray(colours)) {
-        colours = new Array(colours);
-    }
-
+    colours = getArray(colours);
     const n = colours.length;
     const startX = - (n - 1) * scale / 2;
     const nodes = colours.map((colour, i) => [startX + i * scale, 0, colour])
@@ -72,36 +72,29 @@ export function linearGraph(colours, scale=1) {
 }
 
 export function loopGraph(colours, scale=1) {
-    if (!Array.isArray(colours)) {
-        colours = new Array(colours);
-    }
-
+    colours = getArray(colours);
     const nodes = getNodesOnCircle(colours, { r: scale });
     const edges = getLoopOfEdges(colours.length);
 
     return { nodes, edges };
 }
 
-export function triangleGraph(colours, scale=1) {
+function getRegularPolygonGraph(size, colours, scale=1) {
     // Can pass in a single colour to set all nodes to that colour
     if (!Array.isArray(colours)) {
-        colours = [colours, colours, colours];
+        colours = Array.from({ length: size }).map(_ => colours);
     }
 
     return {
         nodes: getNodesOnCircle(colours, { r: scale }),
-        edges: getLoopOfEdges(3)
+        edges: getLoopOfEdges(size)
     };
 }
 
-export function squareGraph(colours, scale=1) {
-    // Can pass in a single colour to set all nodes to that colour
-    if (!Array.isArray(colours)) {
-        colours = [colours, colours, colours, colours];
-    }
+export function triangleGraph(colours, scale=1) {
+    return getRegularPolygonGraph(3, colours, scale);
+}
 
-    return {
-        nodes: getNodesOnCircle(colours, { r: scale }),
-        edges: getLoopOfEdges(4)
-    };
+export function squareGraph(colours, scale=1) {
+    return getRegularPolygonGraph(4, colours, scale);
 }
