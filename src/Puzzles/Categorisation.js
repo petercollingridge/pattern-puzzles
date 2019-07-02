@@ -7,7 +7,6 @@ import { getCategoryObjects, getGraphObject } from './puzzleLoaders';
 import {
     linearGraph,
     loopGraph,
-    triangleGraph,
     getPointsOnACircle,
     getLineOfEdges,
     getLoopOfEdges
@@ -29,14 +28,14 @@ const puzzle1 = [
         randomRotate: true,
         categories: [
             { type: 1, copies: 3, item: linearGraph([1, 1, 1]) },
-            { type: 2, copies: 2, item: triangleGraph(1, 0.8) }
+            { type: 2, copies: 2, item: loopGraph(1, 0.8) }
         ]
     }, {
         colourPalette: 3,
         randomRotate: true,
         categories: [
             { type: 1, copies: 2, item: linearGraph([1, 1, 1]) },
-            { type: 2, copies: 2, item: triangleGraph(1, 0.8) },
+            { type: 2, copies: 2, item: loopGraph(1, 0.8) },
             { type: 3, copies: 2, item: {
                 nodes: [[0.5, 0.5], [-0.5, 0.5], [0.5, -0.5]],
                 edges: [[0, 1], [0, 2]],
@@ -358,7 +357,31 @@ const puzzle3 = [
     }
 ];
 
-const puzzles = [puzzle1, puzzle2, puzzle3];
+// Graphs have the same set of connections, but nodes are moved
+const puzzle4 = [
+    {
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: linearGraph(3) },
+            { type: 2, item: loopGraph(1, 0.8) },
+            { type: 1,
+                item: {
+                    nodes: [[1, 0, 1], [0, 0, 1], [0, 1, 1]],
+                    edges: getLineOfEdges(3)
+                }
+            },
+            { type: 2,
+                item: {
+                    nodes: [[1, 0, 1], [0, 0, 1], [0, 1, 1]],
+                    edges: getLoopOfEdges(3)
+                }
+            }
+        ]
+    }
+];
+
+const puzzles = [puzzle1, puzzle2, puzzle3, puzzle4];
 
 const displayCategories = (categories, selectedColour, update) => {
     categories.forEach(item => {
