@@ -41,9 +41,9 @@ function getData(name, n) {
 
 // Puzzle data grouped into categories
 export const puzzleLayout = [
-    getData('colour-graphs', 3),
-    getData('colour-maps', 2),
+    getData('sequences', 3),
     getData('categorisation', 3),
     getData('transformations', 4),
-    getData('sequences', 3),
+    getData('colour-graphs', 3),
+    getData('colour-maps', 2),
 ];
