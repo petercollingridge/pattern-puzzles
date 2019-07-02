@@ -366,7 +366,11 @@ const displayCategories = (categories, selectedColour, update) => {
     });
 
     const colourCategory = index => {
-        categories[index].colour = selectedColour;
+        if (categories[index].colour === selectedColour) {
+            categories[index].colour = 0;
+        } else {
+            categories[index].colour = selectedColour;
+        }
         update(categories);
     };
 
