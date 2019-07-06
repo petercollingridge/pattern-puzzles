@@ -8,6 +8,7 @@ import {
     linearGraph,
     loopGraph,
     getPointsOnACircle,
+    getNodesOnCircle,
     getLineOfEdges,
     getLoopOfEdges
 } from '../utils/graphUtils';
@@ -28,14 +29,14 @@ const puzzle1 = [
         randomRotate: true,
         categories: [
             { type: 1, copies: 3, item: linearGraph([1, 1, 1]) },
-            { type: 2, copies: 2, item: loopGraph(1, 0.8) }
+            { type: 2, copies: 2, item: loopGraph([1, 1, 1], 0.8) }
         ]
     }, {
         colourPalette: 3,
         randomRotate: true,
         categories: [
             { type: 1, copies: 2, item: linearGraph([1, 1, 1]) },
-            { type: 2, copies: 2, item: loopGraph(1, 0.8) },
+            { type: 2, copies: 2, item: loopGraph([1, 1, 1], 0.8) },
             { type: 3, copies: 2, item: {
                 nodes: [[0.5, 0.5], [-0.5, 0.5], [0.5, -0.5]],
                 edges: [[0, 1], [0, 2]],
@@ -363,8 +364,8 @@ const puzzle4 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: linearGraph(3) },
-            { type: 2, item: loopGraph(1, 0.8) },
+            { type: 1, item: linearGraph([1, 1, 1]) },
+            { type: 2, item: loopGraph([1, 1, 1], 0.8) },
             { type: 1,
                 item: {
                     nodes: [[1, 0, 1], [0, 0, 1], [0, 1, 1]],
@@ -375,6 +376,31 @@ const puzzle4 = [
                 item: {
                     nodes: [[1, 0, 1], [0, 0, 1], [0, 1, 1]],
                     edges: getLoopOfEdges(3)
+                }
+            }
+        ]
+    }, {
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: linearGraph([1, 1, 1, 1], 0.8) },
+            { type: 2, item: loopGraph([1, 1, 1, 1], 0.8) },
+            { type: 1,
+                item: {
+                    nodes: getNodesOnCircle([1, 1, 1, 1], { r: 0.8 }),
+                    edges: [[0, 1], [1, 3], [2, 3]]
+                }
+            },
+            { type: 1,
+                item: {
+                    nodes: getNodesOnCircle([1, 1, 1, 1], { r: 0.8 }),
+                    edges: getLineOfEdges(4)
+                }
+            },
+            { type: 2,
+                item: {
+                    nodes: getNodesOnCircle([1, 1, 1], { r: 1.2 }).concat([0, 0, 1]),
+                    edges: [[0, 1], [1, 2], [0, 3], [0,2]]
                 }
             }
         ]
