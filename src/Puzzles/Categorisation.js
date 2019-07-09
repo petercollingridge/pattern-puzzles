@@ -358,6 +358,9 @@ const puzzle3 = [
     }
 ];
 
+const triangleWithCenter = getNodesOnCircle([1, 1, 1], { r: 1.2 }).concat([0, 0, 1]);
+const lowTriangle = [[0, -0.5, 1], [-1, 0.5, 1], [0, 0.5, 1], [1, 0.5, 1]];
+
 // Graphs have the same set of connections, but nodes are moved
 const puzzle4 = [
     {
@@ -385,22 +388,61 @@ const puzzle4 = [
         categories: [
             { type: 1, item: linearGraph([1, 1, 1, 1], 0.8) },
             { type: 2, item: loopGraph([1, 1, 1, 1], 0.8) },
-            { type: 1,
+            {
+                type: 1,
                 item: {
                     nodes: getNodesOnCircle([1, 1, 1, 1], { r: 0.8 }),
                     edges: [[0, 1], [1, 3], [2, 3]]
                 }
             },
-            { type: 1,
+            {
+                type: 1,
                 item: {
                     nodes: getNodesOnCircle([1, 1, 1, 1], { r: 0.8 }),
                     edges: getLineOfEdges(4)
                 }
             },
-            { type: 2,
+            {
+                type: 2,
                 item: {
-                    nodes: getNodesOnCircle([1, 1, 1], { r: 1.2 }).concat([0, 0, 1]),
-                    edges: [[0, 1], [1, 2], [0, 3], [0,2]]
+                    nodes: triangleWithCenter,
+                    edges: [[0, 1], [1, 2], [0, 3], [0, 2]]
+                }
+            }
+        ]
+    }, {
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            {
+                type: 1,
+                item: {
+                    nodes: triangleWithCenter,
+                    edges: [[0, 1], [1, 2], [0, 3], [0, 2]]
+                }
+            }, {
+                type: 2,
+                item: {
+                    nodes: triangleWithCenter,
+                    edges: [[0, 3], [1, 3], [2, 3]]
+                }
+            }, {
+                type: 2,
+                item: {
+                    nodes: lowTriangle,
+                    edges: [[0, 1], [0, 2], [0, 3]]
+                }
+            }, {
+                type: 1,
+                item: {
+                    nodes: lowTriangle,
+                    edges: [[0, 1], [0, 2], [0, 3], [1, 2]]
+                }
+            }, {
+                type: 1,
+                item: {
+                    nodes: lowTriangle,
+                    edges: [[0, 1], [0, 2], [1, 2], [2, 3]]
                 }
             }
         ]
