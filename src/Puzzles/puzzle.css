@@ -1,6 +1,7 @@
 #puzzle-chamber {
     width: 100%;
-    height: 100%;
+    height: 99%;
+    overflow: visible;
 }
 
 #puzzle-chamber .background {

@@ -151,7 +151,11 @@ const correctGraphSequence = ({ sequence, target }) =>
 
 const ColourableSequence = (puzzle, selectedColour, update) => {
     const colourItem = index => {
-        puzzle.sequence[index].colour = selectedColour;
+        if (puzzle.sequence[index].colour === selectedColour) {
+            puzzle.sequence[index].colour = 0;
+        } else {
+            puzzle.sequence[index].colour = selectedColour;
+        }
         update(puzzle);
     }
 
