@@ -1,7 +1,8 @@
 import {
+    allItemsHaveValue,
+    allItemsColoured,
     sequencesMatch,
     sequenceHasNoMatches,
-    allItemsColoured,
     graphIsChromatic,
     sequencesAreEquivalent,
     allConnectedItemsHaveDifferentColours,
@@ -12,18 +13,59 @@ import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 import { getGraphObject } from '../Puzzles/puzzleLoaders';
 
 
+describe('allItemsHaveValue', () => {
+    it('returns true when given an empty array', () => {
+        expect(allItemsHaveValue([])).toBe(true);
+    });
+
+    it('returns true when given an array of numbers bigger than 0', () => {
+        const items = [3, 1, 20];
+        expect(allItemsHaveValue(items)).toBe(true);
+    });
+
+    it('returns false when given an array of numbers where one is a 0', () => {
+        const items = [3, 1, 0, 2];
+        expect(allItemsHaveValue(items)).toBe(false);
+    });
+
+    it('returns false when given an array with one 0', () => {
+        const items = [0];
+        expect(allItemsHaveValue(items)).toBe(false);
+    });
+
+    it('returns true when given an array of items with attributes bigger than 0', () => {
+        const items = [{ colour: 1 }, { colour: 3 }, { colour: 2 }];
+        expect(allItemsHaveValue(items, 'colour')).toBe(true);
+    });
+
+    it('returns true when item has a different property that is 0', () => {
+        const items = [{ property: true, colour: 1 }, { colour: 2 }, { colour: 3, property: 0 } ];
+        expect(allItemsHaveValue(items, 'colour')).toBe(true);
+    });
+
+    it('returns false when given an item of attribute equal to 0', () => {
+        const items = [{ colour: 1 }, { colour: 2 }, { colour: 0 }];
+        expect(allItemsHaveValue(items, 'colour')).toBe(false);
+    });
+
+    it('returns false when given an item with an undefined attribute', () => {
+        const items = [{ colour: 1 }, { property: 2 }, { colour: 3 }];
+        expect(allItemsHaveValue(items, 'colour')).toBe(false);
+    });
+});
+
 describe('allItemsColoured', () => {
     it('returns true when given an empty array', () => {
         expect(allItemsColoured([])).toBe(true);
     });
 
     it('returns true when given an array of items of the same colour', () => {
-        const items = [{ colour: 1 }, { colour: 1}, {colour: 1}];
+        const items = [{ colour: 1 }, { colour: 1 }, { colour: 1 }];
         expect(allItemsColoured(items)).toBe(true);
     });
 
     it('returns true when given an array of items of different colours', () => {
-        const items = [{ colour: 1 }, { colour: 2}, { colour: 3} ];
+        const items = [{ colour: 1 }, { colour: 2 }, { colour: 3 } ];
         expect(allItemsColoured(items)).toBe(true);
     });
 

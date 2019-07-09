@@ -1,3 +1,4 @@
+// Test whether all items are bigger than 0 or have an attrubute with value bigger than 0
 export const allItemsHaveValue = (items=[], attr) =>
     attr ?
         items.every(item => item[attr] > 0) :
