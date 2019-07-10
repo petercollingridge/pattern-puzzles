@@ -33,6 +33,7 @@ class PuzzlePage extends React.Component {
         this.update = this.update.bind(this);
         this.getPuzzle = this.getPuzzle.bind(this);
         this.nextPuzzle = this.nextPuzzle.bind(this);
+        this.backToMenu = this.backToMenu.bind(this);
     }
 
     componentDidMount() {
@@ -62,6 +63,10 @@ class PuzzlePage extends React.Component {
         this.getPuzzle(nextState);
     }
 
+    backToMenu() {
+        this.props.history.push(`/pattern-puzzles`)
+    }
+
     // Child element has updated so evaluate to see if puzzle has been solved
     update(puzzle) {
         const solved = this.props.evaluate(puzzle);
@@ -75,13 +80,13 @@ class PuzzlePage extends React.Component {
         if (this.state.index < this.props.puzzles.length - 1) {
             // Button to go to the next puzzle
             return <div className="menu-button next-puzzle-button" aria-label="Next puzzle">
-                <Button onClick={this.nextPuzzle} flashing/>
+                <Button onClick={this.nextPuzzle}/>
             </div>
         } else {
             // Button to go back to the home page
-            return <Link to="/pattern-puzzles/" className="menu-button next-puzzle-button" aria-label="Puzzle completed">
-                <Button flashing/>
-            </Link>
+            return <div className="menu-button next-puzzle-button" aria-label="Puzzle completed" role="link">
+                <Button onClick={this.backToMenu}/>
+            </div>
         }
     }
 
@@ -97,9 +102,9 @@ class PuzzlePage extends React.Component {
 
         return <main>
             <nav>
-                <Link to="/pattern-puzzles/" className="menu-button back-button" aria-label="Back to menu">
-                    <Button />
-                </Link>
+                <div className="menu-button back-button" aria-label="Back to menu" role="link">
+                    <Button onClick={this.backToMenu}/>
+                </div>
 
                 { this.getNextPuzzleButton() }
             </nav>
