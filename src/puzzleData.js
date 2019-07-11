@@ -15,11 +15,31 @@ import { Categorisation } from './Puzzles/Categorisation';
 
 
 // Mapping puzzle names to URLS, icons and components
-export const puzzleData = {};
+export const puzzleData = {
+    'categorisation-0': {
+        slug: 'categorisation-0',
+        icon: CategorisationIcons[0](),
+        component: () => Categorisation(0),
+    },
+    'categorisation-1': {
+        slug: 'categorisation-1',
+        icon: CategorisationIcons[1](),
+        component: () => Categorisation(1),
+    },
+    'categorisation-2': {
+        slug: 'categorisation-2',
+        icon: CategorisationIcons[2](),
+        component: () => Categorisation(2),
+    },
+    'categorisation-3': {
+        slug: 'categorisation-3',
+        icon: CategorisationIcons[2](),
+        component: () => Categorisation(3),
+    }
+};
 
 addData('colour-graphs', 'colour-graphs', ColourGraphIcons, ColourGraph, 3);
 addData('colour-maps', 'colour-maps', ColourMapIcons, ColourMap, 2);
-addData('categorisation', 'categorisation', CategorisationIcons, Categorisation, 3);
 addData('transformations', 'transformations', TransformationIcons, Transformations, 4);
 addData('sequences', 'sequences', SequencesIcons, Sequences, 3);
 
@@ -42,7 +62,7 @@ function getData(name, n) {
 // Puzzle data grouped into categories
 export const puzzleLayout = [
     getData('sequences', 3),
-    getData('categorisation', 3),
+    getData('categorisation', 4),
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
