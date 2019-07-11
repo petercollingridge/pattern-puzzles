@@ -358,9 +358,9 @@ const puzzle3 = [
     }
 ];
 
-const triangleWithCenter = getNodesOnCircle([1, 1, 1]).concat([[0, 0, 1]]);
-const lowTriangle = [[0, -0.5, 1], [-1, 0.5, 1], [0, 0.5, 1], [1, 0.5, 1]];
-console.log(triangleWithCenter);
+const triangleWithCenter = getNodesOnCircle([1, 1, 1], { r: 1.2 }).concat([[0, 0, 1]]);
+const lowTriangle = [[0, -1, 1], [-1, 0.5, 1], [0, 0.5, 1], [1, 0.5, 1]];
+
 // Graphs have the same set of connections, but nodes are moved
 const puzzle4 = [
     {
@@ -368,16 +368,16 @@ const puzzle4 = [
         randomRotate: true,
         categories: [
             { type: 1, item: linearGraph([1, 1, 1]) },
-            { type: 2, item: loopGraph([1, 1, 1], 0.8) },
+            { type: 2, item: loopGraph([1, 1, 1],) },
             { type: 1,
                 item: {
-                    nodes: [[0.8, 0, 1], [-0.8, -0.8, 1], [0, 0.8, 1]],
+                    nodes: [[-1, -0.5, 1], [1, 0, 1], [-1, 0.5, 1]],
                     edges: getLineOfEdges(3)
                 }
             },
             { type: 2,
                 item: {
-                    nodes: [[0.8, 0, 1], [-0.8, -0.8, 1], [0, 0.8, 1]],
+                    nodes: [[-1, -0.5, 1], [1, 0, 1], [-1, 0.5, 1]],
                     edges: getLoopOfEdges(3)
                 }
             }
@@ -386,8 +386,8 @@ const puzzle4 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: linearGraph([1, 1, 1, 1], 0.75) },
-            { type: 2, item: loopGraph([1, 1, 1, 1], 0.8) },
+            { type: 1, item: linearGraph([1, 1, 1, 1]) },
+            { type: 2, item: loopGraph([1, 1, 1, 1]) },
             // {
             //     type: 1,
             //     item: {
@@ -398,7 +398,7 @@ const puzzle4 = [
             {
                 type: 1,
                 item: {
-                    nodes: getNodesOnCircle([1, 1, 1, 1], { r: 0.8 }),
+                    nodes: getNodesOnCircle([1, 1, 1, 1]),
                     edges: getLineOfEdges(4)
                 }
             },
