@@ -10,13 +10,14 @@ const getCirclePackedInCircle = (R, n) => {
     const points = getPointsOnACircle(n, { r });
 
     return {
-        categoryPositions: points,
-        categorySize: r * cPhi
+        scale: cPhi / (1 + cPhi),
+        categorySize: r * cPhi,
+        categoryPositions: points
     };
 };
 
 export const Categories = ({ size, categories, colourCategory }) => {
-    const { categoryPositions, categorySize } = getCirclePackedInCircle(size, categories.length);
+    const { scale, categorySize, categoryPositions } = getCirclePackedInCircle(size, categories.length);
 
     return <g>
         { categories.map((category, i) => {
@@ -30,7 +31,7 @@ export const Categories = ({ size, categories, colourCategory }) => {
                     {...isColourable(category, i, colourCategory, 'category')}
                     r={categorySize * 0.95}
                     />
-                <g className="no-pointer">
+                <g className="no-pointer" transform={`scale(${ scale * 2 } ${ scale * 2 })`}>
                     { category.component }
                 </g>
             </g>
