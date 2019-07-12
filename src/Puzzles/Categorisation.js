@@ -364,6 +364,7 @@ const lowTriangle = [[0, -1, 1], [-1, 0.5, 1], [0, 0.5, 1], [1, 0.5, 1]];
 // Graphs have the same set of connections, but nodes are moved
 const puzzle4 = [
     {
+        // Triangles vs straight lines
         colourPalette: 2,
         randomRotate: true,
         categories: [
@@ -371,18 +372,19 @@ const puzzle4 = [
             { type: 2, item: loopGraph([1, 1, 1],) },
             { type: 1,
                 item: {
-                    nodes: [[-1, -0.5, 1], [1, 0, 1], [-1, 0.5, 1]],
+                    nodes: [[0.7, 0.7, 1], [-0.7, 0.7, 1], [-0.7, -0.7, 1]],
                     edges: getLineOfEdges(3)
                 }
             },
             { type: 2,
                 item: {
-                    nodes: [[-1, -0.5, 1], [1, 0, 1], [-1, 0.5, 1]],
+                    nodes: [[0.7, 0.7, 1], [-0.7, 0.7, 1], [-0.7, -0.7, 1]],
                     edges: getLoopOfEdges(3)
                 }
             }
         ]
     }, {
+        // Quadrilaterals vs straight lines
         colourPalette: 2,
         randomRotate: true,
         categories: [
@@ -411,6 +413,7 @@ const puzzle4 = [
             }
         ]
     }, {
+        // Stars vs triangles with hanging point
         colourPalette: 2,
         randomRotate: true,
         categories: [
