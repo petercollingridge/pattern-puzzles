@@ -6,8 +6,7 @@ export const allItemsHaveValue = (items=[], attr) =>
 
 export const allItemsColoured = (items=[]) => allItemsHaveValue(items, 'colour');
 
-export const extractAttribute = (items=[], attr) =>
-    items.map(item => item[attr]);
+export const extractAttribute = (items=[], attr) => items.map(item => item[attr]);
 
 export function allConnectedItemsHaveDifferentColours(cxns=[]) {
     const failingCxns = cxns.filter(cxn => cxn.node1.colour === cxn.node2.colour);

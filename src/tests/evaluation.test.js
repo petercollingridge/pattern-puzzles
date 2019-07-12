@@ -1,6 +1,7 @@
 import {
     allItemsHaveValue,
     allItemsColoured,
+    extractAttribute,
     sequencesMatch,
     sequenceHasNoMatches,
     graphIsChromatic,
@@ -82,6 +83,27 @@ describe('allItemsColoured', () => {
     it('returns false when given an array with an item with an undefined colour', () => {
         const items = [{ colour: 1 }, { property: 2 }, { colour: 0 }];
         expect(allItemsColoured(items)).toBe(false);
+    });
+});
+
+describe('extractAttribute', () => {
+    it('returns an empty array when given an empty array', () => {
+        expect(extractAttribute([])).toStrictEqual([]);
+    });
+
+    it('returns array of values when given attr', () => {
+        const arr = [{ attr: 2 }, { attr: 3 }, { attr: 2 }];
+        expect(extractAttribute(arr, 'attr')).toStrictEqual([2, 3, 2]);
+    });
+
+    it('extracts values even when undefined', () => {
+        const arr = [{ attr: 2}, { attr: 3 }, { attr: 2 }, { noAttr: 1 }];
+        expect(extractAttribute(arr, 'attr')).toStrictEqual([2, 3, 2, undefined]);
+    });
+
+    it('returns the correct values when object have multiple values', () => {
+        const arr = [{ value: 1, attr: 2 }, { attr: 3, value: 2 }, { noAttr: 2, value: 1 }];
+        expect(extractAttribute(arr, 'value')).toStrictEqual([1, 2, 1]);
     });
 });
 
