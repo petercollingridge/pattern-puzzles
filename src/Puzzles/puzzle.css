@@ -3,8 +3,15 @@
     stroke: #fff;
 }
 
+#puzzle .colourable {
+    stroke-width: 2;
+    transition: fill 200ms ease-out;
+    transition: stroke 200ms ease-out;
+}
+
 #puzzle .no-fill {
-    fill: #aaa;
+    stroke: #aaa;
+    fill: white;
 }
 
 #puzzle .colourable:focus {
@@ -17,9 +24,9 @@
 }
 
 #puzzle.colour-selected .colourable:hover {
-    cursor: pointer;
-    stroke-width: 2;
+    fill: currentColor;
     stroke: currentColor;
+    cursor: pointer;
 }
 
 #puzzle .category {
@@ -29,21 +36,11 @@
     transition: fill 150ms ease-out;
 }
 
-.graph .graph-nodes {
-    stroke-width: 1;
-    stroke: #fff;
-}
-
 .graph .graph-nodes circle:focus {
     outline: none;
     stroke: currentColor;
     stroke-width: 0.3;
     filter: url(#glow-filter);
-}
-
-.graph .graph-edges {
-    stroke-width: 3;
-    stroke: #666;
 }
 
 .graph .edge-outline {

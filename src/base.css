@@ -107,8 +107,8 @@ main {
 } */
 
 .graph-edges {
-    stroke-width: 3;
-    stroke: #666;
+  stroke-width: 3;
+  stroke: #aaa;
 }
 
 .symmetry-line {
