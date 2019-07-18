@@ -44,3 +44,18 @@ export const ColourableGraph = (puzzle, selectedColour, update) => {
 
     return <Graph {...puzzle} colourNode={colourNode} />
 };
+
+// Same as a colourable graph, except you can only colour points next to the one you last coloured
+export const ColourablePath = (puzzle, selectedColour, update) => {
+    // Function that takes a node index, to colour the node in a graph, and update it
+    const colourNode = nodeIndex => {
+        if (puzzle.nodes[nodeIndex].colour === selectedColour) {
+            puzzle.nodes[nodeIndex].colour = 0;
+        } else {
+            puzzle.nodes[nodeIndex].colour = selectedColour;
+        }
+        update(puzzle);
+    };
+
+    return <Graph {...puzzle} colourNode={colourNode} />
+};
