@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line } from './Primitives';
 import { isColourable } from './utils';
+import { ColourGraph } from '../ColourGraphs';
 
 
 export const Graph = ({ edges=[], nodes=[], colourNode }) =>
@@ -27,18 +28,24 @@ export const Graph = ({ edges=[], nodes=[], colourNode }) =>
         </g>
     </g>
 
+// Colour node with the given colour, unless it already is that colour, in which remove
+const updateNodeColour = (node, colour) => {
+    if (node.colour !== colour) {
+        node.colour = colour;
+    } else if (!node.fixed) {
+        node.colour = 0;
+    }
+}
+
 // <puzzle> is an object representing the puzzle and what the update function uses to determine
 //  whether the puzzle has been solved
 // <selectedColour> is colour currently select by the user, so what a node will be coloured when clicked
 // <update> is the puzzle's update function which allows the puzzle's state to be updated and then evaluated
-export const ColourableGraph = (puzzle, selectedColour, update) => {
+export const ColourableGraph = (puzzle, colour, update) => {
     // Function that takes a node index, to colour the node in a graph, and update it
     const colourNode = nodeIndex => {
-        if (puzzle.nodes[nodeIndex].colour === selectedColour) {
-            puzzle.nodes[nodeIndex].colour = 0;
-        } else {
-            puzzle.nodes[nodeIndex].colour = selectedColour;
-        }
+        const targetNode = puzzle.nodes[nodeIndex];
+        updateNodeColour(targetNode, colour);
         update(puzzle);
     };
 
@@ -46,14 +53,23 @@ export const ColourableGraph = (puzzle, selectedColour, update) => {
 };
 
 // Same as a colourable graph, except you can only colour points next to the one you last coloured
-export const ColourablePath = (puzzle, selectedColour, update) => {
+// TODO: need to remember path, in case have to undo it
+export const ColourablePath = (puzzle, colour, update) => {
     // Function that takes a node index, to colour the node in a graph, and update it
     const colourNode = nodeIndex => {
-        if (puzzle.nodes[nodeIndex].colour === selectedColour) {
-            puzzle.nodes[nodeIndex].colour = 0;
-        } else {
-            puzzle.nodes[nodeIndex].colour = selectedColour;
-        }
+        const targetNode = puzzle.nodes[nodeIndex];
+        updateNodeColour(targetNode, colour);
+
+        // Update nodes
+        puzzle.nodes.forEach(node => {
+            node.fixed = true;
+            node.edges.forEach(edge => {
+                if (edge.node1 === targetNode || edge.node2 === targetNode) {
+                    node.fixed = false;
+                }
+            })
+        });
+        
         update(puzzle);
     };
 

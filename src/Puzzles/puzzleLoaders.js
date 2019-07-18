@@ -12,13 +12,14 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=10, colour }) {
         x: x * size,
         y: y * size,
         colour: nodeColour || colour,
-        fixed: Boolean(nodeColour || colour)
+        fixed: Boolean(nodeColour || colour),
+        edges: new Set()
     }));
 
     const edgeObjects = edges.map(([n1, n2]) => {
         const node1 = nodeObjects[n1];
         const node2 = nodeObjects[n2];
-        return {
+        const edge = {
             node1,
             node2,
             x1: node1.x,
@@ -26,6 +27,11 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=10, colour }) {
             x2: node2.x,
             y2: node2.y
         };
+
+        node1.edges.add(edge);
+        node2.edges.add(edge);
+
+        return edge;
     });
 
     return {
