@@ -20,7 +20,7 @@ const hamiltonianPath = [
 
 const puzzles = [hamiltonianPath];
 
-export const ColourGraph = (n) =>
+export const GraphTheory = (n) =>
     <PuzzlePage
         puzzles={puzzles[n]}
         evaluate={({ nodes }) => allItemsColoured(nodes)}
