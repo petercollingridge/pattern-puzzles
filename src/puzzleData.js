@@ -72,5 +72,5 @@ export const puzzleLayout = [
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
-    getData('graph-theory', 1),
+    // getData('graph-theory', 1),
 ];
