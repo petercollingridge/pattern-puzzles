@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b32d01314af3a9e809007ba54f57ca94",
+    "revision": "527dfd67eff0bee45449dd34d7f8f1a4",
     "url": "/pattern-puzzles/index.html"
   },
   {
