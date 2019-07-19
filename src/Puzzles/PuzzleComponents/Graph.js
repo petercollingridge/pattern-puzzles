@@ -61,15 +61,21 @@ export const ColourablePath = (puzzle, colour, update) => {
         updateNodeColour(targetNode, colour);
 
         // Update nodes
-        puzzle.nodes.forEach(node => {
+        for (let i = 0; i < puzzle.nodes.length; i++) {
+            const node = puzzle.nodes[i];
+            if (node === targetNode) { continue; }
+
             node.fixed = true;
-            node.edges.forEach(edge => {
-                if (edge.node1 === targetNode || edge.node2 === targetNode) {
-                    node.fixed = false;
-                }
-            })
-        });
-        
+            if (!node.colour) {
+                // Non-coloured node connected to the target node are colourable
+                node.edges.forEach(edge => {
+                    if (edge.node1 === targetNode || edge.node2 === targetNode) {
+                        node.fixed = false;
+                    }
+                })
+            }
+        }
+
         update(puzzle);
     };
 
