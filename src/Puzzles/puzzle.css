@@ -3,16 +3,19 @@
     stroke: #fff;
 }
 
-#puzzle .colourable {
-    /* stroke-width: 2;
-    transition: fill 200ms ease-out;
-    transition: stroke 200ms ease-out; */
+.graph .graph-nodes {
+    fill: #aaa;
 }
 
-#puzzle .no-fill {
-    /* stroke: #aaa;
-    fill: white; */
-    fill: #aaa;
+#puzzle .colourable {
+    stroke-width: 2;
+    transition: fill 200ms ease-out;
+    transition: stroke 200ms ease-out;
+}
+
+#puzzle .no-fill.colourable {
+    stroke: #aaa;
+    fill: white;
 }
 
 #puzzle .colourable:focus {
@@ -36,11 +39,6 @@
     fill-opacity: 0.2;
     stroke-opacity: 0.5;
     transition: fill 150ms ease-out;
-}
-
-.graph .graph-nodes {
-    stroke-width: 1;
-    stroke: #fff;
 }
 
 .graph .graph-nodes circle:focus {
