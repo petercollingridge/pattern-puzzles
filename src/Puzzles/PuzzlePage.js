@@ -91,8 +91,9 @@ class PuzzlePage extends React.Component {
     }
 
     render() {
-        const { index, puzzle, colourPalette, selectedColour } = this.state;
+        const { index, puzzle, selectedColour } = this.state;
         if (!puzzle) { return null; }
+        const colourPalette = this.state.colourPalette || this.props.colourPalette;
 
         // Determine what the selected colour is if we have selected one
         const style = {
