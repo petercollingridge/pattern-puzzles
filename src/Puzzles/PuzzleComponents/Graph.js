@@ -1,7 +1,6 @@
 import React from 'react';
 import { Line } from './Primitives';
 import { isColourable } from './utils';
-import { ColourGraph } from '../ColourGraphs';
 
 
 export const Graph = ({ edges=[], nodes=[], colourNode }) =>
