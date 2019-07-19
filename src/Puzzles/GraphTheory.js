@@ -25,6 +25,9 @@ const hamiltonianPath = [
     }, {
         nodes: getPointsOnACircle(4),
         edges: [[0, 3], [2, 3], [0, 2], [1, 3]]
+    }, {
+        nodes: getPointsOnACircle(4).concat([[Math.SQRT1_2, 0]]),
+        edges: [[0, 1], [2, 3], [0, 3], [1, 3], [2, 4]]
     }
 ];
 
