@@ -38,7 +38,7 @@ export const puzzleData = {
         component: () => Categorisation(3),
     },
     'graph-theory-0': {
-        slug: 'graph-theory-0-0',
+        slug: 'graph-theory-0',
         icon: ColourGraphIcons[0](),
         component: () => GraphTheory(0), 
     }
