@@ -53,30 +53,50 @@ export const ColourableGraph = (puzzle, colour, update) => {
 
 // Same as a colourable graph, except you can only colour points next to the one you last coloured
 // TODO: need to remember path, in case have to undo it
-export const ColourablePath = (puzzle, colour, update) => {
+export const ColourablePath = (graph, colour, update) => {
     // Function that takes a node index, to colour the node in a graph, and update it
     const colourNode = nodeIndex => {
-        const targetNode = puzzle.nodes[nodeIndex];
+        if (!colour) { return; }
+
+        let targetNode = graph.nodes[nodeIndex];
         updateNodeColour(targetNode, colour);
 
-        // Update nodes
-        for (let i = 0; i < puzzle.nodes.length; i++) {
-            const node = puzzle.nodes[i];
-            if (node === targetNode) { continue; }
-
-            node.fixed = true;
-            if (!node.colour) {
-                // Non-coloured node connected to the target node are colourable
-                node.edges.forEach(edge => {
-                    if (edge.node1 === targetNode || edge.node2 === targetNode) {
-                        node.fixed = false;
-                    }
-                })
+        if (targetNode.colour) {
+            graph.path.push(targetNode);
+        } else {
+            // Remove the node we clicked on
+            graph.path.pop();
+            // The active node is now the previous node in the path
+            targetNode = graph.path.slice(-1)[0];
+            if (targetNode) {
+                targetNode.fixed = false
             }
         }
 
-        update(puzzle);
+        // Update nodes
+        if (targetNode) {
+            // All nodes are fixed other than those connected to the targetNodes
+            for (let i = 0; i < graph.nodes.length; i++) {
+                const node = graph.nodes[i];
+                if (node === targetNode) { continue; }
+
+                node.fixed = true;
+                if (!node.colour) {
+                    // Non-coloured node connected to the target node are colourable
+                    node.edges.forEach(edge => {
+                        if (edge.node1 === targetNode || edge.node2 === targetNode) {
+                            node.fixed = false;
+                        }
+                    })
+                }
+            }
+        } else {
+            // No nodes left in the path, so all nodes are active
+            graph.nodes.forEach(node => node.fixed = false);
+        }
+
+        update(graph);
     };
 
-    return <Graph {...puzzle} colourNode={colourNode} />
+    return <Graph {...graph} colourNode={colourNode} />
 };
