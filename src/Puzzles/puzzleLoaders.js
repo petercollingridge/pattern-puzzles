@@ -40,6 +40,13 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=10, colour }) {
     };
 }
 
+// A graph object with a path array to store an array of nodes forming a path
+export function getGraphWithPath(props) {
+    const graph = getGraphObject(props);
+    graph.path = [];
+    return graph;
+}
+
 // Given arrays of node coordinates and edge coordinates, return two objects of nodes and edges,
 // one includes the node colours and one is empty
 export function getGraphAndUncolouredCopy({ nodes=[], edges=[], size=32, r=8 }) {
