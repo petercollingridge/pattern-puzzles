@@ -12,6 +12,7 @@ import { allItemsColoured } from '../utils/evaluation';
 import { getPointsOnACircle, getLoopOfEdges, getLineOfEdges } from '../utils/graphUtils';
 
 
+const R3 = Math.sqrt(3);
 const hamiltonianPath = [
 	{
         nodes: getPointsOnACircle(6),
@@ -29,8 +30,25 @@ const hamiltonianPath = [
         nodes: getPointsOnACircle(6),
         edges: [[2, 3], [3, 4], [4, 5], [5, 0], [1, 4], [0, 3]]
     }, {
-        nodes: getPointsOnACircle(3, { r: 0.75 }).concat(getPointsOnACircle(3, { r: 2 })),
-        edges: getLoopOfEdges(3).concat(getLoopOfEdges(3, 5)).concat([[2, 5]])
+        nodes: getPointsOnACircle(3, { r: 0.75 })
+                .concat(getPointsOnACircle(3, { r: 2 })),
+        edges: getLoopOfEdges(3)
+                .concat(getLoopOfEdges(3, 5))
+                .concat([[2, 5]])
+    }, {
+        nodes: getPointsOnACircle(3, { r: 0.75 })
+                .concat(getPointsOnACircle(3, { r: 2 }))
+                .concat([[-R3, -2], [R3, -2]]),
+        edges: getLoopOfEdges(3)
+                .concat(getLoopOfEdges(3, 5))
+                .concat([[0, 3], [2, 5], [3, 6], [4, 7]])
+    }, {
+        nodes: getPointsOnACircle(3, { r: 0.75 })
+                .concat(getPointsOnACircle(3, { r: 2 }))
+                .concat([[-R3, -2], [R3, -2]]),
+        edges: getLoopOfEdges(3)
+                .concat(getLoopOfEdges(3, 5))
+                .concat([[2, 5], [3, 6], [4, 7], [5, 6], [5, 7]])
     }
 ];
 
