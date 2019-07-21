@@ -57,6 +57,7 @@ const puzzles = [hamiltonianPath];
 export const GraphTheory = (n) =>
     <PuzzlePage
         colourPalette={1}
+        clearButton
         puzzles={puzzles[n]}
         evaluate={({ nodes }) => allItemsColoured(nodes)}
 		getPuzzleObject={getGraphWithPath}
