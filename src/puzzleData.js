@@ -1,5 +1,7 @@
 import ColourGraphIcons from './PuzzleMap/Icons/ColourGraphs';
 import { ColourGraph } from './Puzzles/ColourGraphs';
+
+import GraphTheoryIcons from './PuzzleMap/Icons/GraphTheory';
 import { GraphTheory } from './Puzzles/GraphTheory';
 
 import ColourMapIcons from './PuzzleMap/Icons/ColourMaps';
@@ -39,7 +41,7 @@ export const puzzleData = {
     },
     'graph-theory-0': {
         slug: 'graph-theory-0',
-        icon: ColourGraphIcons[0](),
+        icon: GraphTheoryIcons[0](),
         component: () => GraphTheory(0), 
     }
 };
@@ -72,5 +74,5 @@ export const puzzleLayout = [
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
-    // getData('graph-theory', 1),
+    getData('graph-theory', 1),
 ];
