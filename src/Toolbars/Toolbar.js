@@ -1,40 +1,49 @@
 import React from 'react';
-import { handleKeyDown } from '../utils/common';
+import { SVGButton } from './Button';
 
 
 const TOOLBAR_R = 136;
 const DELTA_ANGLE = Math.PI / 18;
 
-export default function ({ puzzle, nColours, selectedColour }) {
+export default function ({
+    puzzle,
+    nColours,
+    clearButton,
+    selectedColour
+}) {
     const r = 8;
-    let angle = Math.PI - DELTA_ANGLE * (nColours - 1) / 2;
+    const positionR = TOOLBAR_R + r;
+    const nButtons = nColours + (clearButton ? 1 : 0);
+    let angle = Math.PI - DELTA_ANGLE * (nButtons - 1) / 2;
+
+    // Array of button positions
+    const position = Array(nButtons)
+        .fill()
+        .map((_, i) => ({
+            x: positionR * Math.cos(angle + i * DELTA_ANGLE),
+            y: positionR * Math.sin(angle + i * DELTA_ANGLE)
+        }));
 
     const colours = [];
     for (let i = 1; i <= nColours; i++) {
-        const cx = (TOOLBAR_R + r) * Math.cos(angle);
-        const cy = (TOOLBAR_R + r) * Math.sin(angle);
-        
+        const { x, y } = position[i - 1];
+        const setColour = () => puzzle.setState({ selectedColour: i });
         let className = `colour-palette colour-${i}`;
+
         if (selectedColour === i) {
             className += ' selected';
-        } else if (i === 1 && !selectedColour) {
-            className += ' flashing';
         }
 
-        const setColour = () => puzzle.setState({ selectedColour: i });
-
         colours.push(
-            <circle
+            <SVGButton
                 className={className}
                 role="radio"
                 aria-checked={selectedColour === i}
-                tabIndex="0"
                 key={i}
-                cx={cx}
-                cy={cy}
+                cx={x}
+                cy={y}
                 r={r}
                 onClick={setColour}
-                onKeyDown={(evt) => handleKeyDown(evt, setColour) }
             />
         );
 
