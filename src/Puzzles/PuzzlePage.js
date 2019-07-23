@@ -30,6 +30,7 @@ class PuzzlePage extends React.Component {
             selectedColour: null,
         }
 
+        this.clear = this.clear.bind(this);
         this.update = this.update.bind(this);
         this.getPuzzle = this.getPuzzle.bind(this);
         this.nextPuzzle = this.nextPuzzle.bind(this);
@@ -68,6 +69,15 @@ class PuzzlePage extends React.Component {
         this.props.history.push(`/pattern-puzzles`)
     }
 
+    clear() {
+        const { getPuzzleObject, puzzles } = this.props;
+        const puzzle = puzzles[this.state.index];
+
+        this.setState({
+            puzzle: getPuzzleObject(puzzle)
+        });
+    }
+
     // Child element has updated so evaluate to see if puzzle has been solved
     update(puzzle) {
         const solved = this.props.evaluate(puzzle);
@@ -96,7 +106,7 @@ class PuzzlePage extends React.Component {
         if (!puzzle) { return null; }
 
         const colourPalette = this.state.colourPalette || this.props.colourPalette;
-        const clearButton = this.state.clearButton || this.props.clearButton;
+        const clearPuzzle = (this.state.clearButton || this.props.clearButton) ? this.clear : null;
 
         // Determine what the selected colour is if we have selected one
         const style = {
@@ -140,7 +150,7 @@ class PuzzlePage extends React.Component {
                 <Toolbar 
                     puzzle={this}
                     nColours={colourPalette}
-                    clearButton
+                    clearPuzzle={clearPuzzle}
                     selectedColour={selectedColour}
                 />
             </svg>
