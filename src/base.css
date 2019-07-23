@@ -1,45 +1,45 @@
 body {
-  margin: 0;
-  background-color: rgb(30, 20, 20);
+    margin: 0;
+    background-color: rgb(30, 20, 20);
 }
 
 main {
-  position: absolute;
-  min-width: 100%;
-  top: 0;
-  bottom: 0;
+    position: absolute;
+    min-width: 100%;
+    top: 0;
+    bottom: 0;
 }
 
 .colour-0 {
-  color: #aaa;
+    color: #aaa;
 }
 
 .fill-0 {
-  fill: #aaa;
+    fill: #aaa;
 }
 
 .colour-1 {
-  color: rgb(20, 146, 196);
+    color: rgb(20, 146, 196);
 }
 
 .fill-1 {
-  fill: rgb(20, 146, 196);
+    fill: rgb(20, 146, 196);
 }
 
 .colour-2 {
-  color: rgb(196, 20, 96);
+    color: rgb(196, 20, 96);
 }
 
 .fill-2 {
-  fill: rgb(196, 20, 96);
+    fill: rgb(196, 20, 96);
 }
 
 .colour-3 {
-  color: rgb(20, 196, 96);
+    color: rgb(20, 196, 96);
 }
 
 .fill-3 {
-  fill: rgb(20, 196, 96);
+    fill: rgb(20, 196, 96);
 }
 
 .colour-4 {
@@ -51,45 +51,45 @@ main {
 }
 
 .menu-button {
-  position: fixed;
-  cursor: pointer;
-  width: 5vw;
-  height: 5vw;
+    position: fixed;
+    cursor: pointer;
+    width: 5vw;
+    height: 5vw;
 }
 
 @media (max-aspect-ratio: 1/1) {
-  .menu-button {
-    width: 4vh;
-    height: 4vh;
-  }
+    .menu-button {
+        width: 4vh;
+        height: 4vh;
+    }
 }
 
 .menu-button circle {
-  fill: #ddd;
-  stroke: #ddd;
-  stroke-width: 0;
-  transition: fill 100ms ease-out, stroke 100ms ease-out;
+    fill: #ddd;
+    stroke: #ddd;
+    stroke-width: 0;
+    transition: fill 100ms ease-out, stroke 100ms ease-out;
 }
 
 .menu-button circle:hover {
-  fill: #fff;
-  stroke: #fff;
+    fill: #fff;
+    stroke: #fff;
 }
 
 .menu-button circle:focus {
-  outline: none;
-  stroke-width: 1;
-  filter: url(#glow-filter);
+    outline: none;
+    stroke-width: 1;
+    filter: url(#glow-filter);
 }
 
 .back-button {
-  left: 4px;
-  top: 4px;
+    left: 4px;
+    top: 4px;
 }
 
 .next-puzzle-button {
-  right: 4px;
-  top: 4px;
+    right: 4px;
+    top: 4px;
 }
 
 /* .flashing {
@@ -106,9 +106,24 @@ main {
   to { stroke-width: 3; }
 } */
 
+.graph .graph-nodes {
+    fill: #aaa;
+}
+
+.node-outline {
+    fill: none;
+    stroke-width: 3;
+    stroke: #fff;
+}
+
+.edge-outline {
+    stroke-width: 4;
+    stroke: #fff;
+}
+
 .graph-edges {
-  stroke-width: 3;
-  stroke: #aaa;
+    stroke-width: 3;
+    stroke: #aaa;
 }
 
 .symmetry-line {

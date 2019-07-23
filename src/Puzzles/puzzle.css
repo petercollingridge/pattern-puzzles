@@ -3,10 +3,6 @@
     stroke: #fff;
 }
 
-.graph .graph-nodes {
-    fill: #aaa;
-}
-
 #puzzle .colourable {
     stroke-width: 2;
     transition: fill 200ms ease-out;
@@ -46,11 +42,6 @@
     stroke: currentColor;
     stroke-width: 0.3;
     filter: url(#glow-filter);
-}
-
-.graph .edge-outline {
-    stroke-width: 4;
-    stroke: #fff;
 }
 
 .reflection-line {
