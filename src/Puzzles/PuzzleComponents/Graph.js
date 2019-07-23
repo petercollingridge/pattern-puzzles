@@ -16,13 +16,10 @@ export const Graph = ({ edges=[], nodes=[], colourNode }) =>
 
         <g className="graph-nodes">
             { nodes.map((node, i) => 
-                <circle
-                    key={i}
-                    r={node.r}
-                    cx={node.x}
-                    cy={node.y}
-                    {...isColourable(node, i, colourNode)}
-                />
+                <g key={i} transform={`translate(${ node.x } ${ node.y })`}>
+                    <circle className="node-outline" r={node.r} />
+                    <circle r={node.r} {...isColourable(node, i, colourNode)} />
+                </g>
             )}
         </g>
     </g>
