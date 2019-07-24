@@ -9,7 +9,7 @@ export const Graph = ({ edges=[], nodes=[], colourNode }) =>
             { edges.map((edge, i) =>
                 <g key={i}>
                     <Line className="edge-outline" {...edge} />
-                    <Line {...edge} />
+                    <Line className={edge.active ? `stroke-${ edge.active }`: null} {...edge} />
                 </g>
             )}
         </g>
@@ -59,32 +59,38 @@ export const ColourablePath = (graph, colour, update) => {
         updateNodeColour(targetNode, colour);
 
         if (targetNode.colour) {
+            // Colour the edge of the path
+            const previousNode = graph.path.slice(-1)[0];
+            if (previousNode) {
+                previousNode.edges[nodeIndex].active = colour;
+            }
+            // Add new node to the path
             graph.path.push(targetNode);
         } else {
             // Remove the node we clicked on
             graph.path.pop();
-            // The active node is now the previous node in the path
-            targetNode = graph.path.slice(-1)[0];
-            if (targetNode) {
-                targetNode.fixed = false
+            const previousNode = graph.path.slice(-1)[0];
+            if (previousNode) {
+                previousNode.fixed = false;
+                previousNode.edges[nodeIndex].active = false;
             }
+            // The active node is now the previous node in the path
+            targetNode = previousNode;
         }
 
         // Update nodes
         if (targetNode) {
-            // All nodes are fixed other than those connected to the targetNodes
             for (let i = 0; i < graph.nodes.length; i++) {
                 const node = graph.nodes[i];
                 if (node === targetNode) { continue; }
-
-                node.fixed = true;
+                
+                // Nodes  connected to the targetNode are open, the others are fixed
                 if (!node.colour) {
-                    // Non-coloured node connected to the target node are colourable
-                    node.edges.forEach(edge => {
-                        if (edge.node1 === targetNode || edge.node2 === targetNode) {
-                            node.fixed = false;
-                        }
-                    })
+                    if (node.edges[targetNode.index]) {
+                        node.fixed = false;
+                    } else {
+                        node.fixed = true;
+                    }
                 }
             }
         } else {

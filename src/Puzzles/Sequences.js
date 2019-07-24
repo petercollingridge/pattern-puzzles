@@ -7,7 +7,7 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import { Sequence, GraphSequence } from './PuzzleComponents/Sequence';
 import { getSequenceObject, getGraphSequence } from './puzzleLoaders';
-import { allItemsColoured, sequencesMatch } from '../utils/evaluation';
+import { sequencesMatch } from '../utils/evaluation';
 import { triangleGraph, squareGraph } from '../utils/graphUtils';
 
 

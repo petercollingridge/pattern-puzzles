@@ -7,13 +7,14 @@ import { shuffle } from '../utils/common';
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=10, colour }) {
-    const nodeObjects = nodes.map(([x, y, nodeColour]) => ({
+    const nodeObjects = nodes.map(([x, y, nodeColour], index) => ({
         r,
+        index,
         x: x * size,
         y: y * size,
         colour: nodeColour || colour,
         fixed: Boolean(nodeColour || colour),
-        edges: new Set()
+        edges: {}
     }));
 
     const edgeObjects = edges.map(([n1, n2]) => {
@@ -28,8 +29,9 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=10, colour }) {
             y2: node2.y
         };
 
-        node1.edges.add(edge);
-        node2.edges.add(edge);
+        // Edges map another node to the edge object
+        node1.edges[node2.index] = edge;
+        node2.edges[node1.index] = edge;
 
         return edge;
     });
