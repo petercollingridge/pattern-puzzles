@@ -66,7 +66,7 @@ class PuzzlePage extends React.Component {
     }
 
     backToMenu() {
-        this.props.history.push(`/pattern-puzzles`)
+        this.props.history.push("/")
     }
 
     clear() {
