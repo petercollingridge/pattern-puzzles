@@ -369,7 +369,7 @@ const puzzle4 = [
         randomRotate: true,
         categories: [
             { type: 1, item: linearGraph([1, 1, 1]) },
-            { type: 2, item: loopGraph([1, 1, 1],) },
+            { type: 2, item: loopGraph([1, 1, 1]) },
             { type: 1,
                 item: {
                     nodes: [[0.7, 0.7, 1], [-0.7, 0.7, 1], [-0.7, -0.7, 1]],
@@ -384,19 +384,38 @@ const puzzle4 = [
             }
         ]
     }, {
+        // Three node- vs four node-triangles
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: loopGraph([1, 1, 1]) },
+            { type: 1,
+                item: {
+                    nodes: [[0.7, 0.7, 1], [-0.7, 0.7, 1], [-0.7, -0.7, 1]],
+                    edges: getLoopOfEdges(3)
+                }
+            },
+            { type: 2,
+                item: {
+                    nodes: [[0.7, 0.7, 1], [-0.7, 0.7, 1], [-0.7, -0.7, 1], [0, 0, 1]],
+                    edges: getLoopOfEdges(4)
+                }
+            },
+            { type: 2,
+                item: {
+                    nodes: getPointsOnACircle(3).concat([[0, 0.5]]),
+                    edges: [[0, 3], [3, 1], [1, 2], [2, 0]],
+                    colour: 1
+                }
+            }
+        ]
+    }, {
         // Quadrilaterals vs straight lines
         colourPalette: 2,
         randomRotate: true,
         categories: [
             { type: 1, item: linearGraph([1, 1, 1, 1]) },
             { type: 2, item: loopGraph([1, 1, 1, 1]) },
-            // {
-            //     type: 1,
-            //     item: {
-            //         nodes: getNodesOnCircle([1, 1, 1, 1], { r: 0.8 }),
-            //         edges: [[0, 1], [1, 3], [2, 3]]
-            //     }
-            // },
             {
                 type: 1,
                 item: {
@@ -446,6 +465,51 @@ const puzzle4 = [
                 item: {
                     nodes: lowTriangle,
                     edges: [[0, 1], [0, 2], [1, 2], [2, 3]]
+                }
+            }
+        ]
+    }, {
+        // Quadrilateral with one diagonal vs two
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            {
+                type: 1,
+                item: {
+                    nodes: getNodesOnCircle(4),
+                    edges: getLoopOfEdges(4).concat([[0, 2], [1, 3]]),
+                    colour: 1
+                }
+            },
+            {
+                type: 1,
+                item: {
+                    nodes: triangleWithCenter,
+                    edges: [[0, 1], [1, 2], [2, 0], [3, 0], [3, 1], [3, 2]]
+                }
+            },
+            {
+                type: 2,
+                item: {
+                    nodes: getNodesOnCircle(4),
+                    edges: getLoopOfEdges(4).concat([[0, 2]]),
+                    colour: 1
+                }
+            },
+            {
+                type: 2,
+                item: {
+                    nodes: triangleWithCenter,
+                    edges: getLoopOfEdges(4).concat([[0, 2]]),
+                    colour: 1
+                }
+            },
+            {
+                type: 2,
+                item: {
+                    nodes: getPointsOnACircle(3).concat([[0, 0.5]]),
+                    edges: [[0, 3], [3, 1], [1, 2], [2, 0], [3, 2]],
+                    colour: 1
                 }
             }
         ]
