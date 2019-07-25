@@ -8,7 +8,7 @@ import './base.css';
 
 
 export default () =>
-    <Router basename="/pattern-puzzles">
+    <Router>
         <Switch>
             {
                 Object.values(puzzleData).map(({ slug, component }) =>
