@@ -36,7 +36,7 @@ export const puzzleData = {
     },
     'categorisation-3': {
         slug: 'categorisation-3',
-        icon: CategorisationIcons[2](),
+        icon: CategorisationIcons[3](),
         component: () => Categorisation(3),
     },
     'graph-theory-0': {

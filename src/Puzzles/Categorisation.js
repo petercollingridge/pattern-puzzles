@@ -360,6 +360,7 @@ const puzzle3 = [
 
 const triangleWithCenter = getNodesOnCircle([1, 1, 1], { r: 1.2 }).concat([[0, 0, 1]]);
 const lowTriangle = [[0, -1, 1], [-1, 0.5, 1], [0, 0.5, 1], [1, 0.5, 1]];
+const rectangle = [[-0.5, -1.25, 1], [-0.5, 1.25, 1], [0.5, 1.25, 1], [0.5, -1.25, 1]]
 
 // Graphs have the same set of connections, but nodes are moved
 const puzzle4 = [
@@ -471,6 +472,43 @@ const puzzle4 = [
                 item: {
                     nodes: triangleWithCenter,
                     edges: getLoopOfEdges(4)
+                }
+            }
+        ]
+    }, {
+        // Quadrilaterals vs straight lines with a rectangle
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            {
+                type: 1,
+                item: {
+                    nodes: rectangle,
+                    edges: getLineOfEdges(4)
+                }
+            }, {
+                type: 1,
+                item: {
+                    nodes: rectangle,
+                    edges: [[0, 3], [0, 2], [2, 1]]
+                }
+            }, {
+                type: 1,
+                item: {
+                    nodes: rectangle,
+                    edges: [[1, 2], [2, 3], [3, 0]]
+                }
+            }, {
+                type: 2,
+                item: {
+                    nodes: rectangle,
+                    edges: getLoopOfEdges(4),
+                }
+            }, {
+                type: 2,
+                item: {
+                    nodes: rectangle,
+                    edges: [[0, 2], [2, 1], [1, 3], [3, 0]],
                 }
             }
         ]

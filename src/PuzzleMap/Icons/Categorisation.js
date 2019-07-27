@@ -52,4 +52,51 @@ const Categorisation3 = () => <g>
     </g>
 </g>
 
-    export default [Categorisation1, Categorisation2, Categorisation3];
+const Categorisation4 = () => <g>
+    <g transform="translate(0 -26)">
+        <g className="categories">
+            <circle className="colour-2" r="22" />
+        </g>
+        <g className="graph-edges">
+            <line x1="0" y1="-12" x2="-11" y2="6" />
+            <line x1="0" y1="-12" x2="11" y2="6" />
+            <line x1="-11" y1="6" x2="11" y2="6" />
+        </g>
+        <g className="graph-nodes">
+            <circle className="colour-1" cx="0" cy="-12" r="4" />
+            <circle className="colour-1" cx="-11" cy="6" r="4" />
+            <circle className="colour-1" cx="11" cy="6" r="4" />
+        </g>
+    </g>
+
+    <g transform="translate(-23 13)">
+        <g className="categories">
+            <circle className="colour-1" r="22" />
+        </g>
+        <g className="graph-edges">
+            <line x1="-15" x2="15" />
+        </g>
+        <g className="graph-nodes">
+            <circle className="colour-1" cx="-15" r="4" />
+            <circle className="colour-1" cx="0" r="4" />
+            <circle className="colour-1" cx="15" r="4" />
+        </g>
+    </g>
+
+    <g transform="translate(23 13)">
+        <g className="categories">
+            <circle className="colour-1" r="22" />
+        </g>
+        <g className="graph-edges">
+            <line x1="0" y1="-12" x2="-11" y2="6" />
+            <line x1="0" y1="-12" x2="11" y2="6" />
+        </g>
+        <g className="graph-nodes">
+            <circle className="colour-1" cx="0" cy="-12" r="4" />
+            <circle className="colour-1" cx="-11" cy="6" r="4" />
+            <circle className="colour-1" cx="11" cy="6" r="4" />
+        </g>
+    </g>
+</g>
+
+export default [Categorisation1, Categorisation2, Categorisation3, Categorisation4];
