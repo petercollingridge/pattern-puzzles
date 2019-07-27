@@ -12,7 +12,7 @@ import {
     getLineOfEdges,
     getLoopOfEdges
 } from '../utils/graphUtils';
-import { allItemsColoured, sequencesAreEquivalent } from '../utils/evaluation';
+import { sequencesAreEquivalent } from '../utils/evaluation';
 
 
 // Graphs are all the same colour and need to be match by shape
@@ -364,6 +364,16 @@ const lowTriangle = [[0, -1, 1], [-1, 0.5, 1], [0, 0.5, 1], [1, 0.5, 1]];
 // Graphs have the same set of connections, but nodes are moved
 const puzzle4 = [
     {
+        // Triangles vs straight lines big and smalle
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: linearGraph([1, 1, 1], 0.8) },
+            { type: 1, item: linearGraph([1, 1, 1], 1.5) },
+            { type: 2, item: loopGraph([1, 1, 1], 0.7) },
+            { type: 2, item: loopGraph([1, 1, 1], 1.4) },
+        ]
+    }, {
         // Triangles vs straight lines
         colourPalette: 2,
         randomRotate: true,
@@ -391,14 +401,16 @@ const puzzle4 = [
             { type: 1, item: loopGraph([1, 1, 1]) },
             { type: 1,
                 item: {
-                    nodes: [[0.7, 0.7, 1], [-0.7, 0.7, 1], [-0.7, -0.7, 1]],
-                    edges: getLoopOfEdges(3)
+                    nodes: [[0, -0.5], [1.25, 0.5], [-1.25, 0.5]],
+                    edges: getLoopOfEdges(3),
+                    colour: 1
                 }
             },
             { type: 2,
                 item: {
-                    nodes: [[0.7, 0.7, 1], [-0.7, 0.7, 1], [-0.7, -0.7, 1], [0, 0, 1]],
-                    edges: getLoopOfEdges(4)
+                    nodes: [[0, -0.5], [1.25, 0.5], [0, 0.5], [-1.25, 0.5]],
+                    edges: getLoopOfEdges(4),
+                    colour: 1
                 }
             },
             { type: 2,
@@ -406,6 +418,31 @@ const puzzle4 = [
                     nodes: getPointsOnACircle(3).concat([[0, 0.5]]),
                     edges: [[0, 3], [3, 1], [1, 2], [2, 0]],
                     colour: 1
+                }
+            }
+        ]
+    }, {
+        // Quadrilaterals vs stars
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: loopGraph([1, 1, 1, 1]) },
+            { type: 1,
+                item: {
+                    nodes: lowTriangle,
+                    edges: getLoopOfEdges(4)
+                }
+            }, {
+                type: 2,
+                item: {
+                    nodes: lowTriangle,
+                    edges: [[0, 2], [1, 2], [2, 3]]
+                }
+            }, {
+                type: 2,
+                item: {
+                    nodes: triangleWithCenter,
+                    edges: [[0, 3], [1, 3], [2, 3]]
                 }
             }
         ]
@@ -422,8 +459,14 @@ const puzzle4 = [
                     nodes: getNodesOnCircle([1, 1, 1, 1]),
                     edges: getLineOfEdges(4)
                 }
-            },
-            {
+            }, {
+                type: 1,
+                item: {
+                    nodes: [[-0.5, -1], [-0.5, 0], [0.5, 0], [0.5, 1]],
+                    edges: getLineOfEdges(4),
+                    colour: 1
+                }
+            }, {
                 type: 2,
                 item: {
                     nodes: triangleWithCenter,
@@ -536,7 +579,6 @@ const displayCategories = (categories, selectedColour, update) => {
 };
 
 const evaluate = puzzle =>
-    allItemsColoured(puzzle) &&
     sequencesAreEquivalent(puzzle.map(item => item.category), puzzle.map(item => item.colour));
 
 export const Categorisation = (n) =>
