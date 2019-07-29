@@ -39,6 +39,11 @@ export const puzzleData = {
         icon: CategorisationIcons[3](),
         component: () => Categorisation(3),
     },
+    'categorisation-4': {
+        slug: 'categorisation-4',
+        icon: CategorisationIcons[3](),
+        component: () => Categorisation(4),
+    },
     'graph-theory-0': {
         slug: 'graph-theory-0',
         icon: GraphTheoryIcons[0](),
@@ -70,7 +75,7 @@ function getData(name, n) {
 // Puzzle data grouped into categories
 export const puzzleLayout = [
     getData('sequences', 3),
-    getData('categorisation', 4),
+    getData('categorisation', 5),
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),

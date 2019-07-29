@@ -7,6 +7,7 @@ import { getCategoryObjects, getGraphObject } from './puzzleLoaders';
 import {
     linearGraph,
     loopGraph,
+    starGraph,
     getPointsOnACircle,
     getNodesOnCircle,
     getLineOfEdges,
@@ -365,7 +366,7 @@ const rectangle = [[-0.5, -1.25, 1], [-0.5, 1.25, 1], [0.5, 1.25, 1], [0.5, -1.2
 // Graphs have the same set of connections, but nodes are moved
 const puzzle4 = [
     {
-        // Triangles vs straight lines big and smalle
+        // Triangles vs straight lines big and smaller
         colourPalette: 2,
         randomRotate: true,
         categories: [
@@ -439,13 +440,7 @@ const puzzle4 = [
                     nodes: lowTriangle,
                     edges: [[0, 2], [1, 2], [2, 3]]
                 }
-            }, {
-                type: 2,
-                item: {
-                    nodes: triangleWithCenter,
-                    edges: [[0, 3], [1, 3], [2, 3]]
-                }
-            }
+            }, { type: 2, item: starGraph(3, { colour: 1 }) }
         ]
     }, {
         // Quadrilaterals vs straight lines
@@ -597,7 +592,32 @@ const puzzle4 = [
     }
 ];
 
-const puzzles = [puzzle1, puzzle2, puzzle3, puzzle4];
+// Categorising graphs of the same type, e.g. cyclic vs star
+const puzzle5 = [
+    {
+        // Linear vs cyclic
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: linearGraph([1, 1, 1]) },
+            { type: 1, item: linearGraph([1, 1, 1, 1]) },
+            { type: 2, item: loopGraph([1, 1, 1]) },
+            { type: 2, item: loopGraph([1, 1, 1, 1]) },
+        ]
+    }, {
+        // Linear vs cyclic
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: starGraph(3, { colour: 1 }) },
+            { type: 1, item: starGraph(4, { colour: 1 }) },
+            { type: 2, item: loopGraph([1, 1, 1]) },
+            { type: 2, item: loopGraph([1, 1, 1, 1]) },
+        ]
+    }
+];
+
+const puzzles = [puzzle1, puzzle2, puzzle3, puzzle4, puzzle5];
 
 const displayCategories = (categories, selectedColour, update) => {
     categories.forEach(item => {
