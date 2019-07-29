@@ -79,6 +79,15 @@ export function loopGraph(colours, scale=1) {
     return { nodes, edges };
 }
 
+export function starGraph(n, {colour, scale=1}={}) {
+    const arr = Array.from({ length: n });
+    const colours = arr.map(_ => colour);
+    const nodes = [[0, 0, colour]].concat(getNodesOnCircle(colours, { r: scale }));
+    const edges = arr.map((_, index) => [0, index + 1]);
+
+    return { nodes, edges };
+}
+
 function getRegularPolygonGraph(size, colours, scale=1) {
     // Can pass in a single colour to set all nodes to that colour
     if (!Array.isArray(colours)) {
