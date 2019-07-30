@@ -5,6 +5,9 @@
 
 import { shuffle } from '../utils/common';
 
+// Extract the value of "object" from the passed in object/hash
+export const getPuzzleObject = ({ object }) => object;
+
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=9, colour }) {
     const nodeObjects = nodes.map(([x, y, nodeColour], index) => ({
