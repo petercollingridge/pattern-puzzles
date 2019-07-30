@@ -23,6 +23,19 @@ export const Sequence = ({ sequence=[], colourItem }) => {
     </g>
 };
 
+export const ColourableSequence = (puzzle, selectedColour, update) => {
+    const colourItem = index => {
+        if (puzzle.sequence[index].colour === selectedColour) {
+            puzzle.sequence[index].colour = 0;
+        } else {
+            puzzle.sequence[index].colour = selectedColour;
+        }
+        update(puzzle);
+    }
+
+    return <Sequence {...puzzle} colourItem={colourItem}/>
+};
+
 export const GraphSequence = (puzzle, selectedColour, update) => {
     const sequence = puzzle.sequence;
 

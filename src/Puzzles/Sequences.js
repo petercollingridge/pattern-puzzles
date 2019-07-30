@@ -1,11 +1,11 @@
 /*
- * Colour regions on a map such that no two touching regions have the same colour.
+ * Given a sequence of objects, continue it or fill in the missing bits.
  */
 
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import { Sequence, GraphSequence } from './PuzzleComponents/Sequence';
+import { ColourableSequence, GraphSequence } from './PuzzleComponents/Sequence';
 import { getSequenceObject, getGraphSequence } from './puzzleLoaders';
 import { sequencesMatch } from '../utils/evaluation';
 import { triangleGraph, squareGraph } from '../utils/graphUtils';
@@ -148,19 +148,6 @@ const correctGraphSequence = ({ sequence, target }) =>
     sequence.every((graph, index) =>
         sequencesMatch(graph.nodes, target[index].nodes, 'colour')
     );
-
-const ColourableSequence = (puzzle, selectedColour, update) => {
-    const colourItem = index => {
-        if (puzzle.sequence[index].colour === selectedColour) {
-            puzzle.sequence[index].colour = 0;
-        } else {
-            puzzle.sequence[index].colour = selectedColour;
-        }
-        update(puzzle);
-    }
-
-    return <Sequence {...puzzle} colourItem={colourItem}/>
-};
 
 export const Sequences = (n) => {
     if (n < 2) {
