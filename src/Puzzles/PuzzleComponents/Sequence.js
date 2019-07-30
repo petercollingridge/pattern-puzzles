@@ -3,7 +3,7 @@ import { Graph } from './Graph';
 import { isColourable } from './utils';
 
 
-export const Sequence = ({ sequence=[], colourItem }) => {
+export const Sequence = ({ sequence=[], y=0, colourItem }) => {
     const size = Math.min(24, 200 / sequence.length);
     const startX = -(sequence.length * size) / 2;
 
@@ -12,7 +12,7 @@ export const Sequence = ({ sequence=[], colourItem }) => {
             return <rect
                 key={i}
                 x={startX + i * size }
-                y={-size / 2}
+                y={y - size / 2}
                 width={size - 1}
                 height={size - 1}
                 rx="3"
@@ -35,6 +35,10 @@ export const ColourableSequence = (puzzle, selectedColour, update) => {
 
     return <Sequence {...puzzle} colourItem={colourItem}/>
 };
+
+export const Sequence2D = (puzzle, selectedColour, update) => {
+    
+}
 
 export const GraphSequence = (puzzle, selectedColour, update) => {
     const sequence = puzzle.sequence;
