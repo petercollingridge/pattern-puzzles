@@ -79,11 +79,18 @@ export function loopGraph(colours, scale=1) {
     return { nodes, edges };
 }
 
-export function starGraph(n, {colour, scale=1}={}) {
-    const arr = Array.from({ length: n });
-    const colours = arr.map(_ => colour);
-    const nodes = [[0, 0, colour]].concat(getNodesOnCircle(colours, { r: scale }));
-    const edges = arr.map((_, index) => [0, index + 1]);
+export function starGraph(colours, scale=1) {
+    colours = getArray(colours);
+    const firstNode = colours.shift();
+    const nodes = [[0, 0, firstNode]].concat(getNodesOnCircle(colours, { r: scale }));
+    const edges = colours.map((_, index) => [0, index + 1]);
+
+    return { nodes, edges };
+}
+
+export function spokeGraph(colours, scale=1) {
+    let { nodes, edges } = starGraph(colours, scale);
+    edges = edges.concat(getLoopOfEdges(1, colours.length))
 
     return { nodes, edges };
 }
