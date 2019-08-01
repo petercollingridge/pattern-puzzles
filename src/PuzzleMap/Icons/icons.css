@@ -18,6 +18,9 @@
 
 .map-link .graph-edges {
     fill: none;
+    color: #aaa;
+    stroke: #aaa;
+    transition: stroke 200ms ease-out
 }
 
 .map-link .graph-nodes * {
@@ -40,6 +43,10 @@
 
 .map-link:focus .graph-nodes * {
     fill: currentColor;
+}
+
+.map-link:hover .graph-edges * {
+    stroke: currentColor;
 }
 
 .map-link:hover .categories * {

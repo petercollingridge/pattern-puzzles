@@ -9,7 +9,7 @@ import { shuffle } from '../utils/common';
 export const getPuzzleObject = ({ object }) => object;
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
-export function getGraphObject({ nodes=[], edges=[], size=32, r=9, colour }) {
+export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
     const nodeObjects = nodes.map(([x, y, nodeColour], index) => ({
         r,
         index,
