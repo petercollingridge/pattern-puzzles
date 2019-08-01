@@ -9,6 +9,7 @@ import {
     loopGraph,
     starGraph,
     spokeGraph,
+    sunletGraph,
     getPointsOnACircle,
     getNodesOnCircle,
     getLineOfEdges,
@@ -597,6 +598,18 @@ const puzzle4 = [
 const scale = 1.2;
 const puzzle5 = [
     {
+        // Linear vs cyclic
+        colourPalette: 2,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: linearGraph([1, 1]) },
+            { type: 1, item: linearGraph([1, 1, 1]) },
+            { type: 1, item: linearGraph([1, 1, 1, 1]) },
+            { type: 2, item: loopGraph([1, 1, 1]) },
+            { type: 2, item: loopGraph([1, 1, 1, 1]) },
+            { type: 2, item: loopGraph([1, 1, 1, 1, 1]) },
+        ]
+    }, {
         // Cyclc vs star
         colourPalette: 2,
         randomRotate: true,
@@ -606,6 +619,7 @@ const puzzle5 = [
             { type: 1, item: starGraph([1, 1, 1, 1, 1, 1], scale) },
             { type: 2, item: loopGraph([1, 1, 1], scale) },
             { type: 2, item: loopGraph([1, 1, 1, 1], scale) },
+            { type: 2, item: loopGraph([1, 1, 1, 1, 1], scale) },
         ]
     }, {
         // Spoked wheel vs star
@@ -620,16 +634,16 @@ const puzzle5 = [
             { type: 2, item: starGraph([1, 1, 1, 1, 1, 1], scale) },
         ]
     }, {
-        // Linear vs cyclic
+        // Spoked wheel vs sunlet
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: linearGraph([1, 1]) },
-            { type: 1, item: linearGraph([1, 1, 1]) },
-            { type: 1, item: linearGraph([1, 1, 1, 1]) },
-            { type: 2, item: loopGraph([1, 1, 1]) },
-            { type: 2, item: loopGraph([1, 1, 1, 1]) },
-            { type: 2, item: loopGraph([1, 1, 1, 1, 1]) },
+            { type: 1, item: spokeGraph([1, 1, 1, 1], scale) },
+            { type: 1, item: spokeGraph([1, 1, 1, 1, 1], scale) },
+            { type: 1, item: spokeGraph([1, 1, 1, 1, 1, 1], scale) },
+            { type: 2, item: sunletGraph(3, 1, 1.5) },
+            { type: 2, item: sunletGraph(4, 1, 1.5) },
+            { type: 2, item: sunletGraph(5, 1, 1.5) },
         ]
     }
 ];

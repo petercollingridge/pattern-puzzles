@@ -91,8 +91,16 @@ export function starGraph(colours, scale=1) {
 export function spokeGraph(colours, scale=1) {
     let { nodes, edges } = starGraph(colours, scale);
     edges = edges.concat(getLoopOfEdges(1, colours.length))
-
     return { nodes, edges };
+}
+
+export function sunletGraph(n, colour, scale=1) {
+    // Determine radius of inner shape so its side length is the same as the remaining radial spoke length
+    const p = 1 / (1  + 2 * Math.sin(Math.PI / n));
+    let { nodes, edges } = loopGraph(n, scale * p);
+    nodes = nodes.concat(getNodesOnCircle(n, { r: scale }));
+    edges = edges.concat(Array.from({ length: n }).map((_, index) => [index, index + n]));
+    return { nodes, edges, colour };
 }
 
 function getRegularPolygonGraph(size, colours, scale=1) {
