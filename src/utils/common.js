@@ -8,6 +8,31 @@ export function shuffle(arr) {
     return arr;
 }
 
+export function getPermutations(arr) {
+    const result = [];
+  
+    const permute = (remainingItems, seq) => {
+        if (remainingItems.length === 0) {
+            result.push(seq)
+        } else {
+            let previousItem = false;
+            for (let i = 0; i < remainingItems.length; i++) {
+                const curr = remainingItems.slice();
+                const next = curr.splice(i, 1);
+                if (next[0] !== previousItem) {
+                    permute(curr, seq.concat(next));
+                    previousItem = next[0];
+                }
+            }
+        }
+   }
+  
+   // Copy arr and then sort it
+   permute(arr.slice().sort(), []);
+  
+   return result;
+}
+
 // Click enter or space triggers a given callback
 export const handleKeyDown = (evt, callback) => {
     if (evt.key === 'Enter' || evt.keyCode === 32) {

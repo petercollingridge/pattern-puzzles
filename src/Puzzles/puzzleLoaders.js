@@ -3,7 +3,7 @@
  * display the puzzle and determine when the correct answer is found
 ***/
 
-import { shuffle } from '../utils/common';
+import { shuffle, getPermutations } from '../utils/common';
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
@@ -105,10 +105,13 @@ export function getSequenceObject({ pattern, answer }) {
 }
 
 export function getPermutationObject({ pattern }) {
-    //  Get a sequence of node objects
-    const sequences = pattern.map(sequence => sequence.map(colourNumberToColourObject))
+    //  Get an array of sequences
+    const sequences = pattern.map(sequence => sequence.map(colourNumberToColourObject));
+    // Find all permutations based on the first item in the pattern
+    const permutations = getPermutations(pattern[0]);
+    const permutationSet = new Set(permutations.map(permutation => permutation.join('-')))
 
-    return { sequences };
+    return { sequences, permutations: permutationSet };
 }
 
 export function getGraphSequence({ graphs, answer }) {
