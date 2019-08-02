@@ -104,7 +104,7 @@ export function getSequenceObject({ pattern, answer }) {
     return { sequence, target };
 }
 
-export function getCombinationObject({ pattern }) {
+export function getPermutationObject({ pattern }) {
     //  Get a sequence of node objects
     const sequences = pattern.map(sequence => sequence.map(colourNumberToColourObject))
 

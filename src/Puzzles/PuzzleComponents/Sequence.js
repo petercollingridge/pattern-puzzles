@@ -10,8 +10,8 @@ const Sequence = ({ sequence=[], y=0, chamber }) => {
     const startX = -(sequence.length * size) / 2;
 
     return <g className="sequence">
-        { sequence.map((item, i) => {
-            return <rect
+        { sequence.map((item, i) =>
+            <rect
                 key={i}
                 x={startX + i * size }
                 y={y - size / 2}
@@ -21,20 +21,20 @@ const Sequence = ({ sequence=[], y=0, chamber }) => {
                 ry="3"
                 {...isColourable(item, chamber)}
             />
-        })}
+        )}
     </g>
 };
 
 export const ColourableSequence = (puzzle, chamber) => 
     <Sequence {...puzzle} chamber={chamber}/>
 
-export const Sequence2D = (puzzle, selectedColour, update) => {
+export const Sequence2D = (puzzle, chamber) => {
     const sequences = puzzle.sequences;
-    const size = getSize(Math.max(sequences.length, sequences[0].length)) * 1.2;
-    const startY = -(sequences.length * size) / 2
-
-    return sequences.map(
-        (sequence, index) => <Sequence sequence={sequence} y={startY + index * size} key={index}/>
+    const size = getSize(Math.max(sequences.length, sequences[0].length));
+    const sizeWithGap = size * 1.25;
+    const startY = -((sequences.length - 1) * sizeWithGap) / 2
+    return sequences.map((sequence, index) =>
+        <Sequence sequence={sequence} y={startY + index * sizeWithGap} key={index} chamber={chamber}/>
     );
 }
 
@@ -52,7 +52,7 @@ export const GraphSequence = (puzzle, chamber) => {
         </g>
     );
 
-    return <g className="sequence"  transform={`scale(${ scale })`}>
+    return <g className="sequence" transform={`scale(${ scale })`}>
         { graphs }
     </g>
 };
