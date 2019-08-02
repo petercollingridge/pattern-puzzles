@@ -5,8 +5,8 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import { ColourableSequence } from './PuzzleComponents/Sequence';
-import { getPuzzleObject } from './puzzleLoaders';
+import { Sequence2D } from './PuzzleComponents/Sequence';
+import { getCombinationObject } from './puzzleLoaders';
 import { sequencesMatch } from '../utils/evaluation';
 
 
@@ -26,5 +26,5 @@ export const CombinationPuzzles = (n) =>
      <PuzzlePage
         puzzles={puzzles[n]}
         evaluate={correctSequence}
-        getPuzzleObject={getPuzzleObject}
-        displayPuzzle={ColourableSequence} />
+        getPuzzleObject={getCombinationObject}
+        displayPuzzle={Sequence2D} />
