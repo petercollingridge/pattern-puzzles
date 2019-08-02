@@ -5,7 +5,7 @@ import { isColourable } from './utils';
 
 const getSize = n =>  Math.min(24, 200 / n);
 
-export const Sequence = ({ sequence=[], y=0, colourItem }) => {
+const Sequence = ({ sequence=[], y=0, chamber }) => {
     const size = getSize(sequence.length);
     const startX = -(sequence.length * size) / 2;
 
@@ -19,24 +19,14 @@ export const Sequence = ({ sequence=[], y=0, colourItem }) => {
                 height={size - 1}
                 rx="3"
                 ry="3"
-                {...isColourable(item, i, colourItem)}
+                {...isColourable(item, chamber)}
             />
         })}
     </g>
 };
 
-export const ColourableSequence = (puzzle, selectedColour, update) => {
-    const colourItem = index => {
-        if (puzzle.sequence[index].colour === selectedColour) {
-            puzzle.sequence[index].colour = 0;
-        } else {
-            puzzle.sequence[index].colour = selectedColour;
-        }
-        update(puzzle);
-    }
-
-    return <Sequence {...puzzle} colourItem={colourItem}/>
-};
+export const ColourableSequence = (puzzle, chamber) => 
+    <Sequence {...puzzle} chamber={chamber}/>
 
 export const Sequence2D = (puzzle, selectedColour, update) => {
     const sequences = puzzle.sequences;

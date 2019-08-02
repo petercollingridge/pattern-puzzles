@@ -79,7 +79,8 @@ class PuzzlePage extends React.Component {
     }
 
     // Child element has updated so evaluate to see if puzzle has been solved
-    update(puzzle) {
+    update() {
+        const puzzle = this.state.puzzle;
         const solved = this.props.evaluate(puzzle);
         this.setState({ puzzle, solved });
     }
@@ -143,7 +144,7 @@ class PuzzlePage extends React.Component {
                 <rect className="background" x="-200" y="-200" width="400" height="400" />
 
                 <g id="puzzle" key={index} className={className} style={style}>
-                    { this.props.displayPuzzle(puzzle, selectedColour, this.update) }
+                    { this.props.displayPuzzle(puzzle, this) }
                 </g>
 
                 <circle id="chamber-window" r="212" />

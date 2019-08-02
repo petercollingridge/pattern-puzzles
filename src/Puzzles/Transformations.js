@@ -5,7 +5,7 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import { Graph } from './PuzzleComponents/Graph';
+import { Graph, ColourableGraph } from './PuzzleComponents/Graph';
 import { getGraphAndUncolouredCopy } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges, getLineOfEdges } from '../utils/graphUtils';
 import { graphNodesAreSameColour, samePatternButDifferent } from '../utils/evaluation';
@@ -163,26 +163,18 @@ const colour1 = [
 	}
 ];
 
-const ColourableGraph = (puzzle, selectedColour, update) => {
-    const colourNode = nodeIndex => {
-        puzzle.blank.nodes[nodeIndex].colour = selectedColour;
-        update(puzzle);
-    }
-
-    return <Graph {...puzzle.blank} colourNode={colourNode}/>
-};
-
 const Transformation = ({ puzzles, transform, evaluate }) => {
-	const displayGraphs = (puzzle, selectedColour, update) => <g>
-        <g transform="translate(-60)">
-            <Graph {...puzzle.target} />
-        </g>
-        <g transform={ "translate(60) " + transform }>
-            { ColourableGraph(puzzle, selectedColour, update) }
-        </g>
+	const displayGraphs = (puzzle, chamber) =>
+		<g>
+			<g transform="translate(-60)">
+				<Graph {...puzzle.target} />
+			</g>
+			<g transform={ "translate(60) " + transform }>
+				{ ColourableGraph(puzzle.blank, chamber) }
+			</g>
 
-        <line className="reflection-line" y1="-200" y2="200" />
-    </g>
+			<line className="reflection-line" y1="-200" y2="200" />
+		</g>
 
 	return <PuzzlePage
 		puzzles={puzzles}

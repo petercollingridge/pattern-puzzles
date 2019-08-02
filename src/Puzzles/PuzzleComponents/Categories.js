@@ -16,7 +16,7 @@ const getCirclePackedInCircle = (R, n) => {
     };
 };
 
-export const Categories = ({ size, categories, colourCategory }) => {
+export const Categories = ({ size, categories, chamber }) => {
     const { scale, categorySize, categoryPositions } = getCirclePackedInCircle(size, categories.length);
 
     return <g>
@@ -28,7 +28,7 @@ export const Categories = ({ size, categories, colourCategory }) => {
 
             return <g key={i} transform={transform}>
                 <circle
-                    {...isColourable(category, i, colourCategory, 'category')}
+                    {...isColourable(category, chamber, { className: 'category' })}
                     r={categorySize * 0.95}
                     />
                 <g className="no-pointer" transform={`scale(${ scale * 2 } ${ scale * 2 })`}>

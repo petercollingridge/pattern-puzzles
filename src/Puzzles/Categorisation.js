@@ -650,21 +650,12 @@ const puzzle5 = [
 
 const puzzles = [puzzle1, puzzle2, puzzle3, puzzle4, puzzle5];
 
-const displayCategories = (categories, selectedColour, update) => {
+const displayCategories = (categories, chamber) => {
     categories.forEach(item => {
         item.component = <Graph {...getGraphObject(item.object)} />
     });
 
-    const colourCategory = index => {
-        if (categories[index].colour === selectedColour) {
-            categories[index].colour = 0;
-        } else {
-            categories[index].colour = selectedColour;
-        }
-        update(categories);
-    };
-
-    return <Categories size="128" categories={categories} colourCategory={colourCategory} />
+    return <Categories size="128" categories={categories} chamber={chamber} />
 };
 
 const evaluate = puzzle =>
