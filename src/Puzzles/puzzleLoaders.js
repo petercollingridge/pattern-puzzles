@@ -5,9 +5,6 @@
 
 import { shuffle } from '../utils/common';
 
-// Extract the value of "object" from the passed in object/hash
-export const getPuzzleObject = ({ object }) => object;
-
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
     const nodeObjects = nodes.map(([x, y, nodeColour], index) => ({
@@ -84,12 +81,15 @@ export function getMapObject({ regions=[], connections=[], size=1 }) {
     };
 }
 
+// Convert a number to n object with a colour attribute equal to that number and a fixed attribute
+const colourNumberToColourObject = colour => ({
+    colour,
+    fixed: colour > 0
+});
+
 export function getSequenceObject({ pattern, answer }) {
     //  Get a sequence of node objects
-    const sequence = pattern.map(colour => ({
-        colour,
-        fixed: colour > 0
-    }));
+    const sequence = pattern.map(colourNumberToColourObject);
 
     // Target sequence is the starting sequence with any 0s replaced by the answer items
     let n = 0;
@@ -102,6 +102,13 @@ export function getSequenceObject({ pattern, answer }) {
     });
 
     return { sequence, target };
+}
+
+export function getCombinationObject({ pattern }) {
+    //  Get a sequence of node objects
+    const sequences = pattern.map(sequence => sequence.map(colourNumberToColourObject))
+
+    return { sequences };
 }
 
 export function getGraphSequence({ graphs, answer }) {
