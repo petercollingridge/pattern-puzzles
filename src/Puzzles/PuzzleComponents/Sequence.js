@@ -38,7 +38,7 @@ export const Sequence2D = (puzzle, selectedColour, update) => {
     );
 }
 
-export const GraphSequence = (puzzle, selectedColour, update) => {
+export const GraphSequence = (puzzle, chamber) => {
     const sequence = puzzle.sequence;
 
     let size = Math.min(120, 240 / sequence.length);
@@ -46,16 +46,13 @@ export const GraphSequence = (puzzle, selectedColour, update) => {
     size /= scale;
     const startX = -size * (sequence.length - 1) / 2;
 
-    return <g className="sequence"  transform={`scale(${ scale })`}>
-        { sequence.map((graph, i) => {
-            const colourNode = nodeIndex => {
-                graph.nodes[nodeIndex].colour = selectedColour;
-                update(puzzle);
-            };
+    const graphs = sequence.map((graph, i) =>
+        <g key={i} transform={`translate(${ startX + i * size })`}>
+            <Graph {...graph} chamber={chamber} />
+        </g>
+    );
 
-            return <g key={i} transform={`translate(${ startX + i * size })`}>
-                <Graph {...graph} colourNode={colourNode} />
-            </g>
-        })}
+    return <g className="sequence"  transform={`scale(${ scale })`}>
+        { graphs }
     </g>
 };
