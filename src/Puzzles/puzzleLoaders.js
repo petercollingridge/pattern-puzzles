@@ -111,7 +111,7 @@ export function getPermutationObject({ pattern }) {
     const permutations = getPermutations(pattern[0]);
     const permutationSet = new Set(permutations.map(permutation => permutation.join('-')))
 
-    return { sequences, permutations: permutationSet };
+    return { sequences, target: permutationSet };
 }
 
 export function getGraphSequence({ graphs, answer }) {

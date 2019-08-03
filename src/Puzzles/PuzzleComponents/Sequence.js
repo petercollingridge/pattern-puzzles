@@ -31,7 +31,7 @@ export const ColourableSequence = (puzzle, chamber) =>
 export const Sequence2D = (puzzle, chamber) => {
     const sequences = puzzle.sequences;
     const size = getSize(Math.max(sequences.length, sequences[0].length));
-    const sizeWithGap = size * 1.25;
+    const sizeWithGap = size * 1.35;
     const startY = -((sequences.length - 1) * sizeWithGap) / 2
     return sequences.map((sequence, index) =>
         <Sequence sequence={sequence} y={startY + index * sizeWithGap} key={index} chamber={chamber}/>
