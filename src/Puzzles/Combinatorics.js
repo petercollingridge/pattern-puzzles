@@ -7,7 +7,7 @@ import React from 'react';
 import PuzzlePage from './PuzzlePage';
 import { Sequence2D } from './PuzzleComponents/Sequence';
 import { getPermutationObject } from './puzzleLoaders';
-import { sequencesMatch } from '../utils/evaluation';
+import { allItemsColoured, extractAttribute } from '../utils/evaluation';
 
 
 // Sequence of coloured blocks with uncoloured blocks at the end
@@ -20,11 +20,23 @@ const puzzles1 = [
 
 const puzzles = [puzzles1];
 
-const correctSequence = ({ sequence, target }) => true
+// Check the the given set of sequences matches a set of sequences.
+const sequencesMatch = ({ sequences, target }) => {
+    // Check all the sequences are fully coloured
+    if (!sequences.every(sequence => allItemsColoured(sequence))) {
+        return false;
+    }
+    // Get a set of sequence values
+    const sequenceSet = new Set(sequences.map(sequence => extractAttribute(sequence, 'colour').join('-')))
+    
+    // Check the this set of sequences matches the set of permutations
+    return (sequenceSet.size === target.size) &&
+        [...sequenceSet].every(value => target.has(value));
+}
 
 export const PermutationPuzzles = (n) =>
      <PuzzlePage
         puzzles={puzzles[n]}
-        evaluate={correctSequence}
+        evaluate={sequencesMatch}
         getPuzzleObject={getPermutationObject}
         displayPuzzle={Sequence2D} />
