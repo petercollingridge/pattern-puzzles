@@ -14,7 +14,7 @@ export function allConnectedItemsHaveDifferentColours(cxns=[]) {
 }
 
 export const graphIsChromatic = ({ nodes, edges }) => 
-    allItemsHaveValue(nodes, 'colour') &&
+    allItemsColoured(nodes) &&
     allConnectedItemsHaveDifferentColours(edges);
 
 export const sequencesMatch = (seq1, seq2, attr) => {
