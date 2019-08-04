@@ -20,10 +20,10 @@ const puzzles1 = [
         pattern: [[1, 2, 2], [2, 1, 2], [2, 2, 0]],
     }, {
         colourPalette: 2,
-        pattern: [[1, 2, 2], [2, 1, 2], [0, 0, 0]],
+        pattern: [[2, 2, 1], [1, 2, 2], [0, 0, 0]],
     }, {
         colourPalette: 2,
-        pattern: [[1, 2, 2], [0, 0, 0], [0, 0, 0]],
+        pattern: [[2, 1, 2], [0, 0, 0], [0, 0, 0]],
     }, {
         colourPalette: 2,
         pattern: [[1, 2, 2, 2], [2, 1, 2, 2], [0, 0, 0, 0], [0, 0, 0, 0]],
@@ -44,11 +44,11 @@ const puzzles = [puzzles1];
 // Check the the given set of sequences matches a set of sequences.
 const sequencesMatch = ({ sequences, target }) => {
     // Check all the sequences are fully coloured
-    if (!sequences.every(sequence => allItemsColoured(sequence))) {
+    if (!sequences.every(graph => allItemsColoured(graph.nodes))) {
         return false;
     }
     // Get a set of sequence values
-    const sequenceSet = new Set(sequences.map(sequence => extractAttribute(sequence, 'colour').join('-')))
+    const sequenceSet = new Set(sequences.map(sequence => extractAttribute(sequence.nodes, 'colour').join('-')))
     
     // Check the this set of sequences matches the set of permutations
     return (sequenceSet.size === target.size) &&
