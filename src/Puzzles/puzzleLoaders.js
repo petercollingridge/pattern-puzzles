@@ -4,6 +4,7 @@
 ***/
 
 import { shuffle, getPermutations } from '../utils/common';
+import { linearGraph } from '../utils/graphUtils';
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
@@ -106,7 +107,10 @@ export function getSequenceObject({ pattern, answer }) {
 
 export function getPermutationObject({ pattern }) {
     //  Get an array of sequences
-    const sequences = pattern.map(sequence => sequence.map(colourNumberToColourObject));
+    // const sequences = pattern.map(sequence => sequence.map(colourNumberToColourObject));
+
+    //  Get an array of linear graphs
+    const sequences = pattern.map(sequence => getGraphObject(linearGraph(sequence)));
     // Find all permutations based on the first item in the pattern
     const permutations = getPermutations(pattern[0]);
     const permutationSet = new Set(permutations.map(permutation => permutation.join('-')))

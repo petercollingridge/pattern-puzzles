@@ -29,12 +29,14 @@ export const ColourableSequence = (puzzle, chamber) =>
     <Sequence {...puzzle} chamber={chamber}/>
 
 export const Sequence2D = (puzzle, chamber) => {
-    const sequences = puzzle.sequences;
-    const size = getSize(Math.max(sequences.length, sequences[0].length));
-    const sizeWithGap = size * 1.35;
-    const startY = -((sequences.length - 1) * sizeWithGap) / 2
-    return sequences.map((sequence, index) =>
-        <Sequence sequence={sequence} y={startY + index * sizeWithGap} key={index} chamber={chamber}/>
+    const graphs = puzzle.sequences;
+    const size = 1.25 * getSize(Math.max(graphs.length, graphs[0].nodes.length));
+    const startY = -((graphs.length - 1) * size) / 2;
+
+    return graphs.map((graph, index) =>
+        <g key={index} transform={`translate(0 ${startY + index * size})`}>
+            <Graph {...graph} chamber={chamber}/>
+        </g>
     );
 }
 
