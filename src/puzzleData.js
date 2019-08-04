@@ -16,6 +16,7 @@ import { Sequences } from './Puzzles/Sequences';
 import CategorisationIcons from './PuzzleMap/Icons/Categorisation';
 import { Categorisation } from './Puzzles/Categorisation';
 
+import PermutationIcons from './PuzzleMap/Icons/Combinatorics';
 import { PermutationPuzzles } from './Puzzles/Combinatorics';
 
 
@@ -53,7 +54,7 @@ export const puzzleData = {
     },
     'permutations-0': {
         slug: 'permutations-0',
-        icon: GraphTheoryIcons[0](),
+        icon: PermutationIcons[0](),
         component: () => PermutationPuzzles(0), 
     }
 };
@@ -81,11 +82,10 @@ function getData(name, n) {
 
 // Puzzle data grouped into categories
 export const puzzleLayout = [
-    getData('sequences', 3),
+    getData('sequences', 3).concat( getData('permutations', 1)),
     getData('categorisation', 5),
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
     getData('graph-theory', 1),
-    getData('permutations', 1),
 ];
