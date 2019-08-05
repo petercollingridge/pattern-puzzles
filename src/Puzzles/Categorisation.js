@@ -10,6 +10,8 @@ import {
     starGraph,
     spokeGraph,
     sunletGraph,
+    prismGraph,
+    antiPrismGraph,
     getPointsOnACircle,
     getNodesOnCircle,
     getLineOfEdges,
@@ -602,7 +604,6 @@ const puzzle5 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: linearGraph([1, 1]) },
             { type: 1, item: linearGraph([1, 1, 1]) },
             { type: 1, item: linearGraph([1, 1, 1, 1]) },
             { type: 2, item: loopGraph([1, 1, 1]) },
@@ -644,6 +645,30 @@ const puzzle5 = [
             { type: 2, item: sunletGraph(3, 1, 1.5) },
             { type: 2, item: sunletGraph(4, 1, 1.5) },
             { type: 2, item: sunletGraph(5, 1, 1.5) },
+        ]
+    }, {
+        // Spoked wheel vs sunlet
+        colourPalette: 3,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: spokeGraph([1, 1, 1, 1, 1], scale) },
+            { type: 1, item: spokeGraph([1, 1, 1, 1, 1, 1], scale) },
+            { type: 2, item: sunletGraph(4, 1, 1.5) },
+            { type: 2, item: sunletGraph(5, 1, 1.5) },
+            { type: 3, item: prismGraph(3, 1, 1.5) },
+            { type: 3, item: prismGraph(4, 1, 1.5) },
+        ]
+    }, {
+        // Spoked wheel vs sunlet
+        colourPalette: 3,
+        randomRotate: true,
+        categories: [
+            { type: 1, item: prismGraph(3, 1, 1.5) },
+            { type: 1, item: prismGraph(4, 1, 1.5) },
+            { type: 1, item: prismGraph(5, 1, 1.5) },
+            { type: 2, item: antiPrismGraph(4, 1, 1.5) },
+            { type: 2, item: antiPrismGraph(5, 1, 1.5) },
+            { type: 2, item: antiPrismGraph(6, 1, 1.5) },
         ]
     }
 ];
