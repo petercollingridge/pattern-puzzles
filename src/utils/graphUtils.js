@@ -103,6 +103,22 @@ export function sunletGraph(n, colour, scale=1) {
     return { nodes, edges, colour };
 }
 
+export function prismGraph(n, colour, scale=1) {
+    let { nodes, edges } = sunletGraph(n, colour, scale);
+    edges = edges.concat(getLoopOfEdges(n, 2 * n - 1));
+    return { nodes, edges, colour };
+}
+
+export function antiPrismGraph(n, colour, scale=1) {
+    const p = 1 / (1  + 2 * Math.sin(Math.PI / n));
+    let { nodes, edges } = loopGraph(n, scale * p);
+    nodes = nodes.concat(getNodesOnCircle(n, { r: scale, offsetAngle: 180 / n }));
+    edges = edges.concat(Array.from({ length: n }).map((_, index) => [index, n + index]));
+    edges = edges.concat(Array.from({ length: n }).map((_, index) => [index, n + ((index + n - 1) % n)]));
+    edges = edges.concat(getLoopOfEdges(n, 2 * n - 1));
+    return { nodes, edges, colour };
+}
+
 function getRegularPolygonGraph(size, colours, scale=1) {
     // Can pass in a single colour to set all nodes to that colour
     if (!Array.isArray(colours)) {
