@@ -95,6 +95,7 @@ export function spokeGraph(colours, scale=1) {
 }
 
 export function sunletGraph(n, colour, scale=1) {
+    // AKA helm graph
     // Determine radius of inner shape so its side length is the same as the remaining radial spoke length
     const p = 1 / (1  + 2 * Math.sin(Math.PI / n));
     let { nodes, edges } = loopGraph(n, scale * p);

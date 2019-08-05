@@ -673,6 +673,9 @@ const puzzle5 = [
     }
 ];
 
+// Sun graphs, complete graphs, gear graph, crossed prism graph
+// Pan graph, barbell graph, web graph
+
 const puzzles = [puzzle1, puzzle2, puzzle3, puzzle4, puzzle5];
 
 const displayCategories = (categories, chamber) => {
