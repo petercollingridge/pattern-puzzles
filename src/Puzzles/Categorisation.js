@@ -647,7 +647,7 @@ const puzzle5 = [
             { type: 2, item: sunletGraph(5, 1, 1.5) },
         ]
     }, {
-        // Spoked wheel vs sunlet
+        // Spokes, sunlet and prism graphs
         colourPalette: 3,
         randomRotate: true,
         categories: [
@@ -659,7 +659,7 @@ const puzzle5 = [
             { type: 3, item: prismGraph(4, 1, 1.5) },
         ]
     }, {
-        // Spoked wheel vs sunlet
+        // Prism vs. anti-prism graphs
         colourPalette: 3,
         randomRotate: true,
         categories: [
