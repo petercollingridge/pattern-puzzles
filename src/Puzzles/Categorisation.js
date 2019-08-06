@@ -374,8 +374,8 @@ const puzzle4 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: linearGraph([1, 1, 1], 0.8) },
-            { type: 1, item: linearGraph([1, 1, 1], 1.5) },
+            { type: 1, item: linearGraph([1, 1, 1], { scale: 0.8 }) },
+            { type: 1, item: linearGraph([1, 1, 1], { scale: 1.5 }) },
             { type: 2, item: loopGraph([1, 1, 1], 0.7) },
             { type: 2, item: loopGraph([1, 1, 1], 1.4) },
         ]
