@@ -140,6 +140,32 @@ export function antiPrismGraph(n, params={}) {
     return graph;
 }
 
+export function gearGraph(n, params={}) {
+    const graph = subdivideGraph(loopGraph(n, params));
+    graph.nodes.push([0, 0, undefined]);
+    graph.edges = graph.edges.concat(nTimes(n, (_, index) => [index, 2 * n]))
+    return graph;
+}
+
+export function subdivideGraph(graph) {
+    const newEdges = [];
+    const nodes = graph.nodes;
+    let n = nodes.length;
+
+    graph.edges.forEach(([n1, n2]) => {
+        const node1 = nodes[n1];
+        const node2 = nodes[n2];
+        nodes.push([(node1[0] + node2[0]) / 2, (node1[1] + node2[1]) / 2, node1[2]]);
+        newEdges.push([n1, n], [n2, n]);
+        n++;
+    })
+
+    graph.edges = newEdges;
+
+    return graph;
+}
+
+
 function getRegularPolygonGraph(size, colours, scale=1) {
     // Can pass in a single colour to set all nodes to that colour
     if (!Array.isArray(colours)) {

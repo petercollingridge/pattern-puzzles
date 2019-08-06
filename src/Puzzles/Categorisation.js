@@ -12,10 +12,12 @@ import {
     sunletGraph,
     prismGraph,
     antiPrismGraph,
+    gearGraph,
     getPointsOnACircle,
     getNodesOnCircle,
     getLineOfEdges,
-    getLoopOfEdges
+    getLoopOfEdges,
+    subdivideGraph
 } from '../utils/graphUtils';
 import { sequencesAreEquivalent } from '../utils/evaluation';
 
@@ -675,10 +677,24 @@ const puzzle5 = [
             { type: 2, item: antiPrismGraph(5) },
             { type: 2, item: antiPrismGraph(6) },
         ]
+    }, {
+        // Gear graphs vs spoke graphs vs loop graphs
+        colourPalette: 3,
+        randomRotate: true,
+        itemProps: { colour: 1, size: 45, r: 5.2 },
+        categories: [
+            { type: 1, item: subdivideGraph(loopGraph(3)) },
+            { type: 1, item: loopGraph(4) },
+            { type: 2, item: gearGraph(3) },
+            { type: 2, item: gearGraph(4) },
+            { type: 3, item: spokeGraph(4) },
+            { type: 3, item: spokeGraph(5) },
+        ]
     }
 ];
 
-// Sun graphs, complete graphs, gear graph, crossed prism graph
+// Sun graphs, complete graphs
+// Crossed prism vs Franklin graph
 // Pan graph, barbell graph, web graph
 
 const puzzles = [puzzle1, puzzle2, puzzle3, puzzle4, puzzle5];
