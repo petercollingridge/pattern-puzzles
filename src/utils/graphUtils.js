@@ -1,9 +1,10 @@
-// If arr is not an array return an empty array with the length
-function getArray(arr) {
+// If arr is not an array return an empty array with that length
+// If arr is a number, then return an array with n items with the given value
+function getArray(arr, value) {
     if (Array.isArray(arr)) {
         return arr;
     }
-    return Array.from({ length: arr });
+    return Array.from({ length: arr }).map(item => value);
 }
 
 export function getPointsOnACircle(n, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
@@ -62,8 +63,9 @@ export function getLoopOfEdges(start, stop) {
 }
 
 export function linearGraph(colours, params={}) {
-    colours = getArray(colours);
-    const { scale=1, ...props } = params;
+    const { scale=1, colour, ...props } = params;
+    colours = getArray(colours, colour);
+    
     const n = colours.length;
     const startX = - (n - 1) * scale / 2;
     const nodes = colours.map((colour, i) => [startX + i * scale, 0, colour])
@@ -72,12 +74,13 @@ export function linearGraph(colours, params={}) {
     return Object.assign(props, { nodes, edges });
 }
 
-export function loopGraph(colours, scale=1) {
+export function loopGraph(colours, params={}) {
     colours = getArray(colours);
+    const { scale=1, ...props } = params;
     const nodes = getNodesOnCircle(colours, { r: scale });
     const edges = getLoopOfEdges(colours.length);
 
-    return { nodes, edges };
+    return Object.assign(props, { nodes, edges });
 }
 
 export function starGraph(colours, scale=1) {

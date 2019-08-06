@@ -133,6 +133,11 @@ describe('linearGraph', () => {
         expect(graph.edges).toEqual([[0, 1], [1, 2]]);
     });
 
+    it('returns a coloured graph when given a number and a colour', () => {
+        const graph = linearGraph(3, { colour: 2 });
+        expect(graph.nodes).toStrictEqual([[-1, 0, 2], [0, 0, 2], [1, 0, 2]]);
+    });
+
     it('returns a graph when given an array of colours', () => {
         const graph = linearGraph([1, 2, undefined, 3]);
         expect(graph.nodes.length).toBe(4);
