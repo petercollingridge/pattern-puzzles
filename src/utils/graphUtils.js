@@ -75,8 +75,9 @@ export function linearGraph(colours, params={}) {
 }
 
 export function loopGraph(colours, params={}) {
-    colours = getArray(colours);
-    const { scale=1, ...props } = params;
+    const { scale=1, colour, ...props } = params;
+    colours = getArray(colours, colour);
+    
     const nodes = getNodesOnCircle(colours, { r: scale });
     const edges = getLoopOfEdges(colours.length);
 

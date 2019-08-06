@@ -33,15 +33,15 @@ const puzzle1 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, copies: 3, item: linearGraph([1, 1, 1]) },
-            { type: 2, copies: 2, item: loopGraph([1, 1, 1], 0.8) }
+            { type: 1, copies: 3, item: linearGraph(3, { colour: 1 }) },
+            { type: 2, copies: 2, item: loopGraph(3, { scale: 0.8, colour: 1 }) }
         ]
     }, {
         colourPalette: 3,
         randomRotate: true,
         categories: [
-            { type: 1, copies: 2, item: linearGraph([1, 1, 1]) },
-            { type: 2, copies: 2, item: loopGraph([1, 1, 1], 0.8) },
+            { type: 1, copies: 2, item: linearGraph(3, { colour: 1 }) },
+            { type: 2, copies: 2, item: loopGraph(3, { scale: 0.8, colour: 1 }) },
             { type: 3, copies: 2, item: {
                 nodes: [[0.5, 0.5], [-0.5, 0.5], [0.5, -0.5]],
                 edges: [[0, 1], [0, 2]],
@@ -52,7 +52,7 @@ const puzzle1 = [
         colourPalette: 3,
         randomRotate: true,
         categories: [
-            { type: 1, copies: 2, item: loopGraph([1, 1, 1, 1], 0.8) },
+            { type: 1, copies: 2, item: loopGraph(4, { scale: 0.8, colour: 1 }) },
             {
                 type: 2,
                 copies: 3,
@@ -104,7 +104,7 @@ const puzzle1 = [
         colourPalette: 4,
         randomRotate: true,
         categories: [
-            { type: 1, item: loopGraph([1, 1, 1, 1, 1], 0.8) },
+            { type: 1, item: loopGraph(5, { scale: 0.8, colour: 1 }) },
             {
                 type: 2,
                 copies: 2, 
@@ -245,32 +245,32 @@ const puzzle2 = [
     }, {
         colourPalette: 3,
         categories: [
-            { type: 1, item: loopGraph([1, 1, 2], 0.75) },
-            { type: 1, item: loopGraph([1, 1, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 2, 1], 0.75) },
-            { type: 2, item: loopGraph([1, 2, 1], 0.75) },
-            { type: 3, item: loopGraph([2, 1, 1], 0.75) },
-            { type: 3, item: loopGraph([2, 1, 1], 0.75) },
+            { type: 1, item: loopGraph([1, 1, 2], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 1, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 2, 1], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 2, 1], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([2, 1, 1], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([2, 1, 1], { scale: 0.75 }) },
         ]
     }, {
         colourPalette: 3,
         categories: [
-            { type: 1, item: loopGraph([1, 1, 2, 2], 0.75) },
-            { type: 1, item: loopGraph([1, 1, 2, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 2, 1, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 2, 1, 2], 0.75) },
-            { type: 3, item: loopGraph([2, 1, 2, 1], 0.75) },
-            { type: 3, item: loopGraph([2, 1, 2, 1], 0.75) },
+            { type: 1, item: loopGraph([1, 1, 2, 2], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 1, 2, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 2, 1, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 2, 1, 2], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([2, 1, 2, 1], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([2, 1, 2, 1], { scale: 0.75 }) },
         ]
     }, {
         colourPalette: 4,
         categories: [
-            { type: 1, item: loopGraph([1, 2, 3, 1, 2, 3], 0.75) },
-            { type: 2, item: loopGraph([3, 2, 1, 3, 2, 1], 0.75) },
-            { type: 2, item: loopGraph([3, 2, 1, 3, 2, 1], 0.75) },
-            { type: 3, item: loopGraph([1, 2, 3, 2, 3, 1], 0.75) },
-            { type: 3, item: loopGraph([1, 2, 3, 2, 3, 1], 0.75) },
-            { type: 4, item: loopGraph([3, 2, 1, 2, 3, 1], 0.75) },
+            { type: 1, item: loopGraph([1, 2, 3, 1, 2, 3], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([3, 2, 1, 3, 2, 1], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([3, 2, 1, 3, 2, 1], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([1, 2, 3, 2, 3, 1], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([1, 2, 3, 2, 3, 1], { scale: 0.75 }) },
+            { type: 4, item: loopGraph([3, 2, 1, 2, 3, 1], { scale: 0.75 }) },
         ]
     }
 ];
@@ -300,65 +300,65 @@ const puzzle3 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: loopGraph([1, 2, 2], 0.75) },
-            { type: 1, item: loopGraph([1, 2, 2], 0.75) },
-            { type: 1, item: loopGraph([1, 2, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 1, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 1, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 1, 2], 0.75) },
+            { type: 1, item: loopGraph([1, 2, 2], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 2, 2], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 2, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 1, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 1, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 1, 2], { scale: 0.75 }) },
         ]
     }, {
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: loopGraph([1, 1, 2, 2], 0.75) },
-            { type: 1, item: loopGraph([1, 1, 2, 2], 0.75) },
-            { type: 1, item: loopGraph([1, 1, 2, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 2, 1, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 2, 1, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 2, 1, 2], 0.75) },
+            { type: 1, item: loopGraph([1, 1, 2, 2], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 1, 2, 2], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 1, 2, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 2, 1, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 2, 1, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 2, 1, 2], { scale: 0.75 }) },
         ]
     }, {
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: loopGraph([1, 2, 3], 0.75) },
-            { type: 1, item: loopGraph([1, 2, 3], 0.75) },
-            { type: 2, item: loopGraph([1, 3, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 3, 2], 0.75) },
+            { type: 1, item: loopGraph([1, 2, 3], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 2, 3], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 3, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 3, 2], { scale: 0.75 }) },
         ]
     }, {
         colourPalette: 3,
         randomRotate: true,
         categories: [
-            { type: 1, item: loopGraph([1, 1, 2, 3], 0.75) },
-            { type: 1, item: loopGraph([1, 1, 2, 3], 0.75) },
-            { type: 2, item: loopGraph([1, 1, 3, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 1, 3, 2], 0.75) },
-            { type: 3, item: loopGraph([1, 2, 1, 3], 0.75) },
-            { type: 3, item: loopGraph([1, 2, 1, 3], 0.75) },
+            { type: 1, item: loopGraph([1, 1, 2, 3], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 1, 2, 3], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 1, 3, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 1, 3, 2], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([1, 2, 1, 3], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([1, 2, 1, 3], { scale: 0.75 }) },
         ]
     }, {
         colourPalette: 4,
         randomRotate: true,
         categories: [
-            { type: 1, item: loopGraph([1, 2, 3, 4], 0.75) },
-            { type: 1, item: loopGraph([1, 2, 3, 4], 0.75) },
-            { type: 2, item: loopGraph([1, 4, 3, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 4, 3, 2], 0.75) },
-            { type: 3, item: loopGraph([1, 3, 2, 4], 0.75) },
-            { type: 4, item: loopGraph([1, 2, 4, 3], 0.75) },
+            { type: 1, item: loopGraph([1, 2, 3, 4], { scale: 0.75 }) },
+            { type: 1, item: loopGraph([1, 2, 3, 4], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 4, 3, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 4, 3, 2], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([1, 3, 2, 4], { scale: 0.75 }) },
+            { type: 4, item: loopGraph([1, 2, 4, 3], { scale: 0.75 }) },
         ]
     }, {
         colourPalette: 4,
         randomRotate: true,
         categories: [
-            { type: 1, item: loopGraph([1, 2, 3, 1, 2, 3], 0.75) },
-            { type: 2, item: loopGraph([1, 3, 2, 1, 3, 2], 0.75) },
-            { type: 2, item: loopGraph([1, 3, 2, 1, 3, 2], 0.75) },
-            { type: 3, item: loopGraph([1, 2, 3, 2, 3, 1], 0.75) },
-            { type: 4, item: loopGraph([1, 2, 1, 3, 2, 3], 0.75) },
-            { type: 4, item: loopGraph([1, 2, 1, 3, 2, 3], 0.75) },
+            { type: 1, item: loopGraph([1, 2, 3, 1, 2, 3], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 3, 2, 1, 3, 2], { scale: 0.75 }) },
+            { type: 2, item: loopGraph([1, 3, 2, 1, 3, 2], { scale: 0.75 }) },
+            { type: 3, item: loopGraph([1, 2, 3, 2, 3, 1], { scale: 0.75 }) },
+            { type: 4, item: loopGraph([1, 2, 1, 3, 2, 3], { scale: 0.75 }) },
+            { type: 4, item: loopGraph([1, 2, 1, 3, 2, 3], { scale: 0.75 }) },
         ]
     }
 ];
@@ -376,8 +376,8 @@ const puzzle4 = [
         categories: [
             { type: 1, item: linearGraph(3, { scale: 0.8, colour: 1 }) },
             { type: 1, item: linearGraph(3, { scale: 1.5, colour: 1 }) },
-            { type: 2, item: loopGraph([1, 1, 1], 0.7) },
-            { type: 2, item: loopGraph([1, 1, 1], 1.4) },
+            { type: 2, item: loopGraph(3, { scale: 0.7 }) },
+            { type: 2, item: loopGraph(3, { scale: 1.4 }) },
         ]
     }, {
         // Triangles vs straight lines
@@ -604,11 +604,11 @@ const puzzle5 = [
         colourPalette: 2,
         randomRotate: true,
         categories: [
-            { type: 1, item: linearGraph([1, 1, 1]) },
-            { type: 1, item: linearGraph([1, 1, 1, 1]) },
-            { type: 2, item: loopGraph([1, 1, 1]) },
-            { type: 2, item: loopGraph([1, 1, 1, 1]) },
-            { type: 2, item: loopGraph([1, 1, 1, 1, 1]) },
+            { type: 1, item: linearGraph(3, { colour: 1 }) },
+            { type: 1, item: linearGraph(4, { colour: 1 }) },
+            { type: 2, item: loopGraph(3, { colour: 1 }) },
+            { type: 2, item: loopGraph(4, { colour: 1 }) },
+            { type: 2, item: loopGraph(5, { colour: 1 }) },
         ]
     }, {
         // Cyclc vs star
