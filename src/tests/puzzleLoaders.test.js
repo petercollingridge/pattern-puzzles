@@ -20,7 +20,7 @@ describe('getGraphObject', () => {
         const node = graph.nodes[0];
         expect(node.x).toBe(0);
         expect(node.y).toBe(32);
-        expect(node.r).toBe(10);
+        expect(node.r).toBe(8);
         expect(node.colour).toBe(undefined);
         expect(node.fixed).toBe(false);
     });
@@ -83,7 +83,7 @@ describe('getGraphObject', () => {
         const node = graph.nodes[0];
         expect(node.x).toBe(-20);
         expect(node.y).toBe(30);
-        expect(node.r).toBe(10);
+        expect(node.r).toBe(8);
     });
 
     it('returns a graph object with a given node radius', () => {

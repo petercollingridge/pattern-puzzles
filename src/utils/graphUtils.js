@@ -61,14 +61,15 @@ export function getLoopOfEdges(start, stop) {
     return edges;
 }
 
-export function linearGraph(colours, scale=1) {
+export function linearGraph(colours, params={}) {
     colours = getArray(colours);
+    const { scale=1, ...props } = params;
     const n = colours.length;
     const startX = - (n - 1) * scale / 2;
     const nodes = colours.map((colour, i) => [startX + i * scale, 0, colour])
     const edges = getLineOfEdges(n);
 
-    return { nodes, edges };
+    return Object.assign(props, { nodes, edges });
 }
 
 export function loopGraph(colours, scale=1) {

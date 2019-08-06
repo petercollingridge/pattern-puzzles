@@ -140,4 +140,18 @@ describe('linearGraph', () => {
         expect(graph.nodes).toStrictEqual([[-1.5, 0, 1], [-0.5, 0, 2], [0.5, 0, undefined], [1.5, 0, 3]]);
         expect(graph.edges).toEqual([[0, 1], [1, 2], [2, 3]]);
     });
+
+    it('returns a scaled graph when given scale', () => {
+        const graph = linearGraph(3, { scale: 2 });
+        expect(graph.nodes.length).toBe(3);
+        expect(graph.edges.length).toBe(2);
+        expect(graph.nodes).toStrictEqual([[-2, 0, undefined], [0, 0, undefined], [2, 0, undefined]]);
+    });
+
+    it('returns a graph with additional parameters when given them', () => {
+        const graph = linearGraph(3, { bonus: 'test' });
+        expect(graph.nodes.length).toBe(3);
+        expect(graph.edges.length).toBe(2);
+        expect(graph.bonus).toBe('test');
+    });
 });
