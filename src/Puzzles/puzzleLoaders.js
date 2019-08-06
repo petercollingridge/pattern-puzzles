@@ -149,16 +149,17 @@ export function getGraphSequence({ graphs, answer }) {
 }
 
 // Return an array of category object which have a colour, and an object to display
-export function getCategoryObjects({ categories, randomRotate }) {
+export function getCategoryObjects({ categories, randomRotate, itemProps={} }) {
     const categoryObjects = [];
     
     categories.forEach(category => {
         const copies = category.copies || 1;
+        const item = Object.assign(category.item, itemProps);
 
         for (let i = 0; i < copies; i++) {
             categoryObjects.push({
                 category: category.type,
-                object: category.item,
+                object: item,
                 rotate: randomRotate ? Math.floor(Math.random() * 12) * 30 : 0
             });
         }

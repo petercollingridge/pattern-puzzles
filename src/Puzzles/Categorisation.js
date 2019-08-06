@@ -597,78 +597,83 @@ const puzzle4 = [
 ];
 
 // Categorising graphs of the same type, e.g. cyclic vs star
-const scale = 1.2;
 const puzzle5 = [
     {
         // Linear vs cyclic
         colourPalette: 2,
         randomRotate: true,
+        itemProps: { colour: 1 },
         categories: [
-            { type: 1, item: linearGraph(3, { colour: 1 }) },
-            { type: 1, item: linearGraph(4, { colour: 1 }) },
-            { type: 2, item: loopGraph(3, { colour: 1 }) },
-            { type: 2, item: loopGraph(4, { colour: 1 }) },
-            { type: 2, item: loopGraph(5, { colour: 1 }) },
+            { type: 1, item: linearGraph(3) },
+            { type: 1, item: linearGraph(4) },
+            { type: 2, item: loopGraph(3) },
+            { type: 2, item: loopGraph(4) },
+            { type: 2, item: loopGraph(5) },
         ]
     }, {
         // Cyclc vs star
         colourPalette: 2,
         randomRotate: true,
+        itemProps: { colour: 1, size: 36, r: 7 },
         categories: [
-            { type: 1, item: starGraph([1, 1, 1, 1], scale) },
-            { type: 1, item: starGraph([1, 1, 1, 1, 1], scale) },
-            { type: 1, item: starGraph([1, 1, 1, 1, 1, 1], scale) },
-            { type: 2, item: loopGraph([1, 1, 1], scale) },
-            { type: 2, item: loopGraph([1, 1, 1, 1], scale) },
-            { type: 2, item: loopGraph([1, 1, 1, 1, 1], scale) },
+            { type: 1, item: starGraph(4) },
+            { type: 1, item: starGraph(5) },
+            { type: 1, item: starGraph(6) },
+            { type: 2, item: loopGraph(3) },
+            { type: 2, item: loopGraph(4) },
+            { type: 2, item: loopGraph(5) },
         ]
     }, {
         // Spoked wheel vs star
         colourPalette: 2,
         randomRotate: true,
+        itemProps: { colour: 1, size: 36, r: 7 },
         categories: [
-            { type: 1, item: spokeGraph([1, 1, 1, 1], scale) },
-            { type: 1, item: spokeGraph([1, 1, 1, 1, 1], scale) },
-            { type: 1, item: spokeGraph([1, 1, 1, 1, 1, 1], scale) },
-            { type: 2, item: starGraph([1, 1, 1, 1], scale) },
-            { type: 2, item: starGraph([1, 1, 1, 1, 1], scale) },
-            { type: 2, item: starGraph([1, 1, 1, 1, 1, 1], scale) },
+            { type: 1, item: starGraph(4) },
+            { type: 1, item: starGraph(5) },
+            { type: 1, item: starGraph(6) },
+            { type: 2, item: spokeGraph(4) },
+            { type: 2, item: spokeGraph(5) },
+            { type: 2, item: spokeGraph(6) },
         ]
     }, {
-        // Spoked wheel vs sunlet
+        // Spoked wheel vs sunlet - remove
         colourPalette: 2,
         randomRotate: true,
+        itemProps: { colour: 1, size: 40, r: 5 },
         categories: [
-            { type: 1, item: spokeGraph([1, 1, 1, 1], scale) },
-            { type: 1, item: spokeGraph([1, 1, 1, 1, 1], scale) },
-            { type: 1, item: spokeGraph([1, 1, 1, 1, 1, 1], scale) },
-            { type: 2, item: sunletGraph(3, 1, 1.5) },
-            { type: 2, item: sunletGraph(4, 1, 1.5) },
-            { type: 2, item: sunletGraph(5, 1, 1.5) },
+            { type: 1, item: spokeGraph(4) },
+            { type: 1, item: spokeGraph(5) },
+            { type: 1, item: spokeGraph(6) },
+            { type: 2, item: sunletGraph(3) },
+            { type: 2, item: sunletGraph(4) },
+            { type: 2, item: sunletGraph(5) },
         ]
     }, {
         // Spokes, sunlet and prism graphs
         colourPalette: 3,
         randomRotate: true,
+        itemProps: { colour: 1, size: 45, r: 5.2 },
         categories: [
-            { type: 1, item: spokeGraph([1, 1, 1, 1, 1], scale) },
-            { type: 1, item: spokeGraph([1, 1, 1, 1, 1, 1], scale) },
-            { type: 2, item: sunletGraph(4, 1, 1.5) },
-            { type: 2, item: sunletGraph(5, 1, 1.5) },
-            { type: 3, item: prismGraph(3, 1, 1.5) },
-            { type: 3, item: prismGraph(4, 1, 1.5) },
+            { type: 1, item: spokeGraph(5) },
+            { type: 1, item: spokeGraph(6) },
+            { type: 2, item: sunletGraph(4) },
+            { type: 2, item: sunletGraph(5) },
+            { type: 3, item: prismGraph(3) },
+            { type: 3, item: prismGraph(4) },
         ]
     }, {
         // Prism vs. anti-prism graphs
-        colourPalette: 3,
+        colourPalette: 2,
         randomRotate: true,
+        itemProps: { colour: 1, size: 45, r: 5.2 },
         categories: [
-            { type: 1, item: prismGraph(3, 1, 1.5) },
-            { type: 1, item: prismGraph(4, 1, 1.5) },
-            { type: 1, item: prismGraph(5, 1, 1.5) },
-            { type: 2, item: antiPrismGraph(4, 1, 1.5) },
-            { type: 2, item: antiPrismGraph(5, 1, 1.5) },
-            { type: 2, item: antiPrismGraph(6, 1, 1.5) },
+            { type: 1, item: prismGraph(3) },
+            { type: 1, item: prismGraph(4) },
+            { type: 1, item: prismGraph(5) },
+            { type: 2, item: antiPrismGraph(4) },
+            { type: 2, item: antiPrismGraph(5) },
+            { type: 2, item: antiPrismGraph(6) },
         ]
     }
 ];

@@ -1,10 +1,16 @@
+
+// Get an array of values from calling function <func> n times
+function nTimes(n, func) {
+    return Array.from({ length: n }).map(func);
+}
+
 // If arr is not an array return an empty array with that length
 // If arr is a number, then return an array with n items with the given value
 function getArray(arr, value) {
     if (Array.isArray(arr)) {
         return arr;
     }
-    return Array.from({ length: arr }).map(item => value);
+    return nTimes(arr, (_) => value);
 }
 
 export function getPointsOnACircle(n, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
@@ -84,45 +90,54 @@ export function loopGraph(colours, params={}) {
     return Object.assign(props, { nodes, edges });
 }
 
-export function starGraph(colours, scale=1) {
-    colours = getArray(colours);
+export function starGraph(colours, params={}) {
+    const { scale=1, colour, ...props } = params;
+    colours = getArray(colours, colour);
+
     const firstNode = colours.shift();
     const nodes = [[0, 0, firstNode]].concat(getNodesOnCircle(colours, { r: scale }));
     const edges = colours.map((_, index) => [0, index + 1]);
 
-    return { nodes, edges };
+    return Object.assign(props, { nodes, edges });
 }
 
-export function spokeGraph(colours, scale=1) {
-    let { nodes, edges } = starGraph(colours, scale);
-    edges = edges.concat(getLoopOfEdges(1, colours.length))
-    return { nodes, edges };
+export function spokeGraph(colours, params={}) {
+    const graph = starGraph(colours, params);
+    graph.edges = graph.edges.concat(getLoopOfEdges(1, colours - 1))
+    return graph;
 }
 
-export function sunletGraph(n, colour, scale=1) {
+export function sunletGraph(n, params={}) {
     // AKA helm graph
     // Determine radius of inner shape so its side length is the same as the remaining radial spoke length
     const p = 1 / (1  + 2 * Math.sin(Math.PI / n));
-    let { nodes, edges } = loopGraph(n, scale * p);
-    nodes = nodes.concat(getNodesOnCircle(n, { r: scale }));
-    edges = edges.concat(Array.from({ length: n }).map((_, index) => [index, index + n]));
-    return { nodes, edges, colour };
+    const scale = params.scale || 1;
+    params.scale = scale * p;
+
+    const graph = loopGraph(n, params);
+    graph.nodes = graph.nodes.concat(getNodesOnCircle(n, { r: scale }));
+    graph.edges = graph.edges.concat(nTimes(n, (_, index) => [index, index + n]));
+
+    return graph;
 }
 
-export function prismGraph(n, colour, scale=1) {
-    let { nodes, edges } = sunletGraph(n, colour, scale);
-    edges = edges.concat(getLoopOfEdges(n, 2 * n - 1));
-    return { nodes, edges, colour };
+export function prismGraph(n, params={}) {
+    const graph = sunletGraph(n, params);
+    graph.edges = graph.edges.concat(getLoopOfEdges(n, 2 * n - 1));
+    return graph;
 }
 
-export function antiPrismGraph(n, colour, scale=1) {
+export function antiPrismGraph(n, params={}) {
     const p = 1 / (1  + 2 * Math.sin(Math.PI / n));
-    let { nodes, edges } = loopGraph(n, scale * p);
-    nodes = nodes.concat(getNodesOnCircle(n, { r: scale, offsetAngle: 180 / n }));
-    edges = edges.concat(Array.from({ length: n }).map((_, index) => [index, n + index]));
-    edges = edges.concat(Array.from({ length: n }).map((_, index) => [index, n + ((index + n - 1) % n)]));
-    edges = edges.concat(getLoopOfEdges(n, 2 * n - 1));
-    return { nodes, edges, colour };
+    const scale = params.scale || 1;
+    params.scale = scale * p;
+
+    const graph = loopGraph(n, params);
+    graph.nodes = graph.nodes.concat(getNodesOnCircle(n, { r: scale, offsetAngle: 180 / n }));
+    graph.edges = graph.edges.concat(nTimes(n, (_, index) => [index, n + index]));
+    graph.edges = graph.edges.concat(nTimes(n, (_, index) => [index, n + ((index + n - 1) % n)]));
+    graph.edges = graph.edges.concat(getLoopOfEdges(n, 2 * n - 1));
+    return graph;
 }
 
 function getRegularPolygonGraph(size, colours, scale=1) {
