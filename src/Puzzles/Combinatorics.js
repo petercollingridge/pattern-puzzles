@@ -39,7 +39,15 @@ const puzzles1 = [
     }
 ];
 
-const puzzles = [puzzles1];
+const puzzles2 = [
+    {
+        colourPalette: 2,
+        loop: true,
+        pattern: [[1, 1, 2, 2], [2, 1, 2, 0]],
+    }
+];
+
+const puzzles = [puzzles1, puzzles2];
 
 // Check the the given set of sequences matches a set of sequences.
 const sequencesMatch = ({ sequences, target }) => {

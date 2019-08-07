@@ -48,15 +48,25 @@ export const puzzleData = {
         component: () => Categorisation(4),
     },
     'graph-theory-0': {
-        slug: 'graph-theory-0',
+        slug: 'hamiltonian-path',
         icon: GraphTheoryIcons[0](),
         component: () => GraphTheory(0), 
+    },
+    'graph-theory-1': {
+        slug: 'minimun-dominating-set',
+        icon: GraphTheoryIcons[0](),
+        component: () => GraphTheory(1), 
     },
     'permutations-0': {
         slug: 'permutations-0',
         icon: PermutationIcons[0](),
         component: () => PermutationPuzzles(0), 
-    }
+    },
+    'permutations-1': {
+        slug: 'permutations-1',
+        icon: PermutationIcons[0](),
+        component: () => PermutationPuzzles(1), 
+    },
 };
 
 addData('colour-graphs', 'colour-graphs', ColourGraphIcons, ColourGraph, 3);
@@ -87,5 +97,5 @@ export const puzzleLayout = [
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
-    getData('graph-theory', 1),
+    getData('graph-theory', 2),
 ];

@@ -28,9 +28,7 @@ export const ColourableGraph = (graph, chamber) =>
     <Graph {...graph} chamber={chamber} />
 
 // Same as a colourable graph, except you can only colour points next to the one you last coloured
-// TODO: need to remember path, in case have to undo it
 export const ColourablePath = (graph, chamber) => {
-    // Function that takes a node index, to colour the node in a graph, and update it
     const colour = chamber.state.selectedColour;
 
     // Function that updates graph state when a node is coloured,
@@ -40,11 +38,14 @@ export const ColourablePath = (graph, chamber) => {
         let targetNode = graph.nodes[nodeIndex];
 
         if (targetNode.colour) {
+            if (!graph.path) { graph.path = []; }
+
             // Colour the edge of the path
             const previousNode = graph.path.slice(-1)[0];
             if (previousNode) {
                 previousNode.edges[nodeIndex].active = colour;
             }
+
             // Add new node to the path
             graph.path.push(targetNode);
         } else {
@@ -79,6 +80,23 @@ export const ColourablePath = (graph, chamber) => {
             graph.nodes.forEach(node => node.fixed = false);
         }
     };
+
+    return <Graph {...graph} chamber={chamber} onColour={onColour} />
+};
+
+// A colourable graph, where colouring a node causes any attached nodes to also be coloured
+export const DominatingSet = (graph, chamber) => {
+    const colour = chamber.state.selectedColour;
+
+    const onColour = node => {
+        const nodeIndex = node.index;
+        const targetNode = graph.nodes[nodeIndex];
+
+        if (targetNode.colour) {
+            console.log(targetNode);
+            // Colour neighbours
+        }
+    }
 
     return <Graph {...graph} chamber={chamber} onColour={onColour} />
 };
