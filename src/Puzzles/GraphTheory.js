@@ -5,19 +5,23 @@
 import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
-import { getGraphWithPath } from './puzzleLoaders';
+import { getGraphObject } from './puzzleLoaders';
 import { ColourablePath } from './PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../utils/evaluation';
-import { getPointsOnACircle, getLoopOfEdges, getLineOfEdges } from '../utils/graphUtils';
+import {
+    getPointsOnACircle, 
+    getLoopOfEdges,
+    getLineOfEdges,
+    linearGraph,
+    loopGraph,
+} from '../utils/graphUtils';
 
 
 const R3 = Math.sqrt(3);
 const hamiltonianPath = [
-	{
-        nodes: getPointsOnACircle(6),
-        edges: getLoopOfEdges(6)
-    }, {
+    loopGraph(6),
+    {
         nodes: getPointsOnACircle(6),
         edges: getLoopOfEdges(6).concat([[1, 4]])
     }, {
@@ -52,15 +56,31 @@ const hamiltonianPath = [
     }
 ];
 
-const puzzles = [hamiltonianPath];
+const dominatingSet = [
+    {
+        maxColours: 1,
+        graph: linearGraph(3)
+    }
+];
 
-export const GraphTheory = (n) =>
-    <PuzzlePage
+const puzzles = [hamiltonianPath, dominatingSet];
+
+export const GraphTheory = (n) => {
+    let graphLoader, graphDisplay;
+    if (n === 0) { 
+        graphLoader = getGraphObject;
+        graphDisplay = ColourablePath;
+     } else {
+        graphLoader = ({ graph }) => getGraphObject(graph);
+        graphDisplay = ColourablePath;
+     }
+
+    return <PuzzlePage
         colourPalette={1}
         clearButton
         puzzles={puzzles[n]}
         evaluate={({ nodes }) => allItemsColoured(nodes)}
-		getPuzzleObject={getGraphWithPath}
-		displayPuzzle={ColourablePath}
+		getPuzzleObject={graphLoader}
+		displayPuzzle={graphDisplay}
     />
-
+}
