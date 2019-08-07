@@ -86,15 +86,32 @@ export const ColourablePath = (graph, chamber) => {
 
 // A colourable graph, where colouring a node causes any attached nodes to also be coloured
 export const DominatingSet = (graph, chamber) => {
-    const colour = chamber.state.selectedColour;
-
     const onColour = node => {
         const nodeIndex = node.index;
         const targetNode = graph.nodes[nodeIndex];
+        const neighbours = Object.keys(targetNode.edges);
 
         if (targetNode.colour) {
-            console.log(targetNode);
             // Colour neighbours
+            neighbours.forEach(n => {
+                if (!graph.nodes[n].colour) {
+                    graph.nodes[n].colour = 2;
+                }
+            })
+        } else {
+            // Remove colour from neighbour unless they are next to other coloured nodes
+            neighbours.forEach(n => {
+                const node = graph.nodes[n];
+                if (node.colour === 2) {
+                    // Check neighbours for nodes that are coloured
+                    if (Object.keys(node.edges).every(n2 => graph.nodes[n2].colour !== 1)) {
+                        node.colour = 0;
+                    } 
+                } else if (node.colour === 1) {
+                    // This node is next to a different coloured node, so colour with colour 2
+                    targetNode.colour = 2;
+                }
+            })
         }
     }
 
