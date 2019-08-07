@@ -40,11 +40,14 @@ export const ColourablePath = (graph, chamber) => {
         let targetNode = graph.nodes[nodeIndex];
 
         if (targetNode.colour) {
+            if (!graph.path) { graph.path = []; }
+
             // Colour the edge of the path
             const previousNode = graph.path.slice(-1)[0];
             if (previousNode) {
                 previousNode.edges[nodeIndex].active = colour;
             }
+
             // Add new node to the path
             graph.path.push(targetNode);
         } else {
