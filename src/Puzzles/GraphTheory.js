@@ -6,7 +6,7 @@ import React from 'react';
 
 import PuzzlePage from './PuzzlePage';
 import { getGraphObject } from './puzzleLoaders';
-import { ColourablePath } from './PuzzleComponents/Graph';
+import { ColourablePath, DominatingSet } from './PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../utils/evaluation';
 import {
@@ -72,7 +72,7 @@ export const GraphTheory = (n) => {
         graphDisplay = ColourablePath;
      } else {
         graphLoader = ({ graph }) => getGraphObject(graph);
-        graphDisplay = ColourablePath;
+        graphDisplay = DominatingSet;
      }
 
     return <PuzzlePage
