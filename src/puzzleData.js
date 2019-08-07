@@ -56,7 +56,12 @@ export const puzzleData = {
         slug: 'permutations-0',
         icon: PermutationIcons[0](),
         component: () => PermutationPuzzles(0), 
-    }
+    },
+    'permutations-1': {
+        slug: 'permutations-1',
+        icon: PermutationIcons[0](),
+        component: () => PermutationPuzzles(1), 
+    },
 };
 
 addData('colour-graphs', 'colour-graphs', ColourGraphIcons, ColourGraph, 3);
