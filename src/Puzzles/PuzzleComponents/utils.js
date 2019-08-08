@@ -16,14 +16,23 @@ export function isColourable(item, chamber, {className="", onColour=null}={}) {
     className += " colourable";
 
     const colour = chamber.state.selectedColour;
+    const colourUses = chamber.state.colourPalette.slice();
+
     const colourThisItem = () => {
         if (!colour) { return; }
+
         if (item.colour === colour) {
+            // Remove exisiting colour
             item.colour = 0;
-        } else {
+            colourUses[colour - 1]++;
+        } else if (colourUses[colour - 1] !== 0) {
+            // Colour item
             item.colour = colour;
+            colourUses[colour - 1]--;
         }
         if (onColour) { onColour(item); }
+
+        chamber.setState({ colourPalette: colourUses })
         chamber.update();
     };
 

@@ -59,23 +59,23 @@ const hamiltonianPath = [
 
 const dominatingSet = [
     {
-        maxColours: 1,
+        colourPalette: [1],
         graph: linearGraph(3, { scale: 2, r: 10 })
     }, {
-        maxColours: 1,
+        colourPalette: [1],
         graph: spokeGraph(5, { scale: 2, r: 10 })
     }, {
-        maxColours: 2,
+        colourPalette: [2],
         graph: loopGraph(4, { scale: 2, r: 10 })
     }, {
-        maxColours: 2,
+        colourPalette: [2],
         graph: {
             nodes: getNodesOnCircle(6, { r: 2 }).concat([[0, 0, 0]]),
             edges: getLoopOfEdges(6).concat([[6, 0], [6 , 1], [6, 3], [6, 4]]),
             r: 10
         }
     }, {
-        maxColours: 3,
+        colourPalette: [3],
         graph: {
             nodes: getNodesOnCircle(5, { r: 3 }).concat(getNodesOnCircle(5, { r: 1.5 })),
             edges: getLoopOfEdges(5).concat([

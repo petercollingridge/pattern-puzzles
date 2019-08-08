@@ -46,11 +46,17 @@ class PuzzlePage extends React.Component {
         const { getPuzzleObject, puzzles } = this.props;
         const puzzle = puzzles[index];
 
+        // If colourPallete is a number then convert it into an array of -1s
+        // to indicate that each colour can be used infinitely
+        const colourPalette = Array.isArray(puzzle.colourPalette) ?
+            puzzle.colourPalette :
+            Array.from({ length: puzzle.colourPalette }).map(_ => -1);
+
         if (puzzle) {
             this.setState({
                 puzzle: getPuzzleObject(puzzle),
                 clearButton: puzzle.clearButton,
-                colourPalette: puzzle.colourPalette,
+                colourPalette,
             });
         }
     }
@@ -150,7 +156,7 @@ class PuzzlePage extends React.Component {
                 <circle id="chamber-window" r="212" />
                 <Toolbar 
                     puzzle={this}
-                    nColours={colourPalette}
+                    colours={colourPalette}
                     clearPuzzle={clearPuzzle}
                     selectedColour={selectedColour}
                 />
