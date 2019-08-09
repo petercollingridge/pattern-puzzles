@@ -5,6 +5,23 @@ import { SVGButton } from './Button';
 const TOOLBAR_R = 136;
 const DELTA_ANGLE = Math.PI / 18;
 
+// Get an array of dots around the colour button to show how many times we can use it
+const showColourCounter = (n, colour, x, y, angle, r) => {
+    if (!n) { return null; }
+    const dAngle = Math.PI * 2 / (3 * n);
+    angle += dAngle * (n - 1) / 2;
+
+    return Array.from({ length: n }).map(
+        (_, index) => <circle
+            key={index}
+            className={`fill-${ colour }`}
+            r={r * 0.3}
+            cx={x + (r * 1.6) * Math.cos(angle - index * dAngle)}
+            cy={y + (r * 1.6) * Math.sin(angle - index * dAngle)}
+        />
+    )
+}
+
 export default function ({
     puzzle,
     colours,
@@ -32,7 +49,7 @@ export default function ({
 
     const buttons = [];
     for (let i = 0; i < nColours; i++) {
-        const { x, y } = position[i];
+        const { x, y, angle } = position[i];
         const color = i + 1;
         const setColour = () => puzzle.setState({ selectedColour: color });
 
@@ -54,10 +71,12 @@ export default function ({
 
         if (colours[i] > -1) {
             //  Indicate number of times we can use this colour
-            buttons.push(<g key={i}>
-                { button }
-                <text x={x} y={y} fill="white">{ colours[i] }</text>
-            </g>);
+            buttons.push(
+                <g key={i}>
+                    { button }
+                    { showColourCounter(colours[i], i + 1, x, y, angle, r) }
+                </g>
+            );
         } else {
             buttons.push(button);
         }
@@ -84,7 +103,7 @@ export default function ({
 
     return <g className="toolbar">
         <circle className={selectColourIndicator} r="132" />
-        <g className="colour-palette" role="radiogroup">
+        <g role="radiogroup">
             { buttons }
         </g>
     </g>;

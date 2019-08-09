@@ -64,8 +64,11 @@ export function getLoopOfEdges(start, stop) {
     if (start !== stop) {
         edges.push([stop, start]);
     }
-
     return edges;
+}
+
+export function connectNodeToNodes(node1, nodes) {
+    return nodes.map(node => [node1, node]);
 }
 
 export function linearGraph(colours, params={}) {

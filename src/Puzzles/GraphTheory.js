@@ -13,6 +13,7 @@ import {
     getNodesOnCircle,
     getLoopOfEdges,
     getLineOfEdges,
+    connectNodeToNodes,
     linearGraph,
     loopGraph,
     spokeGraph,
@@ -71,7 +72,7 @@ const dominatingSet = [
         colourPalette: [2],
         graph: {
             nodes: getNodesOnCircle(6, { r: 2 }).concat([[0, 0, 0]]),
-            edges: getLoopOfEdges(6).concat([[6, 0], [6 , 1], [6, 3], [6, 4]]),
+            edges: getLoopOfEdges(6).concat(connectNodeToNodes(6, [0, 1, 3, 4])),
             r: 10
         }
     }, {
@@ -84,8 +85,22 @@ const dominatingSet = [
             ]),
             r: 10
         }
-    }
+    }, {
+        colourPalette: [4],
+        graph: {
+            nodes: getNodesOnCircle(8, { r: 3 }).concat(getNodesOnCircle(4, { r: 1.5 })).concat([[0, 0, 0]]),
+            edges: getLoopOfEdges(8)
+                .concat(getLoopOfEdges(8, 11))
+                .concat(connectNodeToNodes(12, [8, 9, 10, 11]))
+                .concat([
+                    [0, 8], [1, 9], [2, 9], [3, 10], [4, 10], [5, 11], [6, 11], [7, 8]
+                ]),
+            r: 10
+        }
+    },
 ];
+
+console.log(getLoopOfEdges(8, 12));
 
 const puzzles = [hamiltonianPath, dominatingSet];
 

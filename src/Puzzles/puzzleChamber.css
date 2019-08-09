@@ -1,3 +1,9 @@
+@media (max-aspect-ratio: 1/1) {
+    .toolbar {
+        transform: rotate(90deg);
+    }
+}
+
 #puzzle-chamber {
     width: 100%;
     height: 99%;
@@ -13,12 +19,6 @@
     stroke: rgb(30, 20, 20);
     stroke-width: 160;
     filter: url(#shadow-filter);
-}
-
-@media (max-aspect-ratio: 1/1) {
-    .toolbar {
-        transform: rotate(90deg);
-    }
 }
 
 .colour-palette {
