@@ -76,12 +76,7 @@ class PuzzlePage extends React.Component {
     }
 
     clear() {
-        const { getPuzzleObject, puzzles } = this.props;
-        const puzzle = puzzles[this.state.index];
-
-        this.setState({
-            puzzle: getPuzzleObject(puzzle)
-        });
+        this.getPuzzle(this.state.index);
     }
 
     // Child element has updated so evaluate to see if puzzle has been solved
