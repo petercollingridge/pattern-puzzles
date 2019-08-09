@@ -97,10 +97,21 @@ const dominatingSet = [
                 ]),
             r: 10
         }
-    },
+    }, {
+        colourPalette: [5],
+        graph: {
+            nodes: getNodesOnCircle(12, { r: 3 }).concat(getNodesOnCircle(4, { r: 1.5 })).concat([[0, 0, 0]]),
+            edges: getLoopOfEdges(12)
+                .concat(getLoopOfEdges(12, 15))
+                .concat(connectNodeToNodes(16, [12, 13, 14, 15]))
+                .concat([
+                    [0, 12], [2, 13], [3, 13], [5, 14], [6, 14], [8, 15], [9, 15], [11, 12]
+                ]),
+            r: 10
+        }
+    }
 ];
 
-console.log(getLoopOfEdges(8, 12));
 
 const puzzles = [hamiltonianPath, dominatingSet];
 
