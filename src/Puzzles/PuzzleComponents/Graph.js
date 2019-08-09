@@ -66,7 +66,7 @@ export const ColourablePath = (graph, chamber) => {
                 const node = graph.nodes[i];
                 if (node === targetNode) { continue; }
                 
-                // Nodes  connected to the targetNode are open, the others are fixed
+                // Nodes connected to the targetNode are open, the others are fixed
                 if (!node.colour) {
                     if (node.edges[targetNode.index]) {
                         node.fixed = false;
@@ -94,13 +94,17 @@ export const DominatingSet = (graph, chamber) => {
         if (targetNode.colour) {
             // Colour neighbours
             neighbours.forEach(n => {
+                // Colour node if it is not coloured
                 if (!graph.nodes[n].colour) {
                     graph.nodes[n].colour = 2;
                 }
+                // Colour edge
+                targetNode.edges[n].active = 2;
             })
         } else {
             // Remove colour from neighbour unless they are next to other coloured nodes
             neighbours.forEach(n => {
+                targetNode.edges[n].active = 0;
                 const node = graph.nodes[n];
                 if (node.colour === 2) {
                     // Check neighbours for nodes that are coloured
@@ -110,6 +114,7 @@ export const DominatingSet = (graph, chamber) => {
                 } else if (node.colour === 1) {
                     // This node is next to a different coloured node, so colour with colour 2
                     targetNode.colour = 2;
+                    targetNode.edges[n].active = 2;
                 }
             })
         }

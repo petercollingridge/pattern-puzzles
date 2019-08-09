@@ -38,6 +38,10 @@ main {
     fill: rgb(196, 20, 96);
 }
 
+.stroke-2 {
+    stroke: rgb(196, 20, 96);
+}
+
 .colour-3 {
     color: rgb(20, 196, 96);
 }
