@@ -4,84 +4,22 @@
 
 import React from 'react';
 
-import PuzzlePage from './PuzzlePage';
-import { getGraphObject } from './puzzleLoaders';
-import { ColourablePath, DominatingSet } from './PuzzleComponents/Graph';
+import PuzzlePage from '../PuzzlePage';
+import { getGraphObject } from '../puzzleLoaders';
+import { DominatingSet } from '../PuzzleComponents/Graph';
 
-import { allItemsColoured } from '../utils/evaluation';
+import { allItemsColoured } from '../../utils/evaluation';
 import {
     getNodesOnCircle,
     getLoopOfEdges,
-    getLineOfEdges,
     connectNodeToNodes,
     linearGraph,
     loopGraph,
     spokeGraph,
-} from '../utils/graphUtils';
+} from '../../utils/graphUtils';
 
 
-const R3 = Math.sqrt(3);
-const hamiltonianPath = [
-    {
-        colourPalette: 1,
-        graph: loopGraph(6)
-    }, {
-        colourPalette: 1,
-        graph: {
-            nodes: getNodesOnCircle(6),
-            edges: getLoopOfEdges(6).concat([[1, 4]])
-        }
-    }, {
-        colourPalette: 1,
-        graph: {
-            nodes: getNodesOnCircle(6),
-            edges: getLineOfEdges(6)
-        }
-    }, {
-        colourPalette: 1,
-        graph: {
-            nodes: getNodesOnCircle(6),
-            edges: getLineOfEdges(6).concat([[2, 5]])
-        }
-    }, {
-        colourPalette: 1,
-        graph: {
-            nodes: getNodesOnCircle(6),
-            edges: [[2, 3], [3, 4], [4, 5], [5, 0], [1, 4], [0, 3]]
-        }
-    }, {
-        colourPalette: 1,
-        graph: {
-            nodes: getNodesOnCircle(3, { r: 0.75 })
-                    .concat(getNodesOnCircle(3, { r: 2 })),
-            edges: getLoopOfEdges(3)
-                    .concat(getLoopOfEdges(3, 5))
-                    .concat([[2, 5]])
-        }
-    }, {
-        colourPalette: 1,
-        graph: {
-            nodes: getNodesOnCircle(3, { r: 0.75 })
-                    .concat(getNodesOnCircle(3, { r: 2 }))
-                    .concat([[-R3, -2], [R3, -2]]),
-            edges: getLoopOfEdges(3)
-                    .concat(getLoopOfEdges(3, 5))
-                    .concat([[0, 3], [2, 5], [3, 6], [4, 7]])
-        }
-    }, {
-        colourPalette: 1,
-        graph: {
-            nodes: getNodesOnCircle(3, { r: 0.75 })
-                    .concat(getNodesOnCircle(3, { r: 2 }))
-                    .concat([[-R3, -2], [R3, -2]]),
-            edges: getLoopOfEdges(3)
-                    .concat(getLoopOfEdges(3, 5))
-                    .concat([[2, 5], [3, 6], [4, 7], [5, 6], [5, 7]])
-        }
-    }
-];
-
-const dominatingSet = [
+const puzzles = [
     {
         colourPalette: [1],
         graph: linearGraph(3, { scale: 2, r: 10 })
@@ -146,23 +84,14 @@ const dominatingSet = [
     }
 ];
 
-
-const puzzles = [hamiltonianPath, dominatingSet];
-
-export const GraphTheory = (n) => {
-    let graphDisplay;
-    if (n === 0) { 
-        graphDisplay = ColourablePath;
-     } else {
-        graphDisplay = DominatingSet;
-     }
-
-    return <PuzzlePage
+const GraphTheory = () => 
+    <PuzzlePage
         colourPalette={1}
         clearButton
-        puzzles={puzzles[n]}
+        puzzles={puzzles}
         evaluate={({ nodes }) => allItemsColoured(nodes)}
 		getPuzzleObject={({ graph }) => getGraphObject(graph)}
-		displayPuzzle={graphDisplay}
+		displayPuzzle={DominatingSet}
     />
-}
+
+export default GraphTheory;

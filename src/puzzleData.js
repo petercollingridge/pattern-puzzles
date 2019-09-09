@@ -2,7 +2,8 @@ import ColourGraphIcons from './PuzzleMap/Icons/ColourGraphs';
 import { ColourGraph } from './Puzzles/ColourGraphs';
 
 import GraphTheoryIcons from './PuzzleMap/Icons/GraphTheory';
-import { GraphTheory } from './Puzzles/GraphTheory';
+import HamiltonianPath from './Puzzles/GraphTheory/HamiltonianPath';
+import DominatingSet from './Puzzles/GraphTheory/DominatingSet';
 
 import ColourMapIcons from './PuzzleMap/Icons/ColourMaps';
 import { ColourMap } from './Puzzles/ColourMaps';
@@ -50,12 +51,12 @@ export const puzzleData = {
     'graph-theory-0': {
         slug: 'hamiltonian-path',
         icon: GraphTheoryIcons[0](),
-        component: () => GraphTheory(0), 
+        component: HamiltonianPath, 
     },
     'graph-theory-1': {
         slug: 'minimun-dominating-set',
         icon: GraphTheoryIcons[0](),
-        component: () => GraphTheory(1), 
+        component: DominatingSet, 
     },
     'permutations-0': {
         slug: 'permutations-0',
