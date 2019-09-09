@@ -1,5 +1,7 @@
 /*
- * Construct a Hamiltonian path along a graph.
+ * Find the smallest dominating set.
+ * Colour the vertices of a graph such that each vertex is coloured or adjacent
+ * to a vertex that is coloured. The number of vertices you can colour is limited.
  */
 
 import React from 'react';
