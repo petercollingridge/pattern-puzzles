@@ -3,6 +3,7 @@ import { Line } from './Primitives';
 import { isColourable } from './utils';
 
 
+// Display a graph in which the nodes have the potential to be coloured
 export const Graph = ({ edges=[], nodes=[], chamber, onColour }) =>
     <g className="graph">
         <g className="graph-edges">
@@ -13,7 +14,6 @@ export const Graph = ({ edges=[], nodes=[], chamber, onColour }) =>
                 </g>
             )}
         </g>
-
         <g className="graph-nodes">
             { nodes.map((node, i) => 
                 <g key={i} transform={`translate(${ node.x } ${ node.y })`}>
@@ -24,10 +24,34 @@ export const Graph = ({ edges=[], nodes=[], chamber, onColour }) =>
         </g>
     </g>
 
+// A graph where the edges can be selected
+export const EdgeGraph = ({ edges=[], nodes=[], chamber, onColour }) =>
+    <g className="graph">
+        <g className="graph-edges">
+            { edges.map((edge, i) => {
+                const dx = edge.x2 - edge.x1;
+                const dy = edge.y2 - edge.y1;
+                const angle = Math.atan2(dy, dx);
+                const length = Math.sqrt(dx * dx + dy * dy);
+        
+                return <rect key={i} transform={`translate(${edge.x1} ${edge.y1}) rotate(${angle})`} width={length} height={10} />
+            })}
+        </g>
+        <g className="graph-nodes">
+            { nodes.map((node, i) => 
+                <g key={i} transform={`translate(${node.x} ${node.y})`}>
+                    <circle className="node-outline" r={node.r} />
+                    <circle className="no-fill" r={node.r} />
+                </g>
+            )}
+        </g>
+    </g>
+
 export const ColourableGraph = (graph, chamber) =>
     <Graph {...graph} chamber={chamber} />
 
-// Same as a colourable graph, except you can only colour points next to the one you last coloured
+// A colourable graph where you can only colour points next to the one you last coloured
+// You can pick any node as the first node you colour
 export const ColourablePath = (graph, chamber) => {
     const colour = chamber.state.selectedColour;
 
@@ -84,7 +108,7 @@ export const ColourablePath = (graph, chamber) => {
     return <Graph {...graph} chamber={chamber} onColour={onColour} />
 };
 
-// A colourable graph, where colouring a node causes any attached nodes to also be coloured
+// A colourable graph, where colouring a node also colours any adjacent nodes
 export const DominatingSet = (graph, chamber) => {
     const onColour = node => {
         const nodeIndex = node.index;
