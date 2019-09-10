@@ -8,7 +8,7 @@ import React from 'react';
 
 import PuzzlePage from '../PuzzlePage';
 import { getGraphObject } from '../puzzleLoaders';
-import { DominatingSet } from '../PuzzleComponents/Graph';
+import { ColourableEdgeGraph } from '../PuzzleComponents/Graph';
 
 import { linearGraph } from '../../utils/graphUtils';
 import { allItemsColoured } from '../../utils/evaluation';
@@ -28,7 +28,7 @@ const GraphTheory = () =>
         puzzles={puzzles}
         evaluate={({ nodes }) => allItemsColoured(nodes)}
 		getPuzzleObject={({ graph }) => getGraphObject(graph)}
-		displayPuzzle={DominatingSet}
+		displayPuzzle={ColourableEdgeGraph}
     />
 
 export default GraphTheory;

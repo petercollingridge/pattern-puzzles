@@ -34,7 +34,14 @@ export const EdgeGraph = ({ edges=[], nodes=[], chamber, onColour }) =>
                 const angle = Math.atan2(dy, dx);
                 const length = Math.sqrt(dx * dx + dy * dy);
         
-                return <rect key={i} transform={`translate(${edge.x1} ${edge.y1}) rotate(${angle})`} width={length} height={10} />
+                return <rect
+                    key={i}
+                    transform={`translate(${edge.x1} ${edge.y1}) rotate(${angle})`}
+                    y={-5}
+                    width={length}
+                    height={10}
+                    {...isColourable(edge, chamber, { onColour })}c
+                />
             })}
         </g>
         <g className="graph-nodes">
@@ -49,6 +56,9 @@ export const EdgeGraph = ({ edges=[], nodes=[], chamber, onColour }) =>
 
 export const ColourableGraph = (graph, chamber) =>
     <Graph {...graph} chamber={chamber} />
+
+export const ColourableEdgeGraph = (graph, chamber) =>
+    <EdgeGraph {...graph} chamber={chamber} />
 
 // A colourable graph where you can only colour points next to the one you last coloured
 // You can pick any node as the first node you colour

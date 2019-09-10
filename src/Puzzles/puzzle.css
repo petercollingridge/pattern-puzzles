@@ -14,6 +14,10 @@
     fill: white;
 }
 
+#puzzle .graph-edges .colourable:not(.no-fill) {
+    stroke: none;
+}
+
 #puzzle .colourable:focus {
     outline: none;
     filter: url(#glow-filter);
