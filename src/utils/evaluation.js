@@ -86,3 +86,31 @@ export const samePatternButDifferent = (seq1, seq2) =>
     allItemsHaveValue(seq2) &&
     sequenceHasNoMatches(seq1, seq2) &&
     sequencesAreEquivalent(seq1, seq2);
+
+
+export const graphIsDisjoint = (nodes) => {
+    nodes.forEach(node => node.visited = false);
+    
+    // Begin with the first node
+    const frontier = [nodes[0]];
+    let nodeCount = 1;
+
+    while(frontier.length > 0) {
+        const node = frontier.pop();
+        node.visited = true;
+
+        const edges = node.edges;
+        for (const nextNodeId in edges) {
+            // If edge not cut and node hasn't been visited
+            if (!edges[nextNodeId].colour) {
+                const nextNode = nodes[nextNodeId];
+                if (!nextNode.visited) {
+                    frontier.push(nextNode)
+                    nodeCount++;
+                }
+            }
+        }
+    }
+
+    return nodeCount < nodes.length;
+}
