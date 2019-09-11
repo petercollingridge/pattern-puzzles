@@ -97,15 +97,15 @@ export const graphIsDisjoint = (nodes) => {
 
     while(frontier.length > 0) {
         const node = frontier.pop();
-        node.visited = true;
-
         const edges = node.edges;
+        
         for (const nextNodeId in edges) {
             // If edge not cut and node hasn't been visited
             if (!edges[nextNodeId].colour) {
                 const nextNode = nodes[nextNodeId];
                 if (!nextNode.visited) {
                     frontier.push(nextNode)
+                    nextNode.visited = true;
                     nodeCount++;
                 }
             }

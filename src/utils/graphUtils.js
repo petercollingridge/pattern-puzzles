@@ -168,7 +168,6 @@ export function subdivideGraph(graph) {
     return graph;
 }
 
-
 function getRegularPolygonGraph(size, colours, scale=1) {
     // Can pass in a single colour to set all nodes to that colour
     if (!Array.isArray(colours)) {
