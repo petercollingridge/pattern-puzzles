@@ -31,16 +31,16 @@ export const EdgeGraph = ({ edges=[], nodes=[], chamber, onColour }) =>
             { edges.map((edge, i) => {
                 const dx = edge.x2 - edge.x1;
                 const dy = edge.y2 - edge.y1;
-                const angle = Math.atan2(dy, dx);
+                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
                 const length = Math.sqrt(dx * dx + dy * dy);
         
                 return <rect
                     key={i}
                     transform={`translate(${edge.x1} ${edge.y1}) rotate(${angle})`}
-                    y={-5}
+                    y={-4}
                     width={length}
-                    height={10}
-                    {...isColourable(edge, chamber, { onColour })}c
+                    height={8}
+                    {...isColourable(edge, chamber, { onColour })}
                 />
             })}
         </g>
