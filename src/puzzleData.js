@@ -60,7 +60,7 @@ export const puzzleData = {
         component: DominatingSet, 
     },
     'graph-theory-2': {
-        slug: 'minimun-cut',
+        slug: 'minimum-cut',
         icon: GraphTheoryIcons[1](),
         component: MinimumCut, 
     },
