@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const GraphTheory1 = () => <g>
+const HamiltonianPath = () => <g>
     <g className="graph-edges">
         <line x1="-30" y1="20" x2="0" y2="-32" />
 
@@ -25,4 +25,32 @@ const GraphTheory1 = () => <g>
     </g>
 </g>
 
-export default [GraphTheory1];
+const MinimumCut = () => <g>
+    <g className="graph-edges">
+        <line x1="-32" y1="16" x2="-32" y2="-16" />
+        <line x1="-32" y1="16" x2="-12" y2="0" />
+        <line x1="-32" y1="-16" x2="-12" y2="0" />
+        <line x1="32" y1="16" x2="32" y2="-16" />
+        <line x1="32" y1="16" x2="12" y2="0" />
+        <line x1="32" y1="-16" x2="12" y2="0" />
+
+        <g className="colour-1">
+            <line x1="-12" y1="0" x2="12" y2="0" />
+        </g>
+    </g>
+    <g className="graph-nodes">
+        {/* <circle className="colour-1" cx="-12" cy="8" r="5" />
+        <circle className="colour-1" cx="0" cy="-12" r="5" />
+        <circle className="colour-1" cx="12" cy="8" r="5" /> */}
+
+        <circle className="colour-0" cx="-32" cy="-16" r="5" />
+        <circle className="colour-0" cx="-32" cy="16" r="5" />
+        <circle className="colour-0" cx="-12" cy="0" r="5" />
+        <circle className="colour-0" cx="32" cy="-16" r="5" />
+        <circle className="colour-0" cx="32" cy="16" r="5" />
+        <circle className="colour-0" cx="12" cy="0" r="5" />
+        <circle className="colour-0" cx="12" cy="0" r="5" />
+    </g>
+</g>
+
+export default [HamiltonianPath, MinimumCut];

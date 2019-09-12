@@ -61,7 +61,7 @@ export const puzzleData = {
     },
     'graph-theory-2': {
         slug: 'minimun-cut',
-        icon: GraphTheoryIcons[0](),
+        icon: GraphTheoryIcons[1](),
         component: MinimumCut, 
     },
     'permutations-0': {
