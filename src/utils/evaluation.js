@@ -93,12 +93,13 @@ export const graphIsDisjoint = (nodes) => {
     
     // Begin with the first node
     const frontier = [nodes[0]];
+    nodes[0].visited = true;
     let nodeCount = 1;
 
     while(frontier.length > 0) {
         const node = frontier.pop();
         const edges = node.edges;
-        
+
         for (const nextNodeId in edges) {
             // If edge not cut and node hasn't been visited
             if (!edges[nextNodeId].colour) {
