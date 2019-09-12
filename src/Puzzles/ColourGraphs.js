@@ -46,41 +46,42 @@ const puzzles1 = [
 	}
 ];
 
+const rectCoords = [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]];
 const puzzles2 = [
     {
         colourPalette: 2,
         scale: 24,
-        nodes: [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]],
+        nodes: rectCoords,
         edges: getLoopOfEdges(6),
     }, {
         colourPalette: 2,
         scale: 24,
-        nodes: [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]],
+        nodes: rectCoords,
         edges: getLoopOfEdges(6).concat([[1, 4]]),
     }, {
         colourPalette: 2,
         scale: 24,
-        nodes: [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]],
+        nodes: rectCoords,
         edges: getLoopOfEdges(6).concat([[0, 3]]),
     }, {
         colourPalette: 3,
         scale: 24,
-        nodes: [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]],
+        nodes: rectCoords,
         edges: getLoopOfEdges(6).concat([[0, 4]]),
     }, {
         colourPalette: 3,
         scale: 24,
-        nodes: [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]],
+        nodes: rectCoords,
         edges: getLoopOfEdges(6).concat([[0, 4], [2, 4]]),
     }, {
         colourPalette: 3,
         scale: 24,
-        nodes: [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]],
+        nodes: rectCoords,
         edges: getLoopOfEdges(6).concat([[0, 4], [1, 4], [2, 4]]),
     }, {
         colourPalette: 3,
         scale: 24,
-        nodes: [[-2, -1], [0, -1], [2, -1], [2, 1], [0, 1], [-2, 1]],
+        nodes: rectCoords,
         edges: getLoopOfEdges(6).concat([[0, 4], [1, 4], [1, 3]]),
     }, {
         colourPalette: 3,

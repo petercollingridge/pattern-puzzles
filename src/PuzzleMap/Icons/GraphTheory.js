@@ -39,10 +39,6 @@ const MinimumCut = () => <g>
         </g>
     </g>
     <g className="graph-nodes">
-        {/* <circle className="colour-1" cx="-12" cy="8" r="5" />
-        <circle className="colour-1" cx="0" cy="-12" r="5" />
-        <circle className="colour-1" cx="12" cy="8" r="5" /> */}
-
         <circle className="colour-0" cx="-32" cy="-16" r="5" />
         <circle className="colour-0" cx="-32" cy="16" r="5" />
         <circle className="colour-0" cx="-12" cy="0" r="5" />
