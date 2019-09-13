@@ -10,7 +10,8 @@ import { getPermutationObject } from './puzzleLoaders';
 import { allItemsColoured, extractAttribute } from '../utils/evaluation';
 
 
-// Sequence of coloured blocks with uncoloured blocks at the end
+// Given a set of rows of linear graphs
+// Colour them so you have all permutations of colours, e.g. one red node and one blue node
 const puzzles1 = [
     {
         colourPalette: 2,
@@ -39,6 +40,7 @@ const puzzles1 = [
     }
 ];
 
+// Permutations using linear graphs
 const puzzles2 = [
     {
         colourPalette: 2,

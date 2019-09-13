@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
-import { puzzleData } from './puzzleData';
+import { puzzleData } from './AppData';
 import PuzzleMap from './PuzzleMap/PuzzleMap';
 
 import './base.css';

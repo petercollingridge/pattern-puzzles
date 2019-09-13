@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import { puzzleLayout } from '../puzzleData';
+import { puzzleLayout } from '../AppData';
 import Icon from './Icons/Icon';
 import './puzzleMap.css';
 

@@ -1,3 +1,6 @@
+// Create an array of object, where every item is a puzzle
+// Puzzle objects have a component, an icon, a position on the map and a URL slug
+
 import ColourGraphIcons from './PuzzleMap/Icons/ColourGraphs';
 import { ColourGraph } from './Puzzles/ColourGraphs';
 
