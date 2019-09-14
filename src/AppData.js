@@ -59,12 +59,12 @@ export const puzzleData = {
     },
     'graph-theory-1': {
         slug: 'minimun-dominating-set',
-        icon: GraphTheoryIcons[0](),
+        icon: GraphTheoryIcons[1](),
         component: DominatingSet, 
     },
     'graph-theory-2': {
         slug: 'minimum-cut',
-        icon: GraphTheoryIcons[1](),
+        icon: GraphTheoryIcons[2](),
         component: MinimumCut, 
     },
     'permutations-0': {

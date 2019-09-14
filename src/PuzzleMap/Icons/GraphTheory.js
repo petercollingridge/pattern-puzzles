@@ -15,13 +15,31 @@ const HamiltonianPath = () => <g>
         </g>
     </g>
     <g className="graph-nodes">
-        <circle className="colour-1" cx="-12" cy="8" r="5" />
-        <circle className="colour-1" cx="0" cy="-12" r="5" />
-        <circle className="colour-1" cx="12" cy="8" r="5" />
+        <circle className="colour-1" cx="-12" cy="8" r="6" />
+        <circle className="colour-1" cx="0" cy="-12" r="6" />
+        <circle className="colour-1" cx="12" cy="8" r="6" />
 
-        <circle className="colour-1" cx="-30" cy="20" r="5" />
-        <circle className="colour-1" cx="0" cy="-32" r="5" />
-        <circle className="colour-1" cx="30" cy="20" r="5" />
+        <circle className="colour-1" cx="-30" cy="20" r="6" />
+        <circle className="colour-1" cx="0" cy="-32" r="6" />
+        <circle className="colour-1" cx="30" cy="20" r="6" />
+    </g>
+</g>
+
+const DominatingSet = () => <g>
+    <g className="graph-edges">
+        <rect x="-20" y="-20" width="40" height="40" fill="none" />
+
+        <g className="colour-1">
+            <line x1="-20" y1="-20" x2="20" y2="20" />
+            <line x1="-20" y1="20" x2="20" y2="-20" />
+        </g>
+    </g>
+    <g className="graph-nodes">
+        <circle className="colour-2" cx="-20" cy="-20" r="6" />
+        <circle className="colour-2" cx="-20" cy="20" r="6" />
+        <circle className="colour-2" cx="20" cy="20" r="6" />
+        <circle className="colour-2" cx="20" cy="-20" r="6" />
+        <circle className="colour-1" cx="0" cy="0" r="6" />
     </g>
 </g>
 
@@ -39,14 +57,14 @@ const MinimumCut = () => <g>
         </g>
     </g>
     <g className="graph-nodes">
-        <circle className="colour-0" cx="-32" cy="-16" r="5" />
-        <circle className="colour-0" cx="-32" cy="16" r="5" />
-        <circle className="colour-0" cx="-12" cy="0" r="5" />
-        <circle className="colour-0" cx="32" cy="-16" r="5" />
-        <circle className="colour-0" cx="32" cy="16" r="5" />
-        <circle className="colour-0" cx="12" cy="0" r="5" />
-        <circle className="colour-0" cx="12" cy="0" r="5" />
+        <circle className="colour-0" cx="-32" cy="-16" r="6" />
+        <circle className="colour-0" cx="-32" cy="16" r="6" />
+        <circle className="colour-0" cx="-12" cy="0" r="6" />
+        <circle className="colour-0" cx="32" cy="-16" r="6" />
+        <circle className="colour-0" cx="32" cy="16" r="6" />
+        <circle className="colour-0" cx="12" cy="0" r="6" />
+        <circle className="colour-0" cx="12" cy="0" r="6" />
     </g>
 </g>
 
-export default [HamiltonianPath, MinimumCut];
+export default [HamiltonianPath, DominatingSet, MinimumCut];
