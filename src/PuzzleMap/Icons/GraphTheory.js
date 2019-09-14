@@ -52,18 +52,17 @@ const MinimumCut = () => <g>
         <line x1="32" y1="16" x2="12" y2="0" />
         <line x1="32" y1="-16" x2="12" y2="0" />
 
-        <g className="colour-1">
+        <g className="colour-none">
             <line x1="-12" y1="0" x2="12" y2="0" />
         </g>
     </g>
     <g className="graph-nodes">
-        <circle className="colour-0" cx="-32" cy="-16" r="6" />
-        <circle className="colour-0" cx="-32" cy="16" r="6" />
-        <circle className="colour-0" cx="-12" cy="0" r="6" />
-        <circle className="colour-0" cx="32" cy="-16" r="6" />
-        <circle className="colour-0" cx="32" cy="16" r="6" />
-        <circle className="colour-0" cx="12" cy="0" r="6" />
-        <circle className="colour-0" cx="12" cy="0" r="6" />
+        <circle className="colour-1" cx="-32" cy="-16" r="6" />
+        <circle className="colour-1" cx="-32" cy="16" r="6" />
+        <circle className="colour-1" cx="-12" cy="0" r="6" />
+        <circle className="colour-2" cx="32" cy="-16" r="6" />
+        <circle className="colour-2" cx="32" cy="16" r="6" />
+        <circle className="colour-2" cx="12" cy="0" r="6" />
     </g>
 </g>
 
