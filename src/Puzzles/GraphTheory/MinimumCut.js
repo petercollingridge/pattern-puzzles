@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import PuzzlePage from '../PuzzlePage';
+import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { getGraphObject } from '../puzzleLoaders';
 import { ColourableEdgeGraph } from '../PuzzleComponents/Graph';
 

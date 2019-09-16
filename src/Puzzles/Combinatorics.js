@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-import PuzzlePage from './PuzzlePage';
+import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
 import { Sequence2D } from './PuzzleComponents/Sequence';
 import { getPermutationObject } from './puzzleLoaders';
 import { allItemsColoured, extractAttribute } from '../utils/evaluation';

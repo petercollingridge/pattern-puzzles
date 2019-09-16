@@ -1,5 +1,5 @@
 import React from 'react';
-import { handleKeyDown } from '../utils/common';
+import { handleKeyDown } from '../../utils/common';
 
 
 export const SVGButton = (props) =>

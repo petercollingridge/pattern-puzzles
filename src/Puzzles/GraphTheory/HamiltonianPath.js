@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-import PuzzlePage from '../PuzzlePage';
+import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { getGraphObject } from '../puzzleLoaders';
 import { ColourablePath } from '../PuzzleComponents/Graph';
 

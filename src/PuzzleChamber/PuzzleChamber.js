@@ -2,8 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { parse } from 'query-string';
 
-import Toolbar from '../Toolbars/Toolbar';
-import { Button } from '../Toolbars/Button';
+import Toolbar from './Toolbars/Toolbar';
+import { Button } from './Toolbars/Button';
 
 import './puzzle.css';
 import './puzzleChamber.css';

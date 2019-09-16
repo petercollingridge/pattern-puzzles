@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-import PuzzlePage from './PuzzlePage';
+import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
 import { Graph, ColourableGraph } from './PuzzleComponents/Graph';
 import { getGraphAndUncolouredCopy } from './puzzleLoaders';
 import { getNodesOnCircle, getLoopOfEdges, getLineOfEdges } from '../utils/graphUtils';
