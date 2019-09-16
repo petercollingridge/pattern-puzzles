@@ -4,11 +4,11 @@
 
 import React from 'react';
 
-import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
-import { ColourableGraph } from './PuzzleComponents/Graph';
-import { getGraphObject } from './utils/loadPuzzle';
-import { getNodesOnCircle, getLoopOfEdges } from './utils/graphUtils';
-import { graphIsChromatic } from './utils/evaluate';
+import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
+import { ColourableGraph } from '../PuzzleComponents/Graph';
+import { getGraphObject } from '../utils/loadPuzzle';
+import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
+import { graphIsChromatic } from '../utils/evaluate';
 
 
 const puzzles1 = [

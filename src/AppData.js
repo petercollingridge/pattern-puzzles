@@ -2,7 +2,7 @@
 // Puzzle objects have a component, an icon, a position on the map and a URL slug
 
 import ColourGraphIcons from './PuzzleMap/Icons/ColourGraphs';
-import { ColourGraph } from './Puzzles/ColourGraphs';
+import { ColourGraph } from './Puzzles//GraphTheory/ColourGraphs';
 
 import GraphTheoryIcons from './PuzzleMap/Icons/GraphTheory';
 import MinimumCut from './Puzzles/GraphTheory/MinimumCut';

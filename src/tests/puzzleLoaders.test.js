@@ -1,4 +1,4 @@
-import { getGraphObject } from '../Puzzles/puzzleLoaders';
+import { getGraphObject } from '../Puzzles/utils/loadPuzzle';
 
 describe('getGraphObject', () => {
     it('returns an empty graph when given nothing', () => {

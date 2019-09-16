@@ -3,7 +3,7 @@ import {
     getLineOfEdges,
     getLoopOfEdges,
     linearGraph
-} from '../utils/graphUtils';
+} from '../Puzzles/utils/graphUtils';
 
 
 describe('getPointsOnACircle', () => {
