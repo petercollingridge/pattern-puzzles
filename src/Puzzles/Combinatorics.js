@@ -7,7 +7,7 @@ import React from 'react';
 import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
 import { Sequence2D } from './PuzzleComponents/Sequence';
 import { getPermutationObject } from './utils/loadPuzzle';
-import { allItemsColoured, extractAttribute } from '../utils/evaluation';
+import { allItemsColoured, extractAttribute } from './utils/evaluate';
 
 
 // Given a set of rows of linear graphs

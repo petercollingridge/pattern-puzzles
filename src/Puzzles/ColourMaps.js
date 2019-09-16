@@ -7,7 +7,7 @@ import React from 'react';
 import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
 import { ColourableMap } from './PuzzleComponents/Map';
 import { getMapObject } from './utils/loadPuzzle';
-import { allItemsColoured, allConnectedItemsHaveDifferentColours } from '../utils/evaluation';
+import { allItemsColoured, allConnectedItemsHaveDifferentColours } from './utils/evaluate';
 
 
 const puzzles1 = [

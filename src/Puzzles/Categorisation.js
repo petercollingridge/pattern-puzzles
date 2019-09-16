@@ -19,7 +19,7 @@ import {
     getLoopOfEdges,
     subdivideGraph
 } from '../utils/graphUtils';
-import { sequencesAreEquivalent } from '../utils/evaluation';
+import { sequencesAreEquivalent } from './utils/evaluate';
 
 
 // Graphs are all the same colour and need to be match by shape

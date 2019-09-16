@@ -10,7 +10,7 @@ import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { getGraphObject } from '../utils/loadPuzzle';
 import { DominatingSet } from '../PuzzleComponents/Graph';
 
-import { allItemsColoured } from '../../utils/evaluation';
+import { allItemsColoured } from '../utils/evaluate';
 import {
     getNodesOnCircle,
     getLoopOfEdges,

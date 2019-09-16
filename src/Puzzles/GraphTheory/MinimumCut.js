@@ -16,7 +16,7 @@ import {
     loopGraph,
     getLoopOfEdges
 } from '../../utils/graphUtils';
-import { graphIsDisjoint } from '../../utils/evaluation';
+import { graphIsDisjoint } from '../utils/evaluate';
 
 
 const puzzles = [

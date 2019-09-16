@@ -8,10 +8,10 @@ import {
     sequencesAreEquivalent,
     allConnectedItemsHaveDifferentColours,
     samePatternButDifferent
-} from '../utils/evaluation';
+} from '../Puzzles/utils/evaluate';
 
 import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
-import { getGraphObject } from '../Puzzles/puzzleLoaders';
+import { getGraphObject } from '../Puzzles/utils/loadPuzzle';
 
 
 describe('allItemsHaveValue', () => {
