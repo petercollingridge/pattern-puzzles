@@ -7,7 +7,7 @@
 import React from 'react';
 
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
-import { getGraphObject } from '../puzzleLoaders';
+import { getGraphObject } from '../utils/loadPuzzle';
 import { DominatingSet } from '../PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../../utils/evaluation';

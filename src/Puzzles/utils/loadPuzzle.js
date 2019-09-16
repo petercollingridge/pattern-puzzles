@@ -3,8 +3,8 @@
  * display the puzzle and determine when the correct answer is found
 ***/
 
-import { shuffle, getPermutations } from '../utils/common';
-import { linearGraph } from '../utils/graphUtils';
+import { shuffle, getPermutations } from '../../utils/common';
+import { linearGraph } from '../../utils/graphUtils';
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {

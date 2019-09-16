@@ -3,7 +3,7 @@ import React from 'react';
 import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
 import { Graph } from './PuzzleComponents/Graph';
 import { Categories } from './PuzzleComponents/Categories';
-import { getCategoryObjects, getGraphObject } from './puzzleLoaders';
+import { getCategoryObjects, getGraphObject } from './utils/loadPuzzle';
 import {
     linearGraph,
     loopGraph,

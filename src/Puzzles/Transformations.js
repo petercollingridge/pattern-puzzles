@@ -6,7 +6,7 @@ import React from 'react';
 
 import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
 import { Graph, ColourableGraph } from './PuzzleComponents/Graph';
-import { getGraphAndUncolouredCopy } from './puzzleLoaders';
+import { getGraphAndUncolouredCopy } from './utils/loadPuzzle';
 import { getNodesOnCircle, getLoopOfEdges, getLineOfEdges } from '../utils/graphUtils';
 import { graphNodesAreSameColour, samePatternButDifferent } from '../utils/evaluation';
 
