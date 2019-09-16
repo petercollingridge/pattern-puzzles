@@ -18,7 +18,7 @@ import {
     linearGraph,
     loopGraph,
     spokeGraph,
-} from '../../utils/graphUtils';
+} from '../utils/graphUtils';
 
 
 const puzzles = [

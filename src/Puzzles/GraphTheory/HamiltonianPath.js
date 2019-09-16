@@ -14,7 +14,7 @@ import {
     getLoopOfEdges,
     getLineOfEdges,
     loopGraph,
-} from '../../utils/graphUtils';
+} from '../utils/graphUtils';
 
 
 const R3 = Math.sqrt(3);

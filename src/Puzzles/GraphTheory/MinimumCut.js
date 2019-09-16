@@ -15,7 +15,7 @@ import {
     linearGraph,
     loopGraph,
     getLoopOfEdges
-} from '../../utils/graphUtils';
+} from '../utils/graphUtils';
 import { graphIsDisjoint } from '../utils/evaluate';
 
 

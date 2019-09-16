@@ -1,5 +1,5 @@
 import React from 'react';
-import { getPointsOnACircle } from '../../utils/graphUtils';
+import { getPointsOnACircle } from '../utils/graphUtils';
 import { isColourable } from './utils';
 
 

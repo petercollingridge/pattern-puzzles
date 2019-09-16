@@ -4,7 +4,7 @@
 ***/
 
 import { shuffle, getPermutations } from '../../utils/common';
-import { linearGraph } from '../../utils/graphUtils';
+import { linearGraph } from './graphUtils';
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {

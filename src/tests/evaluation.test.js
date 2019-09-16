@@ -10,7 +10,7 @@ import {
     samePatternButDifferent
 } from '../Puzzles/utils/evaluate';
 
-import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
+import { getNodesOnCircle, getLoopOfEdges } from '../Puzzles/utils/graphUtils';
 import { getGraphObject } from '../Puzzles/utils/loadPuzzle';
 
 

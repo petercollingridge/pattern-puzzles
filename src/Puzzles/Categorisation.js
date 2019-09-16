@@ -18,7 +18,7 @@ import {
     getLineOfEdges,
     getLoopOfEdges,
     subdivideGraph
-} from '../utils/graphUtils';
+} from './utils/graphUtils';
 import { sequencesAreEquivalent } from './utils/evaluate';
 
 
