@@ -4,8 +4,9 @@ import {
     extractAttribute,
     sequencesMatch,
     sequenceHasNoMatches,
-    graphIsChromatic,
     sequencesAreEquivalent,
+    graphIsChromatic,
+    graphNodesAreSameColour,
     allConnectedItemsHaveDifferentColours,
     samePatternButDifferent
 } from '../Puzzles/utils/evaluate';
@@ -176,6 +177,32 @@ describe('graphIsChromatic', () => {
             edges: getLoopOfEdges(4).concat([[0, 2]])
         });
         expect(graphIsChromatic(graph)).toBe(false);
+    });
+});
+
+describe('graphNodesAreSameColour', () => {
+    it('returns true when blank and target are empty', () => {
+        const puzzle = {
+            blank: { nodes: [] },
+            target: { nodes: [] }
+        };
+        expect(graphNodesAreSameColour(puzzle)).toBe(true);
+    });
+
+    it('returns true when blank and target are the same', () => {
+        const puzzle = {
+            blank: { nodes: [{ colour: 1 }, { colour: 2 }] },
+            target: { nodes: [{ colour: 1 }, { colour: 2 }] }
+        };
+        expect(graphNodesAreSameColour(puzzle)).toBe(true);
+    });
+
+    it('returns false when blank and target are different', () => {
+        const puzzle = {
+            blank: { nodes: [{ colour: 1 }, { colour: 2 }] },
+            target: { nodes: [{ colour: 2 }, { colour: 1 }] }
+        };
+        expect(graphNodesAreSameColour(puzzle)).toBe(false);
     });
 });
 
