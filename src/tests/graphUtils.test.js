@@ -1,10 +1,23 @@
 import {
+    nTimes,
     getPointsOnACircle,
     getLineOfEdges,
     getLoopOfEdges,
     linearGraph
 } from '../Puzzles/utils/graphUtils';
 
+
+describe('nTimes', () => {
+    const sq = (_, n) => n * n;
+
+    it('returns an empty array when n = 0', () => {
+        expect(nTimes(0, sq).length).toBe(0);
+    });
+
+    it('calls function n times', () => {
+        expect(nTimes(4, sq)).toEqual([0, 1, 4, 9]);
+    });
+});
 
 describe('getPointsOnACircle', () => {
     it('returns an empty array when given 0', () => {

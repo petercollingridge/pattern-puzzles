@@ -1,6 +1,6 @@
 
 // Get an array of values from calling function <func> n times
-function nTimes(n, func) {
+export function nTimes(n, func) {
     return Array.from({ length: n }).map(func);
 }
 
