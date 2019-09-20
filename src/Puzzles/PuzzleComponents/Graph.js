@@ -115,6 +115,63 @@ export const ColourablePath = (graph, chamber) => {
         }
     };
 
+    return <EdgeGraph {...graph} chamber={chamber} onColour={onColour} />
+};
+
+// A colourable graph where the first node starts coloured and you can to colour adjacent edges 
+export const EulerPath = (graph, chamber) => {
+    const colour = chamber.state.selectedColour;
+
+    // Function that updates graph state when an edge is coloured,
+    // making only nodes next to the last coloured one colourable 
+    const onColour = node => {
+        const nodeIndex = node.index;
+        let targetNode = graph.nodes[nodeIndex];
+
+        if (targetNode.colour) {
+            if (!graph.path) { graph.path = []; }
+
+            // Colour the edge of the path
+            const previousNode = graph.path.slice(-1)[0];
+            if (previousNode) {
+                previousNode.edges[nodeIndex].active = colour;
+            }
+
+            // Add new node to the path
+            graph.path.push(targetNode);
+        } else {
+            // Remove the node we clicked on
+            graph.path.pop();
+            const previousNode = graph.path.slice(-1)[0];
+            if (previousNode) {
+                previousNode.fixed = false;
+                previousNode.edges[nodeIndex].active = false;
+            }
+            // The active node is now the previous node in the path
+            targetNode = previousNode;
+        }
+
+        // Update nodes
+        if (targetNode) {
+            for (let i = 0; i < graph.nodes.length; i++) {
+                const node = graph.nodes[i];
+                if (node === targetNode) { continue; }
+                
+                // Nodes connected to the targetNode are open, the others are fixed
+                if (!node.colour) {
+                    if (node.edges[targetNode.index]) {
+                        node.fixed = false;
+                    } else {
+                        node.fixed = true;
+                    }
+                }
+            }
+        } else {
+            // No nodes left in the path, so all nodes are active
+            graph.nodes.forEach(node => node.fixed = false);
+        }
+    };
+
     return <Graph {...graph} chamber={chamber} onColour={onColour} />
 };
 
