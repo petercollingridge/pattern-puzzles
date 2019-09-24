@@ -7,7 +7,7 @@ import React from 'react';
 
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { getGraphObject } from '../utils/loadPuzzle';
-import { ColourablePath } from '../PuzzleComponents/Graph';
+import { ColourableEulerPath } from '../PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../utils/evaluate';
 import {
@@ -29,7 +29,7 @@ const EulerPath = () =>
         puzzles={puzzles}
         evaluate={({ edges }) => allItemsColoured(edges)}
 		getPuzzleObject={({ graph }) => getGraphObject(graph)}
-		displayPuzzle={ColourablePath}
+		displayPuzzle={ColourableEulerPath}
     />
 
 export default EulerPath;
