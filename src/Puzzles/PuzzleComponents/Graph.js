@@ -133,6 +133,10 @@ export const ColourableEulerPath = (graph, chamber) => {
     const colour = chamber.state.selectedColour;
     const onColour = edge => {
         // Update selected nodes and which edges can be coloured
+        if (edge.colour) {
+            console.log(edge);
+            // Update active node
+        }
     };
 
     return <EdgeGraph {...graph} chamber={chamber} onColour={onColour} />
