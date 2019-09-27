@@ -122,7 +122,8 @@ main {
   to { stroke-width: 3; }
 } */
 
-.graph .graph-nodes {
+.graph .graph-nodes,
+.graph .graph-edges {
     fill: #aaa;
 }
 
@@ -137,7 +138,7 @@ main {
     stroke: #fff;
 }
 
-.graph-edges {
+.graph-edges rect:not(.no-fill) {
     stroke-width: 3;
     stroke: #aaa;
 }

@@ -120,12 +120,17 @@ export const ColourablePath = (graph, chamber) => {
 
 // A colourable graph where the first node starts coloured and you can to colour adjacent edges 
 export const ColourableEulerPath = (graph, chamber) => {
-    const colour = chamber.state.selectedColour;
-
-    graph.nodes[0].current = true;
-
+    // Set one node as the starting node
+    const firstNode = graph.nodes[0];
+    firstNode.current = true;
+    graph.edges.forEach(edge => {
+        // Disable any edge that is not connected to the first node
+        edge.fixed = (edge.node1 !== firstNode && edge.node2 !== firstNode);
+    });
+    
     // Function that updates graph state when an edge is coloured,
     // making only nodes next to the last coloured one colourable 
+    const colour = chamber.state.selectedColour;
     const onColour = edge => {
         // Update selected nodes and which edges can be coloured
     };
