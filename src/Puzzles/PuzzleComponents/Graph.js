@@ -150,7 +150,8 @@ export const ColourableEulerPath = (graph, chamber) => {
             // Update active node
             if (edge.node1.current) {
                 edge.node1.current = false;
-                graph.nodes[0].current =  false;
+                graph.nodes[0] = Object.assign(graph.nodes[0], { current: false});
+                graph.nodes[0] = {};
                 // edge.node2.current = true;
                 fixNonConnectedEdges(edge.node2);
             } else {
@@ -160,6 +161,7 @@ export const ColourableEulerPath = (graph, chamber) => {
             }
 
             graph.nodes[0].current = false;
+            graph.nodes[0] = Object.assign(graph.nodes[0], { current: false});
             console.log(graph.nodes[0]);
             console.log(graph.nodes[0].current);
         }

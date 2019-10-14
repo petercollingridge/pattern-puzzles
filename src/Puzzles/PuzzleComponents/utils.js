@@ -25,14 +25,14 @@ export function isColourable(item, chamber, {className="", onColour=null}={}) {
             // Remove exisiting colour
             item.colour = 0;
             colourUses[colour - 1]++;
-            if (onColour) { onColour(item); }
         } else if (colourUses[colour - 1] !== 0) {
             // Colour item
             item.colour = colour;
             colourUses[colour - 1]--;
-            if (onColour) { onColour(item); }
+            
         }
-        
+        console.log(colourUses);
+        if (onColour) { onColour(item); }
         chamber.setState({ colourPalette: colourUses })
         chamber.update();
     };
