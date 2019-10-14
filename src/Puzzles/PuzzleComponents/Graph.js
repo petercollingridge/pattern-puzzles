@@ -25,8 +25,11 @@ export const Graph = ({ edges=[], nodes=[], chamber, onColour }) =>
     </g>
 
 // A graph where the edges can be selected
-export const EdgeGraph = ({ edges=[], nodes=[], chamber, onColour }) =>
-    <g className="graph">
+export const EdgeGraph = ({ edges=[], nodes=[], chamber, onColour }) => {
+    // console.log('render');
+    // console.log(nodes)
+    // console.log(edges)
+    return <g className="graph">
         <g className="graph-edges">
             { edges.map((edge, i) => {
                 const dx = edge.x2 - edge.x1;
@@ -53,6 +56,7 @@ export const EdgeGraph = ({ edges=[], nodes=[], chamber, onColour }) =>
             )}
         </g>
     </g>
+}
 
 export const ColourableGraph = (graph, chamber) =>
     <Graph {...graph} chamber={chamber} />
@@ -123,19 +127,41 @@ export const ColourableEulerPath = (graph, chamber) => {
     // Set one node as the starting node
     const firstNode = graph.nodes[0];
     firstNode.current = true;
-    graph.edges.forEach(edge => {
-        // Disable any edge that is not connected to the first node
-        edge.fixed = (edge.node1 !== firstNode && edge.node2 !== firstNode);
-    });
     
+    const fixNonConnectedEdges = targetNode => {
+        graph.edges.forEach(edge => {
+            // Disable any edge that is not connected to the first node
+            edge.fixed = (edge.node1 !== targetNode && edge.node2 !== targetNode);
+        });
+    };
+
+    fixNonConnectedEdges(firstNode);
+
     // Function that updates graph state when an edge is coloured,
     // making only nodes next to the last coloured one colourable 
     const colour = chamber.state.selectedColour;
+
     const onColour = edge => {
         // Update selected nodes and which edges can be coloured
         if (edge.colour) {
-            console.log(edge);
+            if (!graph.path) { graph.path = []; }
+            graph.path.push(edge);
+
             // Update active node
+            if (edge.node1.current) {
+                edge.node1.current = false;
+                graph.nodes[0].current =  false;
+                // edge.node2.current = true;
+                fixNonConnectedEdges(edge.node2);
+            } else {
+                // edge.node1.current = true;
+                edge.node2.current = false;
+                fixNonConnectedEdges(edge.node1);
+            }
+
+            graph.nodes[0].current = false;
+            console.log(graph.nodes[0]);
+            console.log(graph.nodes[0].current);
         }
     };
 
