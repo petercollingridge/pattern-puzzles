@@ -8,6 +8,15 @@ export function shuffle(arr) {
     return arr;
 }
 
+// Returns an array of <item> repeated <n> times
+export function getRepeatArray(item, n) {
+    const arr = [];
+    for (let i = 0; i < n; i++) {
+        arr.push(item);
+    }
+    return arr;
+}
+
 export function getPermutations(arr) {
     const result = [];
   
@@ -31,6 +40,21 @@ export function getPermutations(arr) {
    permute(arr.slice().sort(), []);
   
    return result;
+}
+
+export function getCombinationsWithReplacement(arr, size) {
+    if (size === 0) { return [[]]; }
+    const result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        const firstItem = arr[i];
+        const subSequence = getCombinationsWithReplacement(arr.slice(i), size - 1);
+        subSequence.forEach((seq) => {
+            result.push([firstItem].concat(seq));
+        });
+    }
+
+    return result;
 }
 
 // Click enter or space triggers a given callback
