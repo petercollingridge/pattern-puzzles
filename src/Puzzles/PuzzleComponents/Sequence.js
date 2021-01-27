@@ -28,6 +28,7 @@ const Sequence = ({ sequence=[], y=0, chamber }) => {
 export const ColourableSequence = (puzzle, chamber) => 
     <Sequence {...puzzle} chamber={chamber}/>
 
+// Draw a set of linear graphs, one below the other
 export const Sequence2D = (puzzle, chamber) => {
     const graphs = puzzle.sequences;
     const size = 1.25 * getSize(Math.max(graphs.length, graphs[0].nodes.length));
