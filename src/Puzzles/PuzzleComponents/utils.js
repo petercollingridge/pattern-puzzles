@@ -31,7 +31,7 @@ export function isColourable(item, chamber, {className="", onColour=null}={}) {
             colourUses[colour - 1]--;
             
         }
-        console.log(colourUses);
+
         if (onColour) { onColour(item); }
         chamber.setState({ colourPalette: colourUses })
         chamber.update();

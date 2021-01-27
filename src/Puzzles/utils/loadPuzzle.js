@@ -3,7 +3,7 @@
  * display the puzzle and determine when the correct answer is found
 ***/
 
-import { shuffle, getPermutations } from '../../utils/common';
+import { shuffle, getPermutations, getCombinationsWithReplacement } from '../../utils/common';
 import { linearGraph } from './graphUtils';
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
@@ -110,6 +110,17 @@ export function getPermutationObject({ pattern }) {
     const permutationSet = new Set(permutations.map(permutation => permutation.join('-')))
 
     return { sequences, target: permutationSet };
+}
+
+export function getCombinationObject({ pattern, items }) {
+    //  Get an array of linear graphs
+    const sequences = pattern.map(sequence => getGraphObject(linearGraph(sequence)));
+
+    // Find all combinations based on the length of the first item in the pattern
+    const combinations = getCombinationsWithReplacement(items, pattern[0].length);
+    const combinationSet = new Set(combinations.map(combination => combination.join('-')))
+
+    return { sequences, target: combinationSet };
 }
 
 export function getGraphSequence({ graphs, answer }) {
