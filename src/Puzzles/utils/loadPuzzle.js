@@ -104,6 +104,7 @@ export function getPermutationObject({ pattern }) {
 
     //  Get an array of linear graphs
     const sequences = pattern.map(sequence => getGraphObject(linearGraph(sequence)));
+
     // Find all permutations based on the first item in the pattern
     const permutations = getPermutations(pattern[0]);
     const permutationSet = new Set(permutations.map(permutation => permutation.join('-')))

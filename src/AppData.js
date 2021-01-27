@@ -80,7 +80,7 @@ export const puzzleData = {
     },
     'permutations-1': {
         slug: 'permutations-1',
-        icon: PermutationIcons[0](),
+        icon: PermutationIcons[1](),
         component: () => PermutationPuzzles(1), 
     },
 };
@@ -108,7 +108,7 @@ function getData(name, n) {
 
 // Puzzle data grouped into categories
 export const puzzleLayout = [
-    getData('sequences', 3).concat( getData('permutations', 1)),
+    getData('sequences', 3).concat(getData('permutations', 2)),
     getData('categorisation', 5),
     getData('transformations', 4),
     getData('colour-graphs', 3),

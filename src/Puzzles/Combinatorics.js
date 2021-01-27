@@ -40,8 +40,17 @@ const puzzles1 = [
     }
 ];
 
-// Permutations using linear graphs
+// Given a set of rows of linear graphs
+// Colour them so you have all combinations of colours
 const puzzles2 = [
+    {
+        colourPalette: 2,
+        pattern: [[1, 1], [1, 2], [2, 0]],
+    }
+];
+
+// Permutations using linear graphs
+const puzzles3 = [
     {
         colourPalette: 2,
         loop: true,
@@ -57,7 +66,8 @@ const sequencesMatch = ({ sequences, target }) => {
     if (!sequences.every(graph => allItemsColoured(graph.nodes))) {
         return false;
     }
-    // Get a set of sequence values
+    // Get a set of sequence values,
+    // where a sequence value is a string of numbers separated by hypens, e.g. 1-2
     const sequenceSet = new Set(sequences.map(sequence => extractAttribute(sequence.nodes, 'colour').join('-')))
     
     // Check the this set of sequences matches the set of permutations
