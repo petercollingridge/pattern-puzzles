@@ -50,7 +50,7 @@ export const puzzleData = {
     },
     'categorisation-4': {
         slug: 'categorisation-4',
-        icon: CategorisationIcons[3](),
+        icon: CategorisationIcons[4](),
         component: () => Categorisation(4),
     },
     'graph-theory-0': {
