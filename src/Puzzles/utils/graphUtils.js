@@ -40,6 +40,9 @@ export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
     return nodes;
 }
 
+// Given a <start> and <stop> value, return an array of arrays,
+// where each sub-array is a pair of consequtive values between <start> and <stop>
+// e.g. (3, 6) => [[3, 4], [4, 5], [5, 6]]
 export function getLineOfEdges(start, stop) {
     if (stop === undefined) {
         stop = start - 1;
@@ -76,7 +79,7 @@ export function linearGraph(colours, params={}) {
     colours = getArray(colours, colour);
     
     const n = colours.length;
-    const startX = - (n - 1) * scale / 2;
+    const startX = (1 - n) * scale / 2;
     const nodes = colours.map((colour, i) => [startX + i * scale, 0, colour])
     const edges = getLineOfEdges(n);
 
