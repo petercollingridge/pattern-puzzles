@@ -51,9 +51,9 @@ export const EdgeGraph = ({ edges=[], nodes=[], chamber, onColour }) => {
                 return <rect
                     key={i}
                     transform={`translate(${edge.x1} ${edge.y1}) rotate(${angle})`}
-                    y={-4}
+                    y={-3}
                     width={length}
-                    height={8}
+                    height={6}
                     {...isColourable(edge, chamber, { onColour })}
                 />
             })}
