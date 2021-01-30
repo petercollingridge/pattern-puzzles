@@ -99,9 +99,6 @@ export function getSequenceObject({ pattern, answer }) {
 }
 
 export function getPermutationObject({ pattern }) {
-    //  Get an array of sequences
-    // const sequences = pattern.map(sequence => sequence.map(colourNumberToColourObject));
-
     //  Get an array of linear graphs
     const sequences = pattern.map(sequence => getGraphObject(linearGraph(sequence)));
 

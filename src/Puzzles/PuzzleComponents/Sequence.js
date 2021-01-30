@@ -41,9 +41,8 @@ export const Sequence2D = (puzzle, chamber) => {
     );
 }
 
-export const GraphSequence = (puzzle, chamber) => {
-    const sequence = puzzle.sequence;
-
+// Draw a set of graph, one after another
+export const GraphSequence = ({ sequence }, chamber) => {
     let size = Math.min(120, 240 / sequence.length);
     const scale = Math.min(1, size / 90);
     size /= scale;
