@@ -40,18 +40,8 @@ const puzzles1 = [
     }
 ];
 
-// Given a set of rows of linear graphs
-// Colour them so you have all combinations of colours
-const puzzles2 = [
-    {
-        colourPalette: 2,
-        items: [1, 2],
-        pattern: [[1, 1], [1, 2], [2, 0]],
-    }
-];
-
 // Permutations using linear graphs
-const puzzles3 = [
+const puzzles2 = [
     {
         colourPalette: 2,
         loop: true,
