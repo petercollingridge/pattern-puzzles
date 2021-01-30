@@ -1,8 +1,13 @@
+/****************************************************************
+ * Graph object consisting of node and edges.
+ * Both nodes and edges may be coloured or colourable.
+*****************************************************************/
 import React from 'react';
 import { Line } from './Primitives';
 import { isColourable } from './utils';
 
 
+// A connection between two nodes
 function Edge(props) {
     const flashing = props.flashing ? 'flashing' : '';
     const edgeColour = props.colour ? `stroke-${ props.colour }`: '';

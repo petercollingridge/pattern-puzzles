@@ -12,7 +12,7 @@ export function allConnectedItemsHaveDifferentColours(cxns=[]) {
     // Colour any edge that connects two nodes of the same colour
     let matches = 0;
     cxns.forEach((cxn) => {
-        if (cxn.node1.colour === cxn.node2.colour) {
+        if (cxn.node1.colour && cxn.node1.colour === cxn.node2.colour) {
             cxn.colour = cxn.node1.colour;
             cxn.flashing = true;
             matches++;
@@ -25,8 +25,8 @@ export function allConnectedItemsHaveDifferentColours(cxns=[]) {
 }
 
 export const graphIsChromatic = ({ nodes, edges }) => 
-    allItemsColoured(nodes) &&
-    allConnectedItemsHaveDifferentColours(edges);
+    allConnectedItemsHaveDifferentColours(edges) &&
+    allItemsColoured(nodes);
 
 export const sequencesMatch = (seq1, seq2, attr) => {
     if (seq1.length !== seq2.length) { return false; }
