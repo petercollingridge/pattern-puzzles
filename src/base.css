@@ -122,6 +122,16 @@ main {
   to { stroke-width: 3; }
 } */
 
+.flashing {
+    animation: blinker 1s linear infinite;
+}
+    
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
 .graph .graph-nodes,
 .graph .graph-edges {
     fill: #aaa;

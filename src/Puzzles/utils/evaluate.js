@@ -9,8 +9,19 @@ export const allItemsColoured = (items=[]) => allItemsHaveValue(items, 'colour')
 export const extractAttribute = (items=[], attr) => items.map(item => item[attr]);
 
 export function allConnectedItemsHaveDifferentColours(cxns=[]) {
-    const failingCxns = cxns.filter(cxn => cxn.node1.colour === cxn.node2.colour);
-    return failingCxns.length === 0;
+    // Colour any edge that connects two nodes of the same colour
+    let matches = 0;
+    cxns.forEach((cxn) => {
+        if (cxn.node1.colour === cxn.node2.colour) {
+            cxn.colour = cxn.node1.colour;
+            cxn.flashing = true;
+            matches++;
+        } else {
+            cxn.colour = null;
+            cxn.flashing = false;
+        }
+    });
+    return matches === 0;
 }
 
 export const graphIsChromatic = ({ nodes, edges }) => 

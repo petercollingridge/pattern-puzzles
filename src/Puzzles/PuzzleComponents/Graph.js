@@ -3,16 +3,22 @@ import { Line } from './Primitives';
 import { isColourable } from './utils';
 
 
+function Edge(props) {
+    const flashing = props.flashing ? 'flashing' : '';
+    const edgeColour = props.colour ? `stroke-${ props.colour }`: '';
+    return (
+        <g className={flashing}>
+            <Line className="edge-outline" {...props} />
+            <Line className={edgeColour} {...props} />
+        </g>
+    );
+}
+
 // Display a graph in which the nodes have the potential to be coloured
 export const Graph = ({ edges=[], nodes=[], chamber, onColour }) =>
     <g className="graph">
         <g className="graph-edges">
-            { edges.map((edge, i) =>
-                <g key={i}>
-                    <Line className="edge-outline" {...edge} />
-                    <Line className={edge.active ? `stroke-${ edge.active }`: null} {...edge} />
-                </g>
-            )}
+            { edges.map((edge, i) => <Edge key={i} {...edge} /> )}
         </g>
         <g className="graph-nodes">
             { nodes.map((node, i) => 
