@@ -40,9 +40,13 @@ const puzzles1 = [
     }
 ];
 
-// Permutations using linear graphs
+// Permutations of colours on looped graphs
 const puzzles2 = [
     {
+        colourPalette: 2,
+        loop: true,
+        pattern: [[1, 1, 1], [1, 1, 2], [1, 2, 2], [0, 0, 0]],
+    }, {
         colourPalette: 2,
         loop: true,
         pattern: [[1, 1, 2, 2], [2, 1, 2, 0]],
@@ -66,9 +70,14 @@ const sequencesMatch = ({ sequences, target }) => {
         [...sequenceSet].every(value => target.has(value));
 }
 
-export const PermutationPuzzles = (n) =>
-     <PuzzlePage
-        puzzles={puzzles[n]}
-        evaluate={sequencesMatch}
-        getPuzzleObject={getPermutationObject}
-        displayPuzzle={Sequence2D} />
+export const PermutationPuzzles = (n) => {
+    const puzzle = puzzle[n];
+    const sequences = puzzle.pattern.map(sequence => getGraphObject(linearGraph(sequence)));
+    return (
+        <PuzzlePage
+            puzzles={puzzles[n]}
+            evaluate={sequencesMatch}
+            getPuzzleObject={getPermutationObject}
+            displayPuzzle={Sequence2D} />
+    );
+}
