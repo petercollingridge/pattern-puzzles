@@ -26,7 +26,7 @@ class PuzzlePage extends React.Component {
 
         this.state = {
             index,
-			solved: false,
+            solved: false,
             selectedColour: null,
         }
 
@@ -44,6 +44,7 @@ class PuzzlePage extends React.Component {
 
     getPuzzle(index) {
         const { getPuzzleObject, puzzles } = this.props;
+        const getSolutionObject = this.props.getSolutionObject || (puzzle => puzzle);
         const puzzle = puzzles[index];
 
         // If colourPallete is a number then convert it into an array of -1s
@@ -55,6 +56,7 @@ class PuzzlePage extends React.Component {
         if (puzzle) {
             this.setState({
                 puzzle: getPuzzleObject(puzzle),
+                solution: getSolutionObject(puzzle),
                 clearButton: puzzle.clearButton,
                 colourPalette,
             });
@@ -81,8 +83,8 @@ class PuzzlePage extends React.Component {
 
     // Child element has updated so evaluate to see if puzzle has been solved
     update() {
-        const puzzle = this.state.puzzle;
-        const solved = this.props.evaluate(puzzle);
+        const { puzzle, solution } = this.state;
+        const solved = this.props.evaluate(puzzle, solution);
         this.setState({ puzzle, solved });
     }
 

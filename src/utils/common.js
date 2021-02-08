@@ -8,6 +8,15 @@ export function shuffle(arr) {
     return arr;
 }
 
+// Get an array of [1, 2, 3, ..., n]
+export function getArrayOfN(n) {
+    const arr = [];
+    for (let i = 1; i <= n; i++) {
+        arr.push(i)
+    }
+    return arr;
+}
+
 // Returns an array of <item> repeated <n> times
 export function getRepeatArray(item, n) {
     const arr = [];
