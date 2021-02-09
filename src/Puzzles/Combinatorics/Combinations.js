@@ -6,8 +6,9 @@ import React from 'react';
 
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { Sequence2D } from '../PuzzleComponents/Sequence';
-import { getCombinationObject } from '../utils/loadPuzzle';
-import { allItemsColoured, extractAttribute } from '../utils/evaluate';
+import { getLinearGraphs } from '../utils/loadPuzzle';
+import { getCombinationsWithReplacement, getArrayOfN } from '../../utils/common';
+import { sequenceSetMatches } from '../utils/evaluate';
 
 
 // Given a set of rows of linear graphs
@@ -35,23 +36,25 @@ const puzzles1 = [
 const puzzles = [puzzles1];
 
 // Check the the given set of sequences matches a set of sequences.
-const sequencesMatch = ({ sequences, target }) => {
-    // Check all the sequences are fully coloured
-    if (!sequences.every(graph => allItemsColoured(graph.nodes))) {
-        return false;
-    }
-    // Get a set of sequence values,
-    // where a sequence value is a string of numbers separated by hypens, e.g. 1-2
-    const sequenceSet = new Set(sequences.map(sequence => extractAttribute(sequence.nodes, 'colour').sort().join('-')))
-    
-    // Check the this set of sequences matches the set of permutations
-    return (sequenceSet.size === target.size) &&
-        [...sequenceSet].every(value => target.has(value));
-}
+const getSolutionSet = ({ colourPalette, pattern }) => {
+    const combinationLength = pattern[0].length;
 
-export const CombinationPuzzles = (n) =>
-     <PuzzlePage
-        puzzles={puzzles[n]}
-        evaluate={sequencesMatch}
-        getPuzzleObject={getCombinationObject}
-        displayPuzzle={Sequence2D} />
+    // Find all combinations using this colour palette
+    const colours = getArrayOfN(colourPalette);
+    const permutations = getCombinationsWithReplacement(colours, combinationLength);
+    const permutationSet = new Set(permutations.map(permutation => permutation.join('-')))
+
+    return permutationSet
+};
+
+export const CombinationPuzzles = (n) => {
+    const puzzle = puzzles[n];
+    return (
+        <PuzzlePage
+            puzzles={puzzle}
+            evaluate={sequenceSetMatches}
+            getPuzzleObject={getLinearGraphs}
+            getSolutionObject={getSolutionSet}
+            displayPuzzle={Sequence2D} />
+    );
+}

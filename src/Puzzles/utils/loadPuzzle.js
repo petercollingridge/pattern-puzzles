@@ -43,6 +43,12 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
     };
 }
 
+// Get an array of array of numbers, return an array of linear graph objects
+export function getLinearGraphs({ pattern }) {
+    const sequences = pattern.map(sequence => getGraphObject(linearGraph(sequence)));
+    return { sequences };
+}
+
 // Given arrays of node coordinates and edge coordinates, return two objects of nodes and edges,
 // one includes the node colours and one is empty
 export function getGraphAndUncolouredCopy({ nodes=[], edges=[], size=32, r=8 }) {
@@ -96,12 +102,6 @@ export function getSequenceObject({ pattern, answer }) {
     });
 
     return { sequence, target };
-}
-
-export function getPermutationObject({ pattern }) {
-    //  Get an array of linear graphs
-    const sequences = pattern.map(sequence => getGraphObject(linearGraph(sequence)));
-    return { sequences };
 }
 
 export function getCombinationObject({ pattern, items }) {

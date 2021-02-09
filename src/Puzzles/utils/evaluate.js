@@ -8,6 +8,21 @@ export const allItemsColoured = (items=[]) => allItemsHaveValue(items, 'colour')
 
 export const extractAttribute = (items=[], attr) => items.map(item => item[attr]);
 
+// Check the the given set of sequences matches a set of sequences.
+export const sequenceSetMatches = ({ sequences }, target) => {
+    // Check all the sequences are fully coloured
+    if (!sequences.every(graph => allItemsColoured(graph.nodes))) {
+        return false;
+    }
+
+    // Get a set of sequence values,
+    // where a sequence value is a string of numbers separated by hypens, e.g. 1-2
+    const sequenceSet = new Set(sequences.map(sequence => extractAttribute(sequence.nodes, 'colour').join('-')))
+
+    // Check the this set of sequences matches the set of permutations
+    return (sequenceSet.size === target.size) && [...sequenceSet].every(value => target.has(value));
+};
+
 export function allConnectedItemsHaveDifferentColours(cxns=[]) {
     // Colour any edge that connects two nodes of the same colour
     let matches = 0;
