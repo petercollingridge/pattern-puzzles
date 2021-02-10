@@ -6,7 +6,7 @@ import React from 'react';
 
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { Sequence2D } from '../PuzzleComponents/Sequence';
-import { getLinearGraphs } from '../utils/loadPuzzle';
+import { getGraphSet } from '../utils/loadPuzzle';
 import { getCombinationsWithReplacement, getArrayOfN } from '../../utils/common';
 import { sequenceSetMatches } from '../utils/evaluate';
 
@@ -53,7 +53,7 @@ export const CombinationPuzzles = (n) => {
         <PuzzlePage
             puzzles={puzzle}
             evaluate={sequenceSetMatches}
-            getPuzzleObject={getLinearGraphs}
+            getPuzzleObject={getGraphSet}
             getSolutionObject={getSolutionSet}
             displayPuzzle={Sequence2D} />
     );

@@ -40,6 +40,43 @@ export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
     return nodes;
 }
 
+export function graphBBox({ nodes }) {
+    if (nodes.length === 0) {
+        return { x1: 0, x2: 0, y1: 0, y2: 0 };
+    }
+
+    let x1 = nodes[0].x - nodes[0].r;
+    let x2 = nodes[0].x + nodes[0].r;
+    let y1 = nodes[0].y - nodes[0].r;
+    let y2 = nodes[0].y + nodes[0].r;
+
+    for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        if (node.x - node.r < x1) {
+            x1 = node.x - node.r;
+        }
+        if (node.x + node.r > x2) {
+            x2 = node.x + node.r;
+        }
+        if (node.y - node.r < y1) {
+            y1 = node.y - node.r;
+        }
+        if (node.y + node.r > y2) {
+            y2 = node.xy+ node.r;
+        }
+    }
+
+    return { x1, x2, y1, y2 };
+}
+
+export function getGraphSize(graph) {
+    const bbox = graphBBox(graph);
+    return {
+        width: bbox.x2 - bbox.x1,
+        height: bbox.y2 - bbox.y1
+    };
+}
+
 // Given a <start> and <stop> value, return an array of arrays,
 // where each sub-array is a pair of consequtive values between <start> and <stop>
 // e.g. (3, 6) => [[3, 4], [4, 5], [5, 6]]

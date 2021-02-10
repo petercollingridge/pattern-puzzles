@@ -5,10 +5,10 @@
 import React from 'react';
 
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
-import { Sequence2D } from '../PuzzleComponents/Sequence';
-import { getPermutations} from '../../utils/common';
-import { getLinearGraphs } from '../utils/loadPuzzle';
+import { Sequence2D, GraphRow } from '../PuzzleComponents/Sequence';
+import { getGraphSet } from '../utils/loadPuzzle';
 import { sequenceSetMatches } from '../utils/evaluate';
+import { getPermutations} from '../../utils/common';
 
 
 // Given a set of rows of linear graphs
@@ -68,8 +68,8 @@ export const PermutationPuzzles = (n) => {
         <PuzzlePage
             puzzles={puzzles[n]}
             evaluate={sequenceSetMatches}
-            getPuzzleObject={getLinearGraphs}
+            getPuzzleObject={getGraphSet}
             getSolutionObject={getSolutionSet}
-            displayPuzzle={Sequence2D} />
+            displayPuzzle={GraphRow} />
     );
 }

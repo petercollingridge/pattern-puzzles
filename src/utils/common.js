@@ -1,3 +1,11 @@
+export function sum(arr, func) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += func ? func(arr[i]) : arr[i];
+    }
+    return sum;
+}
+
 export function shuffle(arr) {
     for (let i = arr.length; i--; ) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -72,3 +80,13 @@ export const handleKeyDown = (evt, callback) => {
         callback();
     }
 };
+
+export function hashCode(str) {
+    let hash = 0, i, chr;
+    for (i = 0; i < str.length; i++) {
+        chr = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0;
+    }
+    return hash;
+}

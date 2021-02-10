@@ -4,7 +4,7 @@
 ***/
 
 import { shuffle, getCombinationsWithReplacement } from '../../utils/common';
-import { linearGraph } from './graphUtils';
+import { linearGraph, loopGraph } from './graphUtils';
 
 // Given arrays of node coordinates and edge coordinates, return an object of nodes and edges
 export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
@@ -43,9 +43,11 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
     };
 }
 
-// Get an array of array of numbers, return an array of linear graph objects
-export function getLinearGraphs({ pattern }) {
-    const sequences = pattern.map(sequence => getGraphObject(linearGraph(sequence)));
+// Given an array of arrays of numbers, return an array of graph objects
+// These can be linear graphs or looped graphs
+export function getGraphSet({ pattern, loop }) {
+    const graphType = loop ? loopGraph : linearGraph;
+    const sequences = pattern.map(sequence => getGraphObject(graphType(sequence)));
     return { sequences };
 }
 
