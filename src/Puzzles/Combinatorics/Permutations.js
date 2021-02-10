@@ -6,7 +6,7 @@ import React from 'react';
 
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { Sequence2D } from '../PuzzleComponents/Sequence';
-import { getCombinationsWithReplacement, getArrayOfN } from '../../utils/common';
+import { getPermutations} from '../../utils/common';
 import { getLinearGraphs } from '../utils/loadPuzzle';
 import { sequenceSetMatches } from '../utils/evaluate';
 
@@ -41,7 +41,8 @@ const puzzles1 = [
     }
 ];
 
-// Permutations of colours on looped graphs
+// Permutations of colours on looped graphs, so rotations count as the same thing.
+// e.g. [1,2,1]
 const puzzles2 = [
     {
         colourPalette: 2,
@@ -56,22 +57,16 @@ const puzzles2 = [
 
 const puzzles = [puzzles1, puzzles2];
 
-const getSolutionSet = ({ colourPalette, pattern }) => {
-    const combinationLength = pattern[0].length;
-
-    // Find all combinations using this colour palette
-    const colours = getArrayOfN(colourPalette);
-    const permutations = getCombinationsWithReplacement(colours, combinationLength);
-    const permutationSet = new Set(permutations.map(permutation => permutation.join('-')))
-
-    return permutationSet
+// Return the set of all permutation of colours based on the first pattern in the pattern array
+const getSolutionSet = ({ pattern }) => {
+    const permutations = getPermutations(pattern[0]);
+    return new Set(permutations.map(permutation => permutation.join('-')))
 };
 
 export const PermutationPuzzles = (n) => {
-    const puzzle = puzzles[n];
     return (
         <PuzzlePage
-            puzzles={puzzle}
+            puzzles={puzzles[n]}
             evaluate={sequenceSetMatches}
             getPuzzleObject={getLinearGraphs}
             getSolutionObject={getSolutionSet}
