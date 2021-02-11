@@ -5,7 +5,7 @@
 import React from 'react';
 
 import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
-import { ColourableSequence, GraphSequence } from './PuzzleComponents/Sequence';
+import { ColourableSequence, GraphRow } from './PuzzleComponents/Sequence';
 import { getSequenceObject, getGraphSequence } from './utils/loadPuzzle';
 import { sequencesMatch } from './utils/evaluate';
 import { triangleGraph, squareGraph } from './utils/graphUtils';
@@ -106,35 +106,35 @@ const s2121 = squareGraph([2, 1, 2, 1]);
 const puzzles3 = [
     {
         colourPalette: 1,
-        graphs: [t1, t1, t1, null],
+        sequence: [t1, t1, t1, null],
         answer: [t1]
     }, {
         colourPalette: 2,
-        graphs: [t1, t2, t1, t2, null],
+        sequence: [t1, t2, t1, t2, null],
         answer: [t1]
     }, {
         colourPalette: 2,
-        graphs: [t112, t221, t112, t221, null],
+        sequence: [t112, t221, t112, t221, null],
         answer: [t112]
     }, {
         colourPalette: 2,
-        graphs: [s1122, s2211, s1122, s2211, null],
+        sequence: [s1122, s2211, s1122, s2211, null],
         answer: [s1122]
     }, {
         colourPalette: 2,
-        graphs: [s1212, s2121, s1212, s2121, s1212, null],
+        sequence: [s1212, s2121, s1212, s2121, s1212, null],
         answer: [s2121]
     }, {
         colourPalette: 2,
-        graphs: [s1122, s1221, s2211, null],
+        sequence: [s1122, s1221, s2211, null],
         answer: [s2112]
     }, {
         colourPalette: 2,
-        graphs: [t112, t121, t211, t112, t121, null],
+        sequence: [t112, t121, t211, t112, t121, null],
         answer: [t211]
     }, {
         colourPalette: 3,
-        graphs: [t123, t231, t312, t123, null],
+        sequence: [t123, t231, t312, t123, null],
         answer: [t312]
     }
 ];
@@ -161,6 +161,6 @@ export const Sequences = (n) => {
             puzzles={puzzles[n]}
             evaluate={correctGraphSequence}
             getPuzzleObject={getGraphSequence}
-            displayPuzzle={GraphSequence} />
+            displayPuzzle={GraphRow} />
     }
 }

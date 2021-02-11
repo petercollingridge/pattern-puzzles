@@ -43,14 +43,6 @@ export function getGraphObject({ nodes=[], edges=[], size=32, r=8, colour }) {
     };
 }
 
-// Given an array of arrays of numbers, return an array of graph objects
-// These can be linear graphs or looped graphs
-export function getGraphSet({ pattern, loop }) {
-    const graphType = loop ? loopGraph : linearGraph;
-    const sequences = pattern.map(sequence => getGraphObject(graphType(sequence)));
-    return { sequences };
-}
-
 // Given arrays of node coordinates and edge coordinates, return two objects of nodes and edges,
 // one includes the node colours and one is empty
 export function getGraphAndUncolouredCopy({ nodes=[], edges=[], size=32, r=8 }) {
@@ -117,14 +109,23 @@ export function getCombinationObject({ pattern, items }) {
     return { sequences, target: combinationSet };
 }
 
-export function getGraphSequence({ graphs, answer }) {
-    const sequence = [];
+// Given an array of arrays of numbers, return an array of graph objects
+// These can be linear graphs or looped graphs
+export function getGraphSet({ graphs, loop }) {
+    const graphType = loop ? loopGraph : linearGraph;
+    const sequence = graphs.map(graph => getGraphObject(graphType(graph)));
+    return { sequence };
+}
+
+// TODO: Combine with getGraphSet
+export function getGraphSequence({ sequence, answer }) {
+    const graphs = [];
     const target = [];
 
     let n = 0;
-    graphs.forEach(graph => {
+    sequence.forEach(graph => {
         if (graph) {
-            sequence.push(getGraphObject(graph));
+            graphs.push(getGraphObject(graph));
             target.push(getGraphObject(graph));
         } else {
             // Target sequence is the starting sequence with any nulls replaced by the answer graphs
@@ -138,13 +139,13 @@ export function getGraphSequence({ graphs, answer }) {
                 node.colour = 0;
             });
 
-            sequence.push(blankGraph);
+            graphs.push(blankGraph);
             target.push(answerGraph);
             n++;
         }
     });
 
-    return { sequence, target };
+    return { sequence: graphs, target };
 }
 
 // Return an array of category object which have a colour, and an object to display

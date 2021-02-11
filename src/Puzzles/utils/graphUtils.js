@@ -40,7 +40,7 @@ export function getNodesOnCircle(colours, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
     return nodes;
 }
 
-export function graphBBox({ nodes }) {
+export function getGraphBBox({ nodes }) {
     if (nodes.length === 0) {
         return { x1: 0, x2: 0, y1: 0, y2: 0 };
     }
@@ -66,15 +66,7 @@ export function graphBBox({ nodes }) {
         }
     }
 
-    return { x1, x2, y1, y2 };
-}
-
-export function getGraphSize(graph) {
-    const bbox = graphBBox(graph);
-    return {
-        width: bbox.x2 - bbox.x1,
-        height: bbox.y2 - bbox.y1
-    };
+    return { x1, y1, width: x2 - x1, height: y2 - y1 };
 }
 
 // Given a <start> and <stop> value, return an array of arrays,
