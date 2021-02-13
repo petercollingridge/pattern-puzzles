@@ -150,7 +150,7 @@ export const ColourableEulerPath = (graph, chamber) => {
 
     // Function that updates graph state when an edge is coloured,
     // making only nodes next to the last coloured one colourable 
-    const colour = chamber.state.selectedColour;
+    // const colour = chamber.state.selectedColour;
 
     const onColour = edge => {
         // Update selected nodes and which edges can be coloured
@@ -173,8 +173,6 @@ export const ColourableEulerPath = (graph, chamber) => {
 
             graph.nodes[0].current = false;
             graph.nodes[0] = Object.assign(graph.nodes[0], { current: false});
-            console.log(graph.nodes[0]);
-            console.log(graph.nodes[0].current);
         }
     };
 
