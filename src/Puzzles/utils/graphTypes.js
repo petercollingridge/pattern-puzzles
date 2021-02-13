@@ -1,9 +1,9 @@
+import { nTimes } from '../../utils/common';
 import {
     getArray,
     getLineOfEdges,
     getLoopOfEdges,
     getNodesOnCircle,
-    nTimes,
     subdivideGraph,
 } from './graphUtils';
 

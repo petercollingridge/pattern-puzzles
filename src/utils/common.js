@@ -25,6 +25,11 @@ export function getArrayOfN(n) {
     return arr;
 }
 
+// Get an array of values from calling function <func> n times
+export function nTimes(n, func) {
+    return Array.from({ length: n }).map(func);
+}
+
 // Returns an array of <item> repeated <n> times
 export function getRepeatArray(item, n) {
     const arr = [];

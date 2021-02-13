@@ -37,12 +37,14 @@ export function ColourableSequence(puzzle, chamber) {
 // Given an array of sequences, draw each graph in the sequence, one after another
 export function GraphRow({ sequence }, chamber) {
     // Get size of graphs with 10% for the gap
-    const GAP = 0.1
+    const GAP = sequence.gap || 0.1
 
     const n = sequence.length;
     let totalWidth = sum(sequence.map(getGraphBBox), graph => graph.width);
-    const gapSize = GAP * totalWidth / (n + 1);
+    const gapSize = GAP * totalWidth / (n - 1);
+
     if (n > 1) { totalWidth *= (1 + GAP); }
+
     const scale = Math.min(1, 240 / totalWidth);
     totalWidth *= scale;
 

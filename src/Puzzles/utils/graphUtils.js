@@ -1,3 +1,5 @@
+import { nTimes } from '../../utils/common';
+
 // If arr is not an array return an empty array with that length
 // If arr is a number, then return an array with n items with the given value
 // Allows colours to be a number or an array of numbers
@@ -6,11 +8,6 @@ export function getArray(arr, value) {
         return arr;
     }
     return nTimes(arr, (_) => value);
-}
-
-// Get an array of values from calling function <func> n times
-export function nTimes(n, func) {
-    return Array.from({ length: n }).map(func);
 }
 
 export function getPointsOnACircle(n, {r=1, offsetAngle=0, dx=0, dy=0}={}) {
