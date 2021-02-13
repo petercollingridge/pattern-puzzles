@@ -10,9 +10,7 @@ import { getGraphObject } from '../utils/loadPuzzle';
 import { ColourableEulerPath } from '../PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../utils/evaluate';
-import {
-    loopGraph,
-} from '../utils/graphUtils';
+import { loopGraph } from '../utils/graphTypes';
 
 
 const puzzles = [

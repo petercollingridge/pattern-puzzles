@@ -13,12 +13,14 @@ import {
     prismGraph,
     antiPrismGraph,
     gearGraph,
+} from './utils/graphTypes';
+import {
     getPointsOnACircle,
     getNodesOnCircle,
     getLineOfEdges,
     getLoopOfEdges,
-    subdivideGraph
-} from './utils/graphUtils';
+    subdivideGraph,
+}  from './utils/graphUtils';
 import { sequencesAreEquivalent } from './utils/evaluate';
 
 

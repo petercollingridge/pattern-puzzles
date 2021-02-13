@@ -9,11 +9,11 @@ import { getGraphObject } from '../utils/loadPuzzle';
 import { ColourablePath } from '../PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../utils/evaluate';
+import { loopGraph } from '../utils/graphTypes';
 import {
     getNodesOnCircle,
     getLoopOfEdges,
     getLineOfEdges,
-    loopGraph,
 } from '../utils/graphUtils';
 
 

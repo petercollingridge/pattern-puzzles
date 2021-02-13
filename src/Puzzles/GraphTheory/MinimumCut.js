@@ -9,13 +9,8 @@ import React from 'react';
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { getGraphObject } from '../utils/loadPuzzle';
 import { ColourableEdgeGraph } from '../PuzzleComponents/Graph';
-
-import {
-    getNodesOnCircle,
-    linearGraph,
-    loopGraph,
-    getLoopOfEdges
-} from '../utils/graphUtils';
+import { linearGraph, loopGraph } from '../utils/graphTypes';
+import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 import { graphIsDisjoint } from '../utils/evaluate';
 
 

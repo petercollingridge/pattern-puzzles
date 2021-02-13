@@ -11,14 +11,8 @@ import { getGraphObject } from '../utils/loadPuzzle';
 import { DominatingSet } from '../PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../utils/evaluate';
-import {
-    getNodesOnCircle,
-    getLoopOfEdges,
-    connectNodeToNodes,
-    linearGraph,
-    loopGraph,
-    spokeGraph,
-} from '../utils/graphUtils';
+import { getNodesOnCircle, getLoopOfEdges, connectNodeToNodes } from '../utils/graphUtils';
+import { linearGraph, loopGraph, spokeGraph } from '../utils/graphTypes';
 
 
 const puzzles = [
