@@ -1,8 +1,23 @@
 import {
+    nTimes,
     getRepeatArray,
     getPermutations,
-    getCombinationsWithReplacement
+    getCombinationsWithReplacement,
+    getPermutationsWithReplacement,
 } from '../utils/common';
+
+
+describe('nTimes', () => {
+    const sq = (_, n) => n * n;
+
+    it('returns an empty array when n = 0', () => {
+        expect(nTimes(0, sq).length).toBe(0);
+    });
+
+    it('calls function n times', () => {
+        expect(nTimes(4, sq)).toEqual([0, 1, 4, 9]);
+    });
+});
 
 describe('getRepeatArray', () => {
     it('returns an empty array when size is 0', () => {
@@ -77,6 +92,39 @@ describe('getCombinationsWithReplacement', () => {
         expect(getCombinationsWithReplacement([1, 2, 3], 2)).toEqual([
             [1, 1], [1, 2], [1, 3],
             [2, 2], [2, 3], [3, 3],
+        ]);
+    });
+});
+
+describe('getPermutationsWithReplacement', () => {
+    it('returns an array containing an empty when given an empty array', () => {
+        expect(getPermutationsWithReplacement([1, 2], 0)).toEqual([[]]);
+    });
+
+    it('returns each item when size is 1', () => {
+        expect(getPermutationsWithReplacement([1, 2], 1)).toEqual([
+            [1], [2]
+        ]);
+    });
+
+    it('returns all combinations for size = 2', () => {
+        expect(getPermutationsWithReplacement([1, 2], 2)).toEqual([
+            [1, 1], [1, 2], [2, 1], [2, 2]
+        ]);
+    });
+
+    it('returns all combinations for size = 3', () => {
+        expect(getPermutationsWithReplacement([1, 2], 3)).toEqual([
+            [1, 1, 1], [1, 1, 2], [1, 2, 1], [1, 2, 2],
+            [2, 1, 1], [2, 1, 2], [2, 2, 1], [2, 2, 2],
+        ]);
+    });
+
+    it('returns all combinations with 3 items', () => {
+        expect(getPermutationsWithReplacement([1, 2, 3], 2)).toEqual([
+            [1, 1], [1, 2], [1, 3],
+            [2, 1], [2, 2], [2, 3],
+            [3, 1], [3, 2], [3, 3]
         ]);
     });
 });

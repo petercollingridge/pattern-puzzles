@@ -64,6 +64,22 @@ export function getPermutations(arr) {
    return result;
 }
 
+// Return all possible sequences of colours
+// e.g. ([1, 2], 2) => (1, 1), (1, 2), (2, 1), (2, 2)
+export function getPermutationsWithReplacement(colours, size) {
+    if (size === 0) { return [[]]; }
+
+    const result = [];
+    for (let j = 0; j < colours.length; j++) {
+        const subSequence = getPermutationsWithReplacement(colours, size - 1);
+        subSequence.forEach((seq) => {
+            result.push([colours[j]].concat(seq));
+        });
+    }
+
+    return result;
+}
+
 export function getCombinationsWithReplacement(arr, size) {
     if (size === 0) { return [[]]; }
     const result = [];
