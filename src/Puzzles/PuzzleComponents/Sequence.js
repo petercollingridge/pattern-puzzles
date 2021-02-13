@@ -42,7 +42,7 @@ export function GraphRow({ sequence }, chamber) {
     const n = sequence.length;
     let totalWidth = sum(sequence.map(getGraphBBox), graph => graph.width);
     const gapSize = GAP * totalWidth / (n + 1);
-    totalWidth *= (1 + GAP);
+    if (n > 1) { totalWidth *= (1 + GAP); }
     const scale = Math.min(1, 240 / totalWidth);
     totalWidth *= scale;
 
@@ -68,8 +68,9 @@ export function GraphColumn({ sequence }, chamber) {
 
     const n = sequence.length;
     let totalHeight = sum(sequence.map(getGraphBBox), graph => graph.height);
+
     const gapSize = GAP * totalHeight / (n + 1);
-    totalHeight *= (1 + GAP);
+    if (n > 1) { totalHeight *= (1 + GAP); }
     const scale = Math.min(1, 240 / totalHeight);
     totalHeight *= scale;
 

@@ -62,7 +62,7 @@ export function getGraphBBox({ nodes }) {
             y1 = node.y - node.r;
         }
         if (node.y + node.r > y2) {
-            y2 = node.xy+ node.r;
+            y2 = node.y + node.r;
         }
     }
 
