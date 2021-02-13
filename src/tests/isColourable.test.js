@@ -1,4 +1,4 @@
-import { isColourable } from '../Puzzles/PuzzleComponents/utils';
+import { isColourable } from '../Puzzles/utils/isColourable';
 
 
 describe('isColourable', () => {

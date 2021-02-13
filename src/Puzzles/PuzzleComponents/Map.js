@@ -1,5 +1,5 @@
 import React from 'react';
-import { isColourable } from './utils';
+import { isColourable } from '../utils/isColourable';
 
 
 export const Map = ({ regions=[], chamber }) =>

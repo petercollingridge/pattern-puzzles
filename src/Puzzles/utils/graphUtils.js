@@ -199,6 +199,7 @@ export function gearGraph(n, params={}) {
     return graph;
 }
 
+// Given a graph, add a node along each existing edge
 export function subdivideGraph(graph) {
     const newEdges = [];
     const nodes = graph.nodes;

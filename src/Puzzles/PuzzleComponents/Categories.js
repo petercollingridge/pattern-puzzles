@@ -1,6 +1,6 @@
 import React from 'react';
 import { getPointsOnACircle } from '../utils/graphUtils';
-import { isColourable } from './utils';
+import { isColourable } from '../utils/isColourable';
 
 
 const getCirclePackedInCircle = (R, n) => {

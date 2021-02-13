@@ -1,7 +1,7 @@
 import React from 'react';
 import { Graph } from './Graph';
 import { sum } from '../../utils/common';
-import { isColourable } from './utils';
+import { isColourable } from '../utils/isColourable';
 import { getGraphBBox } from '../utils/graphUtils';
 
 

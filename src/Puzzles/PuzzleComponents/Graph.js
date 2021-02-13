@@ -4,7 +4,7 @@
 *****************************************************************/
 import React from 'react';
 import { Line } from './Primitives';
-import { isColourable } from './utils';
+import { isColourable } from '../utils/isColourable';
 
 
 // A connection between two nodes
