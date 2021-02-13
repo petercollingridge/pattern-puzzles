@@ -79,7 +79,6 @@ const puzzles = [puzzles1, puzzles2, puzzles3];
 const getSolutionSet = (getSolutions) => 
     (puzzle) => {
         const solutions = getSolutions(puzzle);
-        console.log(solutions);
         return new Set(solutions.map(sequence => sequence.join('-')))
     };
 
