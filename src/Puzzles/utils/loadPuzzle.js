@@ -159,6 +159,7 @@ export function getCategoryObjects({ categories, randomRotate, itemProps={} }) {
         for (let i = 0; i < copies; i++) {
             categoryObjects.push({
                 category: category.type,
+                colour: category.colour || 0,
                 object: item,
                 rotate: randomRotate ? Math.floor(Math.random() * 12) * 30 : 0
             });

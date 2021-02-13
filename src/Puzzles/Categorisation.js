@@ -21,7 +21,7 @@ import {
     getLoopOfEdges,
     subdivideGraph,
 }  from './utils/graphUtils';
-import { sequencesAreEquivalent } from './utils/evaluate';
+import { extractAttribute, sequencesAreEquivalent } from './utils/evaluate';
 
 
 // Graphs are all the same colour and need to be match by shape
@@ -703,14 +703,18 @@ const puzzles = [puzzle1, puzzle2, puzzle3, puzzle4, puzzle5];
 
 const displayCategories = (categories, chamber) => {
     categories.forEach(item => {
-        item.component = <Graph {...getGraphObject(item.object)} />
+        item.component = <Graph {...getGraphObject(item.object)} chamber={chamber} />
     });
 
     return <Categories size="128" categories={categories} chamber={chamber} />
 };
 
-const evaluate = puzzle =>
-    sequencesAreEquivalent(puzzle.map(item => item.category), puzzle.map(item => item.colour));
+const evaluate = puzzle => {
+    return sequencesAreEquivalent(
+        extractAttribute(puzzle, 'category'),
+        extractAttribute(puzzle, 'colour')
+    );
+}
 
 export const Categorisation = (n) =>
     <PuzzlePage
