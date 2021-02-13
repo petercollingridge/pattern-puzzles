@@ -11,8 +11,20 @@ export const extractAttribute = (items=[], attr) => items.map(item => item[attr]
 // Convert a graph into a string of node colours, separates by hypens, e.g. 1-1-2
 const graphToStringOfNodes = graph => extractAttribute(graph.nodes, 'colour').join('-');
 
+const graphToStringOfSortedNodes = graph => extractAttribute(graph.nodes, 'colour').sort().join('-');
+
+// Check that two sets of sets contain sam set of sets
+// e.g. ((1, 1), (1, 2)) = ((2, 1), (1,1))
+export function setOfSetsEqual({ sequence }, targetSet) {
+    const sequenceSet = new Set(sequence.map(graphToStringOfSortedNodes));
+
+    // Check the this set of sequences matches the set of permutations
+    return (sequenceSet.size === targetSet.size)
+        && [...sequenceSet].every(value => targetSet.has(value));
+}
+
 // Check the the given set of sequences matches a set of sequences.
-export function sequenceSetMatches({ sequence }, target) {
+export function sequenceSetMatches({ sequence }, targetSet) {
     // Check all the sequences are fully coloured
     if (!sequence.every(graph => allItemsColoured(graph.nodes))) {
         return false;
@@ -23,7 +35,8 @@ export function sequenceSetMatches({ sequence }, target) {
     const sequenceSet = new Set(sequence.map(graphToStringOfNodes));
 
     // Check the this set of sequences matches the set of permutations
-    return (sequenceSet.size === target.size) && [...sequenceSet].every(value => target.has(value));
+    return (sequenceSet.size === targetSet.size)
+        && [...sequenceSet].every(value => targetSet.has(value));
 };
 
 export function allGraphsInSequenceAreDifferent(sequence) {
