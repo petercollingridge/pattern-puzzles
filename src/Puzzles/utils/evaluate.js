@@ -8,8 +8,11 @@ export const allItemsColoured = (items=[]) => allItemsHaveValue(items, 'colour')
 
 export const extractAttribute = (items=[], attr) => items.map(item => item[attr]);
 
+// Convert a graph into a string of node colours, separates by hypens, e.g. 1-1-2
+const graphToStringOfNodes = graph => extractAttribute(graph.nodes, 'colour').join('-');
+
 // Check the the given set of sequences matches a set of sequences.
-export const sequenceSetMatches = ({ sequence }, target) => {
+export function sequenceSetMatches({ sequence }, target) {
     // Check all the sequences are fully coloured
     if (!sequence.every(graph => allItemsColoured(graph.nodes))) {
         return false;
@@ -17,11 +20,24 @@ export const sequenceSetMatches = ({ sequence }, target) => {
 
     // Get a set of sequence values,
     // where a sequence value is a string of numbers separated by hypens, e.g. 1-2
-    const sequenceSet = new Set(sequence.map(sequence => extractAttribute(sequence.nodes, 'colour').join('-')))
+    const sequenceSet = new Set(sequence.map(graphToStringOfNodes));
 
     // Check the this set of sequences matches the set of permutations
     return (sequenceSet.size === target.size) && [...sequenceSet].every(value => target.has(value));
 };
+
+export function allGraphsInSequenceAreDifferent(sequence) {
+    const graphStrings = sequence.map(graphToStringOfNodes);
+    const n = graphStrings.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = i + 1; j < n; j++) {
+            if (graphStrings[i] === graphStrings[j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 export function allConnectedItemsHaveDifferentColours(cxns=[]) {
     // Colour any edge that connects two nodes of the same colour

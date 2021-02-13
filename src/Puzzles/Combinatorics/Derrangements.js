@@ -3,8 +3,8 @@ import React from 'react';
 
 import { sunletGraph } from '../utils/graphTypes';
 import { getGraphObject } from '../utils/loadPuzzle';
-import { graphIsChromatic } from '../utils/evaluate';
-import { GraphColumn } from '../PuzzleComponents/Sequence';
+import { graphIsChromatic, allGraphsInSequenceAreDifferent } from '../utils/evaluate';
+import { GraphRow } from '../PuzzleComponents/Sequence';
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 
 
@@ -16,6 +16,18 @@ const puzzle1 = [{
 }, {
     colourPalette: [1, 1],
     graphs: [[0, 0, 2, 1]],
+}, {
+    colourPalette: [2, 2],
+    graphs: [[0, 0, 0, 0, 1, 2, 1, 2]],
+}, {
+    colourPalette: [1, 1, 1],
+    graphs: [[0, 0, 0, 1, 2, 3]],
+}, {
+    colourPalette: [2, 2, 2],
+    graphs: [
+        [0, 0, 0, 1, 2, 3],
+        [0, 0, 0, 1, 2, 3]
+    ],
 }]
 
 const puzzles = [puzzle1];
@@ -25,7 +37,9 @@ function getGraphSet({ graphs }) {
     return { sequence };
 }
 
-const allGraphsAreChromatic = ({ sequence }) => sequence.every(graphIsChromatic);
+const allGraphsAreChromatic = ({ sequence }) =>
+    allGraphsInSequenceAreDifferent(sequence) &&
+    sequence.every(graphIsChromatic);
 
 export const DerrangementPuzzles = (n) => {
     return (
@@ -33,6 +47,6 @@ export const DerrangementPuzzles = (n) => {
             puzzles={puzzles[n]}
             evaluate={allGraphsAreChromatic}
             getPuzzleObject={getGraphSet}
-            displayPuzzle={GraphColumn} />
+            displayPuzzle={GraphRow} />
     );
 }
