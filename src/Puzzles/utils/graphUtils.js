@@ -93,7 +93,8 @@ export function getLoopOfEdges(start, stop) {
     }
 
     const edges = getLineOfEdges(start, stop);
-    if (start !== stop) {
+    // Link start to stop, unless they are the same or one different (a linear graph of 2)
+    if (stop - start > 1) {
         edges.push([stop, start]);
     }
     return edges;
@@ -142,15 +143,31 @@ export function spokeGraph(colours, params={}) {
     return graph;
 }
 
-export function sunletGraph(n, params={}) {
-    // AKA helm graph
+// AKA helm graph
+// A loop graph, with a spoke coming out of every vertex
+// Colours can be an integer that determines the nodes in the inner loop
+// Or an array of colours for all nodes
+export function sunletGraph(colours, params={}) {
+    let n, innerColours, outerColours;
+
+    if (Array.isArray(colours)) {
+        n = colours.length / 2;
+        innerColours = colours.slice(0, n);
+        outerColours = colours.slice(n);
+    } else {
+        // colours is the number of nodes, so get two arrays of that length, full of 1s
+        n = colours;
+        innerColours = getArray(n, 1);
+        outerColours = getArray(n, 1);
+    }
+
     // Determine radius of inner shape so its side length is the same as the remaining radial spoke length
-    const p = 1 / (1  + 2 * Math.sin(Math.PI / n));
     const scale = params.scale || 1;
+    const p = 1 / (1  + 2 * Math.sin(Math.PI / n));
     params.scale = scale * p;
 
-    const graph = loopGraph(n, params);
-    graph.nodes = graph.nodes.concat(getNodesOnCircle(n, { r: scale }));
+    const graph = loopGraph(innerColours, params);
+    graph.nodes = graph.nodes.concat(getNodesOnCircle(outerColours, { r: scale }));
     graph.edges = graph.edges.concat(nTimes(n, (_, index) => [index, index + n]));
 
     return graph;
