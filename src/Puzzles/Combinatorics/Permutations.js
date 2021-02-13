@@ -40,6 +40,9 @@ const puzzles1 = [{
     graphs: [[1, 1, 2, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
 }];
 
+// Given a set of rows of linear graphs
+// Colour them so you have all permutations of colours (with replacement).
+// e.g. (1, 2) => (1, 1), (1, 2), (2, 1), (2, 2)
 const puzzles2 = [{
     colourPalette: 2,
     graphs: [[1, 1], [1, 2], [2, 1], [2, 0]],
