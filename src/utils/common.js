@@ -30,6 +30,16 @@ export function nTimes(n, func) {
     return Array.from({ length: n }).map(func);
 }
 
+// If arr is not an array return an empty array with that length
+// If arr is a number, then return an array with n items with the given value
+// Allows colours to be a number or an array of numbers
+export function getArray(arr, value) {
+    if (Array.isArray(arr)) {
+        return arr;
+    }
+    return nTimes(arr, (_) => value);
+}
+
 // Returns an array of <item> repeated <n> times
 export function getRepeatArray(item, n) {
     const arr = [];
@@ -67,13 +77,14 @@ export function getPermutations(arr) {
 // Return all possible sequences of colours
 // e.g. ([1, 2], 2) => (1, 1), (1, 2), (2, 1), (2, 2)
 export function getPermutationsWithReplacement(colours, size) {
-    if (size === 0) { return [[]]; }
+    if (size <= 0) { return [[]]; }
 
     const result = [];
-    for (let j = 0; j < colours.length; j++) {
+    for (let i = 0; i < colours.length; i++) {
+        const firstItem = colours[i];
         const subSequence = getPermutationsWithReplacement(colours, size - 1);
         subSequence.forEach((seq) => {
-            result.push([colours[j]].concat(seq));
+            result.push([firstItem].concat(seq));
         });
     }
 

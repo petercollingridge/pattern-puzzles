@@ -1,6 +1,5 @@
-import { nTimes } from '../../utils/common';
+import { nTimes, getArray } from '../../utils/common';
 import {
-    getArray,
     getLineOfEdges,
     getLoopOfEdges,
     getNodesOnCircle,
