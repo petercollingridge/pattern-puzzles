@@ -33,7 +33,6 @@ export function isColourable(item, chamber, {className="", onColour=null}={}) {
             // Colour item
             item.colour = colour;
             colourUses[colour - 1]--;
-            
         }
 
         if (onColour) { onColour(item); }

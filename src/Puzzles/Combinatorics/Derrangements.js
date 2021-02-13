@@ -3,30 +3,35 @@ import React from 'react';
 
 import { sunletGraph } from '../utils/graphUtils';
 import { getGraphObject } from '../utils/loadPuzzle';
+import { graphIsChromatic } from '../utils/evaluate';
 import { GraphColumn } from '../PuzzleComponents/Sequence';
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 
 
+// TODO: Show graphs one by one
+
 const puzzle1 = [{
-    colourPalette: 2,
+    colourPalette: [1, 1],
     graphs: [[1, 0, 2, 1]],
+}, {
+    colourPalette: [1, 1],
+    graphs: [[0, 0, 2, 1]],
 }]
 
 const puzzles = [puzzle1];
 
-const evaluate = () => false;
-
-export function getGraphSet({ graphs }) {
+function getGraphSet({ graphs }) {
     const sequence = graphs.map(graph => getGraphObject(sunletGraph(graph, { scale: 1.2 })));
-    // console.log(sequence);
     return { sequence };
 }
+
+const allGraphsAreChromatic = ({ sequence }) => sequence.every(graphIsChromatic);
 
 export const DerrangementPuzzles = (n) => {
     return (
         <PuzzlePage
             puzzles={puzzles[n]}
-            evaluate={evaluate}
+            evaluate={allGraphsAreChromatic}
             getPuzzleObject={getGraphSet}
             displayPuzzle={GraphColumn} />
     );
