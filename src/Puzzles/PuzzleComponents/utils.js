@@ -26,6 +26,10 @@ export function isColourable(item, chamber, {className="", onColour=null}={}) {
             item.colour = 0;
             colourUses[colour - 1]++;
         } else if (colourUses[colour - 1] !== 0) {
+            // If item is already coloured, add that colour back
+            if (item.colour) {
+                colourUses[item.colour - 1]++;
+            }
             // Colour item
             item.colour = colour;
             colourUses[colour - 1]--;
