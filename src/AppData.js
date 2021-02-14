@@ -5,6 +5,7 @@ import ColourGraphIcons from './PuzzleMap/Icons/ColourGraphs';
 import { ColourGraph } from './Puzzles//GraphTheory/ColourGraphs';
 
 import GraphTheoryIcons from './PuzzleMap/Icons/GraphTheory';
+import GridPath from './Puzzles/GraphTheory/GridPaths';
 import EulerPath from './Puzzles/GraphTheory/EulerPath';
 import MinimumCut from './Puzzles/GraphTheory/MinimumCut';
 import DominatingSet from './Puzzles/GraphTheory/DominatingSet';
@@ -75,6 +76,11 @@ export const puzzleData = {
         icon: GraphTheoryIcons[2](),
         component: () => EulerPath(0), 
     },
+    'graph-theory-4': {
+        slug: 'grid-path',
+        icon: GraphTheoryIcons[2](),
+        component: () => GridPath(0), 
+    },
     'permutations-0': {
         slug: 'permutations-0',
         icon: PermutationIcons[0](),
@@ -128,5 +134,5 @@ export const puzzleLayout = [
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
-    getData('graph-theory', 4),
+    getData('graph-theory', 5),
 ];

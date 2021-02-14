@@ -22,11 +22,40 @@ export function linearGraph(colours, params={}) {
 export function loopGraph(colours, params={}) {
     const { scale=1, colour, ...props } = params;
     colours = getArray(colours, colour);
-    
+
     const nodes = getNodesOnCircle(colours, { r: scale });
     const edges = getLoopOfEdges(colours.length);
 
     return Object.assign(props, { nodes, edges });
+}
+
+export function gridGraph(nColumns, nRows, params={}) {
+    const scale = params.scale || 1;
+    const nodes = [];
+    const edges = [];
+
+    const startX = -scale * (nColumns - 1) / 2;
+    const startY = -scale * (nRows - 1) / 2;
+
+    let nodeIndex = 0;
+    for (let i = 0; i < nColumns; i++) {
+        for (let j = 0; j < nRows; j++) {
+            nodes.push([
+                startX + i * scale,
+                startY + j * scale,
+            ]);
+
+            if (i) {
+                edges.push([nodeIndex, nodeIndex - nRows]);
+            }
+            if (j) {
+                edges.push([nodeIndex, nodeIndex - 1]);
+            }
+            nodeIndex++;
+        }
+    }
+
+    return { nodes, edges };
 }
 
 export function starGraph(colours, params={}) {
