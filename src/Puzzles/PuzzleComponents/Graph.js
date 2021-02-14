@@ -78,16 +78,17 @@ export const ColourableGraph = (graph, chamber) => <Graph {...graph} chamber={ch
 
 export const ColourableEdgeGraph = (graph, chamber) => <EdgeGraph {...graph} chamber={chamber} />
 
+// Colour an Euler path - visiting every nodes once
 // A colourable graph where one node starts coloured and you can colour its edges
 // Colouring an edge will colour the next node and let you colour its edges
-export const ColourablePath = (graph, chamber) => {
+export const ColourableHamilitonianPath = (graph, chamber) => {
     const colour = chamber.state.selectedColour;
 
-    const onColour = node => {
-        const nodeIndex = node.index;
+    const onColour = selectedNode => {
+        const nodeIndex = selectedNode.index;
 
-        if (node.colour) {
-            node.current = true;
+        if (selectedNode.colour) {
+            selectedNode.current = true;
 
             if (!graph.path) { graph.path = []; }
 
@@ -98,34 +99,29 @@ export const ColourablePath = (graph, chamber) => {
             }
 
             // Add new node to the path
-            graph.path.push(node);
+            graph.path.push(selectedNode);
         } else {
             // Remove the node we clicked on
             graph.path.pop();
             const previousNode = graph.path.slice(-1)[0];
             if (previousNode) {
-                previousNode.fixed = false;
                 previousNode.edges[nodeIndex].colour = 0;
             }
             // The active node is now the previous node in the path
-            node = previousNode;
+            selectedNode = previousNode;
         }
 
         // Update nodes
-        if (node) {
-            for (let i = 0; i < graph.nodes.length; i++) {
-                const _node = graph.nodes[i];
-                if (_node === node) { continue; }
-                
-                // Nodes connected to the targetNode are open, the others are fixed
-                if (!_node.colour) {
-                    if (_node.edges[node.index]) {
-                        _node.fixed = false;
-                    } else {
-                        _node.fixed = true;
-                    }
+        if (selectedNode) {
+            graph.nodes.forEach(node => {
+                if (node === selectedNode) {
+                    node.fixed = false;
+                } else if (node.edges[selectedNode.index] && !node.colour) {
+                    node.fixed = false;
+                } else {
+                    node.fixed = true;
                 }
-            }
+            });
         } else {
             // No nodes left in the path, so all nodes are active
             graph.nodes.forEach(node => node.fixed = false);

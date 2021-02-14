@@ -6,7 +6,7 @@ import React from 'react';
 
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { getGraphObject } from '../utils/loadPuzzle';
-import { ColourablePath } from '../PuzzleComponents/Graph';
+import { ColourableHamilitonianPath } from '../PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../utils/evaluate';
 import { loopGraph } from '../utils/graphTypes';
@@ -93,7 +93,7 @@ const GraphTheory = () =>
         puzzles={puzzles}
         evaluate={({ nodes }) => allItemsColoured(nodes)}
         getPuzzleObject={getGraph}
-        displayPuzzle={ColourablePath}
+        displayPuzzle={ColourableHamilitonianPath}
     />
 
 export default GraphTheory;
