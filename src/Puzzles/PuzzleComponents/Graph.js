@@ -81,79 +81,58 @@ export const ColourableEdgeGraph = (graph, chamber) => <EdgeGraph {...graph} cha
 // A colourable graph where one node starts coloured and you can colour its edges
 // Colouring an edge will colour the next node and let you colour its edges
 export const ColourablePath = (graph, chamber) => {
-    // Inactive edges are those not next to the current nodes
-    function labelInactiveEdges() {
-        graph.edges.forEach(edge => {
-            edge.inactive = !(edge.node1.current || edge.node2.current);
-        });
-    }
+    const colour = chamber.state.selectedColour;
 
-    labelInactiveEdges();
+    const onColour = node => {
+        const nodeIndex = node.index;
 
-    // Function that updates graph state when an edge is coloured,
-    // making the next node in the path current and activating the others.
-    const onColour = edge => {
-        if (edge.node1.current) {
-            edge.node1.colour = edge.colour;
-            edge.node1.current = false;
-            edge.node2.current = true;
+        if (node.colour) {
+            node.current = true;
+
+            if (!graph.path) { graph.path = []; }
+
+            // Colour the edge of the path
+            const previousNode = graph.path.slice(-1)[0];
+            if (previousNode) {
+                previousNode.edges[nodeIndex].colour = colour;
+            }
+
+            // Add new node to the path
+            graph.path.push(node);
         } else {
-            edge.node2.colour = edge.colour;
-            edge.node2.current = false;
-            edge.node1.current = true;
+            // Remove the node we clicked on
+            graph.path.pop();
+            const previousNode = graph.path.slice(-1)[0];
+            if (previousNode) {
+                previousNode.fixed = false;
+                previousNode.edges[nodeIndex].colour = 0;
+            }
+            // The active node is now the previous node in the path
+            node = previousNode;
         }
-        labelInactiveEdges();
+
+        // Update nodes
+        if (node) {
+            for (let i = 0; i < graph.nodes.length; i++) {
+                const _node = graph.nodes[i];
+                if (_node === node) { continue; }
+                
+                // Nodes connected to the targetNode are open, the others are fixed
+                if (!_node.colour) {
+                    if (_node.edges[node.index]) {
+                        _node.fixed = false;
+                    } else {
+                        _node.fixed = true;
+                    }
+                }
+            }
+        } else {
+            // No nodes left in the path, so all nodes are active
+            graph.nodes.forEach(node => node.fixed = false);
+        }
     };
 
-    // const onColour = node => {
-    //     const nodeIndex = node.index;
-    //     let targetNode = graph.nodes[nodeIndex];
-
-    //     if (targetNode.colour) {
-    //         if (!graph.path) { graph.path = []; }
-
-    //         // Colour the edge of the path
-    //         const previousNode = graph.path.slice(-1)[0];
-    //         if (previousNode) {
-    //             previousNode.edges[nodeIndex].active = colour;
-    //         }
-
-    //         // Add new node to the path
-    //         graph.path.push(targetNode);
-    //     } else {
-    //         // Remove the node we clicked on
-    //         graph.path.pop();
-    //         const previousNode = graph.path.slice(-1)[0];
-    //         if (previousNode) {
-    //             previousNode.fixed = false;
-    //             previousNode.edges[nodeIndex].active = false;
-    //         }
-    //         // The active node is now the previous node in the path
-    //         targetNode = previousNode;
-    //     }
-
-    //     // Update nodes
-    //     if (targetNode) {
-    //         for (let i = 0; i < graph.nodes.length; i++) {
-    //             const node = graph.nodes[i];
-    //             if (node === targetNode) { continue; }
-                
-    //             // Nodes connected to the targetNode are open, the others are fixed
-    //             if (!node.colour) {
-    //                 if (node.edges[targetNode.index]) {
-    //                     node.fixed = false;
-    //                 } else {
-    //                     node.fixed = true;
-    //                 }
-    //             }
-    //         }
-    //     } else {
-    //         // No nodes left in the path, so all nodes are active
-    //         graph.nodes.forEach(node => node.fixed = false);
-    //     }
-    // };
-
-    return <EdgeGraph {...graph} chamber={chamber} onColour={onColour} />
+    return <Graph {...graph} chamber={chamber} onColour={onColour} />
 };
 
 // A colourable graph where one node starts coloured and you can colour its edges
@@ -186,53 +165,6 @@ export function ColourableEulerPath(graph, chamber) {
 
     return <EdgeGraph {...graph} chamber={chamber} onColour={onColour} />
 }
-
-
-// A colourable graph where the first node starts coloured and you can to colour adjacent edges 
-export const ColourableEulerPathold = (graph, chamber) => {
-    // Set one node as the starting node
-    const firstNode = graph.nodes[0];
-    firstNode.current = true;
-    
-    const fixNonConnectedEdges = targetNode => {
-        graph.edges.forEach(edge => {
-            // Disable any edge that is not connected to the first node
-            edge.fixed = (edge.node1 !== targetNode && edge.node2 !== targetNode);
-        });
-    };
-
-    fixNonConnectedEdges(firstNode);
-
-    // Function that updates graph state when an edge is coloured,
-    // making only nodes next to the last coloured one colourable 
-    // const colour = chamber.state.selectedColour;
-
-    const onColour = edge => {
-        // Update selected nodes and which edges can be coloured
-        if (edge.colour) {
-            if (!graph.path) { graph.path = []; }
-            graph.path.push(edge);
-
-            // Update active node
-            if (edge.node1.current) {
-                edge.node1.current = false;
-                graph.nodes[0] = Object.assign(graph.nodes[0], { current: false});
-                graph.nodes[0] = {};
-                // edge.node2.current = true;
-                fixNonConnectedEdges(edge.node2);
-            } else {
-                // edge.node1.current = true;
-                edge.node2.current = false;
-                fixNonConnectedEdges(edge.node1);
-            }
-
-            graph.nodes[0].current = false;
-            graph.nodes[0] = Object.assign(graph.nodes[0], { current: false});
-        }
-    };
-
-    return <EdgeGraph {...graph} chamber={chamber} onColour={onColour} />
-};
 
 // A colourable graph, where colouring a node also colours any adjacent nodes
 export const DominatingSet = (graph, chamber) => {
