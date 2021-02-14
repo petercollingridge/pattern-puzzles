@@ -14,24 +14,24 @@ import { loopGraph } from '../utils/graphTypes';
 
 
 const puzzles1 = [{
-//     colourPalette: 1,
-//     graph: loopGraph(4),
-// }, {
-//     colourPalette: 1,
-//     graph: (() => {
-//         const graph = loopGraph(4);
-//         graph.edges.push([0, 2]);
-//         return graph;
-//     })(),
-// }, {
-    // colourPalette: 1,
-    // graph: (() => {
-    //     const graph = loopGraph(4);
-    //     graph.nodes.push([0, 0]);
-    //     graph.edges.push([3, 4]);
-    //     return graph;
-    // })(),
-// }, {
+    colourPalette: 1,
+    graph: loopGraph(4),
+}, {
+    colourPalette: 1,
+    graph: (() => {
+        const graph = loopGraph(4);
+        graph.edges.push([0, 2]);
+        return graph;
+    })(),
+}, {
+    colourPalette: 1,
+    graph: (() => {
+        const graph = loopGraph(4);
+        graph.nodes.push([0, 0]);
+        graph.edges.push([3, 4]);
+        return graph;
+    })(),
+}, {
     colourPalette: 1,
     graph: (() => {
         const graph = loopGraph(4);
