@@ -141,6 +141,6 @@ export const ColourGraph = (n) =>
     <PuzzlePage
         puzzles={puzzles[n]}
         evaluate={graphIsChromatic}
-		getPuzzleObject={getGraphObject}
-		displayPuzzle={ColourableGraph}
+        getPuzzleObject={getGraphObject}
+        displayPuzzle={ColourableGraph}
     />

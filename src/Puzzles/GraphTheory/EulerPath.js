@@ -13,29 +13,51 @@ import { allItemsColoured } from '../utils/evaluate';
 import { loopGraph } from '../utils/graphTypes';
 
 
-const puzzles = [
-    {
-        colourPalette: 1,
-        graph: loopGraph(4)
-    }
-];
+const puzzles1 = [{
+//     colourPalette: 1,
+//     graph: loopGraph(4),
+// }, {
+//     colourPalette: 1,
+//     graph: (() => {
+//         const graph = loopGraph(4);
+//         graph.edges.push([0, 2]);
+//         return graph;
+//     })(),
+// }, {
+    // colourPalette: 1,
+    // graph: (() => {
+    //     const graph = loopGraph(4);
+    //     graph.nodes.push([0, 0]);
+    //     graph.edges.push([3, 4]);
+    //     return graph;
+    // })(),
+// }, {
+    colourPalette: 1,
+    graph: (() => {
+        const graph = loopGraph(4);
+        graph.nodes.push([0, -1.6]);
+        graph.edges.push([2, 4], [3, 4]);
+        return graph;
+    })(),
+}];
+
+const puzzles = [puzzles1];
 
 // Get a graph object with the first node coloured
-const getGraph = ({ graph }) => {
-    graph.size = 50;
-    const graphObject = getGraphObject(graph);
-    graphObject.nodes[0].current = true;
+const getGraph = (puzzle) => {
+    puzzle.graph.size = 50;
+    const graphObject = getGraphObject(puzzle.graph);
     return graphObject;
 };
 
-const EulerPath = () =>
+const EulerPath = (n) =>
     <PuzzlePage
         colourPalette={1}
         clearButton
-        puzzles={puzzles}
+        puzzles={puzzles[n]}
         evaluate={({ edges }) => allItemsColoured(edges)}
-		getPuzzleObject={getGraph}
-		displayPuzzle={ColourableEulerPath}
+        getPuzzleObject={getGraph}
+        displayPuzzle={ColourableEulerPath}
     />
 
 export default EulerPath;

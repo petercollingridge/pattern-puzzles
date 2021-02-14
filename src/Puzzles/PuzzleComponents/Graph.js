@@ -135,21 +135,28 @@ export const ColourablePath = (graph, chamber) => {
     return <Graph {...graph} chamber={chamber} onColour={onColour} />
 };
 
-// A colourable graph where one node starts coloured and you can colour its edges
+// Colour an Euler path - visiting every edge once, but vertices more than once
+// A colourable graph where you start by colouring one node, then and you can colour its edges
 // Colouring an edge will colour the next node and let you colour its edges
 export function ColourableEulerPath(graph, chamber) {
     // Inactive edges are those not next to the current nodes
     function labelInactiveEdges() {
         graph.edges.forEach(edge => {
-            edge.inactive = !(edge.node1.current || edge.node2.current);
+            edge.inactive = (!edge.node1.current && !edge.node2.current) ||
+                (edge.colour && edge !== graph.path[graph.path.length - 1]);
         });
     }
 
-    labelInactiveEdges();
-
     // Function that updates graph state when an edge is coloured,
     // making the next node in the path current and activating the others.
-    const onColour = edge => {
+    const onColourEdge = edge => {
+        // Update path depending on whether we are colouring or decolouring an edge
+        if (edge.colour) {
+            graph.path.push(edge);
+        } else {
+            graph.path.pop();
+        }
+
         if (edge.node1.current) {
             edge.node1.colour = edge.colour;
             edge.node1.current = false;
@@ -159,11 +166,22 @@ export function ColourableEulerPath(graph, chamber) {
             edge.node2.current = false;
             edge.node1.current = true;
         }
-        console.log(edge);
         labelInactiveEdges();
     };
 
-    return <EdgeGraph {...graph} chamber={chamber} onColour={onColour} />
+    const onColourNode = node => {
+        node.colour = 0;
+        node.current = true;
+        graph.path = [];
+        labelInactiveEdges();
+    };
+
+    if (graph.nodes.some(node => node.current)) {
+        return <EdgeGraph {...graph} chamber={chamber} onColour={onColourEdge} />;
+    } else {
+        // Need to select a node first
+        return <Graph {...graph} chamber={chamber} onColour={onColourNode} />;
+    }
 }
 
 // A colourable graph, where colouring a node also colours any adjacent nodes

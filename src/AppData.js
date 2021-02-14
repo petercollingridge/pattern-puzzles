@@ -73,7 +73,7 @@ export const puzzleData = {
     'graph-theory-3': {
         slug: 'euler-path',
         icon: GraphTheoryIcons[2](),
-        component: EulerPath, 
+        component: () => EulerPath(0), 
     },
     'permutations-0': {
         slug: 'permutations-0',
