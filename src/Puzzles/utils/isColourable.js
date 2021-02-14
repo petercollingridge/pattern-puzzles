@@ -5,11 +5,13 @@ import { handleKeyDown } from '../../utils/common';
 export function isColourable(item, chamber, {className="", onColour=null}={}) {
     if (item.colour) {
         className += ` fill-${item.colour}`;
+    } else if (item.inactive) {
+        className += " inactive";
     } else {
         className += " no-fill";
     }
 
-    if (item.fixed) {
+    if (item.fixed || item.inactive) {
         return { className };
     }
 

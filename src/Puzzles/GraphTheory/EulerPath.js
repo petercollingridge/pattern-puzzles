@@ -20,13 +20,21 @@ const puzzles = [
     }
 ];
 
+// Get a graph object with the first node coloured
+const getGraph = ({ graph }) => {
+    graph.size = 50;
+    const graphObject = getGraphObject(graph);
+    graphObject.nodes[0].current = true;
+    return graphObject;
+};
+
 const EulerPath = () =>
     <PuzzlePage
         colourPalette={1}
         clearButton
         puzzles={puzzles}
         evaluate={({ edges }) => allItemsColoured(edges)}
-		getPuzzleObject={({ graph }) => getGraphObject(graph)}
+		getPuzzleObject={getGraph}
 		displayPuzzle={ColourableEulerPath}
     />
 

@@ -79,14 +79,24 @@ const puzzles = [
     }
 ];
 
+// Get a graph object with the first node coloured
+const getGraph = ({ graph }) => {
+    graph.size = 50;
+    const graphObject = getGraphObject(graph);
+    graphObject.nodes[0].colour = 1;
+    graphObject.nodes[0].fixed = true;
+    graphObject.nodes[0].current = true;
+    return graphObject;
+};
+
 const GraphTheory = () =>
     <PuzzlePage
         colourPalette={1}
         clearButton
         puzzles={puzzles}
         evaluate={({ nodes }) => allItemsColoured(nodes)}
-		getPuzzleObject={({ graph }) => getGraphObject(graph)}
-		displayPuzzle={ColourablePath}
+        getPuzzleObject={getGraph}
+        displayPuzzle={ColourablePath}
     />
 
 export default GraphTheory;

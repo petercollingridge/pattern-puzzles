@@ -142,6 +142,18 @@ main {
     stroke-width: 3;
 }
 
+.graph-edges rect {
+    stroke: none;
+}
+
+.graph-edges rect.colourable.no-fill {
+    stroke-width: 2;
+}
+
+.graph-edge.inactive {
+    fill: #aaa;
+}
+
 .node-outline {
     fill: none;
     stroke-width: 2;
@@ -151,11 +163,6 @@ main {
 .edge-outline {
     stroke-width: 3;
     stroke: #fff;
-}
-
-.graph-edges rect:not(.no-fill) {
-    stroke-width: 3;
-    stroke: #aaa;
 }
 
 .symmetry-line {
