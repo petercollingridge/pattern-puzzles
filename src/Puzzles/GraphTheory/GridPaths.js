@@ -13,10 +13,37 @@ import { gridGraph } from '../utils/graphTypes';
 
 
 const puzzles1 = [{
-    colourPalette: 1,
+    graph: gridGraph(3, 1),
+    start: 0,
+    end: 2,
+}, {
+    graph: gridGraph(2, 2),
+    start: 0,
+    end: 2,
+}, {
+    graph: gridGraph(3, 2),
+    start: 0,
+    end: 2,
+}, {
+    graph: gridGraph(3, 2),
+    start: 0,
+    end: 1,
+}, {
     graph: gridGraph(3, 2),
     start: 0,
     end: 5,
+}, {
+    graph: gridGraph(4, 2),
+    start: 0,
+    end: 1,
+}, {
+    graph: gridGraph(4, 2),
+    start: 2,
+    end: 4,
+}, {
+    graph: gridGraph(4, 2),
+    start: 0,
+    end: 6,
 }];
 
 const puzzles = [puzzles1];
@@ -27,7 +54,7 @@ const getGraph = ({ graph, start, end }) => {
     graphObject.nodes[start].colour = 1;
     graphObject.nodes[start].fixed = true;
     graphObject.nodes[start].current = true;
-    graphObject.nodes[end].colour = 1;
+    graphObject.nodes[end].colour = 2;
     graphObject.nodes[end].fixed = true;
     return graphObject;
 }

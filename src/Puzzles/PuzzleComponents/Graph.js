@@ -85,6 +85,8 @@ export const ColourableHamilitonianPath = (graph, chamber) => {
     const colour = chamber.state.selectedColour;
 
     const updateNodes = () => {
+        if (!graph.path) { return; }
+
         const selectedNode = graph.path[graph.path.length - 1];
         if (selectedNode) {
             graph.nodes.forEach(node => {
