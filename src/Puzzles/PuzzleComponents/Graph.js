@@ -9,6 +9,7 @@ import { isColourable } from '../utils/isColourable';
 
 // A connection between two nodes
 function Edge(props) {
+    if (props.hidden) { return null; }
     const flashing = props.flashing ? 'flashing' : '';
     const edgeColour = props.colour ? `stroke-${ props.colour }`: '';
     return (

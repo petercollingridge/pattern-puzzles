@@ -58,32 +58,32 @@ export const puzzleData = {
     },
     'graph-theory-0': {
         slug: 'hamiltonian-path',
-        icon: GraphTheoryIcons[0](),
+        icon: GraphTheoryIcons.HamiltonianPath(),
         component: HamiltonianPath, 
     },
     'graph-theory-1': {
         slug: 'minimun-dominating-set',
-        icon: GraphTheoryIcons[1](),
+        icon: GraphTheoryIcons.DominatingSet(),
         component: DominatingSet, 
     },
     'graph-theory-2': {
         slug: 'minimum-cut',
-        icon: GraphTheoryIcons[2](),
+        icon: GraphTheoryIcons.MinimumCut(),
         component: MinimumCut, 
     },
     'graph-theory-3': {
         slug: 'euler-path',
-        icon: GraphTheoryIcons[2](),
+        icon: GraphTheoryIcons.EulerPath(),
         component: () => EulerPath(0), 
     },
     'graph-theory-4': {
         slug: 'grid-path',
-        icon: GraphTheoryIcons[3](),
+        icon: GraphTheoryIcons.GridGraph(),
         component: () => GridPath(0), 
     },
     'graph-theory-5': {
         slug: 'grid-path-2',
-        icon: GraphTheoryIcons[4](),
+        icon: GraphTheoryIcons.GridGraph2(),
         component: () => GridPath(1), 
     },
     'permutations-0': {

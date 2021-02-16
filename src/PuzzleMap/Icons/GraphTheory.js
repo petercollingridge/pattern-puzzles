@@ -27,7 +27,7 @@ const HamiltonianPath = () => <g>
 
 const DominatingSet = () => <g>
     <g className="graph-edges">
-        <path className="colour-none" d="M-20 -20h40v40h-40z" fill="none" />
+        <path className="colour-none" d="M-20 -20h40v40h-40z" />
 
         <g className="colour-1">
             <line x1="-20" y1="-20" x2="20" y2="20" />
@@ -99,10 +99,24 @@ const GridGraph2 = () => <g>
     </g>
 </g>
 
-export default [
+const EulerPath = () => <g>
+    <g className="graph-edges">
+        <path className="colour-1" d="M-15 -8h30v30h-30v-30l15 -22l15 22" />
+    </g>
+    <g className="graph-nodes colour-1">
+        <circle cx="-15" cy="-8" r="6" />
+        <circle cx="15" cy="-8" r="6" />
+        <circle cx="-15" cy="22" r="6" />
+        <circle cx="15" cy="22" r="6" />
+        <circle cx="0" cy="-30" r="6" />
+    </g>
+</g>
+
+export default {
     HamiltonianPath,
     DominatingSet,
     MinimumCut,
     GridGraph,
     GridGraph2,
-];
+    EulerPath,
+};
