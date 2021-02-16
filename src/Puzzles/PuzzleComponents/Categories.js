@@ -3,7 +3,7 @@ import { getPointsOnACircle } from '../utils/graphUtils';
 import { isColourable } from '../utils/isColourable';
 
 
-const getCirclePackedInCircle = (R, n) => {
+function getCirclePackedInCircle(R, n) {
     const phi = Math.PI * (0.5 - 1 / n);
     const cPhi = Math.cos(phi);
     const r = R / (1 + cPhi);
@@ -14,9 +14,9 @@ const getCirclePackedInCircle = (R, n) => {
         categorySize: r * cPhi,
         categoryPositions: points
     };
-};
+}
 
-export const Categories = ({ size, categories, chamber }) => {
+export function Categories({ size, categories, chamber }) {
     const { scale, categorySize, categoryPositions } = getCirclePackedInCircle(size, categories.length);
 
     return <g>

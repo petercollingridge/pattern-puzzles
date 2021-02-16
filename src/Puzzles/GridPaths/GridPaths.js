@@ -11,7 +11,10 @@ import { ColourableHamilitonianPath } from '../PuzzleComponents/Graph';
 import { allItemsColoured } from '../utils/evaluate';
 import { gridGraph } from '../utils/graphTypes';
 
+// TODO: Instead of paths have cycles
+// TODO: Grids with missing points
 
+// Find a path from the starting node to the end node
 const puzzles1 = [{
     graph: gridGraph(3, 1),
     start: 0,
@@ -46,6 +49,7 @@ const puzzles1 = [{
     end: 6,
 }];
 
+// Same a puzzle1 but with larger grids
 const puzzles2 = [{
     graph: gridGraph(3, 3),
     start: 0,

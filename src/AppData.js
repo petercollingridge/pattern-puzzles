@@ -11,6 +11,7 @@ import DominatingSet from './Puzzles/GraphTheory/DominatingSet';
 import HamiltonianPath from './Puzzles/GraphTheory/HamiltonianPath';
 
 import GridPath from './Puzzles/GridPaths/GridPaths';
+import CategoriseGrids from './Puzzles/GridPaths/CategoriseGrids';
 import GridPathIcons from './PuzzleMap/Icons/GridPaths';
 
 import ColourMapIcons from './PuzzleMap/Icons/ColourMaps';
@@ -98,6 +99,11 @@ export const puzzleData = {
         icon: PermutationIcons[0](),
         component: () => DerrangementPuzzles(0),
     },
+    'graph-path-2': {
+        slug: 'graph-path-2',
+        icon: GridPathIcons[2](),
+        component: () => CategoriseGrids(0),
+    },
 };
 
 addData('graph-path', 'graph-path', GridPathIcons, GridPath, 2);
@@ -133,5 +139,5 @@ export const puzzleLayout = [
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
     getData('graph-theory', 4),
-    getData('graph-path', 2),
+    getData('graph-path', 3),
 ];

@@ -34,4 +34,31 @@ const GridGraph2 = () => <g>
     </g>
 </g>
 
-export default [GridGraph, GridGraph2];
+const GridGraphCategories = () => <g>
+    <g className="categories">
+        <circle className="colour-1" cx="-24" cy="0" r="23" />
+        <circle className="colour-2" cx="24" cy="0" r="23" />
+    </g>
+    <g className="graph-edges">
+        <path className="colour-none" d="M-32 -8h16" />
+        <path d="M32 -8h-16v16h16z" />
+        <path  className="colour-1" d="M-32 -8v16h16v-16" />
+    </g>
+    <g className="graph-nodes">
+        <circle className="colour-1" cx="-32" cy="-8" r="4" />
+        <circle className="colour-2" cx="-16" cy="-8" r="4" />
+        <circle className="colour-1" cx="-32" cy="8" r="4" />
+        <circle className="colour-1" cx="-16" cy="8" r="4" />
+
+        <circle className="colour-1" cx="32" cy="-8" r="4" />
+        <circle className="colour-1" cx="16" cy="-8" r="4" />
+        <circle className="colour-2" cx="32" cy="8" r="4" />
+        <circle className="colour-1" cx="16" cy="8" r="4" />
+    </g>
+</g>
+
+export default [
+    GridGraph,
+    GridGraph2,
+    GridGraphCategories,
+];
