@@ -5,11 +5,13 @@ import ColourGraphIcons from './PuzzleMap/Icons/ColourGraphs';
 import { ColourGraph } from './Puzzles//GraphTheory/ColourGraphs';
 
 import GraphTheoryIcons from './PuzzleMap/Icons/GraphTheory';
-import GridPath from './Puzzles/GraphTheory/GridPaths';
 import EulerPath from './Puzzles/GraphTheory/EulerPath';
 import MinimumCut from './Puzzles/GraphTheory/MinimumCut';
 import DominatingSet from './Puzzles/GraphTheory/DominatingSet';
 import HamiltonianPath from './Puzzles/GraphTheory/HamiltonianPath';
+
+import GridPath from './Puzzles/GridPaths/GridPaths';
+import GridPathIcons from './PuzzleMap/Icons/GridPaths';
 
 import ColourMapIcons from './PuzzleMap/Icons/ColourMaps';
 import { ColourMap } from './Puzzles/ColourMaps';
@@ -76,16 +78,6 @@ export const puzzleData = {
         icon: GraphTheoryIcons.EulerPath(),
         component: () => EulerPath(0), 
     },
-    'graph-theory-4': {
-        slug: 'grid-path',
-        icon: GraphTheoryIcons.GridGraph(),
-        component: () => GridPath(0), 
-    },
-    'graph-theory-5': {
-        slug: 'grid-path-2',
-        icon: GraphTheoryIcons.GridGraph2(),
-        component: () => GridPath(1), 
-    },
     'permutations-0': {
         slug: 'permutations-0',
         icon: PermutationIcons[0](),
@@ -108,6 +100,7 @@ export const puzzleData = {
     },
 };
 
+addData('graph-path', 'graph-path', GridPathIcons, GridPath, 2);
 addData('colour-graphs', 'colour-graphs', ColourGraphIcons, ColourGraph, 3);
 addData('colour-maps', 'colour-maps', ColourMapIcons, ColourMap, 2);
 addData('transformations', 'transformations', TransformationIcons, Transformations, 4);
@@ -139,5 +132,6 @@ export const puzzleLayout = [
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
-    getData('graph-theory', 6),
+    getData('graph-theory', 4),
+    getData('graph-path', 2),
 ];
