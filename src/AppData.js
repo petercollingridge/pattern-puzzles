@@ -86,17 +86,17 @@ export const puzzleData = {
     },
     'permutations-1': {
         slug: 'permutations-1',
-        icon: PermutationIcons[0](),
+        icon: PermutationIcons[1](),
         component: () => PermutationPuzzles(1),
     },
     'combinations-0': {
         slug: 'combinations-0',
-        icon: PermutationIcons[1](),
+        icon: PermutationIcons[2](),
         component: () => CombinationPuzzles(0), 
     },
     'derrangements-0': {
         slug: 'derrangements-0',
-        icon: PermutationIcons[0](),
+        icon: PermutationIcons[3](),
         component: () => DerrangementPuzzles(0),
     },
     'graph-path-2': {
