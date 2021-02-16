@@ -23,10 +23,11 @@ const puzzles = [puzzles1];
 
 const getGraph = ({ graph, start, end }) => {
     const graphObject = getGraphObject(graph);
-    graphObject.nodes[start].colour = 2;
+    graphObject.path = [graphObject.nodes[start]];
+    graphObject.nodes[start].colour = 1;
     graphObject.nodes[start].fixed = true;
     graphObject.nodes[start].current = true;
-    graphObject.nodes[end].colour = 2;
+    graphObject.nodes[end].colour = 1;
     graphObject.nodes[end].fixed = true;
     return graphObject;
 }

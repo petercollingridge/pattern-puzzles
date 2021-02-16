@@ -115,11 +115,12 @@ export const ColourableHamilitonianPath = (graph, chamber) => {
         if (selectedNode) {
             graph.nodes.forEach(node => {
                 if (node === selectedNode) {
-                    node.fixed = false;
+                    node.inactive = false;
                 } else if (node.edges[selectedNode.index] && !node.colour) {
-                    node.fixed = false;
+                    // Nodes that are next to the selected node and aren't coloured can be coloured
+                    node.inactive = false;
                 } else {
-                    node.fixed = true;
+                    node.inactive = true;
                 }
             });
         } else {
