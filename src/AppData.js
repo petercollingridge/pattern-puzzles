@@ -78,7 +78,7 @@ export const puzzleData = {
     },
     'graph-theory-4': {
         slug: 'grid-path',
-        icon: GraphTheoryIcons[2](),
+        icon: GraphTheoryIcons[3](),
         component: () => GridPath(0), 
     },
     'permutations-0': {

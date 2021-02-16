@@ -66,4 +66,22 @@ const MinimumCut = () => <g>
     </g>
 </g>
 
-export default [HamiltonianPath, DominatingSet, MinimumCut];
+const GridGraph = () => <g>
+    <g className="graph-edges">
+        <path d="M-24 -12h24m0 24h24"/>
+        <g className="colour-1">
+            <path d="M-24 -12v24h24v-24h24v24" />
+        </g>
+    </g>
+    <g className="graph-nodes">
+        <circle className="colour-1" cx="-24" cy="-12" r="6" />
+        <circle className="colour-1" cx="0" cy="-12" r="6" />
+        <circle className="colour-1" cx="24" cy="-12" r="6" />
+
+        <circle className="colour-1" cx="-24" cy="12" r="6" />
+        <circle className="colour-1" cx="0" cy="12" r="6" />
+        <circle className="colour-1" cx="24" cy="12" r="6" />
+    </g>
+</g>
+
+export default [HamiltonianPath, DominatingSet, MinimumCut, GridGraph];
