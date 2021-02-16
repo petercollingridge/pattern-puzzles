@@ -84,6 +84,25 @@ export const ColourableEdgeGraph = (graph, chamber) => <EdgeGraph {...graph} cha
 export const ColourableHamilitonianPath = (graph, chamber) => {
     const colour = chamber.state.selectedColour;
 
+    const updateNodes = () => {
+        const selectedNode = graph.path[graph.path.length - 1];
+        if (selectedNode) {
+            graph.nodes.forEach(node => {
+                if (node === selectedNode) {
+                    node.inactive = false;
+                } else if (node.edges[selectedNode.index] && !node.colour) {
+                    // Nodes that are next to the selected node and aren't coloured can be coloured
+                    node.inactive = false;
+                } else {
+                    node.inactive = true;
+                }
+            });
+        } else {
+            // No nodes left in the path, so all nodes are active
+            graph.nodes.forEach(node => node.fixed = false);
+        }
+    }
+
     const onColour = selectedNode => {
         const nodeIndex = selectedNode.index;
 
@@ -111,24 +130,10 @@ export const ColourableHamilitonianPath = (graph, chamber) => {
             selectedNode = previousNode;
         }
 
-        // Update nodes
-        if (selectedNode) {
-            graph.nodes.forEach(node => {
-                if (node === selectedNode) {
-                    node.inactive = false;
-                } else if (node.edges[selectedNode.index] && !node.colour) {
-                    // Nodes that are next to the selected node and aren't coloured can be coloured
-                    node.inactive = false;
-                } else {
-                    node.inactive = true;
-                }
-            });
-        } else {
-            // No nodes left in the path, so all nodes are active
-            graph.nodes.forEach(node => node.fixed = false);
-        }
+        updateNodes();
     };
 
+    updateNodes();
     return <Graph {...graph} chamber={chamber} onColour={onColour} />
 };
 
