@@ -20,25 +20,29 @@
     fill: none;
     color: #aaa;
     stroke: #aaa;
-    transition: stroke 200ms ease-out
+    transition: 200ms ease-out;
 }
 
 .map-link .graph-nodes * {
     stroke: white;
     stroke-width: 1;
     fill: #aaa;
-    transition: fill 200ms ease-out
+    transition: 200ms ease-out;
 }
 
 .map-link .categories * {
     fill: white;
     opacity: 0.15;
-    transition: fill 200ms ease-out
+    transition: 200ms ease-out;
 }
 
 /* Colour icon elements on hover or focus */
 .map-link:hover .graph-nodes * {
     fill: currentColor;
+}
+
+.colour-none {
+    color: #fff;
 }
 
 .map-link:focus .graph-nodes * {

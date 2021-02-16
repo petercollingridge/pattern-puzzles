@@ -27,7 +27,7 @@ const HamiltonianPath = () => <g>
 
 const DominatingSet = () => <g>
     <g className="graph-edges">
-        <rect x="-20" y="-20" width="40" height="40" fill="none" />
+        <path className="colour-none" d="M-20 -20h40v40h-40z" fill="none" />
 
         <g className="colour-1">
             <line x1="-20" y1="-20" x2="20" y2="20" />
@@ -68,10 +68,8 @@ const MinimumCut = () => <g>
 
 const GridGraph = () => <g>
     <g className="graph-edges">
-        <path d="M-24 -12h24m0 24h24"/>
-        <g className="colour-1">
-            <path d="M-24 -12v24h24v-24h24v24" />
-        </g>
+        <path className="colour-none" d="M-24 -12h24m0 24h24"/>
+        <path className="colour-1" d="M-24 -12v24h24v-24h24v24" />
     </g>
     <g className="graph-nodes">
         <circle className="colour-1" cx="-24" cy="-12" r="6" />

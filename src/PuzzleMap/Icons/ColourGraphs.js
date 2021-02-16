@@ -3,7 +3,7 @@ import React from 'react';
 
 const ColourGraphIcon1 = () => <g>
     <g className="graph-edges edge-outline">
-        <rect x="-20" y="-20" width="40" height="40" fill="none" />
+        <path d="M-20 -20h40v40h-40z" fill="none" />
         <line x1="-20" y1="-20" x2="20" y2="20" />
         <line x1="-20" y1="20" x2="20" y2="-20" />
     </g>
@@ -18,7 +18,7 @@ const ColourGraphIcon1 = () => <g>
 
 const ColourGraphIcon2 = () => <g>
     <g className="graph-edges edge-outline">
-        <rect x="-32" y="-16" width="64" height="32" />
+        <path d="M-32 -16h64v32h-64z" fill="none" />
         <line x1="0" y1="-16" x2="0" y2="16" />
         <line x1="-32" y1="-16" x2="0" y2="16" />
         <line x1="32" y1="-16" x2="0" y2="16" />
