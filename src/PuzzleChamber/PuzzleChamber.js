@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { parse } from 'query-string';
 
+import { getArray } from '../utils/common';
 import Toolbar from './Toolbars/Toolbar';
 import { Button } from './Toolbars/Button';
 
@@ -47,11 +48,9 @@ class PuzzlePage extends React.Component {
         const getSolutionObject = this.props.getSolutionObject || (puzzle => puzzle);
         const puzzle = puzzles[index];
 
-        // If colourPallete is a number then convert it into an array of -1s
+        // If colourPalette is a number then convert it into an array of -1s
         // to indicate that each colour can be used infinitely
-        const colourPalette = Array.isArray(puzzle.colourPalette) ?
-            puzzle.colourPalette :
-            Array.from({ length: puzzle.colourPalette }).map(_ => -1);
+        const colourPalette = getArray(this.props.colourPalette || puzzle.colourPalette, -1);
 
         if (puzzle) {
             this.setState({

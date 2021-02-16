@@ -82,12 +82,11 @@ const puzzles = [
 
 const GraphTheory = () => 
     <PuzzlePage
-        colourPalette={1}
         clearButton
         puzzles={puzzles}
         evaluate={({ nodes }) => allItemsColoured(nodes)}
-		getPuzzleObject={({ graph }) => getGraphObject(graph)}
-		displayPuzzle={DominatingSet}
+        getPuzzleObject={({ graph }) => getGraphObject(graph)}
+        displayPuzzle={DominatingSet}
     />
 
 export default GraphTheory;
