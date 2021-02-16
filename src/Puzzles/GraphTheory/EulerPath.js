@@ -11,20 +11,18 @@ import { ColourableEulerPath } from '../PuzzleComponents/Graph';
 
 import { allItemsColoured } from '../utils/evaluate';
 import { loopGraph } from '../utils/graphTypes';
+import { getNodesOnCircle, getLoopOfEdges } from '../utils/graphUtils';
 
 
 const puzzles1 = [{
-    colourPalette: 1,
     graph: loopGraph(4),
 }, {
-    colourPalette: 1,
     graph: (() => {
         const graph = loopGraph(4);
         graph.edges.push([0, 2]);
         return graph;
     })(),
 }, {
-    colourPalette: 1,
     graph: (() => {
         const graph = loopGraph(4);
         graph.nodes.push([0, 0]);
@@ -32,13 +30,17 @@ const puzzles1 = [{
         return graph;
     })(),
 }, {
-    colourPalette: 1,
     graph: (() => {
         const graph = loopGraph(4);
         graph.nodes.push([0, -1.6]);
         graph.edges.push([2, 4], [3, 4]);
         return graph;
     })(),
+}, {
+    graph: {
+        nodes: getNodesOnCircle(6),
+        edges: getLoopOfEdges(6).concat([[1, 4]])
+    }
 }];
 
 const puzzles = [puzzles1];
