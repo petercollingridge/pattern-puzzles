@@ -46,7 +46,21 @@ const puzzles1 = [{
     end: 6,
 }];
 
-const puzzles = [puzzles1];
+const puzzles2 = [{
+    graph: gridGraph(3, 3),
+    start: 0,
+    end: 4,
+}, {
+    graph: gridGraph(3, 3),
+    start: 0,
+    end: 8,
+}, {
+    graph: gridGraph(3, 3),
+    start: 0,
+    end: 6,
+}];
+
+const puzzles = [puzzles1, puzzles2];
 
 const getGraph = ({ graph, start, end }) => {
     const graphObject = getGraphObject(graph);

@@ -21,34 +21,28 @@ const R3 = Math.sqrt(3);
 
 const puzzles = [
     {
-        colourPalette: 1,
         graph: loopGraph(6)
     }, {
-        colourPalette: 1,
         graph: {
             nodes: getNodesOnCircle(6),
             edges: getLoopOfEdges(6).concat([[1, 4]])
         }
     }, {
-        colourPalette: 1,
         graph: {
             nodes: getNodesOnCircle(6),
             edges: getLineOfEdges(6)
         }
     }, {
-        colourPalette: 1,
         graph: {
             nodes: getNodesOnCircle(6),
             edges: getLineOfEdges(6).concat([[2, 5]])
         }
     }, {
-        colourPalette: 1,
         graph: {
             nodes: getNodesOnCircle(6),
             edges: [[2, 3], [3, 4], [4, 5], [5, 0], [1, 4], [0, 3]]
         }
     }, {
-        colourPalette: 1,
         graph: {
             nodes: getNodesOnCircle(3, { r: 0.75 })
                     .concat(getNodesOnCircle(3, { r: 2 })),
@@ -57,7 +51,6 @@ const puzzles = [
                     .concat([[2, 5]])
         }
     }, {
-        colourPalette: 1,
         graph: {
             nodes: getNodesOnCircle(3, { r: 0.75 })
                     .concat(getNodesOnCircle(3, { r: 2 }))
@@ -67,7 +60,6 @@ const puzzles = [
                     .concat([[0, 3], [2, 5], [3, 6], [4, 7]])
         }
     }, {
-        colourPalette: 1,
         graph: {
             nodes: getNodesOnCircle(3, { r: 0.75 })
                     .concat(getNodesOnCircle(3, { r: 2 }))

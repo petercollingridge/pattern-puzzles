@@ -81,6 +81,11 @@ export const puzzleData = {
         icon: GraphTheoryIcons[3](),
         component: () => GridPath(0), 
     },
+    'graph-theory-5': {
+        slug: 'grid-path-2',
+        icon: GraphTheoryIcons[4](),
+        component: () => GridPath(1), 
+    },
     'permutations-0': {
         slug: 'permutations-0',
         icon: PermutationIcons[0](),
@@ -134,5 +139,5 @@ export const puzzleLayout = [
     getData('transformations', 4),
     getData('colour-graphs', 3),
     getData('colour-maps', 2),
-    getData('graph-theory', 5),
+    getData('graph-theory', 6),
 ];
