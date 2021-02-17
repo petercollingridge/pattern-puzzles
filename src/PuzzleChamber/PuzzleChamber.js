@@ -117,6 +117,11 @@ class PuzzlePage extends React.Component {
         };
         const className = selectedColour ? "colour-selected" : "";
 
+        let selectColourIndicator = "selected-colour-indicator";
+        if (selectedColour) {
+            selectColourIndicator += ` colour-${selectedColour}`;
+        }
+
         return <main>
             <nav>
                 <div className="menu-button back-button" aria-label="Back to menu" role="link">
@@ -150,6 +155,8 @@ class PuzzlePage extends React.Component {
                 </g>
 
                 <circle id="chamber-window" r="212" />
+                <circle className={selectColourIndicator} r="132" />
+
                 <Toolbar 
                     puzzle={this}
                     colours={colourPalette}
