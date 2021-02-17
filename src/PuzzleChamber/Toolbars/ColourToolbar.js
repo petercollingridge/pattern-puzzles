@@ -4,7 +4,7 @@ import ButtonSet from './ButtonSet';
 import { SVGButton, ColourButton } from './Button';
 
 
-export default function ({ puzzle, colours, clearPuzzle }) {
+function ColourToolbar({ puzzle, colours, clearPuzzle, startAngle }) {
     const buttons = colours.map((colourCount, index) => ({
         component: ColourButton,
         colour: index + 1,
@@ -22,5 +22,7 @@ export default function ({ puzzle, colours, clearPuzzle }) {
         });
     }
 
-    return <ButtonSet buttons={buttons} puzzle={puzzle} />;
+    return <ButtonSet buttons={buttons} startAngle={startAngle} />;
 }
+
+export default ColourToolbar;

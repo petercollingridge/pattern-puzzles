@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import { parse } from 'query-string';
 
 import { getArray } from '../utils/common';
-import Toolbar from './Toolbars/Toolbar';
+import ColourToolbar from './Toolbars/ColourToolbar';
 import { Button } from './Toolbars/Button';
 
 import './puzzle.css';
@@ -157,11 +157,12 @@ class PuzzlePage extends React.Component {
                 <circle id="chamber-window" r="212" />
                 <circle className={selectColourIndicator} r="132" />
 
-                <Toolbar 
+                <ColourToolbar 
                     puzzle={this}
                     colours={colourPalette}
                     clearPuzzle={clearPuzzle}
                     selectedColour={selectedColour}
+                    startAngle={-Math.PI}
                 />
             </svg>
         </main>

@@ -8,12 +8,13 @@ const TOOLBAR_R = 136;
 // Angle between button
 const DELTA_ANGLE = Math.PI / 18;
 
-function getPositionsAroundCircle(n, r) {
-    const startAngle = Math.PI - DELTA_ANGLE * (n - 1) / 2;
+function getPositionsAroundCircle(n, r, baseAngle=0) {
+    const direction = baseAngle < 0 ? -1 : 1;
+    const startAngle = baseAngle - direction * (DELTA_ANGLE * (n - 1) / 2);
 
     // Array of button positions
     return nTimes(n, (_, i) => {
-        const angle = startAngle + i * DELTA_ANGLE;
+        const angle = startAngle + direction * i * DELTA_ANGLE;
         return {
             angle,
             x: r * Math.cos(angle),
@@ -22,10 +23,10 @@ function getPositionsAroundCircle(n, r) {
     });
 }
 
-function ButtonSet({ buttons }) {
+function ButtonSet({ buttons, startAngle }) {
     const r = 8;
     const positionR = TOOLBAR_R + r;
-    const positions = getPositionsAroundCircle(buttons.length, positionR);
+    const positions = getPositionsAroundCircle(buttons.length, positionR, startAngle);
 
     return (
         <g className="toolbar" role="radiogroup">
