@@ -4,6 +4,7 @@ import { parse } from 'query-string';
 
 import { getArray } from '../utils/common';
 import ColourToolbar from './Toolbars/ColourToolbar';
+import PuzzlePreviewToolbar from './Toolbars/PuzzlePreviewToolbar';
 import { Button } from './Toolbars/Button';
 
 import './puzzle.css';
@@ -164,6 +165,9 @@ class PuzzlePage extends React.Component {
                     selectedColour={selectedColour}
                     startAngle={-Math.PI}
                 />
+
+                <PuzzlePreviewToolbar puzzle={this} />
+
             </svg>
         </main>
     }

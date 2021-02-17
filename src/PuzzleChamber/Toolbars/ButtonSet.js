@@ -9,7 +9,7 @@ const TOOLBAR_R = 136;
 const DELTA_ANGLE = Math.PI / 18;
 
 function getPositionsAroundCircle(n, r, baseAngle=0) {
-    const direction = baseAngle < 0 ? -1 : 1;
+    const direction = baseAngle < 0 ? 1 : -1;
     const startAngle = baseAngle - direction * (DELTA_ANGLE * (n - 1) / 2);
 
     // Array of button positions
