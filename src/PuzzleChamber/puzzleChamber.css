@@ -56,6 +56,13 @@
     fill-opacity: 1;
 }
 
+.puzzle-preview.puzzle-done:focus,
+.puzzle-preview.selected:focus {
+    outline: none;
+    stroke-width: 3;
+    filter: url(#glow-filter);
+}
+
 .puzzle-preview:hover, .puzzle-preview.selected {
     fill-opacity: 1;
     opacity: 1;

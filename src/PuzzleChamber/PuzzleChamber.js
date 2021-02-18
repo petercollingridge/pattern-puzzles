@@ -28,6 +28,7 @@ class PuzzlePage extends React.Component {
 
         this.state = {
             index,
+            maxIndex: index,
             solved: false,
             selectedColour: null,
         }
@@ -45,6 +46,7 @@ class PuzzlePage extends React.Component {
     }
 
     getPuzzle(index) {
+        this.setState({ index });
         const { getPuzzleObject, puzzles } = this.props;
         const getSolutionObject = this.props.getSolutionObject || (puzzle => puzzle);
         const puzzle = puzzles[index];
@@ -65,8 +67,9 @@ class PuzzlePage extends React.Component {
 
     nextPuzzle() {
         const nextState = this.state.index + 1;
+        const maxIndex = Math.max(nextState, this.state.maxIndex);
         this.setState({
-            index: nextState,
+            maxIndex,
             solved: false,
             selectedColour: null
         });
