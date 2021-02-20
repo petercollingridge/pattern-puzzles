@@ -1,3 +1,5 @@
+// Simple list of all puzzles with links to their pages
+
 import React from 'react';
 import { Link } from "react-router-dom";
 import { puzzleLayout } from '../AppData';
@@ -16,7 +18,6 @@ function Menu() {
 }
 
 function Section({ name, puzzles }) {
-    console.log(puzzles);
     return (
         <section>
             <h3>Section { name }</h3>

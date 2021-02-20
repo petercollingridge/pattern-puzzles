@@ -87,8 +87,8 @@ const evaluate = ({ regions, connections }) =>
     allConnectedItemsHaveDifferentColours(connections);
 
 export const ColourMap = (n) =>
-	<PuzzlePage
-		puzzles={puzzles[n]}
-		evaluate={evaluate}
-		getPuzzleObject={getMapObject}
-		displayPuzzle={ColourableMap} />
+    <PuzzlePage
+        puzzles={puzzles[n]}
+        evaluate={evaluate}
+        getPuzzleObject={getMapObject}
+        displayPuzzle={ColourableMap} />

@@ -1,3 +1,5 @@
+// Map of puzzles as icons, which sections split horizontally and getting harder vertically.
+
 import React from 'react';
 import { Link } from "react-router-dom";
 
