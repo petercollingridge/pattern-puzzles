@@ -16,6 +16,10 @@
     color: rgb(20, 146, 196);
 }
 
+.map-link.inactive .spotlight {
+    fill: #ccc;
+}
+
 .map-link .graph-edges {
     fill: none;
     color: #aaa;
