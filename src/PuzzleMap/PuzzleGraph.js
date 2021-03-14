@@ -1,11 +1,21 @@
+/****************************************************************
+ * Create a menu of puzzle icons in the form of a graph showing
+ * how puzzles relate to each other.
+ ****************************************************************/
 import React, { useState } from 'react';
 
-import Icon from './Icons/Icon';
 import { Link } from "react-router-dom";
-import PuzzleData from "../Puzzles/allPuzzles";
+import puzzleData from "../Puzzles/allPuzzles";
+import getLayout from "./PuzzleLayout";
 
+import './Icons/icons.css';
 import './PuzzleGraph.css';
 
+
+const SIZE = 720;
+
+getLayout(puzzleData);
+console.log(puzzleData);
 
 function Graph() {
     const [dragging, setDragging] = useState(false);
@@ -38,18 +48,32 @@ function Graph() {
     return (
         <main onMouseUp={onMouseUp} onMouseMove={onMouseMove} onMouseDown={onMouseDown}>
             <nav className="puzzle-graph">
-                { PuzzleData.map(({ available, icon, slug, x, y }) => {
-                    const className = `map-link puzzle-node ${available ? '' : 'inactive'}`;
-                    const style = { left: x + offset.x, top: y + offset.y };
-                    
-                    return (
-                        <div key={slug} className={className} style={style}>
-                            <Link to={slug}>
-                                <Icon>{ icon }</Icon>
+                <svg viewBox={`-${SIZE / 2} -${SIZE / 2} ${SIZE} ${SIZE}`} width="100%" height="100%">
+                    <defs>
+                        <filter id="glow-spotlight" x="-200%" y="-200%" width="400%" height="400%">
+                            <feGaussianBlur stdDeviation="2" result="colouredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    { puzzleData.map(({ available, icon, slug, x, y }) => {
+                        const className = `map-link ${available ? '' : 'inactive'}`;
+                        const transform = `translate(${x + offset.x} ${y + offset.y})`;
+                        
+                        return (
+                            <Link to={slug} key={slug}>
+                                <g className={className} transform={transform}>
+                                    <circle className="spotlight" cx="0" cy="0" r="49" />
+                                    <circle className="spotlight-outline" cx="0" cy="0" r="49" />
+                                    { icon }
+                                </g>
                             </Link>
-                        </div>
-                    );
-                }) }
+                        );
+                    }) }
+                </svg>
             </nav>
 
             <svg id="shadow-ring" viewBox="-128 -128 256 256" preserveAspectRatio="xMidYMid slice">
