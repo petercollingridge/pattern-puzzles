@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 
 import { Link } from "react-router-dom";
 import puzzleData from "../Puzzles/allPuzzles";
-import getLayout from "./PuzzleLayout";
+import getConnections from "./PuzzleLayout";
 
 import './Icons/icons.css';
 import './PuzzleGraph.css';
@@ -14,26 +14,34 @@ import './PuzzleGraph.css';
 
 const SIZE = 720;
 
-getLayout(puzzleData);
-console.log(puzzleData);
+const connections = getConnections(puzzleData);
 
 function Graph() {
     const [dragging, setDragging] = useState(false);
     const [lastPosition, setLastPosition] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
 
+    function getPosition(evt) {
+        if (evt.touches) {
+            evt = evt.touches[0];
+        }
+        return { x: evt.pageX, y: evt.pageY };
+    }
+
     function onMouseDown(evt) {
         setDragging(true);
-        setLastPosition({ x: evt.pageX, y: evt.pageY });
+        const position = getPosition(evt);
+        setLastPosition(position);
         evt.stopPropagation();
         evt.preventDefault();
     }
 
     function onMouseMove(evt) {
         if (!dragging) { return; }
-        const x = offset.x + evt.pageX - lastPosition.x;
-        const y = offset.y + evt.pageY - lastPosition.y;
-        setLastPosition({ x: evt.pageX, y: evt.pageY });
+        const position = getPosition(evt)
+        const x = offset.x + position.x - lastPosition.x;
+        const y = offset.y + position.y - lastPosition.y;
+        setLastPosition(position);
         setOffset({ x, y });
         evt.stopPropagation();
         evt.preventDefault();
@@ -46,7 +54,14 @@ function Graph() {
     }
 
     return (
-        <main onMouseUp={onMouseUp} onMouseMove={onMouseMove} onMouseDown={onMouseDown}>
+        <main
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
+            onTouchStart={onMouseDown}
+            onTouchMove={onMouseMove}
+            onTouchEnd={onMouseUp}
+        >
             <nav className="puzzle-graph">
                 <svg viewBox={`-${SIZE / 2} -${SIZE / 2} ${SIZE} ${SIZE}`} width="100%" height="100%">
                     <defs>
@@ -59,20 +74,25 @@ function Graph() {
                         </filter>
                     </defs>
 
-                    { puzzleData.map(({ available, icon, slug, x, y }) => {
-                        const className = `map-link ${available ? '' : 'inactive'}`;
-                        const transform = `translate(${x + offset.x} ${y + offset.y})`;
-                        
-                        return (
-                            <Link to={slug} key={slug}>
-                                <g className={className} transform={transform}>
-                                    <circle className="spotlight" cx="0" cy="0" r="49" />
-                                    <circle className="spotlight-outline" cx="0" cy="0" r="49" />
-                                    { icon }
-                                </g>
-                            </Link>
-                        );
-                    }) }
+                    <g transform={`translate(${offset.x} ${offset.y})`}>
+                        { connections.map((cxn, index) => (
+                            <line className="connection" key={index} {...cxn} />
+                        )) }
+
+                        { puzzleData.map(({ available, icon, slug, x, y }) => {
+                            const className = `map-link ${available ? '' : 'inactive'}`;
+                            
+                            return (
+                                <Link to={slug} key={slug}>
+                                    <g className={className} transform={`translate(${x} ${y})`}>
+                                        <circle className="spotlight" cx="0" cy="0" r="49" />
+                                        <circle className="spotlight-outline" cx="0" cy="0" r="49" />
+                                        { icon }
+                                    </g>
+                                </Link>
+                            );
+                        }) }
+                    </g>
                 </svg>
             </nav>
 
