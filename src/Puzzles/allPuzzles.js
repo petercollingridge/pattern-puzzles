@@ -7,4 +7,6 @@ const puzzleData = [
     ...GraphTheoryPuzzles
 ];
 
+console.log(puzzleData);
+
 export default puzzleData;

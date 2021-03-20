@@ -5,19 +5,17 @@
 
 .map-link .spotlight {
     fill: white;
-    stroke: none;
-    color: rgb(20, 146, 196);
-}
-
-.map-link .spotlight-outline {
-    fill: none;
-    stroke: none;
-    stroke-width: 3px;
-    color: rgb(20, 146, 196);
+    stroke: rgb(20, 146, 196);
+    transition: 250ms ease-out;
 }
 
 .map-link.inactive .spotlight {
-    fill: #ccc;
+    fill: #bbb;
+}
+
+.map-link .spotlight:hover {
+    fill: white;
+    stroke-width: 2;
 }
 
 .map-link .graph-edges {

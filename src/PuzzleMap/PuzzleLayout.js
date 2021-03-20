@@ -1,14 +1,19 @@
 const CONNECTION_LENGTH = 160;
 
+// Array of connections between puzzles in the form
+// [puzzle1, puzzle, optional angle]
 const PUZZLE_CONNECTIONS = [
     ['tutorial', 'colour-graphs-0'],
     ['colour-graphs-0', 'colour-graphs-1', 60],
     ['colour-graphs-1', 'colour-graphs-2'],
     ['colour-graphs-2', 'colour-graphs-3', 30],
     ['colour-graphs-2', 'colour-graphs-4', -30],
+    ['colour-graphs-3', 'colour-graphs-5'],
 ];
 
-function getLayout(puzzleData) {
+// Function for adding connections between puzzles
+// and determining the position of icons given the angles between them
+function getConnections(puzzleData) {
     function getPuzzle(name) {
         const puzzle = puzzleData.find(puzzle => puzzle.slug === name);
         if (!puzzle) {
@@ -16,6 +21,8 @@ function getLayout(puzzleData) {
         }
         return puzzle;
     }
+
+    const connections = [];
 
     PUZZLE_CONNECTIONS.forEach(([name1, name2, angle]) => {
         const puzzle1 = getPuzzle(name1);
@@ -31,7 +38,16 @@ function getLayout(puzzleData) {
         const radians = puzzle2.angle * Math.PI / 180;
         puzzle2.x = puzzle1.x + CONNECTION_LENGTH * Math.cos(radians);
         puzzle2.y = puzzle1.y + CONNECTION_LENGTH * Math.sin(radians);
+
+        connections.push({
+            x1: puzzle1.x,
+            y1: puzzle1.y,
+            x2: puzzle2.x,
+            y2: puzzle2.y,
+        });
     });
+
+    return connections;
 }
 
-export default getLayout;
+export default getConnections;

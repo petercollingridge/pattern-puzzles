@@ -2,6 +2,7 @@ import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import { puzzleData } from './AppData';
+// import puzzleData from './Puzzles/allPuzzles';
 import PuzzleMap from './PuzzleMap/PuzzleMap';
 import PuzzleMenu from './PuzzleMap/PuzzleMenu';
 import PuzzleGraph from './PuzzleMap/PuzzleGraph';

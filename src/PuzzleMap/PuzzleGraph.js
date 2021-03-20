@@ -15,6 +15,7 @@ import './PuzzleGraph.css';
 const SIZE = 720;
 
 const connections = getConnections(puzzleData);
+puzzleData[1].available = true;
 
 function Graph() {
     const [dragging, setDragging] = useState(false);
@@ -80,13 +81,13 @@ function Graph() {
                         )) }
 
                         { puzzleData.map(({ available, icon, slug, x, y }) => {
-                            const className = `map-link ${available ? '' : 'inactive'}`;
+                            const className = `nav-icon ${available ? '' : 'inactive'}`;
                             
                             return (
                                 <Link to={slug} key={slug}>
                                     <g className={className} transform={`translate(${x} ${y})`}>
-                                        <circle className="spotlight" cx="0" cy="0" r="49" />
-                                        <circle className="spotlight-outline" cx="0" cy="0" r="49" />
+                                        <circle className="spotlight-outline" cx="0" cy="0" r="52" />
+                                        <circle className="spotlight" cx="0" cy="0" r="48" />
                                         { icon }
                                     </g>
                                 </Link>

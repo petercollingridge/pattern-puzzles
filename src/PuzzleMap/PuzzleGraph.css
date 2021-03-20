@@ -1,9 +1,64 @@
-.puzzle-graph {
+nav.puzzle-graph {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+}
+
+nav.puzzle-graph .connection {
+    stroke: #f8f8f8;
+    stroke-width: 4;
+}
+
+.nav-icon * {
+    transition: 300ms ease-out;
+}
+
+.nav-icon .spotlight {
+    fill: white;
+}
+
+.nav-icon.inactive .spotlight {
+    fill: #bbb;
+}
+
+.nav-icon .spotlight-outline {
+    fill: white;
+    stroke: rgb(30, 20, 20);
+}
+
+.nav-icon.inactive .spotlight-outline {
+    fill: #bbb;
+}
+
+.nav-icon .graph-edges {
+    fill: none;
+    color: #999;
+    stroke: #999;
+}
+
+.nav-icon .graph-nodes {
+    fill: currentColor;
+    stroke: white;
+}
+
+.nav-icon.inactive .graph-nodes {
+    stroke: #aaa;
+    fill: #999;
+}
+
+.nav-icon:hover .spotlight-outline {
+    fill: rgb(20, 146, 196);
+}
+
+.nav-icon:hover .spotlight {
+    fill: white;
+}
+
+.nav-icon:hover .graph-nodes * {
+    fill: currentColor;
+    stroke: white;
 }
 
 #shadow-ring {
