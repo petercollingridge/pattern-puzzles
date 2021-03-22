@@ -16,10 +16,30 @@ const SIZE = 720;
 
 const connections = getConnections(puzzleData);
 
+function getGraphExtent(puzzles) {
+    let minX = 0;
+    let maxX = 0;
+    let maxY = 0;
+    puzzles.forEach(({ x, y }) => {
+        if (x !== undefined) {
+            if (x < minX) { minX = x; }
+            if (x > maxX) { maxX = x; }
+            if (y > maxY) { maxY = y; }
+        }
+    });
+    return { minX, maxX, minY: 0, maxY };
+}
+
+const extent = getGraphExtent(puzzleData);
+
 function Graph() {
     const [dragging, setDragging] = useState(false);
     const [lastPosition, setLastPosition] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+    const minY = -SIZE / 2;
+    const minX = -extent.maxX - SIZE / 2;
+    const maxX = -extent.minX + SIZE / 2;
 
     function getPosition(evt) {
         if (evt.touches) {
@@ -39,8 +59,13 @@ function Graph() {
     function onMouseMove(evt) {
         if (!dragging) { return; }
         const position = getPosition(evt)
-        const x = offset.x + position.x - lastPosition.x;
-        const y = offset.y + position.y - lastPosition.y;
+        let x = offset.x + position.x - lastPosition.x;
+        let y = offset.y + position.y - lastPosition.y;
+
+        if (y < minY) { y = minY; }
+        if (x < minX) { x = minX; }
+        if (x > maxX) { x = maxX; }
+
         setLastPosition(position);
         setOffset({ x, y });
         evt.stopPropagation();

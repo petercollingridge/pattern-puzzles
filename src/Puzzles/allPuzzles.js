@@ -11,6 +11,4 @@ const puzzleData = [
     ...SequencePuzzles,
 ];
 
-console.log(puzzleData);
-
 export default puzzleData;

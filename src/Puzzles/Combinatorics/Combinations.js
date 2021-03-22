@@ -13,25 +13,23 @@ import { getCombinationsWithReplacement, getArrayOfN } from '../../utils/common'
 
 // Given a set of rows of linear graphs
 // Colour them so you have all combinations of colours
-const puzzles1 = [
-    {
-        colourPalette: 2,
-        items: [1, 2],
-        graphs: [[1, 1], [1, 2], [2, 0]],
-    }, {
-        colourPalette: 2,
-        items: [1, 2],
-        graphs: [[1, 1, 1], [2, 2, 2], [1, 1, 2], [0, 0, 0]],
-    }, {
-        colourPalette: 2,
-        items: [1, 2],
-        graphs: [[1, 1, 1, 1], [1, 1, 1, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-    }, {
-        colourPalette: 3,
-        items: [1, 2, 3],
-        graphs: [[1, 1], [2, 2], [3, 3], [1, 2], [0, 0], [0, 0]],
-    }
-];
+const puzzles1 = [{
+    colourPalette: 2,
+    items: [1, 2],
+    graphs: [[1, 1], [1, 2], [2, 0]],
+}, {
+    colourPalette: 2,
+    items: [1, 2],
+    graphs: [[1, 1, 1], [2, 2, 2], [1, 1, 2], [0, 0, 0]],
+}, {
+    colourPalette: 2,
+    items: [1, 2],
+    graphs: [[1, 1, 1, 1], [1, 1, 1, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+}, {
+    colourPalette: 3,
+    items: [1, 2, 3],
+    graphs: [[1, 1], [2, 2], [3, 3], [1, 2], [0, 0], [0, 0]],
+}];
 
 const puzzles = [puzzles1];
 
