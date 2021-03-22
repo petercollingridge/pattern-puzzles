@@ -10,6 +10,10 @@ const PUZZLE_CONNECTIONS = [
     ['tutorial', 'sequences-1', 30],
     ['sequences-1', 'sequences-2'],
     ['sequences-2', 'sequences-3'],
+    ['tutorial', 'identity', 150],
+    ['identity', 'reflection'],
+    ['reflection', 'rotation'],
+    ['rotation', 'inversion'],
 ];
 
 // Function for adding connections between puzzles

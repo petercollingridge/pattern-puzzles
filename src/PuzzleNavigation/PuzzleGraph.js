@@ -63,7 +63,7 @@ function Graph() {
             onTouchEnd={onMouseUp}
         >
             <nav className="puzzle-graph">
-                <svg viewBox={`-${SIZE / 2} -${SIZE / 2} ${SIZE} ${SIZE}`} width="100%" height="100%">
+                <svg viewBox={`-${SIZE / 2} -${SIZE * 0.15} ${SIZE} ${SIZE}`} width="100%" height="100%">
                     <defs>
                         <filter id="glow-spotlight" x="-200%" y="-200%" width="400%" height="400%">
                             <feGaussianBlur stdDeviation="2" result="colouredBlur" />

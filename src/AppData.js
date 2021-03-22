@@ -17,9 +17,6 @@ import GridPathIcons from './PuzzleNavigation/Icons/GridPaths';
 import ColourMapIcons from './PuzzleNavigation/Icons/ColourMaps';
 import { ColourMap } from './Puzzles/ColourMaps';
 
-import TransformationIcons from './PuzzleNavigation/Icons/Transformations';
-import { Transformations } from './Puzzles/Transformations';
-
 import SequencesIcons from './Puzzles/Sequences/Icons';
 import Sequences from './Puzzles/Sequences/BasicSequences';
 
@@ -109,7 +106,6 @@ export const puzzleData = {
 addData('graph-path', 'graph-path', GridPathIcons, GridPath, 2);
 addData('colour-graphs', 'colour-graphs', ColourGraphIcons, ColourGraph, 3);
 addData('colour-maps', 'colour-maps', ColourMapIcons, ColourMap, 2);
-addData('transformations', 'transformations', TransformationIcons, Transformations, 4);
 addData('sequences', 'sequences', SequencesIcons, Sequences, 3);
 
 function addData(name, slug, icons, components, n) {

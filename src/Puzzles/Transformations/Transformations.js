@@ -4,11 +4,11 @@
 
 import React from 'react';
 
-import PuzzlePage from '../PuzzleChamber/PuzzleChamber';
-import { Graph, ColourableGraph } from './PuzzleComponents/Graph';
-import { getGraphAndUncolouredCopy } from './utils/loadPuzzle';
-import { getNodesOnCircle, getLoopOfEdges, getLineOfEdges } from './utils/graphUtils';
-import { graphNodesAreSameColour, samePatternButDifferent } from './utils/evaluate';
+import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
+import { Graph, ColourableGraph } from '../PuzzleComponents/Graph';
+import { getGraphAndUncolouredCopy } from '../utils/loadPuzzle';
+import { getNodesOnCircle, getLoopOfEdges, getLineOfEdges } from '../utils/graphUtils';
+import { graphNodesAreSameColour, samePatternButDifferent } from '../utils/evaluate';
 
 
 const identity1 = [
@@ -184,16 +184,18 @@ const Transformation = ({ puzzles, transform, evaluate }) => {
 };
 
 const patternMatchGraphs = ({ blank, target }) => {
-	const seq1 = blank.nodes.map(node => node.colour);
-	const seq2 = target.nodes.map(node => node.colour);
-	return samePatternButDifferent(seq1, seq2);
+    const seq1 = blank.nodes.map(node => node.colour);
+    const seq2 = target.nodes.map(node => node.colour);
+    return samePatternButDifferent(seq1, seq2);
 }
 
 const puzzles = [
-	<Transformation puzzles={identity1} transform="" evaluate={graphNodesAreSameColour} />,
-	<Transformation puzzles={reflection1} transform="scale(-1 1)" evaluate={graphNodesAreSameColour}/>,
-	<Transformation puzzles={rotation1} transform="rotate(180)" evaluate={graphNodesAreSameColour} />,
-	<Transformation puzzles={colour1} transform="" evaluate={patternMatchGraphs} />,
+    <Transformation puzzles={identity1} transform="" evaluate={graphNodesAreSameColour} />,
+    <Transformation puzzles={reflection1} transform="scale(-1 1)" evaluate={graphNodesAreSameColour}/>,
+    <Transformation puzzles={rotation1} transform="rotate(180)" evaluate={graphNodesAreSameColour} />,
+    <Transformation puzzles={colour1} transform="" evaluate={patternMatchGraphs} />,
 ];
 
-export const Transformations = (n) => puzzles[n];
+const Transformations = (n) => puzzles[n];
+
+export default Transformations;
