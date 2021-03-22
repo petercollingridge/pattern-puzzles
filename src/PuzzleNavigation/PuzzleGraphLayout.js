@@ -1,14 +1,15 @@
+// Code to determine the layout of the navigation graph
+
 const CONNECTION_LENGTH = 160;
 
 // Array of connections between puzzles in the form
-// [puzzle1, puzzle, optional angle]
+// [<puzzle1>, <puzzle2>, <optional angle change>]
+// Creates an edge between puzzle1 and puzzle 2 in the direction of
+// puzzle1's angle + an optional change in angle
 const PUZZLE_CONNECTIONS = [
-    ['tutorial', 'colour-graphs-0'],
-    ['colour-graphs-0', 'colour-graphs-1', 60],
-    ['colour-graphs-1', 'colour-graphs-2'],
-    ['colour-graphs-2', 'colour-graphs-3', 30],
-    ['colour-graphs-2', 'colour-graphs-4', -30],
-    ['colour-graphs-3', 'colour-graphs-5'],
+    ['tutorial', 'sequences-1', 30],
+    ['sequences-1', 'sequences-2'],
+    ['sequences-2', 'sequences-3'],
 ];
 
 // Function for adding connections between puzzles

@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 
 import { Link } from "react-router-dom";
 import puzzleData from "../Puzzles/allPuzzles";
-import getConnections from "./PuzzleLayout";
+import getConnections from "./PuzzleGraphLayout";
 
 import './Icons/icons.css';
 import './PuzzleGraph.css';
@@ -15,7 +15,6 @@ import './PuzzleGraph.css';
 const SIZE = 720;
 
 const connections = getConnections(puzzleData);
-puzzleData[1].available = true;
 
 function Graph() {
     const [dragging, setDragging] = useState(false);
@@ -81,8 +80,9 @@ function Graph() {
                         )) }
 
                         { puzzleData.map(({ available, icon, slug, x, y }) => {
+                            if (x === undefined) { return null; }
+
                             const className = `nav-icon ${available ? '' : 'inactive'}`;
-                            
                             return (
                                 <Link to={slug} key={slug}>
                                     <g className={className} transform={`translate(${x} ${y})`}>

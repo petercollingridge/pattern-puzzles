@@ -23,7 +23,7 @@ function Section({ name, puzzles }) {
             <h3>Section { name }</h3>
             <ul>
                 { puzzles.map(({slug}) => (
-                    <li slug={slug}>
+                    <li slug={slug} key={slug}>
                         <Link to={slug}>{slug}</Link>
                     </li>
                 ))}

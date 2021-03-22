@@ -1,12 +1,12 @@
 import { Tutorial } from './Tutorial';
-import { TutorialIcon } from '../PuzzleMap/Icons/Tutorial';
+import { TutorialIcon } from '../PuzzleNavigation/Icons/Tutorial';
 
 
 const puzzles = [{
     name: 'Tutorial',
     slug: 'tutorial',
     icon: TutorialIcon(),
-    component: Tutorial,
+    component: () => Tutorial,
     available: true,
 }];
 

@@ -22,7 +22,7 @@ const SequencesIcon2 = () =>
         )}
     </g>
 
-const SequencesIcon3 = () => <React.Fragment>
+const SequencesIcon3 = () => <g>
     <defs>
         <g id="triangle" className="graph-edges">
             <line x1="-15" y1="13" x2="0" y2="-13" />
@@ -51,7 +51,7 @@ const SequencesIcon3 = () => <React.Fragment>
     <use href="#triangle-2" transform="translate(-11, -4) scale(0.45)"/>
     <use href="#triangle-1" transform="translate(11, -4) scale(0.45)"/>
     <use href="#triangle-2" transform="translate(34, -4) scale(0.45)"/>
-</React.Fragment>
+</g>
 
 export default [
     SequencesIcon1,

@@ -1,10 +1,10 @@
 // Create an array of object, where every item is a puzzle
 // Puzzle objects have a component, an icon, a position on the map and a URL slug
 
-import ColourGraphIcons from './PuzzleMap/Icons/ColourGraphs';
+import ColourGraphIcons from './PuzzleNavigation/Icons/ColourGraphs';
 import { ColourGraph } from './Puzzles//GraphTheory/ColourGraphs';
 
-import GraphTheoryIcons from './PuzzleMap/Icons/GraphTheory';
+import GraphTheoryIcons from './PuzzleNavigation/Icons/GraphTheory';
 import EulerPath from './Puzzles/GraphTheory/EulerPath';
 import MinimumCut from './Puzzles/GraphTheory/MinimumCut';
 import DominatingSet from './Puzzles/GraphTheory/DominatingSet';
@@ -12,21 +12,21 @@ import HamiltonianPath from './Puzzles/GraphTheory/HamiltonianPath';
 
 import GridPath from './Puzzles/GridPaths/GridPaths';
 import CategoriseGrids from './Puzzles/GridPaths/CategoriseGrids';
-import GridPathIcons from './PuzzleMap/Icons/GridPaths';
+import GridPathIcons from './PuzzleNavigation/Icons/GridPaths';
 
-import ColourMapIcons from './PuzzleMap/Icons/ColourMaps';
+import ColourMapIcons from './PuzzleNavigation/Icons/ColourMaps';
 import { ColourMap } from './Puzzles/ColourMaps';
 
-import TransformationIcons from './PuzzleMap/Icons/Transformations';
+import TransformationIcons from './PuzzleNavigation/Icons/Transformations';
 import { Transformations } from './Puzzles/Transformations';
 
-import SequencesIcons from './PuzzleMap/Icons/Sequences';
-import { Sequences } from './Puzzles/Sequences';
+import SequencesIcons from './Puzzles/Sequences/Icons';
+import Sequences from './Puzzles/Sequences/BasicSequences';
 
-import CategorisationIcons from './PuzzleMap/Icons/Categorisation';
+import CategorisationIcons from './PuzzleNavigation/Icons/Categorisation';
 import { Categorisation } from './Puzzles/Categorisation';
 
-import PermutationIcons from './PuzzleMap/Icons/Combinatorics';
+import PermutationIcons from './PuzzleNavigation/Icons/Combinatorics';
 import { PermutationPuzzles } from './Puzzles/Combinatorics/Permutations';
 import { CombinationPuzzles } from './Puzzles/Combinatorics/Combinations';
 import { DerrangementPuzzles } from './Puzzles/Combinatorics/Derrangements';
