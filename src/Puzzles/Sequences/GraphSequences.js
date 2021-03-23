@@ -4,6 +4,7 @@
 
 import React from 'react';
 
+import Icons from './Icons';
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { GraphRow } from '../PuzzleComponents/Sequence';
 import { getGraphSequence } from '../utils/loadPuzzle';
@@ -29,7 +30,7 @@ const s1221 = squareGraph([1, 2, 2, 1]);
 const s1212 = squareGraph([1, 2, 1, 2]);
 const s2121 = squareGraph([2, 1, 2, 1]);
 
-const puzzles1 = [
+const puzzle = [
     {
         colourPalette: 1,
         sequence: [t1, t1, t1, null],
@@ -65,18 +66,22 @@ const puzzles1 = [
     }
 ];
 
-const puzzles = [puzzles1];
+// Check every node in a sequence of graphs matches the target node colours
 const correctGraphSequence = ({ sequence, target }) =>
     sequence.every((graph, index) =>
         sequencesMatch(graph.nodes, target[index].nodes, 'colour')
     );
 
-const Sequences = (n) => 
-    <PuzzlePage
-        puzzles={puzzles[n]}
+const GraphSequences = {
+    name: 'Sequences 3',
+    slug: 'sequences-3',
+    icon: Icons[2],
+    component: () => <PuzzlePage
+        puzzles={puzzle}
         evaluate={correctGraphSequence}
         getPuzzleObject={getGraphSequence}
         displayPuzzle={GraphRow}
-    />
+    />,
+};
 
-export default Sequences;
+export default GraphSequences;

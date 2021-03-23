@@ -4,6 +4,7 @@
 
 import React from 'react';
 
+import Icons from './Icons';
 import PuzzlePage from '../../PuzzleChamber/PuzzleChamber';
 import { ColourableSequence } from '../PuzzleComponents/Sequence';
 import { getSequenceObject } from '../utils/loadPuzzle';
@@ -84,15 +85,26 @@ const puzzles2 = [
     }
 ];
 
-const puzzles = [puzzles1, puzzles2];
 const correctSequence = ({ sequence, target }) => sequencesMatch(sequence, target, 'colour');
 
-const Sequences = (n) => 
+const PuzzleComponent = ({ puzzle }) => 
     <PuzzlePage
-        puzzles={puzzles[n]}
+        puzzles={puzzle}
         evaluate={correctSequence}
         getPuzzleObject={getSequenceObject}
         displayPuzzle={ColourableSequence}
     />
 
-export default Sequences;
+const BasicSequences = [{
+    name: 'Sequences 1',
+    slug: 'sequences-1',
+    icon: Icons[0],
+    component: () => <PuzzleComponent puzzle={puzzles1} />,
+}, {
+    name: 'Sequences 2',
+    slug: 'sequences-2',
+    icon: Icons[1],
+    component: () => <PuzzleComponent puzzle={puzzles2} />,
+}];
+
+export default BasicSequences;

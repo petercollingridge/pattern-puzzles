@@ -37,9 +37,10 @@ function Graph() {
     const [lastPosition, setLastPosition] = useState(false);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
 
+    const minX = -extent.maxX;
+    const maxX = -extent.minX;
+    const maxY = -extent.minY;
     const minY = -SIZE / 2;
-    const minX = -extent.maxX - SIZE / 2;
-    const maxX = -extent.minX + SIZE / 2;
 
     function getPosition(evt) {
         if (evt.touches) {
@@ -62,9 +63,10 @@ function Graph() {
         let x = offset.x + position.x - lastPosition.x;
         let y = offset.y + position.y - lastPosition.y;
 
-        if (y < minY) { y = minY; }
         if (x < minX) { x = minX; }
-        if (x > maxX) { x = maxX; }
+        else if (x > maxX) { x = maxX; }
+        if (y < minY) { y = minY; }
+        else if (y > maxY) { y = maxY; }
 
         setLastPosition(position);
         setOffset({ x, y });

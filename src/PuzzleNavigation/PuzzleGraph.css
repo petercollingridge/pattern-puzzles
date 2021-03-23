@@ -4,11 +4,16 @@ nav.puzzle-graph {
     left: 0;
     width: 100vw;
     height: 100vh;
+    cursor: grab;
 }
 
 nav.puzzle-graph .connection {
     stroke: #f8f8f8;
     stroke-width: 4;
+}
+
+.nav-icon {
+    cursor: pointer;
 }
 
 .nav-icon * {
